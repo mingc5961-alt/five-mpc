@@ -1,0 +1,22 @@
+{
+  "original_name": "RouteClock_results_20261118.zip",
+  "original_bytes": 4080262940,
+  "original_sha256": "63252fe535547fa34bdf248df1a3bd7f74ec2a45b43cd3f66a183e54e861e07c",
+  "parts": [
+    {
+      "name": "RouteClock_results_20261118.zip.part01",
+      "bytes": 1610612736,
+      "sha256": "ce633fb4889f5636b2374919bb29a1b287046ac91b63385caa0dc88b996ea814"
+    },
+    {
+      "name": "RouteClock_results_20261118.zip.part02",
+      "bytes": 1610612736,
+      "sha256": "de51fd6e8da8458be95acf7240c40db68c90440f96ccd19ea6a8f8fd011e8617"
+    },
+    {
+      "name": "RouteClock_results_20261118.zip.part03",
+      "bytes": 859037468,
+      "sha256": "6dd7baddfdaab6a0169ed1b436b8b906abf259cdf6fb5058171c40306656c29e"
+    }
+  ]
+}

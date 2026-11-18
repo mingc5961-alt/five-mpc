@@ -1,0 +1,67 @@
+{
+  "review_round": 2,
+  "review_independence": "same_family_provisional",
+  "scope": "Current source and actual execution paths; no platform code edited.",
+  "round1_resolution": [
+    {
+      "finding": "Cross-method archive train/deploy mismatch",
+      "status": "resolved",
+      "evidence": "Tracker.features copies the archive and removes CR_raw fields unless expert is CR_raw; RC/I offline and online features now follow the same rule."
+    },
+    {
+      "finding": "Late-only calibration anchors",
+      "status": "partially_resolved",
+      "evidence": "Calibration now randomly selects early/middle/late origins. The observation stream still differs because only the selected calibration anchor is inserted into the stream; see undeclared[0]."
+    },
+    {
+      "finding": "Archive ablation still used full gate",
+      "status": "resolved",
+      "evidence": "train_bundle separately refits task-group OOF no_archive gates and scale heads; simulate selects the no_archive gate and uses Tracker(no_archive=True). Fixed-center scale ablation has a separate name."
+    },
+    {
+      "finding": "Uniform comparator was load-saving greedy",
+      "status": "resolved",
+      "evidence": "choose_actions now uses a shared 32/16/8 square subarray level for all users, selecting each user's longest interval at that level, matching A23."
+    },
+    {
+      "finding": "Static harmonic comparator and missing realized harmonic errors",
+      "status": "partially_resolved",
+      "evidence": "Tracker uses HarmonicMemory with 43 periods and three configured drift scales. Issued harmonic realization diagnostics are still absent; see undeclared[1]."
+    },
+    {
+      "finding": "Incomplete event communication ledger",
+      "status": "resolved",
+      "evidence": "Data events now include delivered bits, SNR, MCS, BLER, pair, prediction origin/age and deadline; prediction events include experts and envelope. All existing event files containing bit details recompute the recorded aggregate throughput. A new plotting issue remains in undeclared[2]."
+    }
+  ],
+  "undeclared": [
+    {
+      "site": "routeclock/dataset.py:generate_anchors",
+      "decision": "Calibration reduces anchor_times to the selected target before constructing the observation times. Test retains all three candidate anchors in its observation stream. Thus a calibration anchor and a test anchor at the same stage have different causal observation protocols.",
+      "why_it_matters": "A21 fixes the anchor-age mixture but not the state distribution seen by calibration. Concrete local settings reproduce this: at mission 1 / origin 60 s, the test stream includes an extra observation at 49.2 s; at mission 2 / origin 49.2 s, the test stream includes an extra observation at 39 s. The same difference occurs with formal random anchor intervals. The required local fix is to retain all candidate anchors when building the observation stream, while selecting only one target for calibration output.",
+      "class": "semantic"
+    },
+    {
+      "site": "routeclock/evidence.py:Evidence.observe/summary; routeclock/predictors.py:HarmonicMemory.forecast and Tracker.issue; implement-stage/RESEARCH_REPORT.md:5.5",
+      "decision": "Issued harmonic forecasts are stored in Forecast.centers['H'], but Evidence only realizes P, I and CR_raw. The harmonic diagnostic remains the current filter innovation plus period statistics, rather than historical issued harmonic prediction errors.",
+      "why_it_matters": "The report explicitly says the harmonic expert supplies period uncertainty and historical realization residuals to the validity head. A24 resolves the coefficient-drift model but does not declare dropping this evidence. The current innovation is an irregular one-step measurement residual and is not the stored multi-horizon forecast realization described in sections 5.5 and 5.6.",
+      "class": "semantic"
+    },
+    {
+      "site": "tools/node_diagnostics.py:per-UAV interval and active-element plots",
+      "decision": "The plotted interval and beam width are read only from that UAV's observation events, although a different UAV's observation can cause choose_actions to change its action.",
+      "why_it_matters": "This produces an incorrect mechanism figure on an existing run: runs/acceptance_loop/RC_1/events.json has UAV 0 transmitting at t=62.39750000000011 with pair [8,16], while its latest own observation event still records [32,32]. The plot therefore shows 1024 active elements while 128 were used. Actual data events now contain the pair and deadline needed to plot the executed actions.",
+      "class": "interface"
+    }
+  ],
+  "stale_rows": [],
+  "semantic_undeclared": 2,
+  "verdict": "gaps",
+  "additionally_checked": [
+    "CLI run's file/directory conflict was observed, reported and then confirmed corrected by moving the run branch before load_bundle.",
+    "A mid-route transition was reproduced as an erroneous terminal jump from [400,0,80] toward [340,11,80]. The current source now restricts connections to observed open-terminal transitions and accounts for bridge distance.",
+    "Validation-enabled LightGBM fitting succeeds in the installed runtime; no interface finding is reported.",
+    "Three configured formal scan trajectories (network/test missions 20000, 20001, 20002, segment-speed group) respect the current speed, acceleration and jerk limits.",
+    "The restored first-round file is valid JSON with six findings and semantic_undeclared=5."
+  ]
+}

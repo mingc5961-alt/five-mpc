@@ -1,0 +1,13 @@
+# Python 3.12；使用服务器 CUDA 版 PyTorch，不使用 Windows 的 +cpu 锁文件。
+numpy==2.5.4
+scipy==1.18.1
+pandas==3.1.1
+scikit-learn==1.9.1
+lightgbm==4.7.0
+joblib==1.6.0
+chronos-forecasting==2.3.2
+tabpfn==9.2.0
+transformers==5.22.2
+psutil==7.2.2
+pytest
+matplotlib

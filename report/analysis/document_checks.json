@@ -1,0 +1,9 @@
+{
+  "pdf_pages": 27,
+  "pdf_extracted_characters": 31396,
+  "figures": 14,
+  "csv_tables": 40,
+  "docx_integrity": "passed",
+  "required_sections_and_key_numbers": "passed",
+  "visual_review": "sampled title, tables and figures"
+}

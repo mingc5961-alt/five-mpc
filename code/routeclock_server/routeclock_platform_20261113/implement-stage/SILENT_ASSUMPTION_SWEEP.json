@@ -1,0 +1,43 @@
+{
+  "undeclared": [
+    {
+      "site": "routeclock/dataset.py:generate_anchors; routeclock/predictors.py:Tracker.features; routeclock/training.py:train_bundle; routeclock/simulator.py:simulate",
+      "decision": "When offline anchors include Chronos, the full RC/I/P/H scale features contain all 24 archive fields, including the eight CR_raw realized-error fields. Online RC/I trackers only issue P/I/H, so the CR_raw archive fields have no observations and stay at their empty defaults. The deployed head is therefore given a different feature meaning from the one used for fitting and calibration.",
+      "why_it_matters": "The main formal data path uses the same Chronos-enabled anchors to train all centers. RC and I can learn dependence on an expert's evidence that their own closed loop never computes, so their calibrated envelopes and comparison against CR are affected by a method-dependent train/deploy mismatch. A direct feature probe confirmed CR archive changes affect full features at columns 44-51. The local non-Chronos smoke run does not expose this.",
+      "class": "semantic"
+    },
+    {
+      "site": "routeclock/dataset.py:generate_anchors; routeclock/validity.py:ScaleHead.calibrate; routeclock/evaluation.py:offline_report",
+      "decision": "Calibration always selects the last anchor, while training and test retain all three anchors. Formally, calibration origins are 310-340 seconds, whereas coverage is reported jointly for test origins from 190-230, 250-290 and 310-340 seconds.",
+      "why_it_matters": "One anchor per independent task prevents within-task dependence but does not make a late-history-only calibration distribution exchangeable with early/middle/late test anchors. Route memory maturity and archive availability are precisely features of interest. The nominal held-out-task coverage interpretation therefore needs either matched anchor sampling or an explicit late-anchor scope; neither choice is recorded.",
+      "class": "semantic"
+    },
+    {
+      "site": "routeclock/training.py:train_bundle controls['no_archive']; routeclock/simulator.py:simulate control='no_archive'; routeclock/experiments.py:D_archive",
+      "decision": "The D_archive closed-loop condition removes realized-error inputs only from the scale head. It still uses the full gate trained with archive features, and online Tracker retains the archive. The no_archive Tracker option is not passed by simulate.",
+      "why_it_matters": "The report describes removing historical realization evidence with the affected modules refitted. The current condition is a fixed-center, scale-head-only information ablation; it cannot support a claim about the contribution of archive evidence to the full RC method, because that evidence still influences steering through the gate. The restricted interpretation is not declared.",
+      "class": "semantic"
+    },
+    {
+      "site": "routeclock/scheduler.py:choose_actions mode='uniform'; routeclock/experiments.py:C_scheduler; implement-stage/RESEARCH_REPORT.md:7.8",
+      "decision": "The condition called uniform chooses the single action with the largest saved sensing load at each step, regardless of communication cost. It does not widen all users uniformly or apply a common width level.",
+      "why_it_matters": "The report specifies a uniform-widening comparator. A greedy maximum-load-saving comparator represents a different scheduling policy and may concentrate all relaxation on a few UAVs. The resulting scheduler ablation would answer a different question unless this policy is renamed and documented or uniform widening is implemented.",
+      "class": "semantic"
+    },
+    {
+      "site": "routeclock/predictors.py:harmonic; routeclock/evidence.py:Evidence.observe; configs/research.json:models.harmonic; implement-stage/RESEARCH_REPORT.md:5.5",
+      "decision": "The harmonic comparator is a single full-history ridge fit for each period with an affine time trend. The configured coefficient-drift scales are unused, and Evidence records only P/I/CR_raw, so issued harmonic forecast realization errors are not part of the diagnostics.",
+      "why_it_matters": "The report and configuration retain a slowly adapting harmonic comparator and harmonic realization diagnostics. A static global coefficient fit plus in-sample residual diagnostics is a different comparator under changing tempo, which is the main research question. This simplification and its effect on the harmonic comparison are not declared.",
+      "class": "semantic"
+    },
+    {
+      "site": "routeclock/simulator.py:transfer, events and prediction_log; implement-stage/SPEC.md; implement-stage/RESEARCH_REPORT.md:9.2",
+      "decision": "The event output records data-slot start/finish/switch duration, but not delivered bits, actual SNR/BLER, selected pair or forecast origin at transmission. Prediction output omits the actual error envelope and gate weights. A shared choose_actions call may change another UAV's action, but the observation event records only the observed UAV's choice.",
+      "why_it_matters": "The requested per-event communication ledger and time-aligned failure analysis cannot recover which action produced each transmitted bit total or which error region caused an action change. Aggregate time accounting can still balance, but the exported artifact is a time-slot log rather than the specified traceable communication ledger. This output-interface reduction is undeclared.",
+      "class": "interface"
+    }
+  ],
+  "stale_rows": [],
+  "semantic_undeclared": 5,
+  "verdict": "gaps"
+}

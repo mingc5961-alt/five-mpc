@@ -1,0 +1,163 @@
+"""Admission control only: never changes scientific commands or model settings."""
+import json
+import math
+import subprocess
+import time
+from pathlib import Path
+import psutil
+
+GIB = 2**30
+CGROUP = Path('/sys/fs/cgroup')
+
+
+def admission_order(jobs, state, running, policy):
+    """Balance ready network families without changing frozen job identities."""
+    if policy is None or not policy.get('balance_network_families', False):
+        return jobs
+    from collections import Counter, deque
+    ready = [j for j in jobs if state[j['id']] == 'pending'
+             and all(state[d] == 'passed' for d in j['dependencies'])]
+    # Finish prerequisite evaluations and available reports promptly.
+    ordered = [j for j in ready if j['kind'] != 'network']
+    queues = {}
+    for job in ready:
+        if job['kind'] == 'network':
+            queues.setdefault(job['meta']['head'], deque()).append(job)
+    counts = Counter(j['meta']['head'] for j in running if j['kind'] == 'network')
+    while queues:
+        family = min(queues, key=lambda key: counts[key])
+        ordered.append(queues[family].popleft())
+        counts[family] += 1
+        if not queues[family]:
+            del queues[family]
+    return ordered
+
+
+def read_policy(run):
+    path = Path(run)/'resource_policy.json'
+    if not path.exists():
+        return None
+    policy = json.loads(path.read_text())
+    positive = ('cpu_capacity', 'cpu_network_cost', 'gpu_network_cpu_cost',
+                'tabpfn_train_cpu_cost', 'memory_headroom_gib',
+                'cpu_network_memory_gib', 'gpu_network_memory_gib',
+                'tabpfn_memory_gib', 'other_memory_gib')
+    for key in positive:
+        value = policy[key]
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or value <= 0:
+            raise ValueError(f'Invalid resource policy: {key}')
+    cap = policy['max_cpu_network_jobs']
+    if isinstance(cap, bool) or not isinstance(cap, int) or cap < 1:
+        raise ValueError('Invalid max_cpu_network_jobs')
+    for key in ('gpu_capacity', 'tabpfn_network_gpu_slots'):
+        if key in policy and (type(policy[key]) is not int or policy[key] < 1):
+            raise ValueError(f'Invalid {key}')
+    for key in ('gpu_memory_ceiling_gib', 'tabpfn_train_vram_gib', 'tabpfn_network_vram_gib',
+                'chronos_vram_gib', 'tabpfn_network_memory_gib'):
+        if key in policy and (not isinstance(policy[key], (int, float)) or not math.isfinite(policy[key]) or policy[key] <= 0):
+            raise ValueError(f'Invalid {key}')
+    return policy
+
+
+def cpu_cost(job, policy):
+    if policy is None:
+        return job['cpu']
+    if job['kind'] == 'network':
+        return policy['gpu_network_cpu_cost' if job['gpu'] else 'cpu_network_cost']
+    if job['kind'] == 'train' and job['meta']['head'] == 'tabpfn':
+        return policy['tabpfn_train_cpu_cost']
+    return job['cpu']
+
+
+def memory_reservation(job, policy):
+    if job['kind'] == 'network' and job['meta'].get('head') == 'tabpfn' and 'tabpfn_network_memory_gib' in policy:
+        key = 'tabpfn_network_memory_gib'
+    elif job['meta'].get('head') == 'tabpfn':
+        key = 'tabpfn_memory_gib'
+    elif job['kind'] == 'network':
+        key = 'gpu_network_memory_gib' if job['gpu'] else 'cpu_network_memory_gib'
+    else:
+        key = 'other_memory_gib'
+    return policy[key]*GIB
+
+
+def gpu_cost(job, policy):
+    if policy is not None and job['kind'] == 'network' and job['meta'].get('head') == 'tabpfn':
+        return policy.get('tabpfn_network_gpu_slots', job['gpu'])
+    return job['gpu']
+
+
+def vram_reservation(job, policy):
+    if not job['gpu']:
+        return 0
+    if job['meta'].get('head') == 'tabpfn':
+        return policy['tabpfn_train_vram_gib' if job['kind'] == 'train' else 'tabpfn_network_vram_gib']
+    return policy['chronos_vram_gib']
+
+
+def sample_gpu():
+    output = subprocess.check_output(['nvidia-smi', '--id=0',
+        '--query-gpu=memory.used,memory.total,utilization.gpu', '--format=csv,noheader,nounits'],
+        text=True, timeout=5)
+    used, total, utilization = map(float, output.strip().split(','))
+    return dict(gpu_memory_used_gib=used/1024, gpu_memory_total_gib=total/1024,
+                gpu_utilization_percent=utilization)
+
+
+def sample(cgroup=CGROUP):
+    quota, period = (cgroup/'cpu.max').read_text().split()
+    memory_limit = (cgroup/'memory.max').read_text().strip()
+    stats = dict(line.split() for line in (cgroup/'cpu.stat').read_text().splitlines())
+    events = dict(line.split() for line in (cgroup/'memory.events').read_text().splitlines())
+    # A dedicated server may have cgroup v2 without an explicit memory cap.
+    # Account for host-wide pressure in that case, not just this process group.
+    if memory_limit == 'max':
+        host_memory = psutil.virtual_memory()
+        memory_limit_bytes = host_memory.total
+        memory_current_bytes = host_memory.total-host_memory.available
+    else:
+        memory_limit_bytes = int(memory_limit)
+        memory_current_bytes = int((cgroup/'memory.current').read_text())
+    return dict(monotonic=time.monotonic(),
+                cpu_quota_cores=None if quota == 'max' else int(quota)/int(period),
+                cpu_usage_usec=int(stats['usage_usec']),
+                cpu_throttled_usec=int(stats.get('throttled_usec', 0)),
+                memory_current_bytes=memory_current_bytes,
+                memory_limit_bytes=memory_limit_bytes,
+                oom_kill=int(events.get('oom_kill', 0)))
+
+
+def sample_rates(current, previous):
+    if previous is None or current['monotonic'] <= previous['monotonic']:
+        return {}
+    seconds = current['monotonic']-previous['monotonic']
+    return dict(cpu_used_cores=round((current['cpu_usage_usec']-previous['cpu_usage_usec'])/1e6/seconds, 3),
+                cpu_throttled_seconds_delta=round((current['cpu_throttled_usec']-previous['cpu_throttled_usec'])/1e6, 3))
+
+
+def memory_budget(run, running, policy, current):
+    """Reserve unobserved worker growth, including just-started workers."""
+    limit = current['memory_limit_bytes']
+    if limit is None:
+        raise ValueError('Explicit cgroup memory limit required for tuned admission')
+    ceiling = limit-policy['memory_headroom_gib']*GIB
+    if ceiling <= 0:
+        raise ValueError('Memory headroom exceeds container limit')
+    reserved_growth = 0
+    for job in running:
+        path = Path(run)/'jobs'/job['id']/'resource.json'
+        observed = json.loads(path.read_text())['rss_bytes'] if path.exists() else 0
+        reserved_growth += max(0, memory_reservation(job, policy)-observed)
+    return ceiling, current['memory_current_bytes']+reserved_growth
+
+
+def can_admit(job, policy, cpu, cpu_capacity, gpu, gpu_capacity,
+              cpu_networks, memory_committed, memory_ceiling):
+    if cpu+cpu_cost(job, policy) > cpu_capacity+1e-9 or gpu+gpu_cost(job, policy) > gpu_capacity:
+        return False
+    if policy is not None:
+        if job['kind'] == 'network' and not job['gpu'] and cpu_networks >= policy['max_cpu_network_jobs']:
+            return False
+        if memory_committed+memory_reservation(job, policy) > memory_ceiling:
+            return False
+    return True

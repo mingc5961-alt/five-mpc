@@ -1,0 +1,10 @@
+{
+  "uavs": 16, "training_uavs": 16, "warmup_s": 180, "steps": 2904,
+  "dt": 0.062, "sensing_budget": 0.05, "slow_every": 4, "slow_horizon": 32,
+  "fast_horizon": 8, "search_width": 8, "min_airtime_fraction": 0.32,
+  "target_network_mbps": 800, "deficit_weight": 1.0,
+  "train_ids": [100,101,102,103,104,105,106,107],
+  "cal_ids": [100,101,102,103],
+  "test_ids": [100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129],
+  "policies": ["rotation","myopic","age_mpc","joint_mpc"]
+}

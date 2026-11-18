@@ -1,0 +1,32 @@
+建议布局：代码和报告进入仓库，完整实验包进入该仓库的 Releases。
+本目录提供原始 ZIP 的三个连续字节分卷，不是三个独立压缩包，必须合并后解压。
+分卷不会删除或更改原 ZIP；合并后的 SHA-256 必须与原包一致。
+
+一、网页操作
+1. GitHub -> New repository，新建 RouteClock-results，建议 Private，勾选 Add a README file。
+2. 进入仓库 -> Releases -> Create a new release（或 Draft a new release）。
+3. 创建标签 results-20261118，标题填写 RouteClock 实验结果与导师报告。
+4. 附件上传三个 .part 文件、parts_manifest.json、merge_parts.py、此说明，以及报告 PDF/DOCX。
+5. 所有附件上传完成后 Publish release。
+6. 私有仓库需要给老师添加访问权限，老师才能下载。
+报告 PDF/DOCX 也可通过仓库 Add file -> Upload files 单独上传，便于直接阅读。
+
+二、直接从服务器上传
+可以由助手安装 GitHub CLI，在终端发起 gh auth login --web，按提示在浏览器完成登录。
+提供目标仓库链接后，助手即可从服务器直传，不需要先下载到电脑再上传。
+目标仓库：https://github.com/mingc5961-alt/five-mpc
+正式下载页：https://github.com/mingc5961-alt/five-mpc/releases/tag/results-20261118
+
+三、下载后合并
+把三个分卷、parts_manifest.json 和 merge_parts.py 放到同一个目录。
+安装 Python 3 后运行：python merge_parts.py
+脚本会逐卷验证 SHA-256 并合并为 RouteClock_results_20261118.zip，然后用解压软件解压。
+仅检查而不合并：python merge_parts.py --verify-only
+Linux/macOS 也可直接运行：
+cat RouteClock_results_20261118.zip.part01 RouteClock_results_20261118.zip.part02 RouteClock_results_20261118.zip.part03 > RouteClock_results_20261118.zip
+sha256sum RouteClock_results_20261118.zip
+预期值：63252fe535547fa34bdf248df1a3bd7f74ec2a45b43cd3f66a183e54e861e07c
+
+官方说明：
+https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases
+https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository

@@ -1,0 +1,15 @@
+{
+  "five_jobs": 645,
+  "mpc_jobs": 120,
+  "offline_routes": 400,
+  "offline_anchor_method_rows": 42000,
+  "paired_refresh_events": 143,
+  "main_pairs": 30,
+  "matched_repeat_worlds": 20,
+  "tabpfn_matched_worlds": 11,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 271828,
+  "confidence_intervals": "paired, route/world cluster bootstrap; not simultaneous; exploratory selection disclosed",
+  "decomposition_max_abs_residual": 2.0250467969162855e-13,
+  "scientific_source_modified_by_report": false
+}

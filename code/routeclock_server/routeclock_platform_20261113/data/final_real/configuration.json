@@ -1,0 +1,652 @@
+{
+  "version": "RC-20261112-v3-spatial-progress",
+  "status": "design_only_not_runtime_config",
+  "primary_claims": [
+    "spatial_progress_memory_adds_information_under_time_warp",
+    "horizon_conditioned_memory_validity_improves_width_interval_communication_tradeoff"
+  ],
+  "simulation": {
+    "primary_N": 3,
+    "scaling_N": [
+      4,
+      8,
+      16,
+      32
+    ],
+    "warmup_s": 12,
+    "service_s": 3,
+    "truth_step_s": 0.02,
+    "forecast_step_s": 0.5,
+    "forecast_horizon_s": 10,
+    "observation_cost_s": 0.0031,
+    "sensing_budget": 0.05,
+    "budget_sweep_at_N16": [
+      0.02,
+      0.05,
+      0.1
+    ],
+    "intervals_s": [
+      0.5,
+      1,
+      2,
+      3,
+      5,
+      8,
+      10
+    ],
+    "tdma_quantum_s": 0.01,
+    "beam_switch_s": 0.0001,
+    "simulated_model_latency_s": 0,
+    "measurement_std": {
+      "range_m": 1,
+      "azimuth_deg": 0.1,
+      "elevation_deg": 0.1,
+      "radial_velocity_m_s": 0.2
+    },
+    "warmup_per_uav_interval": "max(1,N*c/rho)",
+    "budget_bucket_capacity": "one_observation_cost",
+    "forecast_refresh": "only_new_real_observation_for_that_UAV",
+    "forecast_exhaustion": "no_valid_forecast_action_zero_delivered_bits_until_observation",
+    "model_failure": "explicit_run_error_no_substitution",
+    "zero_duration": "immediate observation request; no c/0; unserved assigned data time counted as link loss",
+    "history_access": "all causal observations from mission start for all methods"
+  },
+  "radio": {
+    "carrier_hz": 28000000000,
+    "bandwidth_hz": 400000000,
+    "total_tx_dbm": 20,
+    "noise_figure_db": 7,
+    "rx_gain_dbi": 0,
+    "array": [
+      32,
+      32
+    ],
+    "subarray_axes": [
+      8,
+      16,
+      32
+    ],
+    "codebook_pairs": 9,
+    "range_m": [
+      150,
+      500
+    ],
+    "altitude_m": [
+      60,
+      120
+    ],
+    "shadow_std_db": 3,
+    "shadow_correlation_s": 2,
+    "spectral_efficiencies": [
+      0.2344,
+      0.6016,
+      1.1758,
+      1.9141,
+      2.7305,
+      3.9023,
+      5.1152
+    ],
+    "threshold_db": "10*log10(2^SE-1)+5",
+    "bler": "1/(1+9*exp((snr_db-threshold_db)/1.5))",
+    "goodput": "integral of B*0.85*SE*(1-BLER) over allocated data time / wall service time",
+    "geometric_loss_threshold_db": 3
+  },
+  "models": {
+    "route": {
+      "representation": "directed_ordered_observed_fragments_and_arc_length",
+      "resample_spacing_m": 1,
+      "rebuild_after_new_accepted_points": 5,
+      "matching_max_hypotheses": 3,
+      "matching_position_gate_mahalanobis": 3,
+      "heading_reliability_speed_m_s": 0.5,
+      "matching_terms": [
+        "position_innovation_with_map_and_measurement_covariance",
+        "speed_weighted_heading",
+        "progress_continuity"
+      ],
+      "update_rule": "score pre-update innovation first; update matched segment; extend only a continuous terminal; mid-route deviation stored as separate fragment",
+      "closure_rule": "position and directed tangent agreement, continuous progression, compatible preceding observed subsequence; not position proximity alone",
+      "unmatched_prediction": "terminal tangent extrapolation with zero observed-support flag; never append predicted points to memory",
+      "future_progress": "three-mode IMM on [arc_length_m,speed_m_s]",
+      "progress_modes": [
+        "cruise",
+        "decelerate",
+        "hold"
+      ],
+      "progress_ou_tau_s": [
+        4,
+        2,
+        1
+      ],
+      "progress_ou_diffusion_m_s_per_sqrt_s": [
+        0.5,
+        0.7,
+        0.1
+      ],
+      "progress_mean_speed_factors": [
+        1,
+        0.4,
+        0
+      ],
+      "cruise_speed_estimator": "median positive observed speed above 0.5 m/s over past 20s",
+      "transition_application": "continuous-time P(delta)=matrix_exp(Q*delta), for both grid forecasting and irregular observations",
+      "uncertainty_propagation": "positive-weight sigma points within each progress/matching hypothesis; include path shape error",
+      "mode_transition_generator_per_s": [
+        [
+          -0.08,
+          0.06,
+          0.02
+        ],
+        [
+          0.2,
+          -0.3,
+          0.1
+        ],
+        [
+          0.12,
+          0.08,
+          -0.2
+        ]
+      ]
+    },
+    "chronos": {
+      "checkpoint": "amazon/chronos-2",
+      "parameters_million": 120,
+      "frozen": true,
+      "context_s": 360,
+      "context_steps": 720,
+      "horizon_steps": 20,
+      "quantiles": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "cross_learning": false,
+      "route_covariates": {
+        "historical": "causally issued route snapshots at each historical time; not hindsight-refitted path",
+        "future": "current-origin spatial-progress xyz mean, xyz std and support over forecast grid; supplied estimates, not true future",
+        "past_only": [
+          "measurement_mask",
+          "measurement_age"
+        ],
+        "no_route_baseline": "omit every route key entirely",
+        "P0_checks": [
+          "past and future covariates jointly accepted",
+          "past snapshots are causal",
+          "C truly omits route fields",
+          "batch does not cross-learn tasks"
+        ]
+      }
+    },
+    "scale": {
+      "model": "TabPFN-2.5",
+      "n_estimators": 4,
+      "feature_budget": 64,
+      "shared_axis_conditioned_regressor": true,
+      "query_horizons_s": [
+        0,
+        0.5,
+        1,
+        2,
+        3,
+        5,
+        8,
+        10
+      ],
+      "queries_per_update": 16,
+      "train_context_rows": 7200,
+      "target": "log(0.001deg+running_max_abs_angle_error)",
+      "context_frozen": true,
+      "fit_mode": "fit_with_cache",
+      "axis_encoding": {
+        "horizon": "numeric h / 10",
+        "axis": "two one-hot columns [1,0] or [0,1]",
+        "concatenation": "shared diagnostics then horizon then axis flags"
+      },
+      "feature_sources": [
+        "shared local dynamics",
+        "path match and support",
+        "progress uncertainty and modes",
+        "realized issued-forecast errors",
+        "harmonic diagnostics",
+        "expert disagreement",
+        "query geometry"
+      ],
+      "target_center": "the actual final center used for steering",
+      "training_gate_outputs": "task-group out-of-fold",
+      "monotonicity": "positive scale then cumulative max; upper-step interpolation to intermediate horizons"
+    },
+    "ablation_heads": {
+      "lightgbm": {
+        "num_leaves": [
+          15,
+          31
+        ],
+        "min_child_samples": [
+          20,
+          50
+        ],
+        "max_boost_rounds": 500,
+        "early_stopping": 30
+      },
+      "random_forest": {
+        "n_estimators": 256,
+        "min_samples_leaf": [
+          8,
+          16,
+          32
+        ],
+        "offline_only": true,
+        "priority": "deferred"
+      }
+    },
+    "calibration": {
+      "method": "whole_interval_max_normalized_error_quantile",
+      "alpha": 0.1,
+      "optional_alpha_curve": [
+        0.05,
+        0.1,
+        0.2
+      ],
+      "online_updates": false,
+      "score": "maximum over two axes and query horizons of whole-interval realized angular error / predicted scale",
+      "label_truth_resolution_s": 0.02,
+      "anchor_independence": "one calibration anchor per independent task",
+      "claim": "marginal held-out-task coverage under exchangeability; adaptive closed-loop coverage evaluated separately"
+    },
+    "direct_duration_control": {
+      "model": "TabPFN-2.5",
+      "train_rows": 7200,
+      "action_queries_per_training_anchor": 2,
+      "features": "full diagnostics plus subarray dimensions and forecast pointing geometry",
+      "label": "first actual 2D 3dB gain-loss time truncated at 10s",
+      "calibration": "one-sided lower horizon bound; max score across nine candidate actions"
+    },
+    "harmonic": {
+      "role": "retained parallel diagnostic and offline center comparator",
+      "harmonics": 3,
+      "period_grid_s": {
+        "start": 18,
+        "stop": 60,
+        "step": 1,
+        "count": 43
+      },
+      "drift_std_m_per_sqrt_s": [
+        0.01,
+        0.03,
+        0.1
+      ],
+      "grid_comparison": "P0 compare 1s and 2s step; no automatic runtime substitution"
+    },
+    "fusion": {
+      "architecture": "single logistic horizon-conditioned gate, <=16 standardized causal features",
+      "experts_RC": [
+        "spatial_progress",
+        "adaptive_IMM"
+      ],
+      "experts_CR_G": [
+        "Chronos_spatial_route",
+        "adaptive_IMM"
+      ],
+      "features": [
+        "h_over_10",
+        "preupdate_position_innovation",
+        "heading_innovation",
+        "match_entropy",
+        "predicted_progress_std_normalized",
+        "future_observed_support",
+        "realized_path_error_short",
+        "realized_path_error_long",
+        "realized_IMM_error_short",
+        "realized_IMM_error_long",
+        "realized_error_count_short",
+        "realized_error_count_long",
+        "expert_angular_disagreement_at_h",
+        "progress_hold_probability",
+        "progress_decelerate_probability",
+        "route_angular_sensitivity_at_h"
+      ],
+      "target": "squared azimuth/elevation error of final weighted position center",
+      "training_tasks": 1200,
+      "training_rows": 3600,
+      "horizon_samples_per_anchor": 1,
+      "l2_candidates": [
+        0.0001,
+        0.001,
+        0.01
+      ],
+      "max_optimizer_steps": 1000,
+      "task_group_oof_folds": 3,
+      "all_train_refit_after_oof": true,
+      "mixture_second_moment": "diagnostic only, not covariance guarantee for correlated fused estimators",
+      "no_new_observation_rule": "evaluate original issued gate/forecast package by elapsed horizon; no pseudo-observation reset",
+      "error_lag_groups_s": {
+        "short": [
+          0.5,
+          2
+        ],
+        "long": [
+          2,
+          10
+        ]
+      }
+    }
+  },
+  "data": {
+    "single_uav_tasks": {
+      "train": 1200,
+      "validation": 400,
+      "calibration": 400,
+      "test": 400
+    },
+    "duration_s": 360,
+    "training_anchors": 3,
+    "anchor_intervals_s": [
+      [
+        190,
+        230
+      ],
+      [
+        250,
+        290
+      ],
+      [
+        310,
+        340
+      ]
+    ],
+    "sampled_horizons_per_anchor": 1,
+    "axes_per_label": 2,
+    "calibration_anchors": 1,
+    "motion_mixture": {
+      "stable_path_stable_tempo": 0.25,
+      "stable_path_global_speed": 0.16666666666666666,
+      "stable_path_segment_speed": 0.16666666666666666,
+      "stable_path_segment_speed_stops": 0.16666666666666666,
+      "local_deviation_rejoin": 0.125,
+      "no_reusable_path": 0.125
+    },
+    "training_observation_protocols_s": [
+      0.5,
+      1,
+      2,
+      5,
+      10,
+      "irregular_uniform_0.5_to_10"
+    ],
+    "max_speed_m_s": 12,
+    "max_acceleration_m_s2": 4,
+    "max_jerk_m_s3": 8,
+    "split_unit": "route_template_instance",
+    "changes": "speed/stops/deviation mechanism active throughout warmup and service; no common change timestamp",
+    "route_parameters": {
+      "ellipse_semiaxes_m": [
+        10,
+        30
+      ],
+      "scan_long_half_m": [
+        15,
+        35
+      ],
+      "scan_transverse_half_m": [
+        5,
+        15
+      ],
+      "figure8_half_m": [
+        10,
+        25
+      ],
+      "initial_horizontal_range_m": [
+        220,
+        400
+      ],
+      "initial_azimuth_deg": [
+        -35,
+        35
+      ],
+      "initial_altitude_m": [
+        80,
+        100
+      ],
+      "vertical_amplitude_m": [
+        0,
+        5
+      ],
+      "common_wind_accel_std_m_s2": 0.1,
+      "common_wind_corr_s": 2,
+      "random_accel_std_m_s2": 0.6,
+      "random_accel_corr_s": 1,
+      "nonperiodic_speed_m_s": [
+        3,
+        10
+      ],
+      "nonperiodic_target_region_radius_m": 35,
+      "nonperiodic_target_refresh_s": [
+        2,
+        8
+      ],
+      "nominal_traversal_s": [
+        20,
+        60
+      ],
+      "global_speed_multiplier": [
+        0.7,
+        1.3
+      ],
+      "global_speed_redraw": "each traversal, including warmup",
+      "segment_count": [
+        3,
+        5
+      ],
+      "segment_speed_multiplier": [
+        0.5,
+        1.5
+      ],
+      "segment_redraw": "each traversal; smooth commanded-speed transitions under common physical limits",
+      "stop_count_per_traversal_poisson": 1,
+      "stop_duration_s": [
+        1,
+        5
+      ],
+      "stop_location": "uniform observed-independent latent path arc length in generator",
+      "detour_probability_per_traversal": 0.4,
+      "detour_amplitude_m": [
+        3,
+        8
+      ],
+      "detour_duration_s": [
+        4,
+        8
+      ],
+      "detour_shape": "normal offset A*64*u^3*(1-u)^3, u in [0,1], fixed side per event, dynamically tracked",
+      "detour_rejoin": "forward point on intended directed segment; never nearest crossing branch",
+      "detour_group_base": "segment-speed variability without extra stops",
+      "generator_reference_access": "generator only; never supplied to any predictor",
+      "behavior_groups": "disjoint; strong-speed group has stops but no detours; detours confined to rejoin group"
+    },
+    "class_counts": {
+      "train": [
+        300,
+        200,
+        200,
+        200,
+        150,
+        150
+      ],
+      "validation": [
+        100,
+        67,
+        67,
+        66,
+        50,
+        50
+      ],
+      "calibration": [
+        100,
+        66,
+        67,
+        67,
+        50,
+        50
+      ],
+      "test": [
+        100,
+        67,
+        66,
+        67,
+        50,
+        50
+      ]
+    },
+    "main_population": {
+      "N": 16,
+      "counts": [
+        4,
+        3,
+        3,
+        2,
+        2,
+        2
+      ],
+      "variable_group_rotation": "rotate 3/3/2 across three groups by mission",
+      "continuously_route_following_fraction": 0.75,
+      "structurally_reusable_fraction": 0.875
+    },
+    "namespace_partition": [
+      "offline/train",
+      "offline/validation",
+      "offline/calibration",
+      "offline/test",
+      "network/validation",
+      "network/test",
+      "ood_polygon",
+      "real_aerpaw"
+    ],
+    "no_instance_overlap": "route instance identifiers disjoint across all partitions; method and model seed excluded from physical-world random keys",
+    "warmup_sensitivity_s": [
+      120,
+      180
+    ],
+    "actual_completed_laps": "diagnostic evaluation only; never a model feature"
+  },
+  "baseline_ids": {
+    "F": "IMM pointing; validation-selected fixed width and feasible fixed sensing interval",
+    "I": "adaptive IMM center plus full shared diagnostics and common scale/scheduler",
+    "C": "frozen Chronos-2 without explicit route fields; common scale/scheduler",
+    "CR": "CR-G: frozen Chronos with same spatial-route covariates, same-capacity IMM gate, full diagnostics and common scale/scheduler",
+    "RC": "spatial-progress center plus same-capacity IMM gate, full diagnostics and common scale/scheduler"
+  },
+  "blocks": {
+    "P0": "interfaces, map matching/progress, accounting, inference profiling, early real-trajectory matching",
+    "A": "seven center variants; fixed-center validity; calibrated direct-duration comparison",
+    "B": "N16 five methods, 30 paired test missions",
+    "C": "N/budget/actions/scheduler and reusable-share sweeps, no Cartesian product",
+    "D": "two closed-loop ablations, core seeds, exposed failure and OOD diagnostics"
+  },
+  "network_test_runs": {
+    "B": 150,
+    "C_N": 180,
+    "C_budget": 120,
+    "C_actions": 40,
+    "C_scheduler": 40,
+    "D_ablation": 40,
+    "D_seed": 80,
+    "total": 810,
+    "single_uav_action_diagnostic_extra": 80,
+    "C_reuse": 160,
+    "validation_missions": 20
+  },
+  "seeds": {
+    "model_offline": [
+      7,
+      11,
+      19
+    ],
+    "main_closed_loop": 7,
+    "paired_RC_CR_extra": [
+      11,
+      19
+    ],
+    "data_root": 20261112,
+    "network_test_id_start": 20000,
+    "bootstrap": 271828,
+    "bootstrap_replicates": 2000
+  },
+  "resources": {
+    "observed_local_gpu": "NVIDIA GeForce MX450 2048 MiB",
+    "planned_gpu_vram_GB": 24,
+    "planned_host_ram_GB": 32,
+    "cloud_allocation_authorized": false,
+    "full_run_runtime": "measure first; not estimated as observed performance",
+    "P0": "measure end-to-end per-update CPU/GPU time, batch throughput and peak VRAM with exact 720-step/7200-row settings",
+    "model_row_limit_note": "advertised maximum rows is not a peak-VRAM prediction"
+  },
+  "deferred": [
+    "N64_or_128",
+    "second_foundation_forecaster",
+    "WWM_JEPA",
+    "diffusion_flow_matching",
+    "RL_control",
+    "online_PID",
+    "full_radar_frontend",
+    "MILP_scheduler",
+    "real_time_deployment_optimization",
+    "cost_10ms_sensitivity",
+    "array_64x64_sensitivity",
+    "alpha_curve_beyond_primary",
+    "Whittle_index_theory",
+    "communication_quality_CRC",
+    "RF_scale_head",
+    "new_three_class_classifier",
+    "four_way_neural_expert_gate"
+  ],
+  "execution_order": [
+    "P0_geometry_API_accounting_profile",
+    "early_AERPAW_matching_check",
+    "A_same_observations_centers_validity",
+    "B_N16_main",
+    "C_N_budget_reuse_actions_scheduler",
+    "D_seeds_ablation_failures"
+  ],
+  "supersedes_design": "refine-logs/routeclock_v2_20261111",
+  "offline_centers": [
+    "I",
+    "C",
+    "CR_raw",
+    "H_harmonic",
+    "P_spatial_progress",
+    "CR_G",
+    "RC_P_G"
+  ],
+  "reuse_sweep": {
+    "N": 16,
+    "fractions": [
+      0,
+      0.25,
+      0.5,
+      0.875,
+      1
+    ],
+    "main_reused_fraction": 0.875,
+    "new_fraction_points": 4,
+    "methods": [
+      "CR",
+      "RC"
+    ],
+    "missions_per_point": 20,
+    "reusable_group_conditional_weights": [
+      0.2857142857142857,
+      0.19047619047619047,
+      0.19047619047619047,
+      0.19047619047619047,
+      0.14285714285714285
+    ],
+    "additional_75_percent_point": "not in core matrix"
+  },
+  "real_data": {
+    "dataset": "https://doi.org/10.5061/dryad.2ngf1vj4r",
+    "priority": "after P0 before full B",
+    "scope": "two repeated-line and two repeated-zigzag flights; chronological path transfer/matching and progress",
+    "not_evidence_for": "28GHz beam-codebook throughput or multi-UAV guarantees"
+  }
+}

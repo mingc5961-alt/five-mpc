@@ -1,0 +1,9 @@
+{
+  "uavs": 16, "training_uavs": 8, "warmup_s": 180, "steps": 192,
+  "dt": 0.062, "sensing_budget": 0.05, "slow_every": 4, "slow_horizon": 16,
+  "fast_horizon": 4, "search_width": 5, "min_airtime_fraction": 0.32,
+  "target_network_mbps": 800, "deficit_weight": 1.0,
+  "gate_ids": [0,1], "tube_alpha": 0.1, "tube_cal_ids": [0,1,2,3,4,5,6,7,8,9],
+  "train_ids": [0,1,2], "cal_ids": [0,1], "test_ids": [0,1],
+  "policies": ["rotation", "myopic", "age_mpc", "joint_mpc"]
+}

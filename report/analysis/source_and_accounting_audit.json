@@ -1,0 +1,9 @@
+{
+  "source_files": 154,
+  "source_hash_mismatches": [],
+  "main_accounting_maxima": {
+    "clock_error": 0.0,
+    "bits_error": 2.2737367544323206e-13,
+    "sensing_excess": -0.004671111111029018
+  }
+}
