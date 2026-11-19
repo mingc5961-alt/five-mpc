@@ -1,0 +1,9 @@
+{
+  "primary_manifest_sha256": "67d6ccd213ff4caa93ec002cf253456b0ce78d8e4e444b04454eee63424e138d",
+  "supplement_manifest_sha256": "72ffc46711a378a454d463344d178f9ca4546090d0bf22bb4f2172d0d80ba08c",
+  "frozen_sha256": "952eb45727a197412b9c174f341fa522394f195cc83bdb27535848916ecbb147",
+  "registered_at": "2026-11-19T15:27:32.029971+08:00",
+  "primary_completed": 538,
+  "primary_stage": "confirmation",
+  "analysis": "Compare RC minus I net Mbps by matched world at four costs. Estimate the change from 9.3 to 12.4 ms with a paired bootstrap, 2000 replicates. Supplementary analysis."
+}

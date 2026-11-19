@@ -1,5 +1,13 @@
 # RouteClock / FIVE-MPC 实验与结果
 
+| 版本 | 实验范围 | 入口 |
+|---|---|---|
+| **2026-11-19 · 第六章** | 修改后的闭环平台，840 场网络验证、600 场原计划独立测试、60 场追加成本压力测试 | [版本说明与源码](editions/ch6-20261119/) · [完整报告](editions/ch6-20261119/report/RouteClock_第六章完整实验分析报告.pdf) · [原始结果与模型](https://github.com/mingc5961-alt/five-mpc/releases/tag/ch6-20261119) |
+| **2026-11-18 · 首轮** | FIVE 主线、消融及复用率实验，MPC 调度线与导师报告 | [当日仓库快照](https://github.com/mingc5961-alt/five-mpc/tree/results-20261118) · [当日完整数据包](https://github.com/mingc5961-alt/five-mpc/releases/tag/results-20261118) |
+
+以下内容记录 **2026-11-18 首轮版本**。
+
+
 本仓库保存 2026-11-18 完成的 RouteClock 科学代码、完整分析报告与派生结果。大体积正式实验数据和模型权重通过 Releases 提供。
 
 ## 阅读报告
