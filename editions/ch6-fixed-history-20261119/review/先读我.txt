@@ -1,0 +1,17 @@
+RouteClock 固定历史复核包
+仓库 mingc5961-alt/five-mpc，版本 ch6-fixed-history-20261119。
+
+建议直接给 Claude 的任务
+请先读 report.pdf 第 1、11–14 页，写下待验证的主张。然后从 data/合并逐场指标2080.csv 独立按物理世界配对重算，不要直接用报告均值相减来推断区间。审查预热、缓存、冻结模型、调度、预算、样本复用和统计实现。分别给出能复现的结果、证据不足的归因、需要修正的表述。再看尾部世界和可靠性代价。请为每条关键反驳注明文件、筛选、样本数及区间，把新增探索性分析单列。
+
+按问题读取
+1. 核心数字：report.pdf、data/合并逐场指标2080.csv、verify.py。可用装有 pandas 与 numpy 的 Python 运行 python verify.py，此脚本也可作为独立实现的交叉检查。
+2. 共同历史及起点预测：data/固定历史逐场指纹.csv 和 data/服务起点预测逐机.csv。同一世界内的飞行器、时域和方法属于重复测量；统计单位是世界。计算起点误差时，先在各世界内平均 16 架的双轴 MSE 再开方，最后在世界间配对。条件包括末次观测的新鲜度。
+3. 设计与代码：design/ 中的实际清单、协议、模型选择和固定动作证据；code/tools/ch6_common_history.py、ch6_history_boundary.py、ch6_experiment.py、ch6_cache.py；code/routeclock/ 中的 predictors、simulator、scheduler、holding、radio、memory、validity、evaluation。analysis/ 保存原发表分析脚本。审查数据生成与筛选时，应同时阅读实验实现与分析实现。
+4. 原始输出抽查：raw_pair/ 是世界 22、12.4 ms、RC 的两种预热，包括原始指标和参数。涉及其他世界或全部逐机分组时，可到同标签完整补充包及上一个标签的原始归档取数。训练与闭环完整复跑还需对应模型、历史输入与运行环境。
+
+计数和列名
+• 2,080 行 = 初版 840 场验证 + 660 场测试 + 新增 580 场科学比较。原 140 场基点复用；额外 1 场基点复核只进入 581 条指纹。
+• split=test 后，旧 660 场由原计划与追加两批组成。固定历史的同设计 660 单元由原基点 140 行（3.1 ms、5%）与新增 520 行（batch=固定历史，fixed_action=False）组成。另外 60 行是额外的同动作 F。只按 history_protocol 筛选会遗漏复用基点或混入验证行。
+• 用 task 匹配世界，固定 cost_ms、budget_pct、scheduler、method 等所需条件。Chronos 比较使用相同的 10 世界，常规主比较 30 世界。rate 和 hold failure 各有分母；读取 metrics.json 或 simulator.py 核对定义。区间为世界配对、2,000 次重采样、逐比较 95% 区间。
+• /data/chen 和 /data/coding 是原机的出处。verify.py 用包内相对路径；原发表分析和仿真脚本保留原机路径。涉及对全部原始记录复算，请见 GitHub 版本说明中的两份原始数据包。

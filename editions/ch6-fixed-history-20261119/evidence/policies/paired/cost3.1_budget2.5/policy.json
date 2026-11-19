@@ -1,0 +1,14 @@
+{
+  "warm": "fixed",
+  "budget_pct": 2.5,
+  "cost_ms": 3.1,
+  "smoke": false,
+  "pair": [
+    32,
+    32
+  ],
+  "interval": 2,
+  "source": "/data/chen/routeclock_archives/paired600/runs/paired600/fixed/cost3.1_budget2.5/winner.json",
+  "source_sha256": "865384710e2abce422ed6748b8c02c0a6fc2eb16710491cde16fcbd825871354",
+  "purpose": "transfer frozen action"
+}

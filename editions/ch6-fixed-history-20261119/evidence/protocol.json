@@ -1,0 +1,17 @@
+{
+  "frozen": "952eb45727a197412b9c174f341fa522394f195cc83bdb27535848916ecbb147",
+  "worlds": 30,
+  "new_policy_cells": 520,
+  "reused_base": 140,
+  "common_fixed_action_extra": 60,
+  "baseline_replay": 1,
+  "primary": [
+    "within-method service-only cost and budget curves",
+    "within-world dense minus lifecycle",
+    "change in RC minus I from 9.3 to 12.4 ms",
+    "three schedulers and 10-world Chronos",
+    "transferred F action against common 32x32/3s F"
+  ],
+  "warm": "3.1 ms / 5%, same observations including timestamps and measurements",
+  "inference": "2000 within-world paired bootstrap, descriptive pointwise intervals"
+}

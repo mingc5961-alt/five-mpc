@@ -2,6 +2,7 @@
 
 | 版本 | 实验范围 | 入口 |
 |---|---|---|
+| **2026-11-19 · 固定历史修订版** | 同一起始观测，580 场新科学比较与 1 场数值复核，合并 2,080 条记录 | [修订版与代码](editions/ch6-fixed-history-20261119/) · [原始数据与 Claude 复核包](https://github.com/mingc5961-alt/five-mpc/releases/tag/ch6-fixed-history-20261119) |
 | **2026-11-19 · 第六章** | 修改后的闭环平台，840 场网络验证、600 场原计划独立测试、60 场追加成本压力测试 | [版本说明与源码](editions/ch6-20261119/) · [完整报告](editions/ch6-20261119/report/RouteClock_第六章完整实验分析报告.pdf) · [原始结果与模型](https://github.com/mingc5961-alt/five-mpc/releases/tag/ch6-20261119) |
 | **2026-11-18 · 首轮** | FIVE 主线、消融及复用率实验，MPC 调度线与导师报告 | [当日仓库快照](https://github.com/mingc5961-alt/five-mpc/tree/results-20261118) · [当日完整数据包](https://github.com/mingc5961-alt/five-mpc/releases/tag/results-20261118) |
 

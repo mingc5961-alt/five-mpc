@@ -1,0 +1,40 @@
+{
+  "previous_tag": "ch6-20261119",
+  "original_simulation_files": {
+    "configs/research.json": "b488f2de7fb8900a04686f4ece1f393c0243b02e541f93658d9617b1f4511f03",
+    "routeclock/__init__.py": "21f43ffc625114286fa013f8bb57d700565d57a29b043ae3728449f5a7344a4a",
+    "routeclock/ablations.py": "cce980b487ec92b4aaeeee6445fd2ddd526919b9932a8105573fba516b5de78d",
+    "routeclock/cli.py": "16ae2b09781fbf52a4abac3d8d2b6d3b46b39d00746ce2d1cc4be56767325bf0",
+    "routeclock/config.py": "eb9888017f6765f0988df611d83a019522d1e0700d7341595154166d51c05c5d",
+    "routeclock/dataset.py": "13f90cb84469fd5fbc409d7f37d6075f1e6af49205238aae89947a5a6cf08a34",
+    "routeclock/evaluation.py": "59ca4e283a4a00244592d5aa000484aa6b373cce66b65eec786e10bdd698d040",
+    "routeclock/event_labels.py": "e054e4c6f1fd3bb75811e84da596426376f23785e1e085bb18fa8a183a0a2438",
+    "routeclock/evidence.py": "e7b0fdcb50e53055689975664c6ba41a3fc910f58475285b26f2e9d4ea530fb7",
+    "routeclock/experiments.py": "e3e1b6acea8532302167ffec5a237b5ab642b4e2a701d1256575c89a531a3e43",
+    "routeclock/filters.py": "0c9830bde265dc48e83ee5d988e1269b06ba84e29a691f99493e29d99f82f41b",
+    "routeclock/five.py": "6e0a36836c26ade28b8b3b4e2e6856ea457f572ea6e7ad2bc4a27029d8b83e82",
+    "routeclock/foundation.py": "a02a305d9e13ba751af0be9f43ef8860d814d308c81e3ffcb49cdc06909b824c",
+    "routeclock/geometry.py": "3fd084075d82e178ea99a8bae05b3f12a7c15925a7b3b44c338f12d2f0ae91ae",
+    "routeclock/holding.py": "23a3e4cf18df66e88eacadd50000a801dff4bea11eb3cbfb6426f525c3c5352d",
+    "routeclock/horizon_gate.py": "099330f528a107bbcf0c35e35f40aad2b5fecaf660f8b9af60140de7718bb3c9",
+    "routeclock/memory.py": "ba255811feec82d2631efd542e1bc05c93697b8f41863484ea3bbdb0c693a4b8",
+    "routeclock/predictors.py": "4f46df446ee7a2149da48fad7566d5c19390984b20200ccb5a184e17f6738b1f",
+    "routeclock/radio.py": "3594cf6ba955b9724a5338988ada661b1cd0bf9d947f0d8952c77eb14d58e9cf",
+    "routeclock/route_quantile.py": "7bbfb2d848945074ba8f497c4ef8612d4c25bffc1877b50e97b1af01e74c2ae1",
+    "routeclock/scheduler.py": "fbaeabbb05239813a3a2d59bbfc32062364123c5216a09fc1e8eb73e3fd56aec",
+    "routeclock/simulator.py": "79313e988a355dd5b500cec36e3d8c4654bc27fe1736343fbb7169cf3422cce0",
+    "routeclock/training.py": "b611610414b8ef81a6e01db9dbd0c27e21afff59483470c191d0bad3e06b850a",
+    "routeclock/validity.py": "03955782e40a435b161141fd471f225e8e3cdda544f73086a4ca7e145af1cf62",
+    "routeclock/world.py": "c9627ac2d16938e73a1587b0c328cd4c22691071a50f710ea0f2666dd9a2e157",
+    "tools/ch6_cache.py": "328f3b0b292b69f5e7da7b2c3e59778d143d03495860ace5d3bfe1813dbe7489",
+    "tools/ch6_dispatch.py": "25f1a9b76cf425d1464e3bf18855a714f7a036c96886e3ca8bcc1665f44effa2",
+    "tools/ch6_experiment.py": "93a947efd25cf669790e48e10c814be76db360f21c302615cf98158639e498b3",
+    "tools/ch6_matrix.py": "c4887dff39da4314b43dff4e897b4b595d874fcbbcd1d5ddb1000d3e7320b689",
+    "tools/ch6_run.py": "4cc4c2e3f1598fc6462375ca6ebf3979c27696c957d5420613ce19f3a1538678"
+  },
+  "new_entries": {
+    "ch6_common_history.py": "68c5030e8d9a1039472481ff9717a157bf782a5b6c62cce9526169c056ab0546",
+    "ch6_history_boundary.py": "da8709cdbdefa1e42a4cbb39d5a9d8a804cc26b673714f47f1f79f5af412ab26"
+  },
+  "frozen_model_sha256": "952eb45727a197412b9c174f341fa522394f195cc83bdb27535848916ecbb147"
+}

@@ -1,0 +1,41 @@
+修订版 · 固定起始历史补充实验
+
+第 1 页已补写修正结论。第 2–10 页保留初版证据，第 11–14 页给出统一密集历史下的实验、起点预测与全生命周期结果的对照。
+新增固定历史补充实验/ 指向 /data/chen/routeclock_runs/fixed_history_20261119。manifest.json 列出 581 次新执行（含 1 次基点数值复核）和原基点 140 个复用单元；protocol.json 保存预先确定的比较。每个新结果目录的 warm_history.json 保存逐机观测数和全历史量测指纹。boundary/ 为 30 世界服务起点无新观测的预测诊断。
+数据表/合并逐场指标2080.csv 合并初版 1500 场及 580 场新科学比较。fixed_action 标识额外的公共 3 秒 F。若复算固定历史矩阵，请取 520 场新 paired 记录并加原基点的 140 场；原基点和另 1 场基点复核均不得重复进入总体计数。服务成本和预算按实验设置，不能将不同预热协议混为一组。逐机、期限、门控各有“合并”表。以“固定历史”开头的汇总、历史及服务效应、高成本两档交互、同动作 F 等均为本次修订结果。
+重建时先按下文执行原始两批数据的汇总，再在“生成工作簿.py”和“生成报告.py”之前执行 /data/chen/server_assessment/venv/bin/python 分析脚本/固定历史分析.py 。新归档可在固定历史补充实验目录内执行 sha256sum -c SHA256SUMS 核对。本次没有更改已发布的 GitHub 标签。
+
+初版材料说明
+
+RouteClock 第六章完整实验  ·  2026-11-19
+
+先读同目录的完整实验分析报告。Excel 的前两张表分别回答“每个方法表现如何”和“同一世界换方法差多少”。原阶段性汇总报告的第六章列出了这次修改前的假设与候选路线。
+
+一、同一 /data/chen 内的档案入口
+主实验归档 → /data/chen/routeclock_archives/paired600，包含代码、配置、测试、模型、Chronos 快照、既有诊断和本轮主结果。正式任务位于其中的 runs/paired600。
+追加实验归档 → /data/chen/routeclock_runs/paired600_pressure12_4，含 60 场、独立清单、代码入口、冻结模型、配对表。
+历史训练与基线 → /data/chen/formal_execution/run_20261117_001732，含 2400 个离线路线文件、首轮 FIVE 与 MPC。
+运行时缓存位于 /data/chen/routeclock_runtime_cache/paired600，可按缓存键重建。主任务的命令保留原始执行路径。上述目录入口使用符号链接，本目录单独拷到别的机器时需要一并复制链接目标。
+
+二、数据表与口径
+逐场指标1500.csv    一行对应一次闭环网络运行，id 是唯一键。task 是配对键，同时包含数据划分与物理世界编号。检查 batch、split、world、cost_ms、budget_pct、warm、model、calibration、scheduler、method 和 metrics 后再选比较组。
+逐机资源.csv    24,000 行。每场 16 架，含用户编号、轨迹组、实际交付比特、分配和感知秒数及单机吞吐。
+选中期限覆盖计数.csv    7,412 行。id、delta_s、selected、covered 保留世界内的分母/分子。没有选中期限的单元不会生成记录。F 不使用包络认证。
+逐场门控权重均值.csv    14,700 行。700 场 RC × 21 个预测网格点，包含包数与等包权重均值。原始每个包、用户和发布时间在 gate_weights.npz。
+测试工况全指标.csv    26 行。指标在每个世界先计算，再对世界取等权均值。n 为该臂的物理世界数。
+验证工况全指标.csv    44 行。分门控、头、校准、预热、方法和调度。不同条件有 10 或 20 个世界。
+测试方法配对.csv    225 行。arm 减 ref，left、right 是同世界子集内两臂均值，wins 是差值大于零的世界数。吞吐差单位 Mbps，百分比量之差单位百分点。
+验证机制配对.csv    90 行。只比较在同批验证世界真正执行过的机制组合。
+吞吐差对称分解.csv    12 行，六个工作点各有数据时间与有效速率两项，按世界求精确分解。
+归档文件逐项索引.csv    8,405 行。主、追加各文件均含物理路径、相对路径、字节数、哈希。此索引范围为本轮两个归档，历史输入沿上一节入口访问。原发布清单共收录 8,324 项，另有两份清单自身、运行状态、日志等。
+工况中的 cost_ms 为毫秒，budget_pct 和结尾 _pct 使用百分数。sensing_budget、sensing_fraction 等 metrics 原生字段是 0–1 比例。net_mbps 是全网净吞吐；worst10_mbps 是最差两机的平均吞吐；hold_fail_pct 衡量保持段内是否曾超 3 dB。over_budget_frames 计规划请求负载超限帧，overdue_requests 计比请求到期晚逾 10 ms 的服务刷新。两者都与违反实际感知预算不同。
+完整原始模型见主实验归档的 results、runs/paired600/models 和 checkpoints。固定方案的胜者和候选网格在 runs/paired600/fixed。compact 模式的正式任务以逐场指标与 RC 权重为主要持久化输出，开发样例另存较细事件。历史测试集、验证集、首场 pilot、工程 probes 及离线样本应分别解释。
+
+三、复核与重算
+从本目录执行下列命令可从归档重建报告数据与交付物。
+/data/chen/server_assessment/venv/bin/python 分析脚本/文件清单.py
+/data/chen/server_assessment/venv/bin/python 分析脚本/汇总.py
+/data/chen/server_assessment/venv/bin/python 分析脚本/生成工作簿.py
+/data/coding/report_tools/bin/python 分析脚本/生成报告.py
+报告排版使用 python-docx、ReportLab、Matplotlib 及 /data/chen/teacher_report_20261118/assets/NotoSansSC-Regular.ttf。
+本次重新审计 840+600+60 条网络记录及 3 个固定网格，并与已发布表交叉核对：主批 1440 条数据的 6 类汇总指标逐行一致；四档压力和 Chronos 所有已发布配对的差值与区间一致。最终交付文件校验可执行 sha256sum -c 报告交付_SHA256SUMS。
