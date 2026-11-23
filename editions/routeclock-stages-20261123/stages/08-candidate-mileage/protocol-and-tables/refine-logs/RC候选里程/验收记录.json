@@ -1,0 +1,27 @@
+{
+  "historical_baseline_max_difference_m": {
+    "prior": 0.0,
+    "test": 0.0,
+    "flight": 0.0
+  },
+  "selected": "both",
+  "worlds": [
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59
+  ],
+  "cells": 150,
+  "assets": {
+    "both.pt": "6a196b4c80fb497253e0fb1aa06aa4d07fe0e55db7bc60cced72f85d76500acc",
+    "special.pkl": "10734075ac2950f8a84eeb79af276931100f79b0fa5d5d4f0c27bb02829dbaa7",
+    "结果分析.html": "1fa42bf915d95e23b2db4214513b00ea4188458023f82f2fb728bf3812be7eef",
+    "配对结果.xlsx": "c9f541bec6d430ef845ee1c5c6776d64876c632f862a0566db7ebea9927a892d"
+  }
+}

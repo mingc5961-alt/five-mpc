@@ -1,0 +1,67 @@
+{
+  "tube_selection": "highest_equal_weight_mean_net_throughput_across_T_M_L",
+  "risk_threshold_for_selection": null,
+  "report_risk_components": true,
+  "mcs_margin_db": 0,
+  "risk_scale": 1,
+  "max_interval_s": 10,
+  "budgets": [
+    "T",
+    "M",
+    "L"
+  ],
+  "models": [
+    "Chronos-2",
+    "VECTOR",
+    "RAFT"
+  ],
+  "development": {
+    "seed": 7,
+    "worlds": 10,
+    "max_tubes_per_model": 2
+  },
+  "confirmation": {
+    "worlds": 40,
+    "seeds": [
+      7,
+      11,
+      19
+    ],
+    "baselines": [
+      "I",
+      "F",
+      "RC"
+    ]
+  },
+  "amovfly": {
+    "seed": 7,
+    "warmup_s": 180,
+    "score_s": 180,
+    "minimum_laps": null,
+    "baselines": [
+      "I",
+      "RC"
+    ]
+  },
+  "deferred": [
+    "B3",
+    "C1",
+    "A1",
+    "A2",
+    "A3"
+  ],
+  "analysis": {
+    "primary_outcomes": [
+      "net_throughput_mbps",
+      "total_risk_pct",
+      "unavailable_pct",
+      "geometric_loss_pct",
+      "geometric_loss_pct_given_action"
+    ],
+    "development_selection": "On the same 10 development worlds, take the arithmetic mean of per-world net throughput within each budget and then across T/M/L. Freeze one tube per model; exact ties use canonical tube name. No confirmation or flight rows enter selection.",
+    "confirmation": "Retain each seed separately. Average seeds within world and method; pair methods within world, then resample whole worlds 5000 times with RNG 271828 using common indices across budgets. Report 95% intervals per prespecified comparison. No aggregate claim based on choosing a winning comparison post hoc.",
+    "amovfly": "Freeze flight inclusion using metadata and observed trajectory quality before model evaluation. The primary run uses seed 7. Report paired per-flight effects, lap distributions, and session sensitivity; do not count windows as independent flights.",
+    "confirmation_namespace": "confirm_0db_20261122/v1",
+    "development_namespace": "develop_0db_20261122/v1"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "pilot_seed": 7,
+  "pilot": {
+    "check_gradient": true,
+    "minimum_validation_passes": 1,
+    "record_seconds_per_step": true,
+    "record_peak_gpu_memory": true
+  },
+  "training": {
+    "seeds": [
+      7,
+      11,
+      19
+    ],
+    "early_stop_validation_checks": 5,
+    "checkpoint_metric": "equal_weight_validation_double_angle_error_over_seven_horizons",
+    "wall_clock_cap": "freeze after timing one full validation and measuring training throughput",
+    "extend_at_cap": false
+  },
+  "VECTOR": {
+    "context_grid": 360,
+    "dt_s": 0.5,
+    "gradient_history_steps": 20,
+    "center_training_routes": 960,
+    "head_reserved_routes": 240,
+    "lr": 0.0003,
+    "batch_size": 32,
+    "max_epochs": 12,
+    "wall_check_at_epoch_end_s": 3600,
+    "patience": 5,
+    "selection": "validation angular error averaged over seven horizons",
+    "checkpoint_scope": "center only"
+  },
+  "Chronos-2": {
+    "mode": "full",
+    "context": 360,
+    "outputs": 20,
+    "native_quantile_loss": true,
+    "lr": 1e-06,
+    "batch_size": 8,
+    "max_epochs": 12,
+    "wall_check_at_epoch_end_s": 3600,
+    "patience": 5
+  }
+}

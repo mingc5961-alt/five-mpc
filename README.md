@@ -1,5 +1,9 @@
 # RouteClock / FIVE-MPC 实验与结果
 
+**[分阶段实验总目录（更新至 2026-11-23）](editions/routeclock-stages-20261123/)** · [全部新分包与校验清单](https://github.com/mingc5961-alt/five-mpc/releases/tag/routeclock-stages-20261123)
+
+从早期 FIVE/MPC 到最新 RC 候选里程与非专用管对照，按阶段浏览源码、参数、逐世界结果、报告和恢复说明。
+
 | 版本 | 实验范围 | 入口 |
 |---|---|---|
 | **2026-11-19 · 固定历史修订版** | 同一起始观测，580 场新科学比较与 1 场数值复核，合并 2,080 条记录 | [修订版与代码](editions/ch6-fixed-history-20261119/) · [原始数据与 Claude 复核包](https://github.com/mingc5961-alt/five-mpc/releases/tag/ch6-fixed-history-20261119) |
