@@ -4,7 +4,7 @@
 
 ## 1. 在 Linux CPU 服务器执行
 
-下载随文的 `gru-chronos-4505-cpu.tar.gz`。包内有原始仿真与调度代码、冻结模型、专用管、Chronos 本地快照、32 份参考回执和单一运行入口。模型可以离线加载。建议解压到新的可写工作目录，以便区分新生成和历史参考的回执。
+如只需核验公布数值，在本仓库的实验目录直接运行 `python verify.py` 即可。下列 Linux 命令供已单独取得完整 CPU 复刻包的读者使用。将原始文件 `GRU_Chronos_4505_CPU复刻包.tar.gz` 保存为 `gru-chronos-4505-cpu.tar.gz`，对照本目录 README 的 SHA‑256。包内有原始仿真与调度代码、冻结模型、专用管、Chronos 本地快照、32 份参考回执和单一运行入口。建议解压到新的可写工作目录，以便区分新生成和历史参考的回执。
 
 ```bash
 tar -xzf gru-chronos-4505-cpu.tar.gz
