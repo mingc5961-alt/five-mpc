@@ -1,0 +1,15 @@
+{
+  "checkpoints": {
+    "gru_checkpoint": "35a1c7ced18e174a9717944de3bd86278175bd9366fd9b707ae6730ba600e368",
+    "gru_fusion": "936fde43193fe33c153aba3fd8cc3cfbbcef13b7d980f859b3fcaa270f69839e",
+    "gate": "6fe8355c7b9a5e1ab2b9732f911bc82271a6ba5da0fb1ce332e75714db1d34fb",
+    "chronos_checkpoint": "5fc8b09a9200b92e3a084602ce64a48ab50c77909b53d406982d6c2f2a5cd424",
+    "chronos_native_tube": "ffa97954847a780a5f2b08b683351ee988a37c057f703d55f075a744b5ca323a"
+  },
+  "pilot_episodes": 96,
+  "final_episodes": 138,
+  "max_sensing_seconds": 2.7001000000048805,
+  "matching_error_percentage_points": 3.8459253727671276e-16,
+  "common_service_origins": 384,
+  "public_probes_per_user": 9000
+}

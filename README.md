@@ -1,5 +1,7 @@
 # RouteClock / FIVE-MPC 实验与结果
 
+**[非规则机群 · GRU 与微调 Chronos‑2 的 4.505% 共同风险对照](editions/gru-chronos-irregular-4505/)** · 10/16 架无可复用路线，含原生管及对称调管两种对照、32 份回执与 CPU 复刻说明。
+
 **[分阶段实验总目录（更新至 2026-11-23）](editions/routeclock-stages-20261123/)** · [全部新分包与校验清单](https://github.com/mingc5961-alt/five-mpc/releases/tag/routeclock-stages-20261123)
 
 从早期 FIVE/MPC 到最新 RC 候选里程与非专用管对照，按阶段浏览源码、参数、逐世界结果、报告和恢复说明。
