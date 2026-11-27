@@ -1,5 +1,7 @@
 # RouteClock / FIVE-MPC 实验与结果
 
+**[原版 G1 硕士论文主线与实验归档（2026-11-27）](editions/g1-paid-cold-start-20261127/)** · 7/9 机群，从首次付费定位到波束调度。[正文](editions/g1-paid-cold-start-20261127/THESIS.md) · [窄束保持期的物理检验](editions/g1-paid-cold-start-20261127/HOLD.md) · [四组配对实验](editions/g1-paid-cold-start-20261127/appendix/FACTORIAL.md)
+
 **[8/8 正式实验结题报告（2026-11-27）](editions/formal-8x8-20261127/report/REPORT.md)** · 14 种方案，2,454 场正式闭环。[新增内容目录与复核](editions/formal-8x8-20261127/) · [报告 PDF](editions/formal-8x8-20261127/report/RouteClock-8x8-report.pdf) · [原始世界与训练分片](https://github.com/mingc5961-alt/five-mpc/releases/tag/formal-8x8-20261127)
 
 **[非规则机群 · GRU 与微调 Chronos‑2 的 4.505% 共同风险对照](editions/gru-chronos-irregular-4505/)** · 10/16 架无可复用路线，含原生管及对称调管两种对照、32 份回执与 CPU 复刻说明。
