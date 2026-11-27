@@ -1,0 +1,4 @@
+Final task counts: {'cal': 22, 'cell': 2454, 'gate': 2, 'panel': 260, 'shard': 2, 'tables': 3, 'train': 4, 'world': 13}
+Paired panel worlds: 13 panels with recorded reuse: 31
+Historical JSON receipts outside the final matrix: 1389
+Rebuilt and matched final CSVs: 38

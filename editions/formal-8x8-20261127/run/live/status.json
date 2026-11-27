@@ -1,0 +1,1 @@
+{"updated": "2026-11-27T10:49:20+08:00", "pid": 3141, "elapsed_s": 7052, "total": 2760, "counts": {"done": 2760}, "phases": {"R04": {"done": 13}, "R02": {"done": 22}, "R05": {"done": 156}, "R06": {"done": 26}, "R07": {"done": 2394}, "R08": {"done": 146}, "R10": {"done": 3}}, "running": [], "recent_errors": [], "memory_GiB": 11.58, "free_GiB": 54.8}

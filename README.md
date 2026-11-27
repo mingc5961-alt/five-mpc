@@ -1,5 +1,7 @@
 # RouteClock / FIVE-MPC 实验与结果
 
+**[8/8 正式实验结题报告（2026-11-27）](editions/formal-8x8-20261127/report/REPORT.md)** · 14 种方案，2,454 场正式闭环。[新增内容目录与复核](editions/formal-8x8-20261127/) · [报告 PDF](editions/formal-8x8-20261127/report/RouteClock-8x8-report.pdf) · [原始世界与训练分片](https://github.com/mingc5961-alt/five-mpc/releases/tag/formal-8x8-20261127)
+
 **[非规则机群 · GRU 与微调 Chronos‑2 的 4.505% 共同风险对照](editions/gru-chronos-irregular-4505/)** · 10/16 架无可复用路线，含原生管及对称调管两种对照、32 份回执与 CPU 复刻说明。
 
 **[分阶段实验总目录（更新至 2026-11-23）](editions/routeclock-stages-20261123/)** · [全部新分包与校验清单](https://github.com/mingc5961-alt/five-mpc/releases/tag/routeclock-stages-20261123)

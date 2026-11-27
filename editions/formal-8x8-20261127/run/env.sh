@@ -1,0 +1,3 @@
+source /data/chen/expert_pilot_20261125/env.sh
+export PYTHONPATH="/data/chen/expert_pilot_20261125:$PYTHONPATH"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1

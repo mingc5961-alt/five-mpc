@@ -1,0 +1,9 @@
+2026-11-26 Asia/Shanghai. RTX 4060 Ti. Production continued in the background.
+Separate processes used the same two logical CPUs on distinct physical cores. Four trials used 2,3,3,2 concurrent CUDA workers in order. Each trial replayed six identical pairs of G180 and T180 development-world cell prefixes, medium budget, scale 0.55, 24 updates per prefix (288 updates plus initial predictions per trial). All workers warmed both models before timing. Cell inputs and CPU affinity were matched within each world.
+Results describe the replay sample; production end-to-end speedup was not measured by this test.
+benchmark cores [1, 2]
+lanes 2 world 0 sec 42.15 cpu_s 70.62 updates 288
+lanes 3 world 0 sec 36.936 cpu_s 68.13 updates 288
+lanes 3 world 1 sec 41.377 cpu_s 70.86 updates 288
+lanes 2 world 1 sec 43.266 cpu_s 71.92 updates 288
+same_work_throughput_ratio_3_over_2 1.0906894238562377
