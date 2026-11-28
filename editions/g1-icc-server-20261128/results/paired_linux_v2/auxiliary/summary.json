@@ -1,0 +1,16 @@
+{
+  "training_worlds": 64,
+  "validation_worlds": 16,
+  "tube_fit_worlds": 16,
+  "calibration_worlds": 16,
+  "artifacts": {
+    "raft_bank.pt": "c643f7c53bbd2197713b0db7a9687c763ed8af3fed57670f27fb2107bb89275f",
+    "raft_refit.pt": "1fdec7b1be8b446b76f70247c6c4eb1b959aa13c086b39c4508c3aa969af30da",
+    "raft_fit.json": "ad67abd4bcd9a6d7c622de7f51ab9d33a8787650fad055bfa62f3464115c7bce",
+    "raft_width.pkl": "4e3daa2fcc0232e056bb6e69df9f8e0c151c1a7f2d9ed6096683652bd8a902bb",
+    "calibration.json": "ef2c9600706c06d801b57e823ff3a6f97b6db3a2e559513bf9094b51c5b1ff54",
+    "snapshot_age_1.pt": "6ac9edda5a3794d8af6650282e57616ea7cd43bef0cb90a1392435d251031e51",
+    "snapshot_age_0.pt": "54952250268bf194a786c60a4c0f6d3ea560284c913db3f2616accfd8d10ceae",
+    "snapshot_fit.json": "c8d3b06126fe9e1a0209f9b31af224067f2a79090620874e49bf663f335143c3"
+  }
+}

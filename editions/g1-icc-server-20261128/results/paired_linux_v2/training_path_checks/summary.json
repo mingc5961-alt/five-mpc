@@ -1,0 +1,14 @@
+{
+  "physics_split": "training only",
+  "model": "selected pilot",
+  "training_matrix_receipts": 10,
+  "identical_joint_event_streams": true,
+  "full_capacity_example": 2376,
+  "geometry_pipeline": {
+    "world": 1000,
+    "physical_sha256": "bd4a5bf9fd4c1dbdb540ba2d7f7ee9234f6f225af15f4de6265d76212a6f0526",
+    "prefixes": 144,
+    "queries": 1872
+  },
+  "formal_endpoints": 0
+}

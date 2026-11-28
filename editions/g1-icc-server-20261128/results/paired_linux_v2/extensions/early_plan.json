@@ -1,0 +1,22 @@
+{
+  "families": [
+    [
+      "main",
+      "N"
+    ],
+    [
+      "main",
+      "P"
+    ],
+    [
+      "main",
+      "Q"
+    ],
+    [
+      "K700",
+      "Q"
+    ]
+  ],
+  "local_extension_endpoints": 224,
+  "confirmation_scores_read": false
+}

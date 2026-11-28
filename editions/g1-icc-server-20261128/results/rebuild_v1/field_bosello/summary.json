@@ -1,0 +1,16 @@
+{
+  "source_flight_ids": 24,
+  "source_clusters": 4,
+  "accepted_segments": 32,
+  "all_segments": 65,
+  "prefixes": 191,
+  "queries": 1267,
+  "revisiting_flights": 12,
+  "primary_queries": 123,
+  "contributing_clusters": 2,
+  "paired_cluster_ci95": [
+    0.9518669435622996,
+    2.969901072085527
+  ],
+  "d_IMM_minus_RAFT_deg": 1.9608840078239134
+}

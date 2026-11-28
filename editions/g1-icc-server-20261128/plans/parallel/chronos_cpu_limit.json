@@ -1,0 +1,101 @@
+{
+  "scope": "warm synthetic sparse XYZ prefix, one user per forward, 360 slots; CPU float32",
+  "weights": "/data/coding/g1-server-handoff/reference/models/Chronos/best.pt",
+  "cpu_max": "4800000 100000",
+  "baseline_GiB": 6.725902557373047,
+  "all_models_warm_GiB": 47.373626708984375,
+  "pool_workers": 46,
+  "checksum": 1278.30126953125,
+  "median_calls_s": {
+    "24": 38.48,
+    "32": 54.14,
+    "40": 55.2,
+    "46": 54.21
+  },
+  "rounds": [
+    {
+      "workers": 24,
+      "calls": 288,
+      "elapsed_s": 6.549336833006237,
+      "calls_s": 43.97391787036917,
+      "max_worker_peak_rss_GiB": 1.6088638305664062
+    },
+    {
+      "workers": 32,
+      "calls": 384,
+      "elapsed_s": 8.861467272989103,
+      "calls_s": 43.33368145143205,
+      "max_worker_peak_rss_GiB": 1.6110801696777344
+    },
+    {
+      "workers": 40,
+      "calls": 480,
+      "elapsed_s": 8.695856111007743,
+      "calls_s": 55.19870543768392,
+      "max_worker_peak_rss_GiB": 1.6110801696777344
+    },
+    {
+      "workers": 46,
+      "calls": 552,
+      "elapsed_s": 9.695318080004654,
+      "calls_s": 56.93469728841893,
+      "max_worker_peak_rss_GiB": 1.6110801696777344
+    },
+    {
+      "workers": 46,
+      "calls": 552,
+      "elapsed_s": 10.183226377004758,
+      "calls_s": 54.206788650647916,
+      "max_worker_peak_rss_GiB": 1.6110801696777344
+    },
+    {
+      "workers": 40,
+      "calls": 480,
+      "elapsed_s": 7.995731633011019,
+      "calls_s": 60.03202984180729,
+      "max_worker_peak_rss_GiB": 1.6097145080566406
+    },
+    {
+      "workers": 32,
+      "calls": 384,
+      "elapsed_s": 6.965303070988739,
+      "calls_s": 55.130407978857754,
+      "max_worker_peak_rss_GiB": 1.6110801696777344
+    },
+    {
+      "workers": 24,
+      "calls": 288,
+      "elapsed_s": 7.4835754679952515,
+      "calls_s": 38.48427816779287,
+      "max_worker_peak_rss_GiB": 1.6097145080566406
+    },
+    {
+      "workers": 24,
+      "calls": 288,
+      "elapsed_s": 8.404594003004604,
+      "calls_s": 34.26697350247273,
+      "max_worker_peak_rss_GiB": 1.6110801696777344
+    },
+    {
+      "workers": 32,
+      "calls": 384,
+      "elapsed_s": 7.093201448005857,
+      "calls_s": 54.136344895146834,
+      "max_worker_peak_rss_GiB": 1.6097145080566406
+    },
+    {
+      "workers": 40,
+      "calls": 480,
+      "elapsed_s": 11.585599515005015,
+      "calls_s": 41.43074334464359,
+      "max_worker_peak_rss_GiB": 1.6110801696777344
+    },
+    {
+      "workers": 46,
+      "calls": 552,
+      "elapsed_s": 10.844315633003134,
+      "calls_s": 50.90224396642112,
+      "max_worker_peak_rss_GiB": 1.6110801696777344
+    }
+  ]
+}

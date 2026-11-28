@@ -1,0 +1,359 @@
+{
+  "source_record": "13682870",
+  "md5": "ce031b8e54719c9f44f3d896a297bd8a",
+  "coordinate_origin_lon_lat_z": [
+    33.415298461914055,
+    35.14572906494141,
+    0.0002899169921875
+  ],
+  "source_timestamp_precision_s": 1,
+  "grouping": "flight label x UTC day; inference clustered by UTC day",
+  "station_offset_enu_m": [
+    -300,
+    0,
+    0
+  ],
+  "field_tuning": false,
+  "segments": [
+    {
+      "flight": 1,
+      "day": "2024-07-10",
+      "part": 0,
+      "raw_rows_in_flight_day": 13788,
+      "samples": 1380,
+      "start_s": 1720598267.0,
+      "end_s": 1720599646.0,
+      "accepted": true
+    },
+    {
+      "flight": 1,
+      "day": "2024-07-22",
+      "part": 0,
+      "raw_rows_in_flight_day": 2211,
+      "samples": 9,
+      "start_s": 1721632133.0,
+      "end_s": 1721632141.0,
+      "accepted": false
+    },
+    {
+      "flight": 1,
+      "day": "2024-07-22",
+      "part": 1,
+      "raw_rows_in_flight_day": 2211,
+      "samples": 214,
+      "start_s": 1721633653.0,
+      "end_s": 1721633866.0,
+      "accepted": true
+    },
+    {
+      "flight": 2,
+      "day": "2024-07-22",
+      "part": 0,
+      "raw_rows_in_flight_day": 17406,
+      "samples": 1741,
+      "start_s": 1721632141.0,
+      "end_s": 1721633881.0,
+      "accepted": true
+    },
+    {
+      "flight": 3,
+      "day": "2024-07-22",
+      "part": 0,
+      "raw_rows_in_flight_day": 15785,
+      "samples": 1579,
+      "start_s": 1721633881.0,
+      "end_s": 1721635459.0,
+      "accepted": true
+    },
+    {
+      "flight": 4,
+      "day": "2024-07-22",
+      "part": 0,
+      "raw_rows_in_flight_day": 14695,
+      "samples": 1470,
+      "start_s": 1721635459.0,
+      "end_s": 1721636928.0,
+      "accepted": true
+    },
+    {
+      "flight": 4,
+      "day": "2024-07-23",
+      "part": 0,
+      "raw_rows_in_flight_day": 1348,
+      "samples": 37,
+      "start_s": 1721722572.0,
+      "end_s": 1721722608.0,
+      "accepted": true
+    },
+    {
+      "flight": 4,
+      "day": "2024-07-23",
+      "part": 1,
+      "raw_rows_in_flight_day": 1348,
+      "samples": 100,
+      "start_s": 1721725704.0,
+      "end_s": 1721725803.0,
+      "accepted": true
+    },
+    {
+      "flight": 5,
+      "day": "2024-07-23",
+      "part": 0,
+      "raw_rows_in_flight_day": 17787,
+      "samples": 1779,
+      "start_s": 1721722608.0,
+      "end_s": 1721724386.0,
+      "accepted": true
+    },
+    {
+      "flight": 6,
+      "day": "2024-07-23",
+      "part": 0,
+      "raw_rows_in_flight_day": 14399,
+      "samples": 1441,
+      "start_s": 1721724386.0,
+      "end_s": 1721725826.0,
+      "accepted": true
+    },
+    {
+      "flight": 7,
+      "day": "2024-07-23",
+      "part": 0,
+      "raw_rows_in_flight_day": 9931,
+      "samples": 994,
+      "start_s": 1721725826.0,
+      "end_s": 1721726819.0,
+      "accepted": true
+    },
+    {
+      "flight": 7,
+      "day": "2024-07-24",
+      "part": 0,
+      "raw_rows_in_flight_day": 397,
+      "samples": 40,
+      "start_s": 1721807359.0,
+      "end_s": 1721807398.0,
+      "accepted": true
+    },
+    {
+      "flight": 7,
+      "day": "2024-08-01",
+      "part": 0,
+      "raw_rows_in_flight_day": 597,
+      "samples": 61,
+      "start_s": 1722500805.0,
+      "end_s": 1722500865.0,
+      "accepted": true
+    },
+    {
+      "flight": 8,
+      "day": "2024-08-01",
+      "part": 0,
+      "raw_rows_in_flight_day": 18279,
+      "samples": 1829,
+      "start_s": 1722500865.0,
+      "end_s": 1722502693.0,
+      "accepted": true
+    },
+    {
+      "flight": 9,
+      "day": "2024-07-24",
+      "part": 0,
+      "raw_rows_in_flight_day": 613,
+      "samples": 62,
+      "start_s": 1721805563.0,
+      "end_s": 1721805624.0,
+      "accepted": true
+    },
+    {
+      "flight": 9,
+      "day": "2024-08-01",
+      "part": 0,
+      "raw_rows_in_flight_day": 10523,
+      "samples": 1053,
+      "start_s": 1722502693.0,
+      "end_s": 1722503745.0,
+      "accepted": true
+    },
+    {
+      "flight": 10,
+      "day": "2024-07-24",
+      "part": 0,
+      "raw_rows_in_flight_day": 17946,
+      "samples": 1795,
+      "start_s": 1721805624.0,
+      "end_s": 1721807418.0,
+      "accepted": true
+    },
+    {
+      "flight": 11,
+      "day": "2024-07-24",
+      "part": 0,
+      "raw_rows_in_flight_day": 16347,
+      "samples": 1635,
+      "start_s": 1721807418.0,
+      "end_s": 1721809052.0,
+      "accepted": true
+    },
+    {
+      "flight": 12,
+      "day": "2024-07-24",
+      "part": 0,
+      "raw_rows_in_flight_day": 6673,
+      "samples": 669,
+      "start_s": 1721809052.0,
+      "end_s": 1721809720.0,
+      "accepted": true
+    },
+    {
+      "flight": 12,
+      "day": "2024-07-25",
+      "part": 0,
+      "raw_rows_in_flight_day": 480,
+      "samples": 49,
+      "start_s": 1721895899.0,
+      "end_s": 1721895947.0,
+      "accepted": true
+    },
+    {
+      "flight": 12,
+      "day": "2024-08-01",
+      "part": 0,
+      "raw_rows_in_flight_day": 19,
+      "samples": 3,
+      "start_s": 1722503745.0,
+      "end_s": 1722503747.0,
+      "accepted": false
+    },
+    {
+      "flight": 13,
+      "day": "2024-07-25",
+      "part": 0,
+      "raw_rows_in_flight_day": 1057,
+      "samples": 107,
+      "start_s": 1721892461.0,
+      "end_s": 1721892567.0,
+      "accepted": true
+    },
+    {
+      "flight": 13,
+      "day": "2024-08-01",
+      "part": 0,
+      "raw_rows_in_flight_day": 5617,
+      "samples": 563,
+      "start_s": 1722503747.0,
+      "end_s": 1722504309.0,
+      "accepted": true
+    },
+    {
+      "flight": 14,
+      "day": "2024-07-25",
+      "part": 0,
+      "raw_rows_in_flight_day": 17311,
+      "samples": 1732,
+      "start_s": 1721892567.0,
+      "end_s": 1721894298.0,
+      "accepted": true
+    },
+    {
+      "flight": 15,
+      "day": "2024-07-25",
+      "part": 0,
+      "raw_rows_in_flight_day": 17001,
+      "samples": 1700,
+      "start_s": 1721894298.0,
+      "end_s": 1721895997.0,
+      "accepted": true
+    },
+    {
+      "flight": 16,
+      "day": "2024-07-22",
+      "part": 0,
+      "raw_rows_in_flight_day": 1763,
+      "samples": 177,
+      "start_s": 1721633690.0,
+      "end_s": 1721633866.0,
+      "accepted": true
+    },
+    {
+      "flight": 16,
+      "day": "2024-07-25",
+      "part": 0,
+      "raw_rows_in_flight_day": 2991,
+      "samples": 300,
+      "start_s": 1721895997.0,
+      "end_s": 1721896296.0,
+      "accepted": true
+    },
+    {
+      "flight": 16,
+      "day": "2024-07-29",
+      "part": 0,
+      "raw_rows_in_flight_day": 667,
+      "samples": 67,
+      "start_s": 1722238565.0,
+      "end_s": 1722238631.0,
+      "accepted": true
+    },
+    {
+      "flight": 17,
+      "day": "2024-07-29",
+      "part": 0,
+      "raw_rows_in_flight_day": 13157,
+      "samples": 1317,
+      "start_s": 1722238631.0,
+      "end_s": 1722239947.0,
+      "accepted": true
+    },
+    {
+      "flight": 18,
+      "day": "2024-07-29",
+      "part": 0,
+      "raw_rows_in_flight_day": 14931,
+      "samples": 1494,
+      "start_s": 1722239947.0,
+      "end_s": 1722241440.0,
+      "accepted": true
+    },
+    {
+      "flight": 19,
+      "day": "2024-07-29",
+      "part": 0,
+      "raw_rows_in_flight_day": 15936,
+      "samples": 1595,
+      "start_s": 1722241440.0,
+      "end_s": 1722243034.0,
+      "accepted": true
+    },
+    {
+      "flight": 20,
+      "day": "2024-07-29",
+      "part": 0,
+      "raw_rows_in_flight_day": 128,
+      "samples": 14,
+      "start_s": 1722243034.0,
+      "end_s": 1722243047.0,
+      "accepted": true
+    },
+    {
+      "flight": 20,
+      "day": "2024-08-01",
+      "part": 0,
+      "raw_rows_in_flight_day": 6274,
+      "samples": 99,
+      "start_s": 1722504132.0,
+      "end_s": 1722504230.0,
+      "accepted": true
+    },
+    {
+      "flight": 20,
+      "day": "2024-08-01",
+      "part": 1,
+      "raw_rows_in_flight_day": 6274,
+      "samples": 530,
+      "start_s": 1722504309.0,
+      "end_s": 1722504838.0,
+      "accepted": true
+    }
+  ]
+}

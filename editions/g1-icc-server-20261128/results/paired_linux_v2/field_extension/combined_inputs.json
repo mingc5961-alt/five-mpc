@@ -1,0 +1,556 @@
+{
+  "source": "combined",
+  "panels": [
+    {
+      "id": "combined_0_random",
+      "source": "combined",
+      "view": "random",
+      "cohort": 0,
+      "duration": 30,
+      "quota": 142,
+      "noise_seed": 27113000,
+      "flights": [
+        {
+          "id": "UavY_P400Random_1",
+          "source": "amov",
+          "label": "random",
+          "seconds": 335.2300000190735,
+          "source_start": 50.8199999332428,
+          "sample_count": 1677,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavY_P400Random_1.npz",
+          "track_sha256": "5f3b6cfb087cdb283bba3700616b22ce20813db5381e14f64a5a1d062ea6e7df",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/Random/Random/UavY_P400Random_1.csv",
+          "original_sha256": "c6385838323f3b96afa3c53273760b66270797200306b6c852ad54546dafd7b5",
+          "task": "Manal Random",
+          "date": "2024/11/30"
+        },
+        {
+          "id": "UavR_P200Random_3",
+          "source": "amov",
+          "label": "random",
+          "seconds": 563.0299999713898,
+          "source_start": 0.0,
+          "sample_count": 2816,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavR_P200Random_3.npz",
+          "track_sha256": "9eb06160f78b7069a27667f9ec0c8380ce7a603ac69187a933d4d4d24c79fc7f",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/Random/Random/UavR_P200Random_3.csv",
+          "original_sha256": "4de2adab68412579e473b992b6e66616ccd979d10eba0e0912e8287b0b7f7300",
+          "task": "Manal Random",
+          "date": "2024/11/21"
+        },
+        {
+          "id": "UavR_P400Random_4",
+          "source": "amov",
+          "label": "random",
+          "seconds": 567.5999999046326,
+          "source_start": 72.98000001907349,
+          "sample_count": 2839,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavR_P400Random_4.npz",
+          "track_sha256": "28c2c8496c74fb917775ebbba66b77a33a7973d6cddf8ae76879f66f4be4fae7",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/Random/Random/UavR_P400Random_4.csv",
+          "original_sha256": "0dc87e9abea586352de54d2db3714006fa8ef0aa935bd296aba08f9c8f1fa88d",
+          "task": "Manal Random",
+          "date": "2024/11/22"
+        },
+        {
+          "id": "2021-02-23-18-50-03",
+          "source": "neurobem",
+          "label": "random",
+          "seconds": 91.455,
+          "source_start": 13.935,
+          "sample_count": 36583,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/neurobem_2021-02-23-18-50-03.npz",
+          "track_sha256": "66f771ca12bb5b8d3c8ffb924d349fb233186102a42294701c8f92aaf9581249",
+          "original_file": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/sources/neurobem/merged_2021-02-23-18-50-03_seg_3.csv",
+          "original_sha256": "70d5de8da81ea2e63f9b3216362b47b540a9f440105f3d135b843ea7ed3e2eb3",
+          "task": "random points 5, 120s",
+          "date": "2021-02-23"
+        },
+        {
+          "id": "2021-02-23-19-04-50",
+          "source": "neurobem",
+          "label": "random",
+          "seconds": 109.7625,
+          "source_start": 11.86,
+          "sample_count": 43906,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/neurobem_2021-02-23-19-04-50.npz",
+          "track_sha256": "2e4cd13eedce6156686aa813236d8d0852282a0ef6cccbf6b51336e92e3426df",
+          "original_file": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/sources/neurobem/merged_2021-02-23-19-04-50_seg_2.csv",
+          "original_sha256": "c199bce193d76e2814e0b555e932f69a959be47cd993de4633036f1e0b348db4",
+          "task": "random points 6, 120s",
+          "date": "2021-02-23"
+        },
+        {
+          "id": "UavR_P200Random_4",
+          "source": "amov",
+          "label": "random",
+          "seconds": 443.0,
+          "source_start": 0.0,
+          "sample_count": 2216,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavR_P200Random_4.npz",
+          "track_sha256": "0ecd2f541d21ea35fb6efdfe4c1dc55cee8c3a1115f07ae9d608647b59455e9d",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/Random/Random/UavR_P200Random_4.csv",
+          "original_sha256": "00eb860ec23ed2cd666e180792951266c7dbb236ae11f81b9a401525e5a50690",
+          "task": "Manal Random",
+          "date": "2024/11/22"
+        },
+        {
+          "id": "2021-02-23-22-33-54",
+          "source": "neurobem",
+          "label": "random",
+          "seconds": 107.69500000000001,
+          "source_start": 17.17,
+          "sample_count": 43079,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/neurobem_2021-02-23-22-33-54.npz",
+          "track_sha256": "8eb24957a0923e3ced31e5d218bbf4e433ae8d47438386cc1f2e6504485d0e21",
+          "original_file": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/sources/neurobem/merged_2021-02-23-22-33-54_seg_3.csv",
+          "original_sha256": "df2877385384be2526c8092b67ef31020e5560ba48b930459a059e8a7bdb8066",
+          "task": "random points 9, 120s",
+          "date": "2021-02-23"
+        },
+        {
+          "id": "UavR_P400Random_3",
+          "source": "amov",
+          "label": "random",
+          "seconds": 653.3899998664856,
+          "source_start": 0.0,
+          "sample_count": 3268,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavR_P400Random_3.npz",
+          "track_sha256": "18649d8a39e2eb5812c31cfb619c560f039639cf1fb417c82c9f6c3a15bb8f03",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/Random/Random/UavR_P400Random_3.csv",
+          "original_sha256": "11a9d75d7c1b83b16f1565051f0e2e27c951ef2176992830e4c7bedb4f0b06b5",
+          "task": "Manal Random",
+          "date": "2024/11/21"
+        },
+        {
+          "id": "UavY_P0Random_1",
+          "source": "amov",
+          "label": "random",
+          "seconds": 679.1900000572205,
+          "source_start": 0.0,
+          "sample_count": 3397,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavY_P0Random_1.npz",
+          "track_sha256": "ca46194dc8778ab8f0ddabe4645c9860a26e6bba0fb3f70b93408ac91742e014",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/Random/Random/UavY_P0Random_1.csv",
+          "original_sha256": "305013cc7917fabc4bc3f7629e868ba7df4207bd2cfc2055a79893743f90d1a1",
+          "task": "Manal Random",
+          "date": "2024/11/22"
+        },
+        {
+          "id": "UavR_P0Random_4",
+          "source": "amov",
+          "label": "random",
+          "seconds": 611.2199997901917,
+          "source_start": 0.0,
+          "sample_count": 3057,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavR_P0Random_4.npz",
+          "track_sha256": "c0e666a458ed6bbad42560e620d3ee3b5bc01e2335dde7f286522ef1512f5e11",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/Random/Random/UavR_P0Random_4.csv",
+          "original_sha256": "cb147ed21f7d19950cd571f65f4226b8cd6a478a0f101f73b82d926073af5c2e",
+          "task": "Manal Random",
+          "date": "2024/11/22"
+        },
+        {
+          "id": "UavY_P0Random_3",
+          "source": "amov",
+          "label": "random",
+          "seconds": 531.2000000476837,
+          "source_start": 28.799999952316284,
+          "sample_count": 2657,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavY_P0Random_3.npz",
+          "track_sha256": "90696801156a2332bf93c5ad6dbb25bf374a4f5ea21c9cc6c9f6ab50a360f987",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/Random/Random/UavY_P0Random_3.csv",
+          "original_sha256": "51791cc09ccc30acbc19497e20420447e2255139b31639c4264ff805d819a92d",
+          "task": "Manal Random",
+          "date": "2024/11/30"
+        },
+        {
+          "id": "UavY_P0Random_2",
+          "source": "amov",
+          "label": "random",
+          "seconds": 348.7300000190735,
+          "source_start": 244.86999988555908,
+          "sample_count": 1745,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavY_P0Random_2.npz",
+          "track_sha256": "9bbbf906dfc10162e6fd104c7049f2c05edd2b73904643dbb9a422c227b5195e",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/Random/Random/UavY_P0Random_2.csv",
+          "original_sha256": "40ec0fecb57bc832e25d7faaff40ca7673325f6987610a86a1628bbb72864a2f",
+          "task": "Manal Random",
+          "date": "2024/11/29"
+        },
+        {
+          "id": "2021-02-23-18-43-00",
+          "source": "neurobem",
+          "label": "random",
+          "seconds": 70.86749999999999,
+          "source_start": 15.685,
+          "sample_count": 28348,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/neurobem_2021-02-23-18-43-00.npz",
+          "track_sha256": "9a060f8701ac541eeb6c6047ee4f95ea2dd3b0ccc7f19723b67e792f3eda11e2",
+          "original_file": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/sources/neurobem/merged_2021-02-23-18-43-00_seg_2.csv",
+          "original_sha256": "d386d0ee7b5e41ccab81d76e5a6c1afbd1f9aa8a733acba7ae70475f42a8531c",
+          "task": "random points 4, 100s",
+          "date": "2021-02-23"
+        },
+        {
+          "id": "2021-02-23-22-26-25",
+          "source": "neurobem",
+          "label": "random",
+          "seconds": 105.66,
+          "source_start": 16.165,
+          "sample_count": 42265,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/neurobem_2021-02-23-22-26-25.npz",
+          "track_sha256": "fcbeb643f483c6680ae4898a9436ce87ea0d2f2dcfdcc1f2c1d9e45f92043863",
+          "original_file": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/sources/neurobem/merged_2021-02-23-22-26-25_seg_2.csv",
+          "original_sha256": "afc5ab9021ad12ab216d1f98e59b79265e295dc06349d9d37a6723d568e612dd",
+          "task": "random points 8, 120s",
+          "date": "2021-02-23"
+        },
+        {
+          "id": "UavR_P0Random_1",
+          "source": "amov",
+          "label": "random",
+          "seconds": 727.8400001525879,
+          "source_start": 0.0,
+          "sample_count": 3640,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavR_P0Random_1.npz",
+          "track_sha256": "985f83a5eb2ebce84dc12e1bfd77924bad5311cb464fb9ce62bd6ae38f4cf8ee",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/Random/Random/UavR_P0Random_1.csv",
+          "original_sha256": "f536950a06b428131e41bb3cc8bf088f440836b8ff7db4aecb796f8dd2decfd8",
+          "task": "Manal Random",
+          "date": "2024/11/20"
+        },
+        {
+          "id": "2021-02-23-22-03-52",
+          "source": "neurobem",
+          "label": "random",
+          "seconds": 101.805,
+          "source_start": 17.265,
+          "sample_count": 40723,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/neurobem_2021-02-23-22-03-52.npz",
+          "track_sha256": "133a80053aba269f8f8f0eb51486ba30c348e05e125cf1b8350a4c2a50a73212",
+          "original_file": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/sources/neurobem/merged_2021-02-23-22-03-52_seg_2.csv",
+          "original_sha256": "893986038079b1658807b5916b23fe070dd8263e4a20708504fd1e63aca24066",
+          "task": "random points 7, 120s",
+          "date": "2021-02-23"
+        }
+      ],
+      "station_offset_m": [
+        300.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "combined_0_planned",
+      "source": "combined",
+      "view": "planned",
+      "cohort": 0,
+      "duration": 30,
+      "quota": 142,
+      "noise_seed": 27113000,
+      "flights": [
+        {
+          "id": "UavG_P0A40VarS8_2",
+          "source": "amov",
+          "label": "planned",
+          "seconds": 466.19000005722046,
+          "source_start": 59.78999996185303,
+          "sample_count": 2332,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavG_P0A40VarS8_2.npz",
+          "track_sha256": "448db10436b3fa9b09f66e294652abf63e7445e6685c16a496d2be6acbadf5b0",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/FAVS/FAVS/UavG_P0A40VarS8_2.csv",
+          "original_sha256": "25e489788822088b5e098745074e3cb24dd5f9123a7ac4fac6ae1d86baca5fcc",
+          "task": "FAVS_R1",
+          "date": "2024/11/1"
+        },
+        {
+          "id": "UavR_P400A40VarS8_1",
+          "source": "amov",
+          "label": "planned",
+          "seconds": 35.40000009536743,
+          "source_start": 246.71000003814697,
+          "sample_count": 178,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavR_P400A40VarS8_1.npz",
+          "track_sha256": "89f2edbff162be6ed5d588095b39d4c6d13507ddea2a690d6ca06d4cdcea7e90",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/FAVS/FAVS/UavR_P400A40VarS8_1.csv",
+          "original_sha256": "91780e9610b682534ea2a0a943f0403652433fae1cc4cdfda7a52aed8291be83",
+          "task": "FAVS_R1",
+          "date": "2024/11/22"
+        },
+        {
+          "id": "UavG_P200A20VarS8_2",
+          "source": "amov",
+          "label": "planned",
+          "seconds": 144.40000009536743,
+          "source_start": 115.19000005722046,
+          "sample_count": 723,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavG_P200A20VarS8_2.npz",
+          "track_sha256": "a27db42fc8b9a8e0c4f9d00af0a7efca752448a3a4b106754f8cffac921ca931",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/FAVS/FAVS/UavG_P200A20VarS8_2.csv",
+          "original_sha256": "d794547f8d0e383f3f2a8d2a4fc11b29beeb582b8be455f11d22c4399de4beb8",
+          "task": "FAVS_R1",
+          "date": "2024/11/4"
+        },
+        {
+          "id": "2021-02-18-17-09-50",
+          "source": "neurobem",
+          "label": "planned",
+          "seconds": 42.167500000000004,
+          "source_start": 0.0025,
+          "sample_count": 16868,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/neurobem_2021-02-18-17-09-50.npz",
+          "track_sha256": "7a08b7e1d9bbd40502a1b97294cfa01e3716de084dbcf3178a5678086e20566d",
+          "original_file": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/sources/neurobem/merged_2021-02-18-17-09-50_seg_1.csv",
+          "original_sha256": "da89fce74d8cc140a018e6e706593980719dfc54e6e6836519056b82cb9287e5",
+          "task": "lemniscate, vel = 2",
+          "date": "2021-02-18"
+        },
+        {
+          "id": "2021-02-05-15-58-59",
+          "source": "neurobem",
+          "label": "planned",
+          "seconds": 31.470000000000002,
+          "source_start": 31.885,
+          "sample_count": 12589,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/neurobem_2021-02-05-15-58-59.npz",
+          "track_sha256": "66144cfa3300b8b619db9d3688b07735e17a58627a009fba29a7f6e8cc8505cc",
+          "original_file": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/sources/neurobem/merged_2021-02-05-15-58-59_seg_2.csv",
+          "original_sha256": "b447637d60a660450d6bab0801c187652f1c49e894de19cb90cc132c87228976",
+          "task": "lemniscate, vel = 1",
+          "date": "2021-02-05"
+        },
+        {
+          "id": "UavY_P200A20VarS6_3",
+          "source": "amov",
+          "label": "planned",
+          "seconds": 542.5899999141693,
+          "source_start": 120.0,
+          "sample_count": 2714,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavY_P200A20VarS6_3.npz",
+          "track_sha256": "e087f86646620b7e25f7dbb0a7949e85a13df2a5eb78ba5fda51dfa43b8f9116",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/FAVS/FAVS/UavY_P200A20VarS6_3.csv",
+          "original_sha256": "00aef7e445a1b85bdfd05a55645dec5e393e294488bb5023111a6c45f00e2a5e",
+          "task": "FAVS_R2",
+          "date": "2024/10/28"
+        },
+        {
+          "id": "2021-02-18-17-06-27",
+          "source": "neurobem",
+          "label": "planned",
+          "seconds": 40.940000000000005,
+          "source_start": 0.0025,
+          "sample_count": 16377,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/neurobem_2021-02-18-17-06-27.npz",
+          "track_sha256": "0c217cf4cab59e15ed67cafe781e9b7fa584a7f0e49e494ff2562d7679f01266",
+          "original_file": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/sources/neurobem/merged_2021-02-18-17-06-27_seg_1.csv",
+          "original_sha256": "b8d78c52536d27e06cf2a61781d3602472b5d2c006cf825b94cc6ac69a3eb47f",
+          "task": "lemniscate, vel = 1.5",
+          "date": "2021-02-18"
+        },
+        {
+          "id": "UavR_P200A40VarS2_2",
+          "source": "amov",
+          "label": "planned",
+          "seconds": 600.1899998188019,
+          "source_start": 0.0,
+          "sample_count": 3002,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavR_P200A40VarS2_2.npz",
+          "track_sha256": "518df922f2eeae5accf8964785f980097e24d350e482c39381a21d133821050f",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/FAVS/FAVS/UavR_P200A40VarS2_2.csv",
+          "original_sha256": "a502d0fa74cbc5bf4c895c86b225649a8ffd46a0c815a44392c4534c5aa6424e",
+          "task": "FAVS_R2",
+          "date": "2024/11/9"
+        },
+        {
+          "id": "UavY_P0A40S6_1",
+          "source": "amov",
+          "label": "planned",
+          "seconds": 51.58999991416931,
+          "source_start": 209.07999992370605,
+          "sample_count": 259,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavY_P0A40S6_1.npz",
+          "track_sha256": "937ed0da061a68a28249b24a3883fecfa5d31b4a0126a66db2938c47c8c2f889",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/FAFS/FAFS/UavY_P0A40S6_1.csv",
+          "original_sha256": "9accc40fa0fbf19e10e98708cc5e2fc40bdc2cc70e8e8de075a7563812d41c42",
+          "task": "FAFS",
+          "date": "2024/11/20"
+        },
+        {
+          "id": "UavG_P200A40VarS6_2",
+          "source": "amov",
+          "label": "planned",
+          "seconds": 36.799999952316284,
+          "source_start": 492.3900001049042,
+          "sample_count": 185,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavG_P200A40VarS6_2.npz",
+          "track_sha256": "45f04fb8c988c0f249eb79045cd5cd649f94a369e19a359138a5180c3dd4dab2",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/FAVS/FAVS/UavG_P200A40VarS6_2.csv",
+          "original_sha256": "a15035ddbe301a45659f0992cb45d8e398dba45bd66cee813673af05a8c4a7f3",
+          "task": "FAVS_R2",
+          "date": "2024/11/4"
+        },
+        {
+          "id": "UavY_P200A40VarS6_1",
+          "source": "amov",
+          "label": "planned",
+          "seconds": 636.8399999141693,
+          "source_start": 0.0,
+          "sample_count": 3185,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavY_P200A40VarS6_1.npz",
+          "track_sha256": "bbff687245713d5bf8c9b9f971e3ac9969bbba1e07fcb18adfb97454b4e4e0a2",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/FAVS/FAVS/UavY_P200A40VarS6_1.csv",
+          "original_sha256": "841d6b368e33a349ba65c6c1dbe00dbc2df7a9f0fc89e1d91cbdbcd98f328862",
+          "task": "FAVS_R2",
+          "date": "2024/11/6"
+        },
+        {
+          "id": "UavY_P0A10VarS8_3",
+          "source": "amov",
+          "label": "planned",
+          "seconds": 662.0,
+          "source_start": 0.0,
+          "sample_count": 3311,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavY_P0A10VarS8_3.npz",
+          "track_sha256": "4874693eb42720eee6e75204a84856c99879ee6f30f4fc2d2a76393d0f2c5ef2",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/FAVS/FAVS/UavY_P0A10VarS8_3.csv",
+          "original_sha256": "a98869df810a1984c40000f9ded2bffb8706066aa4e9d2ca56b1bceb0cbbeb9a",
+          "task": "FAVS_R1",
+          "date": "2024/11/1"
+        },
+        {
+          "id": "2021-02-18-15-47-24",
+          "source": "neurobem",
+          "label": "planned",
+          "seconds": 32.6125,
+          "source_start": 9.225,
+          "sample_count": 13046,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/neurobem_2021-02-18-15-47-24.npz",
+          "track_sha256": "b5361ef6428f7ac371f504453f909ed7d08cb3c8e79326ebe992ed50d8488089",
+          "original_file": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/sources/neurobem/merged_2021-02-18-15-47-24_seg_2.csv",
+          "original_sha256": "e2dea677cda7bc310db0ee51cb7865e90b31b849284bcc90b8783e79af980e67",
+          "task": "3d circle, delta_z = 4, vel=2.9",
+          "date": "2021-02-18"
+        },
+        {
+          "id": "2021-02-03-16-58-13",
+          "source": "neurobem",
+          "label": "planned",
+          "seconds": 33.605,
+          "source_start": 13.4425,
+          "sample_count": 13443,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/neurobem_2021-02-03-16-58-13.npz",
+          "track_sha256": "d2ec9213f7525d484e9c0fdb4271fc906353e2f337d0de33811ced85cebbe39d",
+          "original_file": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/sources/neurobem/merged_2021-02-03-16-58-13_seg_2.csv",
+          "original_sha256": "a045bb7ef26aa5a6615682790d0dbd8c82eaa6df356719368bc5360e8731331d",
+          "task": "3d circle, delta_z = 2, vel=1.5",
+          "date": "2021-02-03"
+        },
+        {
+          "id": "UavR_P0VarAS8_1",
+          "source": "amov",
+          "label": "planned",
+          "seconds": 548.2000000476837,
+          "source_start": 0.0,
+          "sample_count": 2742,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/amov_UavR_P0VarAS8_1.npz",
+          "track_sha256": "c29815d8f6be549005185b0c91fc0e8f14ba1ee91830eb39b8694c629e6ba5c4",
+          "original_file": "/data/chen/routeclock_runs/confirm_0db/work/amovfly/VAFS/VAFS/UavR_P0VarAS8_1.csv",
+          "original_sha256": "0c3b7d8c4dcb3485ce1c58176d6dadc2b269c24b9bf7a63e0f89200f19931b82",
+          "task": "VAVS_R1",
+          "date": "2024/11/30"
+        },
+        {
+          "id": "2021-02-03-13-53-04",
+          "source": "neurobem",
+          "label": "planned",
+          "seconds": 35.99,
+          "source_start": 14.8225,
+          "sample_count": 14397,
+          "track": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/tracks/neurobem_2021-02-03-13-53-04.npz",
+          "track_sha256": "5785d8d716902f374a2ee074cde92c92104094bf2ebcfdd827ca0b8f0bc3179e",
+          "original_file": "/data/coding/g1-original-20261127/paired_linux_v2/field_extension/sources/neurobem/merged_2021-02-03-13-53-04_seg_2.csv",
+          "original_sha256": "4f20280bb7ddd4513ae2abef54dacb0e8ed5fab52c093f2022818899c8e8ad45",
+          "task": "circle, vel=2.0",
+          "date": "2021-02-03"
+        }
+      ],
+      "station_offset_m": [
+        300.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "random_geometry": {
+    "amov_UavY_P0Random_1": {
+      "full": 0.03289473684210526,
+      "window": 0.0
+    },
+    "amov_UavR_P200Random_4": {
+      "full": 0.05909090909090909,
+      "window": 0.0
+    },
+    "amov_UavY_P400Random_1": {
+      "full": 0.043859649122807015,
+      "window": 0.014563106796116505
+    },
+    "amov_UavY_P0Random_3": {
+      "full": 0.015544041450777202,
+      "window": 0.01951219512195122
+    },
+    "amov_UavR_P400Random_3": {
+      "full": 0.044585987261146494,
+      "window": 0.0
+    },
+    "amov_UavR_P0Random_4": {
+      "full": 0.04405286343612335,
+      "window": 0.0
+    },
+    "amov_UavY_P0Random_2": {
+      "full": 0.06862745098039216,
+      "window": 0.0
+    },
+    "amov_UavR_P400Random_4": {
+      "full": 0.05045871559633028,
+      "window": 0.0
+    },
+    "amov_UavR_P0Random_1": {
+      "full": 0.02040816326530612,
+      "window": 0.0
+    },
+    "amov_UavR_P200Random_3": {
+      "full": 0.03773584905660377,
+      "window": 0.0
+    },
+    "neurobem_2021-02-23-22-33-54": {
+      "full": 0.027149321266968326,
+      "window": 0.056962025316455694
+    },
+    "neurobem_2021-02-23-22-03-52": {
+      "full": 0.019867549668874173,
+      "window": 0.005235602094240838
+    },
+    "neurobem_2021-02-23-18-50-03": {
+      "full": 0.5604395604395604,
+      "window": 0.15789473684210525
+    },
+    "neurobem_2021-02-23-19-04-50": {
+      "full": 0.028735632183908046,
+      "window": 0.03289473684210526
+    },
+    "neurobem_2021-02-23-18-43-00": {
+      "full": 0.39751552795031053,
+      "window": 0.10240963855421686
+    },
+    "neurobem_2021-02-23-22-26-25": {
+      "full": 0.027777777777777776,
+      "window": 0.025974025974025976
+    }
+  },
+  "source_counts": {
+    "amov": 10,
+    "neurobem": 6
+  },
+  "rule": "Seed 271130. Longest supported horizon in 180/120/90/60/45/30 s. Exclude strong repeats in both complete random track and service window. Distinct waypoint programs within fleet. Baseline uses source-designated routes. This sensitivity analysis reuses flights from the source panels."
+}

@@ -1,0 +1,13 @@
+{
+  "verified_holdout_endpoints": 744,
+  "worlds": 24,
+  "supplemental_rows": 13,
+  "identical_oldest_event_hashes_worlds": 24,
+  "k": 844,
+  "panel": {
+    "paired_queries": 44928,
+    "worlds": 24,
+    "distinct_prefixes": 3456,
+    "primary_revisit_queries": 1482
+  }
+}

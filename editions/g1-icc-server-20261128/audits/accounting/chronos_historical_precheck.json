@@ -1,0 +1,22 @@
+{
+  "kind": "native full 180 s historical verification",
+  "arm": "Chronos original seed 7",
+  "run": "fresh Linux event loop, historical 0 x 0.75",
+  "complete_episodes": 1,
+  "load_test_episodes": 0,
+  "elapsed_s": 677.8354400519893,
+  "actual_path": "/data/coding/g1-original-20261127/historical/chronos_local_precheck/native/historical_0_C_0.75.json",
+  "comparison": "/data/coding/g1-original-20261127/historical/chronos_local_precheck/crosscheck.json",
+  "matched_events": 811,
+  "expected_events": 811,
+  "physical_hash_match": false,
+  "delta_G_mbps": -2.4827068045851775e-07,
+  "delta_R": 0.0,
+  "max_per_user_bits_delta": 61.81934928894043,
+  "ledger_seconds_delta": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ]
+}

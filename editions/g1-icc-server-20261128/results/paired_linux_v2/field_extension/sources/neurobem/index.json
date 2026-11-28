@@ -1,0 +1,1322 @@
+[
+  {
+    "flight": "2021-02-03-13-43-38",
+    "member": "processed_data/merged_2021-02-03-13-43-38_seg_1.csv",
+    "label": "wobbly circle 4 parts, delta=0.3, vel=0.5",
+    "file": "merged_2021-02-03-13-43-38_seg_1.csv",
+    "crc32": 470614090,
+    "sha256": "00c8c289e9ca931be5445b444b9311c7d67de9e672e89ba2fb21a80570ec2adb"
+  },
+  {
+    "flight": "2021-02-03-13-43-38",
+    "member": "processed_data/merged_2021-02-03-13-43-38_seg_2.csv",
+    "label": "wobbly circle 4 parts, delta=0.3, vel=0.5",
+    "file": "merged_2021-02-03-13-43-38_seg_2.csv",
+    "crc32": 2276450831,
+    "sha256": "cea439e0338aaf24d582781a5a3e6faa47019a195faadfdec823f3d6564ea1b8"
+  },
+  {
+    "flight": "2021-02-03-13-43-38",
+    "member": "processed_data/merged_2021-02-03-13-43-38_seg_3.csv",
+    "label": "wobbly circle 4 parts, delta=0.3, vel=0.5",
+    "file": "merged_2021-02-03-13-43-38_seg_3.csv",
+    "crc32": 1889568599,
+    "sha256": "1d9b9eab1dbf9149543694895e5847396800a8111da45733723e665f1e764d91"
+  },
+  {
+    "flight": "2021-02-03-13-43-38",
+    "member": "processed_data/merged_2021-02-03-13-43-38_seg_4.csv",
+    "label": "wobbly circle 4 parts, delta=0.3, vel=0.5",
+    "file": "merged_2021-02-03-13-43-38_seg_4.csv",
+    "crc32": 3262866614,
+    "sha256": "7797ff9179e4027733b44c0b1b75840d585802f6f122a6f5d4f8ad3e31dd826c"
+  },
+  {
+    "flight": "2021-02-03-13-44-49",
+    "member": "processed_data/merged_2021-02-03-13-44-49_seg_1.csv",
+    "label": "wobbly circle 4 parts, delta=0.3, vel=0.75",
+    "file": "merged_2021-02-03-13-44-49_seg_1.csv",
+    "crc32": 1442779038,
+    "sha256": "68b91bf379f85dc948e963ea2956348d2bc2dbe97f2e731458b7ba621f310515"
+  },
+  {
+    "flight": "2021-02-03-13-44-49",
+    "member": "processed_data/merged_2021-02-03-13-44-49_seg_2.csv",
+    "label": "wobbly circle 4 parts, delta=0.3, vel=0.75",
+    "file": "merged_2021-02-03-13-44-49_seg_2.csv",
+    "crc32": 4160861105,
+    "sha256": "24481ed65ebd2bade5b6efa4fbc65f1eee12f2de3fab35f985a370f87c6587e0"
+  },
+  {
+    "flight": "2021-02-03-13-44-49",
+    "member": "processed_data/merged_2021-02-03-13-44-49_seg_3.csv",
+    "label": "wobbly circle 4 parts, delta=0.3, vel=0.75",
+    "file": "merged_2021-02-03-13-44-49_seg_3.csv",
+    "crc32": 3149240181,
+    "sha256": "c2f09c2b2d0c22cc66a2f5dbfa9cbfd8f7bf1e5e7ac61b579495dd710d1e169b"
+  },
+  {
+    "flight": "2021-02-03-13-44-49",
+    "member": "processed_data/merged_2021-02-03-13-44-49_seg_4.csv",
+    "label": "wobbly circle 4 parts, delta=0.3, vel=0.75",
+    "file": "merged_2021-02-03-13-44-49_seg_4.csv",
+    "crc32": 1990619767,
+    "sha256": "456d08a7c2ad1552acfb0b997572925b8a5ba976ac40500fc8254bf03b65c265"
+  },
+  {
+    "flight": "2021-02-03-13-53-04",
+    "member": "processed_data/merged_2021-02-03-13-53-04_seg_1.csv",
+    "label": "circle, vel=2.0",
+    "file": "merged_2021-02-03-13-53-04_seg_1.csv",
+    "crc32": 673497240,
+    "sha256": "4fb475b8d90e549df97cb81254c508df45afa14de59e04cd4e471efe61b0d233"
+  },
+  {
+    "flight": "2021-02-03-13-53-04",
+    "member": "processed_data/merged_2021-02-03-13-53-04_seg_2.csv",
+    "label": "circle, vel=2.0",
+    "file": "merged_2021-02-03-13-53-04_seg_2.csv",
+    "crc32": 757970503,
+    "sha256": "4f20280bb7ddd4513ae2abef54dacb0e8ed5fab52c093f2022818899c8e8ad45"
+  },
+  {
+    "flight": "2021-02-03-13-54-06",
+    "member": "processed_data/merged_2021-02-03-13-54-06_seg_1.csv",
+    "label": "circle, vel=2.5",
+    "file": "merged_2021-02-03-13-54-06_seg_1.csv",
+    "crc32": 2178562493,
+    "sha256": "43b2e66c19b53d74cf3c7890d725e2ce46418e1b2b8b83eb2a06798ee3937b73"
+  },
+  {
+    "flight": "2021-02-03-13-54-06",
+    "member": "processed_data/merged_2021-02-03-13-54-06_seg_2.csv",
+    "label": "circle, vel=2.5",
+    "file": "merged_2021-02-03-13-54-06_seg_2.csv",
+    "crc32": 3947202870,
+    "sha256": "77893a925b5bda021f88c9add10868e8564e73005e97bff4ea1c041be1190717"
+  },
+  {
+    "flight": "2021-02-03-13-54-06",
+    "member": "processed_data/merged_2021-02-03-13-54-06_seg_3.csv",
+    "label": "circle, vel=2.5",
+    "file": "merged_2021-02-03-13-54-06_seg_3.csv",
+    "crc32": 3340714101,
+    "sha256": "870b7980ec1191633a6180dd3ea1816dfd62c29257d4a9469e40bf69f0e92752"
+  },
+  {
+    "flight": "2021-02-03-13-54-06",
+    "member": "processed_data/merged_2021-02-03-13-54-06_seg_4.csv",
+    "label": "circle, vel=2.5",
+    "file": "merged_2021-02-03-13-54-06_seg_4.csv",
+    "crc32": 2078777123,
+    "sha256": "2b8bbdb68b89bdc94568d8f83cda27edb8343202ba38fe3b7c16630104b28ba1"
+  },
+  {
+    "flight": "2021-02-03-16-47-27",
+    "member": "processed_data/merged_2021-02-03-16-47-27_seg_1.csv",
+    "label": "wobbly circle 9 parts, delta=0.15, vel=0.25",
+    "file": "merged_2021-02-03-16-47-27_seg_1.csv",
+    "crc32": 2749314653,
+    "sha256": "071dba4676640fc168c264b9f08fe38781cc70f14f000e38ea926910c4ba94ee"
+  },
+  {
+    "flight": "2021-02-03-16-47-27",
+    "member": "processed_data/merged_2021-02-03-16-47-27_seg_2.csv",
+    "label": "wobbly circle 9 parts, delta=0.15, vel=0.25",
+    "file": "merged_2021-02-03-16-47-27_seg_2.csv",
+    "crc32": 347525833,
+    "sha256": "dee318901a1be70b7b3fb32e43a171e3a53c14d1b6c7abab7f2494338eb65523"
+  },
+  {
+    "flight": "2021-02-03-16-55-55",
+    "member": "processed_data/merged_2021-02-03-16-55-55_seg_1.csv",
+    "label": "wobbly circle 9 parts, delta=0.15, vel=0.5",
+    "file": "merged_2021-02-03-16-55-55_seg_1.csv",
+    "crc32": 1620817504,
+    "sha256": "48f23f8bb86818671ec66e60482214af0d482aa2ee313ade4df8a38b8ef976f9"
+  },
+  {
+    "flight": "2021-02-03-16-55-55",
+    "member": "processed_data/merged_2021-02-03-16-55-55_seg_2.csv",
+    "label": "wobbly circle 9 parts, delta=0.15, vel=0.5",
+    "file": "merged_2021-02-03-16-55-55_seg_2.csv",
+    "crc32": 81439066,
+    "sha256": "a56f67a265f916bc0533581d833c7319965a95bd278014eaa5c253b13b81c465"
+  },
+  {
+    "flight": "2021-02-03-16-55-55",
+    "member": "processed_data/merged_2021-02-03-16-55-55_seg_3.csv",
+    "label": "wobbly circle 9 parts, delta=0.15, vel=0.5",
+    "file": "merged_2021-02-03-16-55-55_seg_3.csv",
+    "crc32": 4283000852,
+    "sha256": "78b4af75dda2447c4af09d4d0424606cbbaa2709d4c3870be118fdfc6e86d4ca"
+  },
+  {
+    "flight": "2021-02-03-16-58-13",
+    "member": "processed_data/merged_2021-02-03-16-58-13_seg_1.csv",
+    "label": "3d circle, delta_z = 2, vel=1.5",
+    "file": "merged_2021-02-03-16-58-13_seg_1.csv",
+    "crc32": 1262646164,
+    "sha256": "5492c11d1e989d4b7d25ff962f4ec85f4522a7fc5dd5593de10d60df242b207b"
+  },
+  {
+    "flight": "2021-02-03-16-58-13",
+    "member": "processed_data/merged_2021-02-03-16-58-13_seg_2.csv",
+    "label": "3d circle, delta_z = 2, vel=1.5",
+    "file": "merged_2021-02-03-16-58-13_seg_2.csv",
+    "crc32": 3535430648,
+    "sha256": "a045bb7ef26aa5a6615682790d0dbd8c82eaa6df356719368bc5360e8731331d"
+  },
+  {
+    "flight": "2021-02-03-17-04-15",
+    "member": "processed_data/merged_2021-02-03-17-04-15_seg_1.csv",
+    "label": "3d circle, delta_z = 4, vel=2",
+    "file": "merged_2021-02-03-17-04-15_seg_1.csv",
+    "crc32": 288026351,
+    "sha256": "c8bc9bbd72ab01f575e8063788fe4220b9643cd716a795ff6c1ab2b66fbab329"
+  },
+  {
+    "flight": "2021-02-03-17-04-15",
+    "member": "processed_data/merged_2021-02-03-17-04-15_seg_2.csv",
+    "label": "3d circle, delta_z = 4, vel=2",
+    "file": "merged_2021-02-03-17-04-15_seg_2.csv",
+    "crc32": 3371952932,
+    "sha256": "ed9fb2d07082656aa4b5a0833be2146a8c0c6c96dda4beaf819db6ce3a46cadd"
+  },
+  {
+    "flight": "2021-02-03-17-04-15",
+    "member": "processed_data/merged_2021-02-03-17-04-15_seg_3.csv",
+    "label": "3d circle, delta_z = 4, vel=2",
+    "file": "merged_2021-02-03-17-04-15_seg_3.csv",
+    "crc32": 180173691,
+    "sha256": "72b00b32d6f22c43e947f998ffdd1aa89352138661e39677c7462fa334f89085"
+  },
+  {
+    "flight": "2021-02-03-17-04-15",
+    "member": "processed_data/merged_2021-02-03-17-04-15_seg_4.csv",
+    "label": "3d circle, delta_z = 4, vel=2",
+    "file": "merged_2021-02-03-17-04-15_seg_4.csv",
+    "crc32": 1526111779,
+    "sha256": "674ecc5c72a898ab250a114c07c0e141d80ce634193253492cafa75a7798ef4d"
+  },
+  {
+    "flight": "2021-02-03-17-06-36",
+    "member": "processed_data/merged_2021-02-03-17-06-36_seg_1.csv",
+    "label": "3d circle, delta_z = 4, vel=2.5",
+    "file": "merged_2021-02-03-17-06-36_seg_1.csv",
+    "crc32": 2992029019,
+    "sha256": "0b9bfa2a24cc762180e6693e7a522fc22c0d81bccff8ef281e874e3aa701757f"
+  },
+  {
+    "flight": "2021-02-03-17-14-47",
+    "member": "processed_data/merged_2021-02-03-17-14-47_seg_1.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9",
+    "file": "merged_2021-02-03-17-14-47_seg_1.csv",
+    "crc32": 141158325,
+    "sha256": "ce49f7ed2ecab9c31ff91e3f103ebaa3704d93c52f776c19c4ae85a40adf1f36"
+  },
+  {
+    "flight": "2021-02-03-17-14-47",
+    "member": "processed_data/merged_2021-02-03-17-14-47_seg_2.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9",
+    "file": "merged_2021-02-03-17-14-47_seg_2.csv",
+    "crc32": 842524410,
+    "sha256": "88ba5e5e9adbe7a86f7e6d3f61da09e80b3e2f11985125dd6d41b51c3b0afead"
+  },
+  {
+    "flight": "2021-02-03-17-26-08",
+    "member": "processed_data/merged_2021-02-03-17-26-08_seg_1.csv",
+    "label": "lemniscate",
+    "file": "merged_2021-02-03-17-26-08_seg_1.csv",
+    "crc32": 3590223003,
+    "sha256": "3eec885a7084a3bfd9d4788615abcd291e9862fd427cc643af5eb7dbcb6b1ddc"
+  },
+  {
+    "flight": "2021-02-03-17-26-08",
+    "member": "processed_data/merged_2021-02-03-17-26-08_seg_2.csv",
+    "label": "lemniscate",
+    "file": "merged_2021-02-03-17-26-08_seg_2.csv",
+    "crc32": 3573230031,
+    "sha256": "3b361ae272bf06093a248ff072228c6c5919c121ca13650d3d9afe2018a38c8b"
+  },
+  {
+    "flight": "2021-02-03-17-33-11",
+    "member": "processed_data/merged_2021-02-03-17-33-11_seg_1.csv",
+    "label": "circle, vel=2.75",
+    "file": "merged_2021-02-03-17-33-11_seg_1.csv",
+    "crc32": 983716277,
+    "sha256": "28a2672939598fd7e9dfc438f67fc4ca12d14c2351190b25d45c3cbcf2b1d148"
+  },
+  {
+    "flight": "2021-02-03-17-33-11",
+    "member": "processed_data/merged_2021-02-03-17-33-11_seg_2.csv",
+    "label": "circle, vel=2.75",
+    "file": "merged_2021-02-03-17-33-11_seg_2.csv",
+    "crc32": 2585940795,
+    "sha256": "d612c9d8dde6126abe1c16a30648d986c60093afded3f6a971cb04a97b842c65"
+  },
+  {
+    "flight": "2021-02-03-17-37-27",
+    "member": "processed_data/merged_2021-02-03-17-37-27_seg_1.csv",
+    "label": "circle, vel=3.0",
+    "file": "merged_2021-02-03-17-37-27_seg_1.csv",
+    "crc32": 1008204903,
+    "sha256": "85e8269a196d8fa7aa84cbaa68e3c8e5c5cbf8fc626db254982bfbef72b0e568"
+  },
+  {
+    "flight": "2021-02-03-17-37-27",
+    "member": "processed_data/merged_2021-02-03-17-37-27_seg_2.csv",
+    "label": "circle, vel=3.0",
+    "file": "merged_2021-02-03-17-37-27_seg_2.csv",
+    "crc32": 1017767939,
+    "sha256": "2571dbc9d6f95d1ee90dfa52338ca53753651a1f0146ebdb637eac51ca07c9c3"
+  },
+  {
+    "flight": "2021-02-03-17-37-27",
+    "member": "processed_data/merged_2021-02-03-17-37-27_seg_3.csv",
+    "label": "circle, vel=3.0",
+    "file": "merged_2021-02-03-17-37-27_seg_3.csv",
+    "crc32": 438289312,
+    "sha256": "2d41cee5051438776a876a9d8b6be55f03f18412c1c0ce3c7ad14454d7232dbc"
+  },
+  {
+    "flight": "2021-02-05-14-00-56",
+    "member": "processed_data/merged_2021-02-05-14-00-56_seg_1.csv",
+    "label": "battery test 01, short circle",
+    "file": "merged_2021-02-05-14-00-56_seg_1.csv",
+    "crc32": 151286174,
+    "sha256": "e79e2b2d570812692458c4d06e4fced8d20363953ccf550f0daf5295de4f969c"
+  },
+  {
+    "flight": "2021-02-05-14-00-56",
+    "member": "processed_data/merged_2021-02-05-14-00-56_seg_2.csv",
+    "label": "battery test 01, short circle",
+    "file": "merged_2021-02-05-14-00-56_seg_2.csv",
+    "crc32": 3244917645,
+    "sha256": "558ea9a9970b4000bf9533125b3f717196533174cae53a02939d7be83517c663"
+  },
+  {
+    "flight": "2021-02-05-14-01-47",
+    "member": "processed_data/merged_2021-02-05-14-01-47_seg_1.csv",
+    "label": "battery test 02, short circle",
+    "file": "merged_2021-02-05-14-01-47_seg_1.csv",
+    "crc32": 3075772991,
+    "sha256": "c5b5bb321f92935e4d291f029f2217a7f187da05ffe115a25f06cfb3b58cd5b3"
+  },
+  {
+    "flight": "2021-02-05-14-01-47",
+    "member": "processed_data/merged_2021-02-05-14-01-47_seg_2.csv",
+    "label": "battery test 02, short circle",
+    "file": "merged_2021-02-05-14-01-47_seg_2.csv",
+    "crc32": 4292457776,
+    "sha256": "44a0ef59586ea9f2aff827fd84bd9e95071cd8a5bbb527434278529568be2d3e"
+  },
+  {
+    "flight": "2021-02-05-14-01-47",
+    "member": "processed_data/merged_2021-02-05-14-01-47_seg_3.csv",
+    "label": "battery test 02, short circle",
+    "file": "merged_2021-02-05-14-01-47_seg_3.csv",
+    "crc32": 1571104055,
+    "sha256": "4f22f32369e119e09007d2b77a5f7c8fb7afbceafd58bfce98cf29d3755e28b9"
+  },
+  {
+    "flight": "2021-02-05-14-02-47",
+    "member": "processed_data/merged_2021-02-05-14-02-47_seg_1.csv",
+    "label": "battery test 03, short circle",
+    "file": "merged_2021-02-05-14-02-47_seg_1.csv",
+    "crc32": 3587592228,
+    "sha256": "e494d05f553c3913d42805bad3f155339da1374cebe4ddcef7141e24679f231a"
+  },
+  {
+    "flight": "2021-02-05-14-02-47",
+    "member": "processed_data/merged_2021-02-05-14-02-47_seg_2.csv",
+    "label": "battery test 03, short circle",
+    "file": "merged_2021-02-05-14-02-47_seg_2.csv",
+    "crc32": 52940099,
+    "sha256": "d197d0ed23aa623ce4cfee616482a7d1cd44fbeb6f5543d168431fb7ca387eaf"
+  },
+  {
+    "flight": "2021-02-05-14-02-47",
+    "member": "processed_data/merged_2021-02-05-14-02-47_seg_3.csv",
+    "label": "battery test 03, short circle",
+    "file": "merged_2021-02-05-14-02-47_seg_3.csv",
+    "crc32": 2552619085,
+    "sha256": "8ce78800da446ff71f1eee30a428f7d76c19320a87ef3cf925af97ad2df4816e"
+  },
+  {
+    "flight": "2021-02-05-14-03-41",
+    "member": "processed_data/merged_2021-02-05-14-03-41_seg_1.csv",
+    "label": "battery test 04, short circle",
+    "file": "merged_2021-02-05-14-03-41_seg_1.csv",
+    "crc32": 2167001267,
+    "sha256": "7d9aef2f08fdada3a3e9c36da6c6ed8c741998d0a1faac11a3a93b34c003e6e4"
+  },
+  {
+    "flight": "2021-02-05-14-03-41",
+    "member": "processed_data/merged_2021-02-05-14-03-41_seg_2.csv",
+    "label": "battery test 04, short circle",
+    "file": "merged_2021-02-05-14-03-41_seg_2.csv",
+    "crc32": 1667172685,
+    "sha256": "a1d2e812307eb757cc5b4da1ca3bff59a151d2bc3fc3dc3f72cd7a2a3f6bc8bc"
+  },
+  {
+    "flight": "2021-02-05-14-03-41",
+    "member": "processed_data/merged_2021-02-05-14-03-41_seg_3.csv",
+    "label": "battery test 04, short circle",
+    "file": "merged_2021-02-05-14-03-41_seg_3.csv",
+    "crc32": 2052538760,
+    "sha256": "4c3dae402028a6bc2291b5574cb5eb20c280feb4c3bb0c47335af52aee4e2d02"
+  },
+  {
+    "flight": "2021-02-05-14-03-41",
+    "member": "processed_data/merged_2021-02-05-14-03-41_seg_4.csv",
+    "label": "battery test 04, short circle",
+    "file": "merged_2021-02-05-14-03-41_seg_4.csv",
+    "crc32": 3649438108,
+    "sha256": "6fdd15e2572bd5770b237d08474e35efb52205055746f6d3d9e7bc392625d9f1"
+  },
+  {
+    "flight": "2021-02-05-14-04-32",
+    "member": "processed_data/merged_2021-02-05-14-04-32_seg_1.csv",
+    "label": "battery test 05, short circle",
+    "file": "merged_2021-02-05-14-04-32_seg_1.csv",
+    "crc32": 1835893150,
+    "sha256": "c9c64ce26c9e0d116db97d1242d0b34a5df8af5a6a5c997d31ea47e75b24cc48"
+  },
+  {
+    "flight": "2021-02-05-14-04-32",
+    "member": "processed_data/merged_2021-02-05-14-04-32_seg_2.csv",
+    "label": "battery test 05, short circle",
+    "file": "merged_2021-02-05-14-04-32_seg_2.csv",
+    "crc32": 2035997686,
+    "sha256": "ecc52d6e79d804085cd97032a510b869763ae2551b8d174621948e4ef14970a2"
+  },
+  {
+    "flight": "2021-02-05-15-04-42",
+    "member": "processed_data/merged_2021-02-05-15-04-42_seg_1.csv",
+    "label": "3d circle, vel = 0.45",
+    "file": "merged_2021-02-05-15-04-42_seg_1.csv",
+    "crc32": 226396103,
+    "sha256": "965fc23e40dd69f402fbcd9c7404c30af555687bd458dc976299040756fed961"
+  },
+  {
+    "flight": "2021-02-05-15-04-42",
+    "member": "processed_data/merged_2021-02-05-15-04-42_seg_2.csv",
+    "label": "3d circle, vel = 0.45",
+    "file": "merged_2021-02-05-15-04-42_seg_2.csv",
+    "crc32": 3889352443,
+    "sha256": "88e22f4509bdb9818d4bf3450f971425dae044f19d2a12c951d41a5b7305f681"
+  },
+  {
+    "flight": "2021-02-05-15-04-42",
+    "member": "processed_data/merged_2021-02-05-15-04-42_seg_3.csv",
+    "label": "3d circle, vel = 0.45",
+    "file": "merged_2021-02-05-15-04-42_seg_3.csv",
+    "crc32": 2070037208,
+    "sha256": "4868a41763f5ca98fc8371009a3f33a64a4926f59a92daa4cac936d45587f160"
+  },
+  {
+    "flight": "2021-02-05-15-58-59",
+    "member": "processed_data/merged_2021-02-05-15-58-59_seg_1.csv",
+    "label": "lemniscate, vel = 1",
+    "file": "merged_2021-02-05-15-58-59_seg_1.csv",
+    "crc32": 3790386381,
+    "sha256": "c03f3bdd369f0b2c5330981b2c6414be12aeaff80b0f2ee1d5c010698a2ccaa5"
+  },
+  {
+    "flight": "2021-02-05-15-58-59",
+    "member": "processed_data/merged_2021-02-05-15-58-59_seg_2.csv",
+    "label": "lemniscate, vel = 1",
+    "file": "merged_2021-02-05-15-58-59_seg_2.csv",
+    "crc32": 3549116316,
+    "sha256": "b447637d60a660450d6bab0801c187652f1c49e894de19cb90cc132c87228976"
+  },
+  {
+    "flight": "2021-02-05-15-58-59",
+    "member": "processed_data/merged_2021-02-05-15-58-59_seg_3.csv",
+    "label": "lemniscate, vel = 1",
+    "file": "merged_2021-02-05-15-58-59_seg_3.csv",
+    "crc32": 2130437697,
+    "sha256": "3fd42a29526528b97e822c6d387691b4f63a51b49027585dd64d1c0066274c25"
+  },
+  {
+    "flight": "2021-02-05-16-06-45",
+    "member": "processed_data/merged_2021-02-05-16-06-45_seg_1.csv",
+    "label": "lemniscate, vel = 1.5",
+    "file": "merged_2021-02-05-16-06-45_seg_1.csv",
+    "crc32": 2272483784,
+    "sha256": "a18ebbf47722312a37b909f10fe899a899e870b857d1a9c504a48a7ab3bd5f17"
+  },
+  {
+    "flight": "2021-02-05-16-06-45",
+    "member": "processed_data/merged_2021-02-05-16-06-45_seg_2.csv",
+    "label": "lemniscate, vel = 1.5",
+    "file": "merged_2021-02-05-16-06-45_seg_2.csv",
+    "crc32": 1927281500,
+    "sha256": "5828c0a947a2fcd069b2d2a3b9ff05ddbf1b4e4b219bde791a01b5f12e09334e"
+  },
+  {
+    "flight": "2021-02-05-16-06-45",
+    "member": "processed_data/merged_2021-02-05-16-06-45_seg_3.csv",
+    "label": "lemniscate, vel = 1.5",
+    "file": "merged_2021-02-05-16-06-45_seg_3.csv",
+    "crc32": 88761618,
+    "sha256": "53c8254ae876039b883dca2d280591f4f2ec26b0b83f716e5967c9ccd131785e"
+  },
+  {
+    "flight": "2021-02-05-16-06-45",
+    "member": "processed_data/merged_2021-02-05-16-06-45_seg_4.csv",
+    "label": "lemniscate, vel = 1.5",
+    "file": "merged_2021-02-05-16-06-45_seg_4.csv",
+    "crc32": 3001276349,
+    "sha256": "67943406865342fd934ea95ca84cf86426aa45590fed99a901783aef85a02891"
+  },
+  {
+    "flight": "2021-02-05-16-10-53",
+    "member": "processed_data/merged_2021-02-05-16-10-53_seg_1.csv",
+    "label": "lemniscate, vel = 1.75",
+    "file": "merged_2021-02-05-16-10-53_seg_1.csv",
+    "crc32": 2191678568,
+    "sha256": "0e9567e44e3bd9f06b334009fb26f9b8667cad058a90311fa74ed6f703a59558"
+  },
+  {
+    "flight": "2021-02-05-16-10-53",
+    "member": "processed_data/merged_2021-02-05-16-10-53_seg_2.csv",
+    "label": "lemniscate, vel = 1.75",
+    "file": "merged_2021-02-05-16-10-53_seg_2.csv",
+    "crc32": 1173771235,
+    "sha256": "c3c3c2bc8e9aec246bbcb9e80251b676eb949abad671b8365e59898c53a2eff8"
+  },
+  {
+    "flight": "2021-02-05-16-14-20",
+    "member": "processed_data/merged_2021-02-05-16-14-20_seg_1.csv",
+    "label": "lemniscate, vel = 2",
+    "file": "merged_2021-02-05-16-14-20_seg_1.csv",
+    "crc32": 348813395,
+    "sha256": "49970ffc0a4de96ca75a5de168e3f1226ab322fd8001697349246970b73a06e9"
+  },
+  {
+    "flight": "2021-02-05-16-14-20",
+    "member": "processed_data/merged_2021-02-05-16-14-20_seg_2.csv",
+    "label": "lemniscate, vel = 2",
+    "file": "merged_2021-02-05-16-14-20_seg_2.csv",
+    "crc32": 1990375699,
+    "sha256": "b6df81954d04a72cd8166c16ff002ba9a2fa6a3ef83490a8bcb9af886c8ccab8"
+  },
+  {
+    "flight": "2021-02-05-16-16-00",
+    "member": "processed_data/merged_2021-02-05-16-16-00_seg_1.csv",
+    "label": "battery test 06, short circle",
+    "file": "merged_2021-02-05-16-16-00_seg_1.csv",
+    "crc32": 1357311178,
+    "sha256": "8af4b343c453218e2ce505ecd273f731cd449af4023217b04988fe260d8b80a6"
+  },
+  {
+    "flight": "2021-02-05-16-16-00",
+    "member": "processed_data/merged_2021-02-05-16-16-00_seg_2.csv",
+    "label": "battery test 06, short circle",
+    "file": "merged_2021-02-05-16-16-00_seg_2.csv",
+    "crc32": 1936635040,
+    "sha256": "35e6f2575f77f231e4f5e7617111b541b6cd6f8ec144b3c7f3a818364d40ad4b"
+  },
+  {
+    "flight": "2021-02-05-16-16-00",
+    "member": "processed_data/merged_2021-02-05-16-16-00_seg_3.csv",
+    "label": "battery test 06, short circle",
+    "file": "merged_2021-02-05-16-16-00_seg_3.csv",
+    "crc32": 170340107,
+    "sha256": "16bf0a016efd4f8025ff95b280beb4a7b0e1edc7813bd352687d8d046b7faf17"
+  },
+  {
+    "flight": "2021-02-05-16-19-10",
+    "member": "processed_data/merged_2021-02-05-16-19-10_seg_1.csv",
+    "label": "battery test 08, short circle",
+    "file": "merged_2021-02-05-16-19-10_seg_1.csv",
+    "crc32": 1257232721,
+    "sha256": "2d5da46b6723d3926f467bb76748f61290f015ba10fe337d90d0f6e243f9689d"
+  },
+  {
+    "flight": "2021-02-05-16-19-10",
+    "member": "processed_data/merged_2021-02-05-16-19-10_seg_2.csv",
+    "label": "battery test 08, short circle",
+    "file": "merged_2021-02-05-16-19-10_seg_2.csv",
+    "crc32": 1372033355,
+    "sha256": "4844d118431dc1d1281a4ac57bf6d425fde6d8039023bf417029133e2bedd0d9"
+  },
+  {
+    "flight": "2021-02-05-16-33-13",
+    "member": "processed_data/merged_2021-02-05-16-33-13_seg_1.csv",
+    "label": "battery test 09, short circle",
+    "file": "merged_2021-02-05-16-33-13_seg_1.csv",
+    "crc32": 1686550431,
+    "sha256": "09aa2bf6ede2005eb26f2c7b0e0b06e3e1b4a84b654814b9d5872d6c7eab554a"
+  },
+  {
+    "flight": "2021-02-05-16-33-13",
+    "member": "processed_data/merged_2021-02-05-16-33-13_seg_2.csv",
+    "label": "battery test 09, short circle",
+    "file": "merged_2021-02-05-16-33-13_seg_2.csv",
+    "crc32": 945690047,
+    "sha256": "ca26bd7f9ed4a6a56db508e5b021286290f4eb6d7b27eb15a6d5b4e1691c1a7f"
+  },
+  {
+    "flight": "2021-02-18-13-44-23",
+    "member": "processed_data/merged_2021-02-18-13-44-23_seg_1.csv",
+    "label": "3d circle, delta_z = 4, vel=2",
+    "file": "merged_2021-02-18-13-44-23_seg_1.csv",
+    "crc32": 1662474558,
+    "sha256": "d36d1877b3a491237f968e39179882363ed794c2e2a7b979776e0468d1e894a2"
+  },
+  {
+    "flight": "2021-02-18-13-44-23",
+    "member": "processed_data/merged_2021-02-18-13-44-23_seg_2.csv",
+    "label": "3d circle, delta_z = 4, vel=2",
+    "file": "merged_2021-02-18-13-44-23_seg_2.csv",
+    "crc32": 3202000661,
+    "sha256": "07ec70532b8865101e3cf52a93f4ee46166d84c9ae69241b0df7e7cdb83c95a9"
+  },
+  {
+    "flight": "2021-02-18-13-44-23",
+    "member": "processed_data/merged_2021-02-18-13-44-23_seg_3.csv",
+    "label": "3d circle, delta_z = 4, vel=2",
+    "file": "merged_2021-02-18-13-44-23_seg_3.csv",
+    "crc32": 2040238060,
+    "sha256": "0c04d8a3b8187b9a0e10c93d43b6ed5da0b6c2b72356eb436e2d1b366ec7d8de"
+  },
+  {
+    "flight": "2021-02-18-14-15-53",
+    "member": "processed_data/merged_2021-02-18-14-15-53_seg_1.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9",
+    "file": "merged_2021-02-18-14-15-53_seg_1.csv",
+    "crc32": 3846469117,
+    "sha256": "bb08cad6dc9d0259f051522824649d5f356bc320e8d8db18eb9c9083f90064ad"
+  },
+  {
+    "flight": "2021-02-18-14-15-53",
+    "member": "processed_data/merged_2021-02-18-14-15-53_seg_2.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9",
+    "file": "merged_2021-02-18-14-15-53_seg_2.csv",
+    "crc32": 3809478090,
+    "sha256": "116eb81db98a02589821a3cedaee9154274c538978a3aafd0606a076e2f3ce30"
+  },
+  {
+    "flight": "2021-02-18-15-47-24",
+    "member": "processed_data/merged_2021-02-18-15-47-24_seg_1.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9",
+    "file": "merged_2021-02-18-15-47-24_seg_1.csv",
+    "crc32": 396922243,
+    "sha256": "513d405fb4c5770ef1353486e2de4d4f36312f77e090efd930e0eb6bf560021b"
+  },
+  {
+    "flight": "2021-02-18-15-47-24",
+    "member": "processed_data/merged_2021-02-18-15-47-24_seg_2.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9",
+    "file": "merged_2021-02-18-15-47-24_seg_2.csv",
+    "crc32": 1853141091,
+    "sha256": "e2dea677cda7bc310db0ee51cb7865e90b31b849284bcc90b8783e79af980e67"
+  },
+  {
+    "flight": "2021-02-18-15-47-24",
+    "member": "processed_data/merged_2021-02-18-15-47-24_seg_3.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9",
+    "file": "merged_2021-02-18-15-47-24_seg_3.csv",
+    "crc32": 1742548093,
+    "sha256": "db325981155e59d2a6c4f993398f32349d0d0f6ad3ceb48c613b4d32d546c231"
+  },
+  {
+    "flight": "2021-02-18-16-08-00",
+    "member": "processed_data/merged_2021-02-18-16-08-00_seg_1.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9, ccw",
+    "file": "merged_2021-02-18-16-08-00_seg_1.csv",
+    "crc32": 3525287353,
+    "sha256": "2f4925f8cfdb008f445c10089900960bfe74c749723e864d8fca6585f8c4802b"
+  },
+  {
+    "flight": "2021-02-18-16-08-00",
+    "member": "processed_data/merged_2021-02-18-16-08-00_seg_2.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9, ccw",
+    "file": "merged_2021-02-18-16-08-00_seg_2.csv",
+    "crc32": 1195798347,
+    "sha256": "adbc1130f8d68d7414744e7e7db6eaa4624ef6b714b131bd34558c70de2e7f86"
+  },
+  {
+    "flight": "2021-02-18-16-08-00",
+    "member": "processed_data/merged_2021-02-18-16-08-00_seg_3.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9, ccw",
+    "file": "merged_2021-02-18-16-08-00_seg_3.csv",
+    "crc32": 2561488052,
+    "sha256": "08a4a8c109c2c840f9adcae541cff324b20665521c9b80b6ade1519dbeec8a00"
+  },
+  {
+    "flight": "2021-02-18-16-08-00",
+    "member": "processed_data/merged_2021-02-18-16-08-00_seg_4.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9, ccw",
+    "file": "merged_2021-02-18-16-08-00_seg_4.csv",
+    "crc32": 3361434059,
+    "sha256": "563ed61549ffe77ddcc753ee77aa93f0277b8e350904ef70e9f7592a1a5cb9a6"
+  },
+  {
+    "flight": "2021-02-18-16-31-30",
+    "member": "processed_data/merged_2021-02-18-16-31-30_seg_1.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9, ccw",
+    "file": "merged_2021-02-18-16-31-30_seg_1.csv",
+    "crc32": 1033548386,
+    "sha256": "36758c8dba35f75973b4318e54eee26e2a569df68d73de5e7de610cd20e8a218"
+  },
+  {
+    "flight": "2021-02-18-16-31-30",
+    "member": "processed_data/merged_2021-02-18-16-31-30_seg_2.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9, ccw",
+    "file": "merged_2021-02-18-16-31-30_seg_2.csv",
+    "crc32": 4126502502,
+    "sha256": "062c3fb0313b9e9a0f0229f23c5591c645b044f7073c15daa7979dd891432bfd"
+  },
+  {
+    "flight": "2021-02-18-16-31-30",
+    "member": "processed_data/merged_2021-02-18-16-31-30_seg_3.csv",
+    "label": "3d circle, delta_z = 4, vel=2.9, ccw",
+    "file": "merged_2021-02-18-16-31-30_seg_3.csv",
+    "crc32": 665633746,
+    "sha256": "e3adcbf5461df4ed3898dfe2ce7486296ec2d0fa9628c95f53f67f5a88ff3ee2"
+  },
+  {
+    "flight": "2021-02-18-17-03-20",
+    "member": "processed_data/merged_2021-02-18-17-03-20_seg_1.csv",
+    "label": "lemniscate, vel = 1",
+    "file": "merged_2021-02-18-17-03-20_seg_1.csv",
+    "crc32": 2268272441,
+    "sha256": "53a8c04469913cc6af36a2b9c6a44711bfa49dcfe62bf7255261154b0a18385d"
+  },
+  {
+    "flight": "2021-02-18-17-03-20",
+    "member": "processed_data/merged_2021-02-18-17-03-20_seg_2.csv",
+    "label": "lemniscate, vel = 1",
+    "file": "merged_2021-02-18-17-03-20_seg_2.csv",
+    "crc32": 2285676975,
+    "sha256": "2a0c3d172edbec0d606af101590ab77f621ac52f2b498bda4171dc462044fa7f"
+  },
+  {
+    "flight": "2021-02-18-17-05-14",
+    "member": "processed_data/merged_2021-02-18-17-05-14_seg_1.csv",
+    "label": "lemniscate, vel = 1.5",
+    "file": "merged_2021-02-18-17-05-14_seg_1.csv",
+    "crc32": 94026208,
+    "sha256": "24eb09ce5425457b0474d49a88309beee5bc87a7330092867018fba6b900ab8f"
+  },
+  {
+    "flight": "2021-02-18-17-05-14",
+    "member": "processed_data/merged_2021-02-18-17-05-14_seg_2.csv",
+    "label": "lemniscate, vel = 1.5",
+    "file": "merged_2021-02-18-17-05-14_seg_2.csv",
+    "crc32": 2636406816,
+    "sha256": "1847658cc472d2948c6ea2922c47c8da80d1e4e15fca9c7d6533aaca472c8ad0"
+  },
+  {
+    "flight": "2021-02-18-17-05-14",
+    "member": "processed_data/merged_2021-02-18-17-05-14_seg_3.csv",
+    "label": "lemniscate, vel = 1.5",
+    "file": "merged_2021-02-18-17-05-14_seg_3.csv",
+    "crc32": 2874967650,
+    "sha256": "3d64805ebbcb2b57245498bfa0247e719abafdb58d52010396010f2557b5b84d"
+  },
+  {
+    "flight": "2021-02-18-17-05-14",
+    "member": "processed_data/merged_2021-02-18-17-05-14_seg_4.csv",
+    "label": "lemniscate, vel = 1.5",
+    "file": "merged_2021-02-18-17-05-14_seg_4.csv",
+    "crc32": 967567218,
+    "sha256": "ffdb207b3df695bb61b2fcb3771ef02f63618b7aae50173926fb5a40dc011fe2"
+  },
+  {
+    "flight": "2021-02-18-17-06-27",
+    "member": "processed_data/merged_2021-02-18-17-06-27_seg_1.csv",
+    "label": "lemniscate, vel = 1.5",
+    "file": "merged_2021-02-18-17-06-27_seg_1.csv",
+    "crc32": 2489796648,
+    "sha256": "b8d78c52536d27e06cf2a61781d3602472b5d2c006cf825b94cc6ac69a3eb47f"
+  },
+  {
+    "flight": "2021-02-18-17-09-50",
+    "member": "processed_data/merged_2021-02-18-17-09-50_seg_1.csv",
+    "label": "lemniscate, vel = 2",
+    "file": "merged_2021-02-18-17-09-50_seg_1.csv",
+    "crc32": 3078668383,
+    "sha256": "da89fce74d8cc140a018e6e706593980719dfc54e6e6836519056b82cb9287e5"
+  },
+  {
+    "flight": "2021-02-18-17-12-03",
+    "member": "processed_data/merged_2021-02-18-17-12-03_seg_1.csv",
+    "label": "lemniscate, vel = 1.75",
+    "file": "merged_2021-02-18-17-12-03_seg_1.csv",
+    "crc32": 604726251,
+    "sha256": "6148ef6f4054f604eafe695d72787f212b2062e32b52c6318a1de0c89b584fed"
+  },
+  {
+    "flight": "2021-02-18-17-42-11",
+    "member": "processed_data/merged_2021-02-18-17-42-11_seg_1.csv",
+    "label": "3d circle ccw, radius = 3, vel = 3.25",
+    "file": "merged_2021-02-18-17-42-11_seg_1.csv",
+    "crc32": 30508184,
+    "sha256": "93c0b579b5b2508827ed8ec8c550d0079b52d2b5e3432510a64a22833d3e7d6b"
+  },
+  {
+    "flight": "2021-02-18-17-42-11",
+    "member": "processed_data/merged_2021-02-18-17-42-11_seg_2.csv",
+    "label": "3d circle ccw, radius = 3, vel = 3.25",
+    "file": "merged_2021-02-18-17-42-11_seg_2.csv",
+    "crc32": 1041060079,
+    "sha256": "f2747c5333a19a671df22e73ca9fe17140ba1f8e6cf43e67b46dd346361a3d7e"
+  },
+  {
+    "flight": "2021-02-18-17-42-11",
+    "member": "processed_data/merged_2021-02-18-17-42-11_seg_3.csv",
+    "label": "3d circle ccw, radius = 3, vel = 3.25",
+    "file": "merged_2021-02-18-17-42-11_seg_3.csv",
+    "crc32": 999812830,
+    "sha256": "bb1e6dccae2a8c5f60cc69efa6d7be6dd5c9b45d99142017e534bc56356f675e"
+  },
+  {
+    "flight": "2021-02-18-17-44-17",
+    "member": "processed_data/merged_2021-02-18-17-44-17_seg_1.csv",
+    "label": "3d circle, radius = 3, vel = 3.25",
+    "file": "merged_2021-02-18-17-44-17_seg_1.csv",
+    "crc32": 1801699814,
+    "sha256": "8306965c2dfc022880625eaf6ea7951683c49251caf6af72bfaf967d6d6e140f"
+  },
+  {
+    "flight": "2021-02-18-17-47-42",
+    "member": "processed_data/merged_2021-02-18-17-47-42_seg_1.csv",
+    "label": "3d circle ccw, radius = 3.5, vel = 3.25",
+    "file": "merged_2021-02-18-17-47-42_seg_1.csv",
+    "crc32": 3252507347,
+    "sha256": "50938b30ed3625539c8a6c97d92598d13d65b8ac1a9315548de35b11973ff569"
+  },
+  {
+    "flight": "2021-02-18-17-48-50",
+    "member": "processed_data/merged_2021-02-18-17-48-50_seg_1.csv",
+    "label": "3d circle, radius = 3.5, vel = 3.25",
+    "file": "merged_2021-02-18-17-48-50_seg_1.csv",
+    "crc32": 3531857231,
+    "sha256": "7b202325119f3b9891ab7447657942df88a6b8e2b6f50c2f1b618513213b48a6"
+  },
+  {
+    "flight": "2021-02-18-17-48-50",
+    "member": "processed_data/merged_2021-02-18-17-48-50_seg_2.csv",
+    "label": "3d circle, radius = 3.5, vel = 3.25",
+    "file": "merged_2021-02-18-17-48-50_seg_2.csv",
+    "crc32": 1375934038,
+    "sha256": "2046982f8d2b9e6983389619d1badd6a674f8253042fe332c4272dff6570a8c1"
+  },
+  {
+    "flight": "2021-02-18-17-48-50",
+    "member": "processed_data/merged_2021-02-18-17-48-50_seg_3.csv",
+    "label": "3d circle, radius = 3.5, vel = 3.25",
+    "file": "merged_2021-02-18-17-48-50_seg_3.csv",
+    "crc32": 3557919409,
+    "sha256": "482ef47b2c319d65a579649c8cb99da092982118d076fc3174a6ed3d287d0b01"
+  },
+  {
+    "flight": "2021-02-18-18-02-03",
+    "member": "processed_data/merged_2021-02-18-18-02-03_seg_1.csv",
+    "label": "3d circle ccw, radius = 4, vel = 3",
+    "file": "merged_2021-02-18-18-02-03_seg_1.csv",
+    "crc32": 1036418121,
+    "sha256": "8e6d6beb9945195a73b4859e921cdbcb1638cf6c3f13679e8de6e61a0f41b090"
+  },
+  {
+    "flight": "2021-02-18-18-03-06",
+    "member": "processed_data/merged_2021-02-18-18-03-06_seg_1.csv",
+    "label": "3d circle, radius = 4, vel = 3",
+    "file": "merged_2021-02-18-18-03-06_seg_1.csv",
+    "crc32": 1979447459,
+    "sha256": "09203c177dc87144d211ccd6547b78561ae130ea31c2ba750b08014c0ff964c9"
+  },
+  {
+    "flight": "2021-02-18-18-03-06",
+    "member": "processed_data/merged_2021-02-18-18-03-06_seg_2.csv",
+    "label": "3d circle, radius = 4, vel = 3",
+    "file": "merged_2021-02-18-18-03-06_seg_2.csv",
+    "crc32": 3390945898,
+    "sha256": "fc189095f2906e1c12fc1974b0b5dc0c2df68cfa7bcfc0a80f7fde503b4f6a18"
+  },
+  {
+    "flight": "2021-02-18-18-08-45",
+    "member": "processed_data/merged_2021-02-18-18-08-45_seg_1.csv",
+    "label": "3d circle ccw, radius = 4.5, vel = 2.75",
+    "file": "merged_2021-02-18-18-08-45_seg_1.csv",
+    "crc32": 4214330694,
+    "sha256": "22c2218014873b1dbd9944fae05ebe00a44decaf6f01021372f99faec7bf1805"
+  },
+  {
+    "flight": "2021-02-18-18-09-47",
+    "member": "processed_data/merged_2021-02-18-18-09-47_seg_1.csv",
+    "label": "3d circle, radius = 4.5, vel = 2.75",
+    "file": "merged_2021-02-18-18-09-47_seg_1.csv",
+    "crc32": 2858416415,
+    "sha256": "11ed4c47c096fff85a040be5d70f3526a64783a2d8ee6503ff057e8929e2a3ff"
+  },
+  {
+    "flight": "2021-02-23-10-43-02",
+    "member": "processed_data/merged_2021-02-23-10-43-02_seg_1.csv",
+    "label": "lemniscate, vel = 0.35, r=7.5m, ccw, full battery",
+    "file": "merged_2021-02-23-10-43-02_seg_1.csv",
+    "crc32": 3672195363,
+    "sha256": "971a45adfaa6745875425115d78512e2e7e73c1a0dd58318fe79252943b1adc1"
+  },
+  {
+    "flight": "2021-02-23-10-43-02",
+    "member": "processed_data/merged_2021-02-23-10-43-02_seg_2.csv",
+    "label": "lemniscate, vel = 0.35, r=7.5m, ccw, full battery",
+    "file": "merged_2021-02-23-10-43-02_seg_2.csv",
+    "crc32": 4210347582,
+    "sha256": "bd18b169bb50de24dd7a9cd142f81bb266182f90743266121f3989f00e5ccbc3"
+  },
+  {
+    "flight": "2021-02-23-10-43-02",
+    "member": "processed_data/merged_2021-02-23-10-43-02_seg_3.csv",
+    "label": "lemniscate, vel = 0.35, r=7.5m, ccw, full battery",
+    "file": "merged_2021-02-23-10-43-02_seg_3.csv",
+    "crc32": 3647569837,
+    "sha256": "db85e93b21bc7926eccde2db9af79aa021da590f2a4a1b0ed3a02746436be87c"
+  },
+  {
+    "flight": "2021-02-23-10-43-02",
+    "member": "processed_data/merged_2021-02-23-10-43-02_seg_4.csv",
+    "label": "lemniscate, vel = 0.35, r=7.5m, ccw, full battery",
+    "file": "merged_2021-02-23-10-43-02_seg_4.csv",
+    "crc32": 2836128071,
+    "sha256": "e43b20f8955de22ae68cbad6857b36750712ef0f7270f6153296c3a132bf43d5"
+  },
+  {
+    "flight": "2021-02-23-10-48-03",
+    "member": "processed_data/merged_2021-02-23-10-48-03_seg_1.csv",
+    "label": "lemniscate, vel = 0.35, r=7.5m, full battery",
+    "file": "merged_2021-02-23-10-48-03_seg_1.csv",
+    "crc32": 3329927975,
+    "sha256": "199cf0ba24c4a7c3c40e7b32e8e447d42d04847c0d555d45e7c00d6f42a5a83a"
+  },
+  {
+    "flight": "2021-02-23-10-48-03",
+    "member": "processed_data/merged_2021-02-23-10-48-03_seg_2.csv",
+    "label": "lemniscate, vel = 0.35, r=7.5m, full battery",
+    "file": "merged_2021-02-23-10-48-03_seg_2.csv",
+    "crc32": 851262437,
+    "sha256": "1f225d075e1402d00825710eb5681b4df8d1d8a8fc1f7ad3255a6e371c2f9695"
+  },
+  {
+    "flight": "2021-02-23-10-48-03",
+    "member": "processed_data/merged_2021-02-23-10-48-03_seg_3.csv",
+    "label": "lemniscate, vel = 0.35, r=7.5m, full battery",
+    "file": "merged_2021-02-23-10-48-03_seg_3.csv",
+    "crc32": 1751218137,
+    "sha256": "abf70143b2775e1ac0025f7d064c72f7dcfda19c002d368b2bd4e0c92c3a3239"
+  },
+  {
+    "flight": "2021-02-23-10-50-42",
+    "member": "processed_data/merged_2021-02-23-10-50-42_seg_1.csv",
+    "label": "lemniscate, vel = 1.0, r=7.5m, ccw",
+    "file": "merged_2021-02-23-10-50-42_seg_1.csv",
+    "crc32": 3331177960,
+    "sha256": "54987995a367e891688d57a0f82fb409ca289288d7609d4888e18450f6979ce2"
+  },
+  {
+    "flight": "2021-02-23-10-50-42",
+    "member": "processed_data/merged_2021-02-23-10-50-42_seg_2.csv",
+    "label": "lemniscate, vel = 1.0, r=7.5m, ccw",
+    "file": "merged_2021-02-23-10-50-42_seg_2.csv",
+    "crc32": 419839988,
+    "sha256": "32a33e5ca977dd5d0ad14a60aa260aa768eb8bf60b0e2f2bde4466ff234c3028"
+  },
+  {
+    "flight": "2021-02-23-10-52-00",
+    "member": "processed_data/merged_2021-02-23-10-52-00_seg_1.csv",
+    "label": "lemniscate, vel = 1.0, r=7.5m,",
+    "file": "merged_2021-02-23-10-52-00_seg_1.csv",
+    "crc32": 3996445697,
+    "sha256": "d3c7a080ef0efdd4fb9c8f11318116ad72a3842ad21d90d668b1ee5b7188062a"
+  },
+  {
+    "flight": "2021-02-23-10-52-00",
+    "member": "processed_data/merged_2021-02-23-10-52-00_seg_2.csv",
+    "label": "lemniscate, vel = 1.0, r=7.5m,",
+    "file": "merged_2021-02-23-10-52-00_seg_2.csv",
+    "crc32": 2996602211,
+    "sha256": "49ce15e4075eb7ec78020e9edef7e9c6bfa134bc98a5cff0c32623ccc302146a"
+  },
+  {
+    "flight": "2021-02-23-11-31-23",
+    "member": "processed_data/merged_2021-02-23-11-31-23_seg_1.csv",
+    "label": "random points 1, slow",
+    "file": "merged_2021-02-23-11-31-23_seg_1.csv",
+    "crc32": 2027782510,
+    "sha256": "2508e3fc6cb767f5ac4a60bf8ab78b36606221053176e41a8e0fe6b4a8341dee"
+  },
+  {
+    "flight": "2021-02-23-11-31-23",
+    "member": "processed_data/merged_2021-02-23-11-31-23_seg_2.csv",
+    "label": "random points 1, slow",
+    "file": "merged_2021-02-23-11-31-23_seg_2.csv",
+    "crc32": 2878614002,
+    "sha256": "8d4a1c0231d760196c27855631725a3c1f6b2adb1fe1ce8e94a7236769d10a04"
+  },
+  {
+    "flight": "2021-02-23-11-31-23",
+    "member": "processed_data/merged_2021-02-23-11-31-23_seg_3.csv",
+    "label": "random points 1, slow",
+    "file": "merged_2021-02-23-11-31-23_seg_3.csv",
+    "crc32": 2091116533,
+    "sha256": "fc6bfdc4f38100fd6aea43aaf8aef4a4f64412cba354c96f75730a75ca20d0e5"
+  },
+  {
+    "flight": "2021-02-23-11-31-23",
+    "member": "processed_data/merged_2021-02-23-11-31-23_seg_4.csv",
+    "label": "random points 1, slow",
+    "file": "merged_2021-02-23-11-31-23_seg_4.csv",
+    "crc32": 1246191738,
+    "sha256": "5d746d7755fc7864319f6fdbd10ef815195bcd9eb3e9c578179c68cc4488810a"
+  },
+  {
+    "flight": "2021-02-23-14-21-48",
+    "member": "processed_data/merged_2021-02-23-14-21-48_seg_1.csv",
+    "label": "lemniscate, vel = 1.4, r=7.5m, ccw, full battery",
+    "file": "merged_2021-02-23-14-21-48_seg_1.csv",
+    "crc32": 3120110671,
+    "sha256": "434a20739f7683c42890e998ec1b12b19aea874e49ce7b1091c9b95da1edd005"
+  },
+  {
+    "flight": "2021-02-23-14-21-48",
+    "member": "processed_data/merged_2021-02-23-14-21-48_seg_2.csv",
+    "label": "lemniscate, vel = 1.4, r=7.5m, ccw, full battery",
+    "file": "merged_2021-02-23-14-21-48_seg_2.csv",
+    "crc32": 2259225542,
+    "sha256": "f23155484c2977ec896072a78cfb54177d46a3ec1dee8204f9cb87b77f7f0bdb"
+  },
+  {
+    "flight": "2021-02-23-14-21-48",
+    "member": "processed_data/merged_2021-02-23-14-21-48_seg_3.csv",
+    "label": "lemniscate, vel = 1.4, r=7.5m, ccw, full battery",
+    "file": "merged_2021-02-23-14-21-48_seg_3.csv",
+    "crc32": 825835442,
+    "sha256": "705ca398351876094b3807f1b0d55f037949c0b498ba8cd4c8c444faeb840219"
+  },
+  {
+    "flight": "2021-02-23-14-24-07",
+    "member": "processed_data/merged_2021-02-23-14-24-07_seg_1.csv",
+    "label": "lemniscate, vel = 1.4, r=7.5m,",
+    "file": "merged_2021-02-23-14-24-07_seg_1.csv",
+    "crc32": 389577649,
+    "sha256": "b0ea486cfe39b96b89a7671792763b712809a2594c9d1f37ba880f356f2228c7"
+  },
+  {
+    "flight": "2021-02-23-14-29-48",
+    "member": "processed_data/merged_2021-02-23-14-29-48_seg_1.csv",
+    "label": "lemniscate, vel = 1.6, r=7.5m, ccw, full battery, 20s",
+    "file": "merged_2021-02-23-14-29-48_seg_1.csv",
+    "crc32": 3574566050,
+    "sha256": "e1ac308b4d3c1e9389b460d8d1715c9bc59bbf8a48289d7415cad8e873bccb88"
+  },
+  {
+    "flight": "2021-02-23-14-29-48",
+    "member": "processed_data/merged_2021-02-23-14-29-48_seg_2.csv",
+    "label": "lemniscate, vel = 1.6, r=7.5m, ccw, full battery, 20s",
+    "file": "merged_2021-02-23-14-29-48_seg_2.csv",
+    "crc32": 2160022638,
+    "sha256": "aff0e040928441ff804fee6a133039d7563b337bed4a1e36dea7a480ed074401"
+  },
+  {
+    "flight": "2021-02-23-14-33-04",
+    "member": "processed_data/merged_2021-02-23-14-33-04_seg_1.csv",
+    "label": "lemniscate, vel = 1.6, r=7.5m, 20s",
+    "file": "merged_2021-02-23-14-33-04_seg_1.csv",
+    "crc32": 4098792044,
+    "sha256": "d86b471727e29b65e0077e794fabaf9007084b00ccd90735e03faa10c41e286c"
+  },
+  {
+    "flight": "2021-02-23-14-33-04",
+    "member": "processed_data/merged_2021-02-23-14-33-04_seg_2.csv",
+    "label": "lemniscate, vel = 1.6, r=7.5m, 20s",
+    "file": "merged_2021-02-23-14-33-04_seg_2.csv",
+    "crc32": 973533584,
+    "sha256": "8dd36b9fa97fc64db10257ce96dbc556edc223aeaa6c7d3059fa9fc8517f9127"
+  },
+  {
+    "flight": "2021-02-23-14-41-07",
+    "member": "processed_data/merged_2021-02-23-14-41-07_seg_1.csv",
+    "label": "lemniscate, vel = 1.7, r=7.5m, ccw, full battery, 20s",
+    "file": "merged_2021-02-23-14-41-07_seg_1.csv",
+    "crc32": 2333441101,
+    "sha256": "7c2087f71a3f248d95f53559c73fd6e6b89d82cfd8d34302f9410530e59a6b4a"
+  },
+  {
+    "flight": "2021-02-23-14-41-07",
+    "member": "processed_data/merged_2021-02-23-14-41-07_seg_2.csv",
+    "label": "lemniscate, vel = 1.7, r=7.5m, ccw, full battery, 20s",
+    "file": "merged_2021-02-23-14-41-07_seg_2.csv",
+    "crc32": 4154908781,
+    "sha256": "5fc37ced1cd7087da5cc6605987ac82ec31bf9da48b8a64949f4668ee9b36d3f"
+  },
+  {
+    "flight": "2021-02-23-14-41-07",
+    "member": "processed_data/merged_2021-02-23-14-41-07_seg_3.csv",
+    "label": "lemniscate, vel = 1.7, r=7.5m, ccw, full battery, 20s",
+    "file": "merged_2021-02-23-14-41-07_seg_3.csv",
+    "crc32": 1660153095,
+    "sha256": "9e212308aac745c7463a3170a39739cc20c8c5c05fcccb38234bb92e60fb897f"
+  },
+  {
+    "flight": "2021-02-23-17-27-24",
+    "member": "processed_data/merged_2021-02-23-17-27-24_seg_1.csv",
+    "label": "lemniscate, vel = 1.6, r>7.5m, ccw, full battery, 20s",
+    "file": "merged_2021-02-23-17-27-24_seg_1.csv",
+    "crc32": 2890051082,
+    "sha256": "06cad5e1b5ae2a4c359292dd658659db0beae5bd10ba05887049a50d1a728ad0"
+  },
+  {
+    "flight": "2021-02-23-17-27-24",
+    "member": "processed_data/merged_2021-02-23-17-27-24_seg_2.csv",
+    "label": "lemniscate, vel = 1.6, r>7.5m, ccw, full battery, 20s",
+    "file": "merged_2021-02-23-17-27-24_seg_2.csv",
+    "crc32": 666567778,
+    "sha256": "001cff6f1193f565d3c23f3639ef7d0e0ace57d3f11490980d006e1ab62c5435"
+  },
+  {
+    "flight": "2021-02-23-17-27-24",
+    "member": "processed_data/merged_2021-02-23-17-27-24_seg_3.csv",
+    "label": "lemniscate, vel = 1.6, r>7.5m, ccw, full battery, 20s",
+    "file": "merged_2021-02-23-17-27-24_seg_3.csv",
+    "crc32": 2486067008,
+    "sha256": "57581adaa15fc30a2190d68504806bdea87961ddaf41452de930a45e66a0d774"
+  },
+  {
+    "flight": "2021-02-23-17-35-26",
+    "member": "processed_data/merged_2021-02-23-17-35-26_seg_1.csv",
+    "label": "lemniscate, vel = 1.6, r>7.5m, full battery, 20s",
+    "file": "merged_2021-02-23-17-35-26_seg_1.csv",
+    "crc32": 652824973,
+    "sha256": "ead4a3ce60cedd5b4dc606c9d14305f50ecc0cebd078a4299b2a47d290b749c1"
+  },
+  {
+    "flight": "2021-02-23-17-45-47",
+    "member": "processed_data/merged_2021-02-23-17-45-47_seg_1.csv",
+    "label": "random points 2, full battery",
+    "file": "merged_2021-02-23-17-45-47_seg_1.csv",
+    "crc32": 3780997815,
+    "sha256": "125160f5e847b2602ae2e6f038694c70c3393701a7052f713d81c0df38333eee"
+  },
+  {
+    "flight": "2021-02-23-17-45-47",
+    "member": "processed_data/merged_2021-02-23-17-45-47_seg_2.csv",
+    "label": "random points 2, full battery",
+    "file": "merged_2021-02-23-17-45-47_seg_2.csv",
+    "crc32": 2131957767,
+    "sha256": "1216fc17a618f8920c225794d6461af2f0277fdc0edbf533f479236031ce85e0"
+  },
+  {
+    "flight": "2021-02-23-17-45-47",
+    "member": "processed_data/merged_2021-02-23-17-45-47_seg_3.csv",
+    "label": "random points 2, full battery",
+    "file": "merged_2021-02-23-17-45-47_seg_3.csv",
+    "crc32": 3314824965,
+    "sha256": "61fb2f8979803f8c6a019d7f581eb165fd5fbbfab8af0f277947fa4bf75fff86"
+  },
+  {
+    "flight": "2021-02-23-18-38-21",
+    "member": "processed_data/merged_2021-02-23-18-38-21_seg_1.csv",
+    "label": "random points 3, 80s",
+    "file": "merged_2021-02-23-18-38-21_seg_1.csv",
+    "crc32": 335145793,
+    "sha256": "ef064988d5454d931b976d6eb3e1ceb0abad18b7ff9623957e1907c21981a6b2"
+  },
+  {
+    "flight": "2021-02-23-18-38-21",
+    "member": "processed_data/merged_2021-02-23-18-38-21_seg_2.csv",
+    "label": "random points 3, 80s",
+    "file": "merged_2021-02-23-18-38-21_seg_2.csv",
+    "crc32": 173420083,
+    "sha256": "011c8c393005cb7f73b398602053f6299f3332c3b34127163632a15becc63fb3"
+  },
+  {
+    "flight": "2021-02-23-18-38-21",
+    "member": "processed_data/merged_2021-02-23-18-38-21_seg_3.csv",
+    "label": "random points 3, 80s",
+    "file": "merged_2021-02-23-18-38-21_seg_3.csv",
+    "crc32": 2170369271,
+    "sha256": "b7e22e0dd372b109882a23aaaa6ae6f2032801a33320382b01e77fc1f46e68bb"
+  },
+  {
+    "flight": "2021-02-23-18-43-00",
+    "member": "processed_data/merged_2021-02-23-18-43-00_seg_1.csv",
+    "label": "random points 4, 100s",
+    "file": "merged_2021-02-23-18-43-00_seg_1.csv",
+    "crc32": 387342524,
+    "sha256": "5c27b5a67ead689370d07a811e5c99e6e891c9c1b5d90f0272cdefedc5f51229"
+  },
+  {
+    "flight": "2021-02-23-18-43-00",
+    "member": "processed_data/merged_2021-02-23-18-43-00_seg_2.csv",
+    "label": "random points 4, 100s",
+    "file": "merged_2021-02-23-18-43-00_seg_2.csv",
+    "crc32": 1911429462,
+    "sha256": "d386d0ee7b5e41ccab81d76e5a6c1afbd1f9aa8a733acba7ae70475f42a8531c"
+  },
+  {
+    "flight": "2021-02-23-18-50-03",
+    "member": "processed_data/merged_2021-02-23-18-50-03_seg_1.csv",
+    "label": "random points 5, 120s",
+    "file": "merged_2021-02-23-18-50-03_seg_1.csv",
+    "crc32": 3663714729,
+    "sha256": "7dbb0c8ed01d5607af9161ef8426309368c9117b8ec91824b9e9da67f0f46c3c"
+  },
+  {
+    "flight": "2021-02-23-18-50-03",
+    "member": "processed_data/merged_2021-02-23-18-50-03_seg_2.csv",
+    "label": "random points 5, 120s",
+    "file": "merged_2021-02-23-18-50-03_seg_2.csv",
+    "crc32": 942026808,
+    "sha256": "9a6a300bab37d4bc08f2463baa406dfbb7b2fe7e94d15b0ce578f0a6223ca33d"
+  },
+  {
+    "flight": "2021-02-23-18-50-03",
+    "member": "processed_data/merged_2021-02-23-18-50-03_seg_3.csv",
+    "label": "random points 5, 120s",
+    "file": "merged_2021-02-23-18-50-03_seg_3.csv",
+    "crc32": 2862890822,
+    "sha256": "70d5de8da81ea2e63f9b3216362b47b540a9f440105f3d135b843ea7ed3e2eb3"
+  },
+  {
+    "flight": "2021-02-23-18-50-03",
+    "member": "processed_data/merged_2021-02-23-18-50-03_seg_4.csv",
+    "label": "random points 5, 120s",
+    "file": "merged_2021-02-23-18-50-03_seg_4.csv",
+    "crc32": 2467256591,
+    "sha256": "01755b7f3b7642fea9c1f06b45bedb2b35d539074557b213131d4e887b449e3e"
+  },
+  {
+    "flight": "2021-02-23-19-04-50",
+    "member": "processed_data/merged_2021-02-23-19-04-50_seg_1.csv",
+    "label": "random points 6, 120s",
+    "file": "merged_2021-02-23-19-04-50_seg_1.csv",
+    "crc32": 634291309,
+    "sha256": "8a177383d3d6d2b8bb123ba109f1fd3524422c331bf51753c636ea8467fd31ff"
+  },
+  {
+    "flight": "2021-02-23-19-04-50",
+    "member": "processed_data/merged_2021-02-23-19-04-50_seg_2.csv",
+    "label": "random points 6, 120s",
+    "file": "merged_2021-02-23-19-04-50_seg_2.csv",
+    "crc32": 1469188932,
+    "sha256": "c199bce193d76e2814e0b555e932f69a959be47cd993de4633036f1e0b348db4"
+  },
+  {
+    "flight": "2021-02-23-19-04-50",
+    "member": "processed_data/merged_2021-02-23-19-04-50_seg_3.csv",
+    "label": "random points 6, 120s",
+    "file": "merged_2021-02-23-19-04-50_seg_3.csv",
+    "crc32": 3981189121,
+    "sha256": "370395f108c499fc783a12484f0b0ba406ac16b834c764047b80435654b72b96"
+  },
+  {
+    "flight": "2021-02-23-19-15-11",
+    "member": "processed_data/merged_2021-02-23-19-15-11_seg_1.csv",
+    "label": "random points 7, 120s, battery moved",
+    "file": "merged_2021-02-23-19-15-11_seg_1.csv",
+    "crc32": 3964198835,
+    "sha256": "e6825bc4946c5d71397004ba6937c6c36ae7d9cac7fb0aed6fdbbd8292c21b2e"
+  },
+  {
+    "flight": "2021-02-23-19-15-11",
+    "member": "processed_data/merged_2021-02-23-19-15-11_seg_2.csv",
+    "label": "random points 7, 120s, battery moved",
+    "file": "merged_2021-02-23-19-15-11_seg_2.csv",
+    "crc32": 728894896,
+    "sha256": "3863f82f873c2d7af004c18797d915f5aa5d559eddb8d8f7b650d8bd50139be4"
+  },
+  {
+    "flight": "2021-02-23-19-15-11",
+    "member": "processed_data/merged_2021-02-23-19-15-11_seg_3.csv",
+    "label": "random points 7, 120s, battery moved",
+    "file": "merged_2021-02-23-19-15-11_seg_3.csv",
+    "crc32": 155289533,
+    "sha256": "719f6c49a07c91c02c6ce1822803c9d648d973048b0b6ecde694d9c5b4a47089"
+  },
+  {
+    "flight": "2021-02-23-22-03-52",
+    "member": "processed_data/merged_2021-02-23-22-03-52_seg_1.csv",
+    "label": "random points 7, 120s",
+    "file": "merged_2021-02-23-22-03-52_seg_1.csv",
+    "crc32": 444186764,
+    "sha256": "2adf9c448ba3adf4335bbbffe6eefc08e0669509dff704db1fca047246864ef1"
+  },
+  {
+    "flight": "2021-02-23-22-03-52",
+    "member": "processed_data/merged_2021-02-23-22-03-52_seg_2.csv",
+    "label": "random points 7, 120s",
+    "file": "merged_2021-02-23-22-03-52_seg_2.csv",
+    "crc32": 357413142,
+    "sha256": "893986038079b1658807b5916b23fe070dd8263e4a20708504fd1e63aca24066"
+  },
+  {
+    "flight": "2021-02-23-22-03-52",
+    "member": "processed_data/merged_2021-02-23-22-03-52_seg_3.csv",
+    "label": "random points 7, 120s",
+    "file": "merged_2021-02-23-22-03-52_seg_3.csv",
+    "crc32": 147712897,
+    "sha256": "7d11a298e5ebca5ddb8e855361e69c4c2d71a87132b7353c116a722b3d7e8423"
+  },
+  {
+    "flight": "2021-02-23-22-26-25",
+    "member": "processed_data/merged_2021-02-23-22-26-25_seg_1.csv",
+    "label": "random points 8, 120s",
+    "file": "merged_2021-02-23-22-26-25_seg_1.csv",
+    "crc32": 1984289643,
+    "sha256": "85d64a33a9943f17f52dcb3a8bb1e84e3b7b6be7fc3978b0bc8cac5b70992fa8"
+  },
+  {
+    "flight": "2021-02-23-22-26-25",
+    "member": "processed_data/merged_2021-02-23-22-26-25_seg_2.csv",
+    "label": "random points 8, 120s",
+    "file": "merged_2021-02-23-22-26-25_seg_2.csv",
+    "crc32": 2714722727,
+    "sha256": "afc5ab9021ad12ab216d1f98e59b79265e295dc06349d9d37a6723d568e612dd"
+  },
+  {
+    "flight": "2021-02-23-22-26-25",
+    "member": "processed_data/merged_2021-02-23-22-26-25_seg_3.csv",
+    "label": "random points 8, 120s",
+    "file": "merged_2021-02-23-22-26-25_seg_3.csv",
+    "crc32": 3479887287,
+    "sha256": "908628c4b0d68bec755627953eccca090c7b24eb55d7fad6b62af10a0172f98a"
+  },
+  {
+    "flight": "2021-02-23-22-33-54",
+    "member": "processed_data/merged_2021-02-23-22-33-54_seg_1.csv",
+    "label": "random points 9, 120s",
+    "file": "merged_2021-02-23-22-33-54_seg_1.csv",
+    "crc32": 2899152384,
+    "sha256": "569d779a653fb04f3999fda9327ef5f3fad3c94e8acdb589b82bfe826babfd7e"
+  },
+  {
+    "flight": "2021-02-23-22-33-54",
+    "member": "processed_data/merged_2021-02-23-22-33-54_seg_2.csv",
+    "label": "random points 9, 120s",
+    "file": "merged_2021-02-23-22-33-54_seg_2.csv",
+    "crc32": 1666252385,
+    "sha256": "2ec6ac02f324d43286b1f22bde0abcbf254e5487dd83f50afae90fd32f8c9fd5"
+  },
+  {
+    "flight": "2021-02-23-22-33-54",
+    "member": "processed_data/merged_2021-02-23-22-33-54_seg_3.csv",
+    "label": "random points 9, 120s",
+    "file": "merged_2021-02-23-22-33-54_seg_3.csv",
+    "crc32": 3081513669,
+    "sha256": "df2877385384be2526c8092b67ef31020e5560ba48b930459a059e8a7bdb8066"
+  },
+  {
+    "flight": "2021-02-23-22-33-54",
+    "member": "processed_data/merged_2021-02-23-22-33-54_seg_4.csv",
+    "label": "random points 9, 120s",
+    "file": "merged_2021-02-23-22-33-54_seg_4.csv",
+    "crc32": 465598782,
+    "sha256": "80c3c632ff192d1e64ddbf3a96d4b6ac9c408cb3391c9091b1a8f5ff69168156"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "kind": "historical replay",
+  "arm": "G1",
+  "world": 0,
+  "scale": 0.45,
+  "status": "FAIL",
+  "complete_episodes": 1,
+  "elapsed_s": 20.22105942199414,
+  "expected_events": 848,
+  "matched_events": 848,
+  "ledger_seconds_delta": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "physical_hash_match": false,
+  "expected_world": "2d6ee19463199066323fb21187748993544e8ad5eff1f6d3eb294225dcdd4752",
+  "actual_world": "f9f7820120b954f11ef3b89d9aec5313bcc588f25e907cf5be5fe41a2c421223",
+  "verification": "/data/coding/g1-original-20261127/recovery_01/anchor_g1/verification.json",
+  "comparison": "/data/coding/g1-original-20261127/recovery_01/anchor_g1/full_ledger_audit.json",
+  "actual_path": "/data/coding/g1-original-20261127/recovery_01/anchor_g1/run_confirm_0_G1_0.45.json"
+}

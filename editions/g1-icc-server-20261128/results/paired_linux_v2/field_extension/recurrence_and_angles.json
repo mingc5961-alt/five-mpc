@@ -1,0 +1,2681 @@
+{
+  "rule": "maximum same-direction near-position match across constant arc-lags from 10% to 50% of total path; 5% bounding span and 30 degrees; strong repetition >=0.70; diagnostic, not a stochasticity test",
+  "summary": {
+    "amov_all": {
+      "flights": 14,
+      "programs": 14,
+      "queries": 280,
+      "angle_deg": {
+        "adaptive": 1.1853465890308483,
+        "motion": 2.473295503254302,
+        "Fstar": 1.092439761471464,
+        "RAFT": 1.338672564451887,
+        "Chronos": 1.1515377533835012
+      },
+      "baseline_minus_adaptive_ci95": {
+        "motion": [
+          0.9751868539693925,
+          1.5925469536018737
+        ],
+        "Fstar": [
+          -0.170417430994755,
+          -0.02115133411432054
+        ],
+        "RAFT": [
+          -0.0851550642389968,
+          0.38778389453882106
+        ],
+        "Chronos": [
+          -0.3472108519402192,
+          0.28707315298013414
+        ]
+      }
+    },
+    "amov_low_repetition": {
+      "flights": 14,
+      "programs": 14,
+      "queries": 280,
+      "angle_deg": {
+        "adaptive": 1.1853465890308483,
+        "motion": 2.473295503254302,
+        "Fstar": 1.092439761471464,
+        "RAFT": 1.338672564451887,
+        "Chronos": 1.1515377533835012
+      },
+      "baseline_minus_adaptive_ci95": {
+        "motion": [
+          0.9751868539693925,
+          1.5925469536018737
+        ],
+        "Fstar": [
+          -0.170417430994755,
+          -0.02115133411432054
+        ],
+        "RAFT": [
+          -0.0851550642389968,
+          0.38778389453882106
+        ],
+        "Chronos": [
+          -0.3472108519402192,
+          0.28707315298013414
+        ]
+      }
+    },
+    "neurobem_all": {
+      "flights": 10,
+      "programs": 9,
+      "queries": 98,
+      "angle_deg": {
+        "adaptive": 1.1832768354615566,
+        "motion": 2.8857963053727973,
+        "Fstar": 1.1027549548218167,
+        "RAFT": 0.8242489912589749,
+        "Chronos": 0.5606199166183647
+      },
+      "baseline_minus_adaptive_ci95": {
+        "motion": [
+          1.0256459532740543,
+          2.409324332273424
+        ],
+        "Fstar": [
+          -0.2102909065076365,
+          0.05675387433250671
+        ],
+        "RAFT": [
+          -0.6083875169927396,
+          -0.1594147946679436
+        ],
+        "Chronos": [
+          -0.8650156711387897,
+          -0.3848742164350564
+        ]
+      }
+    },
+    "neurobem_low_repetition": {
+      "flights": 9,
+      "programs": 8,
+      "queries": 89,
+      "angle_deg": {
+        "adaptive": 1.1883845946572016,
+        "motion": 2.8060428558678145,
+        "Fstar": 1.1553533508153486,
+        "RAFT": 0.8209412815403745,
+        "Chronos": 0.5704132060856516
+      },
+      "baseline_minus_adaptive_ci95": {
+        "motion": [
+          0.8886807344721859,
+          2.394306006944666
+        ],
+        "Fstar": [
+          -0.12653665955129026,
+          0.09236177322274595
+        ],
+        "RAFT": [
+          -0.6376406802870135,
+          -0.1426676394833908
+        ],
+        "Chronos": [
+          -0.8940953625058741,
+          -0.35046718920277964
+        ]
+      }
+    }
+  },
+  "tracks": [
+    {
+      "source": "amov",
+      "flight": "UavY_P0A30S2_2",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.8769230769230769
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A30S4_2",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9277777777777778
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A30S6_2",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9210526315789473
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A30S8_2",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9692982456140351
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10S2_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10S4_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9357798165137615
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10S6_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9521739130434783
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10S8_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9588235294117647
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S2_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9576719576719577
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S2_2",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.890625
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S2_3",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.8711340206185567
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S2_4",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.8548387096774194
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S4_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S4_2",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9814814814814815
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S4_3",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9495412844036697
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S4_4",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9074074074074074
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S6_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9484536082474226
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S6_2",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9880952380952381
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S6_3",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9521739130434783
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S6_4",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9306930693069307
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S8_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9807692307692307
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S8_2",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.8062015503875969
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S8_3",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9807692307692307
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20S8_4",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9299065420560748
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A30S2_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A30S4_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9230769230769231
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A30S6_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9264705882352942
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A30S8_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9569377990430622
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40S2_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.8563829787234043
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40S4_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40S6_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40S8_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.9206349206349206
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A20S8_1",
+      "task": "FAFS",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0Random_1",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavR_P0Random_1",
+      "repeat_score": 0.02040816326530612,
+      "queries": 15,
+      "errors": {
+        "adaptive": 0.4988634572806022,
+        "motion": 1.4690678120187113,
+        "Fstar": 0.49725391852258555,
+        "RAFT": 0.8722798369060781,
+        "Chronos": 0.29900056735742947
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0Random_4",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavR_P0Random_4",
+      "repeat_score": 0.04405286343612335,
+      "queries": 15,
+      "errors": {
+        "adaptive": 1.17931511943734,
+        "motion": 1.419033200264437,
+        "Fstar": 1.1949197975507777,
+        "RAFT": 1.0807088831180112,
+        "Chronos": 1.3265384451576567
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200Random_1",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavR_P200Random_1",
+      "repeat_score": 0.004347826086956522,
+      "queries": 15,
+      "errors": {
+        "adaptive": 0.5510490595325519,
+        "motion": 1.9464228028510233,
+        "Fstar": 0.5399568596900881,
+        "RAFT": 0.9242470327927178,
+        "Chronos": 0.8624933731774189
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400Random_1",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavR_P400Random_1",
+      "repeat_score": 0.014150943396226415,
+      "queries": 34,
+      "errors": {
+        "adaptive": 1.1287856282718713,
+        "motion": 2.8567392084944587,
+        "Fstar": 0.9265344159936759,
+        "RAFT": 0.8440105735520095,
+        "Chronos": 0.6611744192492611
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0Random_3",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavR_P0Random_3",
+      "repeat_score": 0.03333333333333333,
+      "queries": 15,
+      "errors": {
+        "adaptive": 3.1141524409652837,
+        "motion": 5.5997917189357995,
+        "Fstar": 2.7233895834396096,
+        "RAFT": 2.304014747136456,
+        "Chronos": 2.3684279515889246
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200Random_3",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavR_P200Random_3",
+      "repeat_score": 0.03773584905660377,
+      "queries": 15,
+      "errors": {
+        "adaptive": 1.952680307137014,
+        "motion": 3.22673362974652,
+        "Fstar": 1.7912240553366578,
+        "RAFT": 1.8600689009373648,
+        "Chronos": 0.7120538524896356
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200Random_4",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavR_P200Random_4",
+      "repeat_score": 0.05909090909090909,
+      "queries": 27,
+      "errors": {
+        "adaptive": 1.5982172702573483,
+        "motion": 2.948087476476029,
+        "Fstar": 1.4239413721390402,
+        "RAFT": 2.279254502135926,
+        "Chronos": 1.3880794297605143
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400Random_3",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavR_P400Random_3",
+      "repeat_score": 0.044585987261146494,
+      "queries": 15,
+      "errors": {
+        "adaptive": 1.1986443285998678,
+        "motion": 1.751469269358352,
+        "Fstar": 1.1612714315975465,
+        "RAFT": 1.689314488768239,
+        "Chronos": 1.3959434872917351
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400Random_4",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavR_P400Random_4",
+      "repeat_score": 0.05045871559633028,
+      "queries": 15,
+      "errors": {
+        "adaptive": 0.9108076171398506,
+        "motion": 2.7748575774420527,
+        "Fstar": 0.9635456650358004,
+        "RAFT": 1.1975158351003048,
+        "Chronos": 2.198752183371585
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0Random_1",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavY_P0Random_1",
+      "repeat_score": 0.03289473684210526,
+      "queries": 15,
+      "errors": {
+        "adaptive": 0.5083239403614271,
+        "motion": 1.8562741680694679,
+        "Fstar": 0.3810964458084273,
+        "RAFT": 0.32811044086731517,
+        "Chronos": 0.286695665970424
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0Random_2",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavY_P0Random_2",
+      "repeat_score": 0.06862745098039216,
+      "queries": 30,
+      "errors": {
+        "adaptive": 0.7955059980755164,
+        "motion": 2.0693763088007615,
+        "Fstar": 0.6785837852757712,
+        "RAFT": 1.2284434629957102,
+        "Chronos": 0.9486126618129082
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0Random_3",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavY_P0Random_3",
+      "repeat_score": 0.015544041450777202,
+      "queries": 18,
+      "errors": {
+        "adaptive": 0.9673060136233264,
+        "motion": 2.6031599609957894,
+        "Fstar": 1.1036461517562308,
+        "RAFT": 1.9922560193215657,
+        "Chronos": 1.7866290777341418
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200Random_1",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavY_P200Random_1",
+      "repeat_score": 0.02666666666666667,
+      "queries": 15,
+      "errors": {
+        "adaptive": 1.0361075200855805,
+        "motion": 1.359163912711062,
+        "Fstar": 1.0720147637664335,
+        "RAFT": 1.2133622539363063,
+        "Chronos": 1.0495155399305376
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P400Random_1",
+      "task": "Manal Random",
+      "label": "random",
+      "program": "UavY_P400Random_1",
+      "repeat_score": 0.043859649122807015,
+      "queries": 36,
+      "errors": {
+        "adaptive": 1.1550935456642977,
+        "motion": 2.7459599993957626,
+        "Fstar": 0.836778414687855,
+        "RAFT": 0.9278289247584148,
+        "Chronos": 0.8376118924768445
+      }
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAVarS4_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.05673758865248227
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAVarS4_3",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.05291005291005291
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAVarS4_5",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8048780487804879
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAVarS8_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.058823529411764705
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAVarS8_3",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.04591836734693878
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAVarS8_4",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.02242152466367713
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAVarS8_5",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.17105263157894737
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAVarS8_6",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8627450980392157
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAVarS8_7",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.7860696517412935
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAVarS4_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.03608247422680412
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAVarS4_2",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.03864734299516908
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAVarS4_3",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.037914691943127965
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAVarS4_5",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.20095693779904306
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAVarS8_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAVarS8_3",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.02631578947368421
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAVarS8_4",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.022123893805309734
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAVarS8_6",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.7225433526011561
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAVarS8_7",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.9217877094972067
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAVarS4_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.03571428571428571
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAVarS4_2",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.03608247422680412
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAVarS4_5",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8529411764705882
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAVarS8_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.0228310502283105
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAVarS8_3",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.02531645569620253
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAVarS8_4",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.11486486486486487
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAVarS8_5",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.18947368421052632
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAVarS8_6",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAVarS8_7",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8465608465608465
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAS4_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.03723404255319149
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAS4_2",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.029411764705882353
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAS4_5",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAS4_7",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8275862068965517
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAS8_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.026905829596412557
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAS8_2",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.02242152466367713
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAS8_5",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8955223880597015
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0VarAS8_7",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8855721393034826
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAS4_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.038461538461538464
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAS4_2",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.03365384615384615
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAS4_5",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.12041884816753927
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAS4_7",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0784313725490196
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAS8_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.026905829596412557
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAS8_2",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.026905829596412557
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAS8_5",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8905472636815921
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200VarAS8_7",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAS4_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAS4_2",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.028089887640449437
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAS4_5",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8805031446540881
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAS4_6",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8035714285714286
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAS4_7",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.22885572139303484
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAS8_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.027777777777777776
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAS8_2",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.013392857142857142
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAS8_5",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.9183673469387755
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400VarAS8_6",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.7307692307692307
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0VarAS4_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.9226190476190477
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0VarAS8_1",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.7351351351351352
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0VarAS8_2",
+      "task": "VAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.8388888888888889
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0VarAS8_7",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.9171270718232044
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200VarAS4_5",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.9214285714285714
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P400VarAS4_5",
+      "task": "VAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.9545454545454546
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A10VarS2_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A10VarS2_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.004329004329004329
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A10VarS2_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A10VarS2_4",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A10VarS4_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.48484848484848486
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A10VarS4_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.5352112676056338
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A10VarS4_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.363013698630137
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A10VarS6_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.4714285714285714
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A10VarS6_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8320610687022901
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A10VarS6_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.44805194805194803
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A10VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.7660818713450293
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A10VarS8_2",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.9012345679012346
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A10VarS8_3",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.39622641509433965
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS2_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS2_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS2_4",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS4_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS4_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS4_4",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.9867549668874173
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS6_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.7043010752688172
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS6_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS6_4",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.49038461538461536
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS8_2",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.3452914798206278
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS8_3",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.9854014598540146
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS8_4",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.3878504672897196
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A20VarS8_5",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.6949152542372882
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A40VarS2_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.41007194244604317
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A40VarS4_4",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A40VarS6_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.5584415584415584
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A40VarS6_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.47794117647058826
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A40VarS6_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8443396226415094
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A40VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A40VarS8_2",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.29910714285714285
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A40VarS8_3",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.47596153846153844
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A10VarS2_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.3783783783783784
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A10VarS2_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.3644859813084112
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A10VarS2_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.32679738562091504
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A10VarS4_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.6071428571428571
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A10VarS4_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.9041095890410958
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A10VarS4_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.3509933774834437
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A10VarS6_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.421875
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A10VarS6_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.3978494623655914
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A10VarS6_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.6505376344086021
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A10VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.5921052631578947
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A10VarS8_2",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.43333333333333335
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A10VarS8_3",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.30303030303030304
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A20VarS2_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A20VarS2_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A20VarS2_5",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A20VarS4_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A20VarS4_6",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.6312056737588653
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A20VarS6_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.7032258064516129
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A20VarS6_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.42035398230088494
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A20VarS6_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.9776119402985075
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A20VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.9850746268656716
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A20VarS8_2",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.9358974358974359
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A20VarS8_3",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.4855769230769231
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A40VarS2_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.4847161572052402
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A40VarS2_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.4970414201183432
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A40VarS2_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A40VarS4_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.5591397849462365
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A40VarS4_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8263473053892215
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A40VarS4_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.45180722891566266
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A40VarS6_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A40VarS6_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A40VarS6_4",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.9571428571428572
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A40VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.7918781725888325
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A40VarS8_2",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.8518518518518519
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P200A40VarS8_3",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.9872611464968153
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A40VarS2_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.5342465753424658
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A40VarS2_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.36428571428571427
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A40VarS4_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.6026785714285714
+    },
+    {
+      "source": "amov",
+      "flight": "UavG_P0A40VarS4_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.3565217391304348
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0A10VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.25510204081632654
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0A30VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.3482142857142857
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P0A40VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.2523364485981308
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200A40VarS2_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.42138364779874216
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200A40VarS2_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.39568345323741005
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200A40VarS2_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.43478260869565216
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200A40VarS4_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.5071428571428571
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200A40VarS4_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.7110091743119266
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200A40VarS4_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.4537037037037037
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200A40VarS6_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.4418604651162791
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200A40VarS6_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.45901639344262296
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200A40VarS6_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.5308641975308642
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200A40VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.20588235294117646
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200A40VarS8_2",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.45454545454545453
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P200A40VarS8_3",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.5411255411255411
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400A20VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.21739130434782608
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400A30VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.3548387096774194
+    },
+    {
+      "source": "amov",
+      "flight": "UavR_P400A40VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10VarS2_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10VarS2_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.4420289855072464
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10VarS2_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.496551724137931
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10VarS4_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.43455497382198954
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10VarS4_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.30201342281879195
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10VarS4_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.2987012987012987
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10VarS6_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.44329896907216493
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10VarS6_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.6337209302325582
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10VarS6_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.7841409691629956
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.2389937106918239
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10VarS8_2",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.9558823529411765
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A10VarS8_3",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.24782608695652175
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20VarS2_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.35714285714285715
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20VarS2_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": null
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20VarS2_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20VarS4_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8176470588235294
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20VarS4_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": null
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20VarS4_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20VarS6_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": null
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20VarS6_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20VarS6_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.26956521739130435
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20VarS8_2",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.29333333333333333
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A20VarS8_3",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.2565217391304348
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40VarS2_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.386046511627907
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40VarS2_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.3953488372093023
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40VarS2_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.3835616438356164
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40VarS4_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.8248847926267281
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40VarS4_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.46808510638297873
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40VarS4_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.5517241379310345
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40VarS6_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.6470588235294118
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40VarS6_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.5267857142857143
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40VarS6_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.2620689655172414
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.6326530612244898
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40VarS8_2",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.7723214285714286
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P0A40VarS8_3",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.25118483412322273
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A10VarS2_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.3722627737226277
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A10VarS2_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": null
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A10VarS2_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": null
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A10VarS4_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A10VarS4_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A10VarS4_4",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": null
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A10VarS6_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": null
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A10VarS6_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A10VarS6_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.98
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A10VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.72
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A10VarS8_2",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.9699248120300752
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A10VarS8_3",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.3409090909090909
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A20VarS2_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.45384615384615384
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A20VarS2_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A20VarS2_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.3767123287671233
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A20VarS4_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.6887755102040817
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A20VarS4_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.3048780487804878
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A20VarS4_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.5739910313901345
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A20VarS6_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.30357142857142855
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A20VarS6_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.40594059405940597
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A20VarS6_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.45588235294117646
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A20VarS8_1",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.2383177570093458
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A20VarS8_2",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.3333333333333333
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A20VarS8_3",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.2599118942731278
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A40VarS2_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.36619718309859156
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A40VarS2_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.4452054794520548
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A40VarS2_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.34418604651162793
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A40VarS4_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.5547445255474452
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A40VarS4_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.4755244755244755
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A40VarS4_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.3827751196172249
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A40VarS6_1",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.4823008849557522
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A40VarS6_2",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.3115942028985507
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A40VarS6_3",
+      "task": "FAVS_R2",
+      "label": "planned",
+      "repeat_score": 0.42696629213483145
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A40VarS8_2",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.2554112554112554
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A40VarS8_3",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.40217391304347827
+    },
+    {
+      "source": "amov",
+      "flight": "UavY_P200A40VarS8_4",
+      "task": "FAVS_R1",
+      "label": "planned",
+      "repeat_score": 0.41363636363636364
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-03-13-43-38",
+      "task": "wobbly circle 4 parts, delta=0.3, vel=0.5",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-03-13-44-49",
+      "task": "wobbly circle 4 parts, delta=0.3, vel=0.75",
+      "label": "planned",
+      "repeat_score": 0.9006622516556292
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-03-13-53-04",
+      "task": "circle, vel=2.0",
+      "label": "planned",
+      "repeat_score": 0.591743119266055
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-03-13-54-06",
+      "task": "circle, vel=2.5",
+      "label": "planned",
+      "repeat_score": 0.5309734513274337
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-03-16-47-27",
+      "task": "wobbly circle 9 parts, delta=0.15, vel=0.25",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-03-16-55-55",
+      "task": "wobbly circle 9 parts, delta=0.15, vel=0.5",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-03-16-58-13",
+      "task": "3d circle, delta_z = 2, vel=1.5",
+      "label": "planned",
+      "repeat_score": 0.7303921568627451
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-03-17-04-15",
+      "task": "3d circle, delta_z = 4, vel=2",
+      "label": "planned",
+      "repeat_score": 0.5825688073394495
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-03-17-06-36",
+      "task": "3d circle, delta_z = 4, vel=2.5",
+      "label": "planned",
+      "repeat_score": 0.5050505050505051
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-03-17-14-47",
+      "task": "3d circle, delta_z = 4, vel=2.9",
+      "label": "planned",
+      "repeat_score": 0.5221674876847291
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-03-17-26-08",
+      "task": "lemniscate",
+      "label": "planned",
+      "repeat_score": 0.27906976744186046
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-03-17-33-11",
+      "task": "circle, vel=2.75",
+      "label": "planned",
+      "repeat_score": 0.5845070422535211
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-03-17-37-27",
+      "task": "circle, vel=3.0",
+      "label": "planned",
+      "repeat_score": 0.5363128491620112
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-05-14-00-56",
+      "task": "battery test 01, short circle",
+      "label": "planned",
+      "repeat_score": 0.42424242424242425
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-05-14-01-47",
+      "task": "battery test 02, short circle",
+      "label": "planned",
+      "repeat_score": 0.4552238805970149
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-05-14-02-47",
+      "task": "battery test 03, short circle",
+      "label": "planned",
+      "repeat_score": 0.4626865671641791
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-05-14-03-41",
+      "task": "battery test 04, short circle",
+      "label": "planned",
+      "repeat_score": 0.44696969696969696
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-05-14-04-32",
+      "task": "battery test 05, short circle",
+      "label": "planned",
+      "repeat_score": 0.47794117647058826
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-05-15-04-42",
+      "task": "3d circle, vel = 0.45",
+      "label": "planned",
+      "repeat_score": 0.17903930131004367
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-05-15-58-59",
+      "task": "lemniscate, vel = 1",
+      "label": "planned",
+      "repeat_score": 0.9602272727272727
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-05-16-06-45",
+      "task": "lemniscate, vel = 1.5",
+      "label": "planned",
+      "repeat_score": 0.7941176470588235
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-05-16-10-53",
+      "task": "lemniscate, vel = 1.75",
+      "label": "planned",
+      "repeat_score": 0.509090909090909
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-05-16-14-20",
+      "task": "lemniscate, vel = 2",
+      "label": "planned",
+      "repeat_score": 0.2175925925925926
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-05-16-16-00",
+      "task": "battery test 06, short circle",
+      "label": "planned",
+      "repeat_score": 0.4393939393939394
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-05-16-19-10",
+      "task": "battery test 08, short circle",
+      "label": "planned",
+      "repeat_score": 0.41353383458646614
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-05-16-33-13",
+      "task": "battery test 09, short circle",
+      "label": "planned",
+      "repeat_score": 0.5
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-13-44-23",
+      "task": "3d circle, delta_z = 4, vel=2",
+      "label": "planned",
+      "repeat_score": 0.5662100456621004
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-14-15-53",
+      "task": "3d circle, delta_z = 4, vel=2.9",
+      "label": "planned",
+      "repeat_score": 0.45365853658536587
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-15-47-24",
+      "task": "3d circle, delta_z = 4, vel=2.9",
+      "label": "planned",
+      "repeat_score": 0.43842364532019706
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-16-08-00",
+      "task": "3d circle, delta_z = 4, vel=2.9, ccw",
+      "label": "planned",
+      "repeat_score": 0.43349753694581283
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-16-31-30",
+      "task": "3d circle, delta_z = 4, vel=2.9, ccw",
+      "label": "planned",
+      "repeat_score": 0.4878048780487805
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-17-03-20",
+      "task": "lemniscate, vel = 1",
+      "label": "planned",
+      "repeat_score": 0.8435754189944135
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-17-05-14",
+      "task": "lemniscate, vel = 1.5",
+      "label": "planned",
+      "repeat_score": 0.7171052631578947
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-17-06-27",
+      "task": "lemniscate, vel = 1.5",
+      "label": "planned",
+      "repeat_score": 0.6280193236714976
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-17-09-50",
+      "task": "lemniscate, vel = 2",
+      "label": "planned",
+      "repeat_score": 0.5570776255707762
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-17-12-03",
+      "task": "lemniscate, vel = 1.75",
+      "label": "planned",
+      "repeat_score": 0.5697674418604651
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-17-42-11",
+      "task": "3d circle ccw, radius = 3, vel = 3.25",
+      "label": "planned",
+      "repeat_score": 0.37267080745341613
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-17-44-17",
+      "task": "3d circle, radius = 3, vel = 3.25",
+      "label": "planned",
+      "repeat_score": 0.47393364928909953
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-17-47-42",
+      "task": "3d circle ccw, radius = 3.5, vel = 3.25",
+      "label": "planned",
+      "repeat_score": 0.3674698795180723
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-17-48-50",
+      "task": "3d circle, radius = 3.5, vel = 3.25",
+      "label": "planned",
+      "repeat_score": 0.4
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-18-02-03",
+      "task": "3d circle ccw, radius = 4, vel = 3",
+      "label": "planned",
+      "repeat_score": 0.38345864661654133
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-18-03-06",
+      "task": "3d circle, radius = 4, vel = 3",
+      "label": "planned",
+      "repeat_score": 0.4
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-18-08-45",
+      "task": "3d circle ccw, radius = 4.5, vel = 2.75",
+      "label": "planned",
+      "repeat_score": 0.4043478260869565
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-18-18-09-47",
+      "task": "3d circle, radius = 4.5, vel = 2.75",
+      "label": "planned",
+      "repeat_score": 0.52
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-10-43-02",
+      "task": "lemniscate, vel = 0.35, r=7.5m, ccw, full battery",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-10-48-03",
+      "task": "lemniscate, vel = 0.35, r=7.5m, full battery",
+      "label": "planned",
+      "repeat_score": 0.0
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-10-50-42",
+      "task": "lemniscate, vel = 1.0, r=7.5m, ccw",
+      "label": "planned",
+      "repeat_score": 0.8595505617977528
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-10-52-00",
+      "task": "lemniscate, vel = 1.0, r=7.5m,",
+      "label": "planned",
+      "repeat_score": 0.8651685393258427
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-11-31-23",
+      "task": "random points 1, slow",
+      "label": "random",
+      "program": "1",
+      "repeat_score": 0.05426356589147287,
+      "queries": 3,
+      "errors": {
+        "adaptive": 1.0487470803237964,
+        "motion": 3.34843812682308,
+        "Fstar": 1.397612393787437,
+        "RAFT": 0.9946533963298414,
+        "Chronos": 1.0691609990010873
+      }
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-14-21-48",
+      "task": "lemniscate, vel = 1.4, r=7.5m, ccw, full battery",
+      "label": "planned",
+      "repeat_score": 0.9230769230769231
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-14-24-07",
+      "task": "lemniscate, vel = 1.4, r=7.5m,",
+      "label": "planned",
+      "repeat_score": 0.9255813953488372
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-14-29-48",
+      "task": "lemniscate, vel = 1.6, r=7.5m, ccw, full battery, 20s",
+      "label": "planned",
+      "repeat_score": 0.9154228855721394
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-14-33-04",
+      "task": "lemniscate, vel = 1.6, r=7.5m, 20s",
+      "label": "planned",
+      "repeat_score": 0.8955223880597015
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-14-41-07",
+      "task": "lemniscate, vel = 1.7, r=7.5m, ccw, full battery, 20s",
+      "label": "planned",
+      "repeat_score": 0.8627450980392157
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-17-27-24",
+      "task": "lemniscate, vel = 1.6, r>7.5m, ccw, full battery, 20s",
+      "label": "planned",
+      "repeat_score": 0.9015544041450777
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-17-35-26",
+      "task": "lemniscate, vel = 1.6, r>7.5m, full battery, 20s",
+      "label": "planned",
+      "repeat_score": 0.8615384615384616
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-17-45-47",
+      "task": "random points 2, full battery",
+      "label": "random",
+      "program": "2",
+      "repeat_score": 0.2748091603053435,
+      "queries": 5,
+      "errors": {
+        "adaptive": 0.6277512220531216,
+        "motion": 0.7009252967891012,
+        "Fstar": 0.6181627510423018,
+        "RAFT": 0.5799218408753667,
+        "Chronos": 0.4061072503597165
+      }
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-18-38-21",
+      "task": "random points 3, 80s",
+      "label": "random",
+      "program": "3",
+      "repeat_score": 0.7177914110429447,
+      "queries": 9,
+      "errors": {
+        "adaptive": 1.142414761896398,
+        "motion": 3.5238239014126598,
+        "Fstar": 0.6819677868735626,
+        "RAFT": 0.8507106690077771,
+        "Chronos": 0.4822736008800701
+      }
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-18-43-00",
+      "task": "random points 4, 100s",
+      "label": "random",
+      "program": "4",
+      "repeat_score": 0.39751552795031053,
+      "queries": 9,
+      "errors": {
+        "adaptive": 1.3416055449843203,
+        "motion": 2.797474553140267,
+        "Fstar": 1.271002961489266,
+        "RAFT": 1.1344298431640902,
+        "Chronos": 0.7593525892706526
+      }
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-18-50-03",
+      "task": "random points 5, 120s",
+      "label": "random",
+      "program": "5",
+      "repeat_score": 0.5604395604395604,
+      "queries": 12,
+      "errors": {
+        "adaptive": 1.9335811093950428,
+        "motion": 4.265103946661978,
+        "Fstar": 1.8401072675881547,
+        "RAFT": 0.8055665368747408,
+        "Chronos": 0.6360876782867654
+      }
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-19-04-50",
+      "task": "random points 6, 120s",
+      "label": "random",
+      "program": "6",
+      "repeat_score": 0.028735632183908046,
+      "queries": 12,
+      "errors": {
+        "adaptive": 1.6593118038044672,
+        "motion": 5.368939875501211,
+        "Fstar": 1.414517476640891,
+        "RAFT": 0.8888858653413153,
+        "Chronos": 0.6155415869464677
+      }
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-19-15-11",
+      "task": "random points 7, 120s, battery moved",
+      "label": "random",
+      "program": "7",
+      "repeat_score": 0.023668639053254437,
+      "queries": 12,
+      "errors": {
+        "adaptive": 1.0203155450143226,
+        "motion": 2.0426409431016523,
+        "Fstar": 0.9465493977602119,
+        "RAFT": 0.5105662848506445,
+        "Chronos": 0.45258096065371295
+      }
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-22-03-52",
+      "task": "random points 7, 120s",
+      "label": "random",
+      "program": "7",
+      "repeat_score": 0.019867549668874173,
+      "queries": 12,
+      "errors": {
+        "adaptive": 0.9852305163313756,
+        "motion": 2.804010724738743,
+        "Fstar": 0.8434350848670951,
+        "RAFT": 0.679175278703036,
+        "Chronos": 0.47327764111013604
+      }
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-22-26-25",
+      "task": "random points 8, 120s",
+      "label": "random",
+      "program": "8",
+      "repeat_score": 0.027777777777777776,
+      "queries": 12,
+      "errors": {
+        "adaptive": 0.9847420693146542,
+        "motion": 1.2738201337563984,
+        "Fstar": 0.961543148671289,
+        "RAFT": 0.8661248498159266,
+        "Chronos": 0.32372235124512216
+      }
+    },
+    {
+      "source": "neurobem",
+      "flight": "2021-02-23-22-33-54",
+      "task": "random points 9, 120s",
+      "label": "random",
+      "program": "9",
+      "repeat_score": 0.027149321266968326,
+      "queries": 12,
+      "errors": {
+        "adaptive": 0.908564896709361,
+        "motion": 2.2703150803502794,
+        "Fstar": 0.8448885659897941,
+        "RAFT": 0.7030771381448759,
+        "Chronos": 0.29040389269347705
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "g1_linux_paired_v1",
+  "registered_unix": 1795797278.7157176,
+  "historical_reference": "World 0 G1 x0.45 and Chronos x0.75 have identical event sequences and pass all packaged numeric tolerances. Original Windows physical SHA check is recorded independently.",
+  "canary": "1400 at 0.45. Require official numeric and event tolerances and equal scenario, groups, namespace, model/source fingerprints and effective config. Record both physical SHA values.",
+  "matching": "Independent regeneration for 1400; keep immutable world and an independent per-array digest for each development ID. Reject a job result if it uses a different physical digest for that world. Never rewrite source receipts or checksums.",
+  "sample": "8 original development IDs 1400 to 1407 x .45/.60/.75/1; freeze only after all 32 receipts pass. Distinct from any future reference-platform run.",
+  "scale": [
+    0.45,
+    0.6,
+    0.75,
+    1.0
+  ],
+  "budget": 3,
+  "worlds": [
+    1400,
+    1401,
+    1402,
+    1403,
+    1404,
+    1405,
+    1406,
+    1407
+  ]
+}

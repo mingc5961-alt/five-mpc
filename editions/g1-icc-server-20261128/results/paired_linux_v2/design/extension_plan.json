@@ -1,0 +1,33 @@
+{
+  "families": [
+    [
+      "main",
+      "N"
+    ],
+    [
+      "main",
+      "P"
+    ],
+    [
+      "main",
+      "Q"
+    ],
+    [
+      "K700",
+      "Q"
+    ],
+    [
+      "B4.5",
+      "Q"
+    ],
+    [
+      "B9",
+      "Q"
+    ]
+  ],
+  "additional_multipliers": [
+    0.3,
+    1.25
+  ],
+  "confirmation_read": false
+}

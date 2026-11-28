@@ -1,0 +1,85 @@
+{
+  "comparison": "Linux and Windows/Wine independent regeneration with the corresponding published generator and matching inputs; archived raw arrays unavailable",
+  "worlds": [
+    {
+      "world": 0,
+      "original_published_sha256": "2d6ee19463199066323fb21187748993544e8ad5eff1f6d3eb294225dcdd4752",
+      "linux_sha256": "f9f7820120b954f11ef3b89d9aec5313bcc588f25e907cf5be5fe41a2c421223",
+      "windows_emulated_sha256": "fcc0d20ddf2df6688fc902785b2ffcf1aa88f56d92dc4556ee265f0a3e711462",
+      "python_windows": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+      "numpy_windows": "2.2.6",
+      "reference_bytes_available": false,
+      "fields": {
+        "positions": {
+          "shape": [
+            16,
+            9551,
+            3
+          ],
+          "unequal_elements": 125049,
+          "max_abs": 5.115907697472721e-13,
+          "rms": 5.021249640361236e-14
+        },
+        "noise": {
+          "shape": [
+            16,
+            9551,
+            4
+          ],
+          "unequal_elements": 0,
+          "max_abs": 0.0,
+          "rms": 0.0
+        },
+        "shadows": {
+          "shape": [
+            16,
+            9551
+          ],
+          "unequal_elements": 14,
+          "max_abs": 4.440892098500626e-16,
+          "rms": 4.016435655063804e-18
+        }
+      }
+    },
+    {
+      "world": 1400,
+      "original_published_sha256": "e5bab7f31adfd70c9ace880099974b5f891279534a1949d0d34cca18404c1678",
+      "linux_sha256": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+      "windows_emulated_sha256": "2ed32f9b6857020314d65e673a4853076fc50124d63cd0b91b66bafd07e1e4b6",
+      "python_windows": "3.12.13 (main, May 10 2026, 19:35:37) [MSC v.1944 64 bit (AMD64)]",
+      "numpy_windows": "2.2.6",
+      "reference_bytes_available": false,
+      "fields": {
+        "positions": {
+          "shape": [
+            16,
+            9551,
+            3
+          ],
+          "unequal_elements": 124893,
+          "max_abs": 4.547473508864641e-13,
+          "rms": 3.418108325307298e-14
+        },
+        "noise": {
+          "shape": [
+            16,
+            9551,
+            4
+          ],
+          "unequal_elements": 0,
+          "max_abs": 0.0,
+          "rms": 0.0
+        },
+        "shadows": {
+          "shape": [
+            16,
+            9551
+          ],
+          "unequal_elements": 0,
+          "max_abs": 0.0,
+          "rms": 0.0
+        }
+      }
+    }
+  ]
+}

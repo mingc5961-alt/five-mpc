@@ -1,0 +1,24 @@
+{
+  "sources": {
+    "grigoriou": {
+      "flights": 20,
+      "queries": 2212,
+      "evaluable_flights": 20,
+      "primary_revisits": 5
+    },
+    "bosello": {
+      "flights": 24,
+      "queries": 1267,
+      "evaluable_flights": 24,
+      "primary_revisits": 123
+    },
+    "amov": {
+      "flights": 270,
+      "queries": 48379,
+      "evaluable_flights": 254,
+      "primary_revisits": 1795
+    }
+  },
+  "wall_s": 249.94364881515503,
+  "closed_loop_runs": 0
+}

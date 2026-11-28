@@ -1,0 +1,801 @@
+{
+  "design_sha256": "ef13fc0e45868cdc75c4252b3d86d2d5c7d7ca20c763d3a6d0c9bb4335b9a9e9",
+  "unique_endpoints": 2352,
+  "groups": [
+    {
+      "scene": "main",
+      "row": "N01",
+      "stage": "core",
+      "first": 2000,
+      "last": 2023,
+      "weights": {
+        "0.45": 0.7572815533980584,
+        "0.6": 0.24271844660194164
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "N02",
+      "stage": "core",
+      "first": 2000,
+      "last": 2023,
+      "weights": {
+        "0.45": 0.9406808656231284,
+        "0.6": 0.05931913437687164
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "N03",
+      "stage": "core",
+      "first": 2000,
+      "last": 2023,
+      "weights": {
+        "0.45": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "N04",
+      "stage": "core",
+      "first": 2000,
+      "last": 2023,
+      "weights": {
+        "0.3": 0.5626683369871588,
+        "0.45": 0.4373316630128412
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "N05",
+      "stage": "core",
+      "first": 2000,
+      "last": 2023,
+      "weights": {
+        "0.75": 0.6034581801470588,
+        "1.0": 0.39654181985294124
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "P01",
+      "stage": "core",
+      "first": 2000,
+      "last": 2023,
+      "weights": {
+        "0.45": 0.6483841895197628,
+        "0.6": 0.35161581048023716
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "P02",
+      "stage": "core",
+      "first": 2000,
+      "last": 2023,
+      "weights": {
+        "0.6": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "P03",
+      "stage": "core",
+      "first": 2000,
+      "last": 2023,
+      "weights": {
+        "0.6": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q01",
+      "stage": "core",
+      "first": 2000,
+      "last": 2047,
+      "weights": {
+        "0.45": 0.5589822229794967,
+        "0.6": 0.44101777702050327
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q02",
+      "stage": "core",
+      "first": 2000,
+      "last": 2047,
+      "weights": {
+        "0.45": 0.280533420068304,
+        "0.6": 0.7194665799316959
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q03",
+      "stage": "core",
+      "first": 2000,
+      "last": 2047,
+      "weights": {
+        "0.45": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q04",
+      "stage": "core",
+      "first": 2000,
+      "last": 2047,
+      "weights": {
+        "0.45": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q05",
+      "stage": "core",
+      "first": 2000,
+      "last": 2047,
+      "weights": {
+        "0.45": 0.7115513249292518,
+        "0.6": 0.28844867507074823
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q06",
+      "stage": "core",
+      "first": 2000,
+      "last": 2023,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "N06",
+      "stage": "supp",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.6": 0.8685300207039354,
+        "0.75": 0.13146997929606463
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q07",
+      "stage": "supp",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.45": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q08",
+      "stage": "supp",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.45": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q09",
+      "stage": "supp",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.45": 0.3439323220536756,
+        "0.6": 0.6560676779463244
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q10",
+      "stage": "supp",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.45": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "P01",
+      "stage": "common",
+      "first": 2000,
+      "last": 2023,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "P02",
+      "stage": "common",
+      "first": 2000,
+      "last": 2023,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "P03",
+      "stage": "common",
+      "first": 2000,
+      "last": 2023,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q01",
+      "stage": "common",
+      "first": 2000,
+      "last": 2047,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q02",
+      "stage": "common",
+      "first": 2000,
+      "last": 2047,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q03",
+      "stage": "common",
+      "first": 2000,
+      "last": 2047,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q04",
+      "stage": "common",
+      "first": 2000,
+      "last": 2047,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "main",
+      "row": "Q05",
+      "stage": "common",
+      "first": 2000,
+      "last": 2047,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "K700",
+      "row": "Q01",
+      "stage": "K",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.6": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "K700",
+      "row": "Q03",
+      "stage": "K",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.6": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "K950",
+      "row": "Q01",
+      "stage": "K",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.45": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "K950",
+      "row": "Q03",
+      "stage": "K",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.45": 0.7895351232575724,
+        "0.6": 0.21046487674242764
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "B4.5",
+      "row": "N01",
+      "stage": "B",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.45": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "B4.5",
+      "row": "Q01",
+      "stage": "B",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.3": 0.4613324175824177,
+        "0.45": 0.5386675824175823
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "B4.5",
+      "row": "Q03",
+      "stage": "B",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.3": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "B9",
+      "row": "N01",
+      "stage": "B",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.6": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "B9",
+      "row": "Q01",
+      "stage": "B",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.3": 0.9289284286285485,
+        "0.45": 0.07107157137145148
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "B9",
+      "row": "Q03",
+      "stage": "B",
+      "first": 2000,
+      "last": 2011,
+      "weights": {
+        "0.3": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "structured_0",
+      "row": "Q01",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "structured_0",
+      "row": "Q02",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "structured_0",
+      "row": "Q03",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "structured_0",
+      "row": "Q04",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "structured_0",
+      "row": "Q05",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "structured_9_reference",
+      "row": "Q01",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "structured_9_reference",
+      "row": "Q02",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "structured_9_reference",
+      "row": "Q03",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "structured_9_reference",
+      "row": "Q04",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "structured_9_reference",
+      "row": "Q05",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "structured_16",
+      "row": "Q01",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "structured_16",
+      "row": "Q02",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "structured_16",
+      "row": "Q03",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "structured_16",
+      "row": "Q04",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "structured_16",
+      "row": "Q05",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "structured_9_detour",
+      "row": "Q01",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "structured_9_detour",
+      "row": "Q02",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    },
+    {
+      "scene": "structured_9_detour",
+      "row": "Q03",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "structured_9_detour",
+      "row": "Q04",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        17,
+        29,
+        41
+      ]
+    },
+    {
+      "scene": "structured_9_detour",
+      "row": "Q05",
+      "stage": "stress",
+      "first": 3000,
+      "last": 3011,
+      "weights": {
+        "0.75": 1.0
+      },
+      "seeds": [
+        null
+      ]
+    }
+  ],
+  "primary_worlds": 48
+}

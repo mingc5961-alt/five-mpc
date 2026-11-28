@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "independent_native_receipt_sha256": "e31d8459cf1801abd78e975695fac268651aa59f084e416352ea5e97f4b6dbb5",
+  "cached_input_receipt_sha256": "e31d8459cf1801abd78e975695fac268651aa59f084e416352ea5e97f4b6dbb5",
+  "physical_sha256": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+  "events": 847,
+  "exact_world": true,
+  "exact_all_receipt_fields": true,
+  "cross_platform_reference_status": "FAIL",
+  "archive_differences": [
+    "world",
+    "world physical-array SHA-256",
+    "G_mbps",
+    "bits[9]"
+  ],
+  "independent_world_meta": "/data/coding/g1-original-20261127/paired_linux_v1/worlds/development/1400.json"
+}

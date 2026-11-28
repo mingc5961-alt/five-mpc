@@ -1,0 +1,13 @@
+{
+  "passed": 16,
+  "formal_endpoints": 0,
+  "controls": [
+    "native parity",
+    "periodic 3s: 960 fixes",
+    "oldest/fixed-due identical fixed times",
+    "exact cost at K=700/950",
+    "oldest event stream identical across multipliers",
+    "wait and advance full ledger at B=3/4.5/9"
+  ],
+  "wall_s": 24.03346586227417
+}

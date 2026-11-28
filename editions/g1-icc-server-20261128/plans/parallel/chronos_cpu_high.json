@@ -1,0 +1,79 @@
+{
+  "scope": "warm synthetic sparse XYZ prefix, one user per forward, 360 slots; CPU float32",
+  "weights": "/data/coding/g1-server-handoff/reference/models/Chronos/best.pt",
+  "cpu_max": "4800000 100000",
+  "baseline_GiB": 6.719734191894531,
+  "all_models_warm_GiB": 27.87112808227539,
+  "pool_workers": 24,
+  "checksum": 1278.30126953125,
+  "median_calls_s": {
+    "8": 25.79,
+    "16": 42.79,
+    "24": 52.62
+  },
+  "rounds": [
+    {
+      "workers": 8,
+      "calls": 96,
+      "elapsed_s": 4.052718685998116,
+      "calls_s": 23.687802543925358,
+      "max_worker_peak_rss_GiB": 1.60833740234375
+    },
+    {
+      "workers": 16,
+      "calls": 192,
+      "elapsed_s": 3.9845437860058155,
+      "calls_s": 48.18619403162954,
+      "max_worker_peak_rss_GiB": 1.6112709045410156
+    },
+    {
+      "workers": 24,
+      "calls": 288,
+      "elapsed_s": 5.006807808007579,
+      "calls_s": 57.521680688320124,
+      "max_worker_peak_rss_GiB": 1.6112709045410156
+    },
+    {
+      "workers": 24,
+      "calls": 288,
+      "elapsed_s": 5.473379384013242,
+      "calls_s": 52.61831490088121,
+      "max_worker_peak_rss_GiB": 1.6112709045410156
+    },
+    {
+      "workers": 16,
+      "calls": 192,
+      "elapsed_s": 4.486535766001907,
+      "calls_s": 42.79471066628702,
+      "max_worker_peak_rss_GiB": 1.6112709045410156
+    },
+    {
+      "workers": 8,
+      "calls": 96,
+      "elapsed_s": 3.7230326229910133,
+      "calls_s": 25.785430782198045,
+      "max_worker_peak_rss_GiB": 1.6038131713867188
+    },
+    {
+      "workers": 8,
+      "calls": 96,
+      "elapsed_s": 3.2605719340062933,
+      "calls_s": 29.442687339225163,
+      "max_worker_peak_rss_GiB": 1.6112709045410156
+    },
+    {
+      "workers": 16,
+      "calls": 192,
+      "elapsed_s": 4.970257059991127,
+      "calls_s": 38.62979272149412,
+      "max_worker_peak_rss_GiB": 1.6101226806640625
+    },
+    {
+      "workers": 24,
+      "calls": 288,
+      "elapsed_s": 5.658607146004215,
+      "calls_s": 50.8959170638607,
+      "max_worker_peak_rss_GiB": 1.6112709045410156
+    }
+  ]
+}

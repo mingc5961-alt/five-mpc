@@ -1,0 +1,13 @@
+{
+  "verified_endpoints": 2352,
+  "world_series": 1188,
+  "world_fingerprints": 96,
+  "paired_joint_streams": 432,
+  "paired_fixed_schedules": 24,
+  "contrasts": 12,
+  "secondary_contrasts": 41,
+  "design_sha256": "ef13fc0e45868cdc75c4252b3d86d2d5c7d7ca20c763d3a6d0c9bb4335b9a9e9",
+  "elapsed_s": 2429.501924276352,
+  "core_worlds": 48,
+  "cross_platform_reference_status": "separate from locally paired results"
+}

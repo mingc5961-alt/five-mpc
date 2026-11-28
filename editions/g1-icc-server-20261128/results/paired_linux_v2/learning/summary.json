@@ -1,0 +1,15 @@
+{
+  "formal": {
+    "fixed_41": "/data/coding/g1-original-20261127/paired_linux_v2/learning/formal/fixed_s41_l3_q0/model_20000.pt",
+    "fixed_17": "/data/coding/g1-original-20261127/paired_linux_v2/learning/formal/fixed_s17_l3_q0/model_20000.pt",
+    "fixed_29": "/data/coding/g1-original-20261127/paired_linux_v2/learning/formal/fixed_s29_l3_q0/model_20000.pt",
+    "joint_29": "/data/coding/g1-original-20261127/paired_linux_v2/learning/formal/joint_s29_l3_q0.1/model_30000.pt",
+    "joint_17": "/data/coding/g1-original-20261127/paired_linux_v2/learning/formal/joint_s17_l3_q0.1/model_30000.pt",
+    "joint_41": "/data/coding/g1-original-20261127/paired_linux_v2/learning/formal/joint_s41_l3_q0.1/model_30000.pt"
+  },
+  "trials": 9,
+  "formal_models": 6,
+  "training_episodes": 912,
+  "validation_episodes": 720,
+  "gradient_steps": 216000
+}

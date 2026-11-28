@@ -1,0 +1,668 @@
+{
+  "source_release": "https://github.com/tii-racing/drone-racing-dataset/releases/tag/v1.0.0",
+  "coordinate_origin_xyz_m": [
+    0.004968709030303031,
+    -1.4748403657575757,
+    0.06799211993939394
+  ],
+  "max_interpolation_gap_s": 0.25,
+  "grouping": "flight identity preserved; exploratory groups by piloted/autonomous x course shape",
+  "station_offset_enu_m": [
+    -300,
+    0,
+    0
+  ],
+  "field_tuning": false,
+  "segments": [
+    {
+      "flight": "flight-01a-ellipse",
+      "day": "autonomous_ellipse",
+      "source_file": "autonomous/flight-01a-ellipse/flight-01a-ellipse_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 22.476341,
+      "samples": 2699,
+      "accepted": true
+    },
+    {
+      "flight": "flight-01p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-01p-ellipse/flight-01p-ellipse_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 75.349216,
+      "samples": 9043,
+      "accepted": true
+    },
+    {
+      "flight": "flight-01p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-01p-ellipse/flight-01p-ellipse_cam_ts_sync.csv",
+      "part": 1,
+      "start_s": 75.357315,
+      "end_s": 75.373985,
+      "samples": 3,
+      "accepted": false
+    },
+    {
+      "flight": "flight-01p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-01p-ellipse/flight-01p-ellipse_cam_ts_sync.csv",
+      "part": 2,
+      "start_s": 75.382285,
+      "end_s": 75.382285,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-01p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-01p-ellipse/flight-01p-ellipse_cam_ts_sync.csv",
+      "part": 3,
+      "start_s": 75.390605,
+      "end_s": 105.540527,
+      "samples": 3619,
+      "accepted": true
+    },
+    {
+      "flight": "flight-02a-ellipse",
+      "day": "autonomous_ellipse",
+      "source_file": "autonomous/flight-02a-ellipse/flight-02a-ellipse_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 24.524709,
+      "samples": 2944,
+      "accepted": true
+    },
+    {
+      "flight": "flight-02p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-02p-ellipse/flight-02p-ellipse_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 4.54166,
+      "samples": 546,
+      "accepted": false
+    },
+    {
+      "flight": "flight-02p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-02p-ellipse/flight-02p-ellipse_cam_ts_sync.csv",
+      "part": 1,
+      "start_s": 4.550283,
+      "end_s": 4.575024,
+      "samples": 4,
+      "accepted": false
+    },
+    {
+      "flight": "flight-02p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-02p-ellipse/flight-02p-ellipse_cam_ts_sync.csv",
+      "part": 2,
+      "start_s": 4.583754,
+      "end_s": 93.550132,
+      "samples": 10677,
+      "accepted": true
+    },
+    {
+      "flight": "flight-02p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-02p-ellipse/flight-02p-ellipse_cam_ts_sync.csv",
+      "part": 3,
+      "start_s": 93.558549,
+      "end_s": 93.558549,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-02p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-02p-ellipse/flight-02p-ellipse_cam_ts_sync.csv",
+      "part": 4,
+      "start_s": 93.5665,
+      "end_s": 93.5665,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-02p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-02p-ellipse/flight-02p-ellipse_cam_ts_sync.csv",
+      "part": 5,
+      "start_s": 93.574826,
+      "end_s": 93.574826,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-02p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-02p-ellipse/flight-02p-ellipse_cam_ts_sync.csv",
+      "part": 6,
+      "start_s": 93.582454,
+      "end_s": 94.291904,
+      "samples": 86,
+      "accepted": false
+    },
+    {
+      "flight": "flight-03a-ellipse",
+      "day": "autonomous_ellipse",
+      "source_file": "autonomous/flight-03a-ellipse/flight-03a-ellipse_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 24.407978,
+      "samples": 2903,
+      "accepted": true
+    },
+    {
+      "flight": "flight-03p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-03p-ellipse/flight-03p-ellipse_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 90.8481,
+      "samples": 10821,
+      "accepted": true
+    },
+    {
+      "flight": "flight-04a-ellipse",
+      "day": "autonomous_ellipse",
+      "source_file": "autonomous/flight-04a-ellipse/flight-04a-ellipse_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 29.108259,
+      "samples": 3494,
+      "accepted": true
+    },
+    {
+      "flight": "flight-04p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-04p-ellipse/flight-04p-ellipse_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 6.699689,
+      "samples": 805,
+      "accepted": false
+    },
+    {
+      "flight": "flight-04p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-04p-ellipse/flight-04p-ellipse_cam_ts_sync.csv",
+      "part": 1,
+      "start_s": 6.708483,
+      "end_s": 6.725833,
+      "samples": 3,
+      "accepted": false
+    },
+    {
+      "flight": "flight-04p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-04p-ellipse/flight-04p-ellipse_cam_ts_sync.csv",
+      "part": 2,
+      "start_s": 6.733214,
+      "end_s": 6.733214,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-04p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-04p-ellipse/flight-04p-ellipse_cam_ts_sync.csv",
+      "part": 3,
+      "start_s": 6.74159,
+      "end_s": 6.758224,
+      "samples": 3,
+      "accepted": false
+    },
+    {
+      "flight": "flight-04p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-04p-ellipse/flight-04p-ellipse_cam_ts_sync.csv",
+      "part": 4,
+      "start_s": 6.765435,
+      "end_s": 6.765435,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-04p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-04p-ellipse/flight-04p-ellipse_cam_ts_sync.csv",
+      "part": 5,
+      "start_s": 6.774777,
+      "end_s": 106.791516,
+      "samples": 11998,
+      "accepted": true
+    },
+    {
+      "flight": "flight-05a-ellipse",
+      "day": "autonomous_ellipse",
+      "source_file": "autonomous/flight-05a-ellipse/flight-05a-ellipse_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 23.273824,
+      "samples": 2773,
+      "accepted": true
+    },
+    {
+      "flight": "flight-05p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-05p-ellipse/flight-05p-ellipse_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 61.720818,
+      "samples": 7352,
+      "accepted": true
+    },
+    {
+      "flight": "flight-05p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-05p-ellipse/flight-05p-ellipse_cam_ts_sync.csv",
+      "part": 1,
+      "start_s": 61.728486,
+      "end_s": 61.728486,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-05p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-05p-ellipse/flight-05p-ellipse_cam_ts_sync.csv",
+      "part": 2,
+      "start_s": 61.737809,
+      "end_s": 83.970301,
+      "samples": 2649,
+      "accepted": true
+    },
+    {
+      "flight": "flight-05p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-05p-ellipse/flight-05p-ellipse_cam_ts_sync.csv",
+      "part": 3,
+      "start_s": 83.979501,
+      "end_s": 83.979501,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-05p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-05p-ellipse/flight-05p-ellipse_cam_ts_sync.csv",
+      "part": 4,
+      "start_s": 83.986953,
+      "end_s": 83.986953,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-05p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-05p-ellipse/flight-05p-ellipse_cam_ts_sync.csv",
+      "part": 5,
+      "start_s": 83.995302,
+      "end_s": 84.550523,
+      "samples": 67,
+      "accepted": false
+    },
+    {
+      "flight": "flight-06a-ellipse",
+      "day": "autonomous_ellipse",
+      "source_file": "autonomous/flight-06a-ellipse/flight-06a-ellipse_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 25.325295,
+      "samples": 3040,
+      "accepted": true
+    },
+    {
+      "flight": "flight-06p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-06p-ellipse/flight-06p-ellipse_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 11.917605,
+      "samples": 1431,
+      "accepted": true
+    },
+    {
+      "flight": "flight-06p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-06p-ellipse/flight-06p-ellipse_cam_ts_sync.csv",
+      "part": 1,
+      "start_s": 11.925892,
+      "end_s": 11.925892,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-06p-ellipse",
+      "day": "piloted_ellipse",
+      "source_file": "piloted/flight-06p-ellipse/flight-06p-ellipse_cam_ts_sync.csv",
+      "part": 2,
+      "start_s": 11.934492,
+      "end_s": 93.376075,
+      "samples": 9769,
+      "accepted": true
+    },
+    {
+      "flight": "flight-07a-lemniscate",
+      "day": "autonomous_lemniscate",
+      "source_file": "autonomous/flight-07a-lemniscate/flight-07a-lemniscate_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 30.883346,
+      "samples": 3692,
+      "accepted": true
+    },
+    {
+      "flight": "flight-07p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-07p-lemniscate/flight-07p-lemniscate_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 36.361356,
+      "samples": 4361,
+      "accepted": true
+    },
+    {
+      "flight": "flight-07p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-07p-lemniscate/flight-07p-lemniscate_cam_ts_sync.csv",
+      "part": 1,
+      "start_s": 36.369548,
+      "end_s": 36.386014,
+      "samples": 3,
+      "accepted": false
+    },
+    {
+      "flight": "flight-07p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-07p-lemniscate/flight-07p-lemniscate_cam_ts_sync.csv",
+      "part": 2,
+      "start_s": 36.394481,
+      "end_s": 36.394481,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-07p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-07p-lemniscate/flight-07p-lemniscate_cam_ts_sync.csv",
+      "part": 3,
+      "start_s": 36.402452,
+      "end_s": 106.944699,
+      "samples": 8466,
+      "accepted": true
+    },
+    {
+      "flight": "flight-08a-lemniscate",
+      "day": "autonomous_lemniscate",
+      "source_file": "autonomous/flight-08a-lemniscate/flight-08a-lemniscate_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 25.665771,
+      "samples": 3081,
+      "accepted": true
+    },
+    {
+      "flight": "flight-08p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-08p-lemniscate/flight-08p-lemniscate_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 59.549843,
+      "samples": 7147,
+      "accepted": true
+    },
+    {
+      "flight": "flight-08p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-08p-lemniscate/flight-08p-lemniscate_cam_ts_sync.csv",
+      "part": 1,
+      "start_s": 59.558396,
+      "end_s": 59.558396,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-08p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-08p-lemniscate/flight-08p-lemniscate_cam_ts_sync.csv",
+      "part": 2,
+      "start_s": 59.566522,
+      "end_s": 87.166497,
+      "samples": 3313,
+      "accepted": true
+    },
+    {
+      "flight": "flight-09a-lemniscate",
+      "day": "autonomous_lemniscate",
+      "source_file": "autonomous/flight-09a-lemniscate/flight-09a-lemniscate_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 25.188994,
+      "samples": 3001,
+      "accepted": true
+    },
+    {
+      "flight": "flight-09p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-09p-lemniscate/flight-09p-lemniscate_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 93.115191,
+      "samples": 11088,
+      "accepted": true
+    },
+    {
+      "flight": "flight-09p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-09p-lemniscate/flight-09p-lemniscate_cam_ts_sync.csv",
+      "part": 1,
+      "start_s": 93.123304,
+      "end_s": 94.25766,
+      "samples": 136,
+      "accepted": false
+    },
+    {
+      "flight": "flight-10a-lemniscate",
+      "day": "autonomous_lemniscate",
+      "source_file": "autonomous/flight-10a-lemniscate/flight-10a-lemniscate_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 27.608599,
+      "samples": 3314,
+      "accepted": true
+    },
+    {
+      "flight": "flight-10p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-10p-lemniscate/flight-10p-lemniscate_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 76.883339,
+      "samples": 9224,
+      "accepted": true
+    },
+    {
+      "flight": "flight-10p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-10p-lemniscate/flight-10p-lemniscate_cam_ts_sync.csv",
+      "part": 1,
+      "start_s": 76.892217,
+      "end_s": 76.892217,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-10p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-10p-lemniscate/flight-10p-lemniscate_cam_ts_sync.csv",
+      "part": 2,
+      "start_s": 76.899904,
+      "end_s": 93.358442,
+      "samples": 1976,
+      "accepted": true
+    },
+    {
+      "flight": "flight-11a-lemniscate",
+      "day": "autonomous_lemniscate",
+      "source_file": "autonomous/flight-11a-lemniscate/flight-11a-lemniscate_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 12.905753,
+      "samples": 1538,
+      "accepted": true
+    },
+    {
+      "flight": "flight-11a-lemniscate",
+      "day": "autonomous_lemniscate",
+      "source_file": "autonomous/flight-11a-lemniscate/flight-11a-lemniscate_cam_ts_sync.csv",
+      "part": 1,
+      "start_s": 12.913527,
+      "end_s": 12.913527,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-11a-lemniscate",
+      "day": "autonomous_lemniscate",
+      "source_file": "autonomous/flight-11a-lemniscate/flight-11a-lemniscate_cam_ts_sync.csv",
+      "part": 2,
+      "start_s": 12.921655,
+      "end_s": 22.392913,
+      "samples": 1129,
+      "accepted": false
+    },
+    {
+      "flight": "flight-11p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-11p-lemniscate/flight-11p-lemniscate_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 11.553184,
+      "samples": 1377,
+      "accepted": true
+    },
+    {
+      "flight": "flight-11p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-11p-lemniscate/flight-11p-lemniscate_cam_ts_sync.csv",
+      "part": 1,
+      "start_s": 11.562437,
+      "end_s": 11.562437,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-11p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-11p-lemniscate/flight-11p-lemniscate_cam_ts_sync.csv",
+      "part": 2,
+      "start_s": 11.570041,
+      "end_s": 11.570041,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-11p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-11p-lemniscate/flight-11p-lemniscate_cam_ts_sync.csv",
+      "part": 3,
+      "start_s": 11.578739,
+      "end_s": 11.578739,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-11p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-11p-lemniscate/flight-11p-lemniscate_cam_ts_sync.csv",
+      "part": 4,
+      "start_s": 11.586281,
+      "end_s": 19.974839,
+      "samples": 1000,
+      "accepted": false
+    },
+    {
+      "flight": "flight-11p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-11p-lemniscate/flight-11p-lemniscate_cam_ts_sync.csv",
+      "part": 5,
+      "start_s": 19.983476,
+      "end_s": 19.983476,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-11p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-11p-lemniscate/flight-11p-lemniscate_cam_ts_sync.csv",
+      "part": 6,
+      "start_s": 19.990789,
+      "end_s": 19.990789,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-11p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-11p-lemniscate/flight-11p-lemniscate_cam_ts_sync.csv",
+      "part": 7,
+      "start_s": 19.999791,
+      "end_s": 19.999791,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-11p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-11p-lemniscate/flight-11p-lemniscate_cam_ts_sync.csv",
+      "part": 8,
+      "start_s": 20.007199,
+      "end_s": 76.456384,
+      "samples": 6721,
+      "accepted": true
+    },
+    {
+      "flight": "flight-11p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-11p-lemniscate/flight-11p-lemniscate_cam_ts_sync.csv",
+      "part": 9,
+      "start_s": 76.465043,
+      "end_s": 76.465043,
+      "samples": 1,
+      "accepted": false
+    },
+    {
+      "flight": "flight-11p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-11p-lemniscate/flight-11p-lemniscate_cam_ts_sync.csv",
+      "part": 10,
+      "start_s": 76.473299,
+      "end_s": 108.001465,
+      "samples": 3756,
+      "accepted": true
+    },
+    {
+      "flight": "flight-12a-lemniscate",
+      "day": "autonomous_lemniscate",
+      "source_file": "autonomous/flight-12a-lemniscate/flight-12a-lemniscate_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 23.376001,
+      "samples": 2806,
+      "accepted": true
+    },
+    {
+      "flight": "flight-12p-lemniscate",
+      "day": "piloted_lemniscate",
+      "source_file": "piloted/flight-12p-lemniscate/flight-12p-lemniscate_cam_ts_sync.csv",
+      "part": 0,
+      "start_s": 0.0,
+      "end_s": 104.859195,
+      "samples": 12581,
+      "accepted": true
+    }
+  ]
+}

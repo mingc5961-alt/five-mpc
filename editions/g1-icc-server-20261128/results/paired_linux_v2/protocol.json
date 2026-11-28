@@ -1,0 +1,8 @@
+{
+  "name": "g1_linux_paired_v2",
+  "registered": 1795797396.3251266,
+  "reason": "Independent within-server pair after v1 cross-platform calibration exceeded the original G tolerance. Windows reference receipt is immutable and remains a separate comparison.",
+  "acceptance": "Existing native canary vs separate run using stored independently regenerated physical arrays: exact event list, physics, full result and provenance. All worlds shared, hashed, held fixed. Model and runner package SHA unchanged.",
+  "method": "Original run_n01.py and grurun.run. Only World construction is supplied from the locked bank after checking constructor arguments. First 1400 x0.45, then 31, freeze locally only.",
+  "no_cross_platform_equivalence_claim": true
+}

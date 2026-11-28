@@ -1,0 +1,78 @@
+{
+  "input_worlds": [
+    1400,
+    1401,
+    1402,
+    1403,
+    1404,
+    1405,
+    1406,
+    1407
+  ],
+  "input_multipliers": [
+    0.45,
+    0.6,
+    0.75,
+    1.0
+  ],
+  "development_only": true,
+  "protocol": "N01 original G1, native clock B=3 s",
+  "world_sha256": {
+    "1400": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+    "1401": "0682f661e1bb654df0bfadb7108f74c71d15460dac052b3a66cdd76eb6718460",
+    "1402": "e5cbba6d46fe84fa3b25e0852a524c55ca08e4afcff41da944d9bf2b2da35988",
+    "1403": "e6e4582a7402aa48799b02230fa944515ee2375189bc8d7c41f70f58e35c993b",
+    "1404": "529858aa64087694df832e848dc8cbfd3da8248d143ab6ed91671eda65e55247",
+    "1405": "45e70dced1f1e4182000e942763c16c96e893c6d56020f710d6063ae91ae9973",
+    "1406": "15b5ace3a12f971e1e23279caeccbbeb391cf6c8f8b68beb290aafaafe1ac659",
+    "1407": "5cafdb4ead5d5183b56d8513d7fc96ca94701072d4fe92f3146fe4cb5af8f65e"
+  },
+  "points": {
+    "0.45": {
+      "G_mbps": 1314.6841231573612,
+      "R_pct": 7.5078125,
+      "S_s": 2.6311249999989137,
+      "events": 848.75
+    },
+    "0.6": {
+      "G_mbps": 1211.8135700974885,
+      "R_pct": 5.415625,
+      "S_s": 2.6377124999989037,
+      "events": 850.875
+    },
+    "0.75": {
+      "G_mbps": 1121.5635595113931,
+      "R_pct": 4.628125,
+      "S_s": 2.654762499998885,
+      "events": 856.375
+    },
+    "1.0": {
+      "G_mbps": 951.8494206231969,
+      "R_pct": 4.972135416666667,
+      "S_s": 2.691574999998905,
+      "events": 868.25
+    }
+  },
+  "target_risk_pct": 7,
+  "mixture": {
+    "0.45": 0.7572815533980582,
+    "0.6": 0.24271844660194175
+  },
+  "expected_goodput_mbps": 1289.7155423175864,
+  "expected_risk_pct": 7.0,
+  "expected_fixes": 849.2657766990291,
+  "expected_sense_s": 2.63272390776699,
+  "K": 849,
+  "exact_quota_cost_s": 2.6319,
+  "PM_ms": 3394,
+  "period_fixes": 849,
+  "period_cost_s": 2.6319,
+  "tie_rule": "best expected G, lower risk then one endpoint; nearest count rounded half-up; median_low of best integer-ms periods 3000..6000",
+  "period_tied_ms": [
+    3393,
+    3394,
+    3395,
+    3396
+  ],
+  "grid_csv_sha256": "d686bf5182d330c28257ce34409944c2b875e312a0da14d958dff8cfb6cec9c9"
+}

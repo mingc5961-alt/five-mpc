@@ -1,5 +1,7 @@
 # RouteClock / FIVE-MPC 实验与结果
 
+**[G1 服务器实验布置与结果（2026-11-28）](editions/g1-icc-server-20261128/)** · 3,856 场主闭环、656 场倍率扩展、160 场实飞轨迹通信回放。[随机航迹与 AoI-DQN 吞吐对照](editions/g1-icc-server-20261128/report/random-flight-results.txt) · [逐世界确认结果](editions/g1-icc-server-20261128/results/paired_linux_v2/confirmation/world_scores.csv)
+
 **[原版 G1 硕士论文主线与实验归档（2026-11-27）](editions/g1-paid-cold-start-20261127/)** · 7/9 机群，从首次付费定位到波束调度。[正文](editions/g1-paid-cold-start-20261127/THESIS.md) · [窄束保持期的物理检验](editions/g1-paid-cold-start-20261127/HOLD.md) · [四组配对实验](editions/g1-paid-cold-start-20261127/appendix/FACTORIAL.md)
 
 **[8/8 正式实验结题报告（2026-11-27）](editions/formal-8x8-20261127/report/REPORT.md)** · 14 种方案，2,454 场正式闭环。[新增内容目录与复核](editions/formal-8x8-20261127/) · [报告 PDF](editions/formal-8x8-20261127/report/RouteClock-8x8-report.pdf) · [原始世界与训练分片](https://github.com/mingc5961-alt/five-mpc/releases/tag/formal-8x8-20261127)

@@ -1,0 +1,15 @@
+{
+  "supplemental_world_fingerprints": 169,
+  "train_worlds": 64,
+  "reconstructed_vs_paid_input_observations": 51579,
+  "max_paid_coordinate_difference_m": 0,
+  "original_asset_check_in_handoff": {
+    "G1/best.pt": "awaiting recovery",
+    "G1/fusion.json": "match",
+    "G1/frozen_gate.json": "match",
+    "G1/tube.pkl": "awaiting recovery",
+    "Chronos/best.pt": "match",
+    "Chronos/tube.pkl": "match"
+  },
+  "primary_confirmation_endpoints_scored": 0
+}

@@ -1,0 +1,19 @@
+{
+  "protocol": "g1_linux_paired_v2",
+  "cross_platform_reference_status": "FAIL",
+  "index_sha256": "376cad8c8a2dab6f8a32d2c95c6aa7561f366a3b837898fe80e1a45a57968763",
+  "freeze_sha256": "ac90c6f3bcda6b10647e8598b7befd67934ea8f2eeb4b00e62efc9f4af33c923",
+  "physical_sha256": {
+    "1400": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+    "1401": "0682f661e1bb654df0bfadb7108f74c71d15460dac052b3a66cdd76eb6718460",
+    "1402": "e5cbba6d46fe84fa3b25e0852a524c55ca08e4afcff41da944d9bf2b2da35988",
+    "1403": "e6e4582a7402aa48799b02230fa944515ee2375189bc8d7c41f70f58e35c993b",
+    "1404": "529858aa64087694df832e848dc8cbfd3da8248d143ab6ed91671eda65e55247",
+    "1405": "45e70dced1f1e4182000e942763c16c96e893c6d56020f710d6063ae91ae9973",
+    "1406": "15b5ace3a12f971e1e23279caeccbbeb391cf6c8f8b68beb290aafaafe1ac659",
+    "1407": "5cafdb4ead5d5183b56d8513d7fc96ca94701072d4fe92f3146fe4cb5af8f65e"
+  },
+  "K": 849,
+  "PM_ms": 3394,
+  "complete": 32
+}

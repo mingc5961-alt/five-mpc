@@ -1,0 +1,7 @@
+{
+  "worlds": 48,
+  "queries": 89856,
+  "cells": 1141,
+  "closed_loop_endpoints": 0,
+  "aggregation": "equal worlds; P90 is the mean of within-world cell quantiles"
+}

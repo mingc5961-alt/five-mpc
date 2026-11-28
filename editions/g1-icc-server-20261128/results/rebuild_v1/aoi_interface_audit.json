@@ -1,0 +1,65 @@
+{
+  "world": 1400,
+  "random_initialization": 53,
+  "test": "interface only, no optimization or performance comparison",
+  "cases": [
+    {
+      "b": 3,
+      "k": 700,
+      "protocol": "fixed",
+      "time_s": 2.17,
+      "digest": "1011e462644cb2a3b9050d5443e39ba78533a9d77d924a44432d4426c872da8b"
+    },
+    {
+      "b": 3,
+      "k": 700,
+      "protocol": "joint",
+      "time_s": 2.17,
+      "digest": "f15fb0a1c68c09ee0a9bd799b9ae04ec9c8ada4857a65d16711c193926d0cbe0"
+    },
+    {
+      "b": 3,
+      "k": 950,
+      "protocol": "fixed",
+      "time_s": 2.945,
+      "digest": "6151eaeb1982e969a5a10314753e51334bab6fa8c57fa7b7477518dd82847afa"
+    },
+    {
+      "b": 3,
+      "k": 950,
+      "protocol": "joint",
+      "time_s": 2.945,
+      "digest": "5afb6e056fb0163b8f475746f509b1d1f2133ec2767d1efc20f7def47daeb4a9"
+    },
+    {
+      "b": 4.5,
+      "k": 950,
+      "protocol": "fixed",
+      "time_s": 2.945,
+      "digest": "deb48dcc1285cbca865149e07c26b5f9dbf4321ac2ea95cb0d2f42c06d947ada"
+    },
+    {
+      "b": 4.5,
+      "k": 950,
+      "protocol": "joint",
+      "time_s": 2.945,
+      "digest": "19d08179776a297b2fa1f4d232c8bd3c193c28e81075e72688b9a830389242f7"
+    },
+    {
+      "b": 9,
+      "k": 950,
+      "protocol": "fixed",
+      "time_s": 2.945,
+      "digest": "9a803890613571a1eafd976cf431af414244f167ff24d2c8479b47ca6b4ce507"
+    },
+    {
+      "b": 9,
+      "k": 950,
+      "protocol": "joint",
+      "time_s": 2.945,
+      "digest": "aa4a9a0679c31d51bee1715b742bc2fff27deae23412fd6b56cba2f18dafa353"
+    }
+  ],
+  "terminal_and_bootstrap_mask": true,
+  "permutation_equivariant": true
+}

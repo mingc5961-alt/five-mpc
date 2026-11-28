@@ -1,0 +1,55 @@
+{
+  "new_runs": 38,
+  "reused_anchors": 2,
+  "worlds": 8,
+  "wall_s": 441.91734313964844,
+  "all_coordinates": 40,
+  "within_event_tolerance": 40,
+  "matched_pairs_1us": 33879,
+  "expected_pairs": 33879,
+  "matching_physics": 0,
+  "all_checks_except_world_passed": 35,
+  "other_differences": [
+    {
+      "world": 3,
+      "arm": "G1",
+      "m": 0.75,
+      "issues": [
+        "bits[7]"
+      ]
+    },
+    {
+      "world": 4,
+      "arm": "G1",
+      "m": 1.0,
+      "issues": [
+        "bits[9]"
+      ]
+    },
+    {
+      "world": 2,
+      "arm": "G1",
+      "m": 0.45,
+      "issues": [
+        "R"
+      ]
+    },
+    {
+      "world": 7,
+      "arm": "C",
+      "m": 0.75,
+      "issues": [
+        "bits[12]"
+      ]
+    },
+    {
+      "world": 1,
+      "arm": "C",
+      "m": 0.75,
+      "issues": [
+        "bits[6]",
+        "bits[14]"
+      ]
+    }
+  ]
+}

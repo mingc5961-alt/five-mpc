@@ -1,0 +1,881 @@
+{
+  "checked_endpoints": 160,
+  "panels": {
+    "amov_0_mixed": {
+      "source": "amov",
+      "view": "mixed",
+      "cohort": 0,
+      "duration": 180,
+      "quota": 849,
+      "flight_count": 16,
+      "random_count": 7,
+      "fingerprint": "3eac662ea8da62ac4b53019cac858af70cbb37d06fa19dc066e9d3db7cdacd3e"
+    },
+    "amov_0_planned": {
+      "source": "amov",
+      "view": "planned",
+      "cohort": 0,
+      "duration": 180,
+      "quota": 849,
+      "flight_count": 16,
+      "random_count": 0,
+      "fingerprint": "4d675fd8d2d97f3145a6cca9d76c9aef948fb1392414802c6b9f699bcaea0fb5"
+    },
+    "amov_1_mixed": {
+      "source": "amov",
+      "view": "mixed",
+      "cohort": 1,
+      "duration": 180,
+      "quota": 849,
+      "flight_count": 16,
+      "random_count": 7,
+      "fingerprint": "a4ef72c1f7502793cc4c800213298be465adac42b8575d0456888d8162bc2e9c"
+    },
+    "amov_1_planned": {
+      "source": "amov",
+      "view": "planned",
+      "cohort": 1,
+      "duration": 180,
+      "quota": 849,
+      "flight_count": 16,
+      "random_count": 0,
+      "fingerprint": "e4f9b65b095e71896674b8341c6f8b34845cb684e94b750152a825bcd1c2d9c1"
+    },
+    "neurobem_0_mixed": {
+      "source": "neurobem",
+      "view": "mixed",
+      "cohort": 0,
+      "duration": 30,
+      "quota": 142,
+      "flight_count": 16,
+      "random_count": 8,
+      "fingerprint": "556c0601793c841e97b4efaebfac31d3a261b671de70f5939ee01f7b4477a73a"
+    },
+    "neurobem_0_planned": {
+      "source": "neurobem",
+      "view": "planned",
+      "cohort": 0,
+      "duration": 30,
+      "quota": 142,
+      "flight_count": 16,
+      "random_count": 0,
+      "fingerprint": "a59672f9c02df9cb19cb90a7f161005c00a0a286aba3a13f1651ed8141ca6f02"
+    },
+    "combined_0_random": {
+      "source": "combined",
+      "view": "random",
+      "cohort": 0,
+      "duration": 30,
+      "quota": 142,
+      "flight_count": 16,
+      "random_count": 16,
+      "fingerprint": "46fad6011b7c42f426110876536eb8e4ea127cc59680acc0ae684dbe8d3358bb"
+    },
+    "combined_0_planned": {
+      "source": "combined",
+      "view": "planned",
+      "cohort": 0,
+      "duration": 30,
+      "quota": 142,
+      "flight_count": 16,
+      "random_count": 0,
+      "fingerprint": "599b6d7c371756bf435c6655f87eb25c4e33db7c4f67a6e48192be7767ac51a6"
+    }
+  },
+  "open_geometry": {
+    "amov_all": {
+      "flights": 14,
+      "programs": 14,
+      "queries": 280,
+      "angle_deg": {
+        "adaptive": 1.1853465890308483,
+        "motion": 2.473295503254302,
+        "Fstar": 1.092439761471464,
+        "RAFT": 1.338672564451887,
+        "Chronos": 1.1515377533835012
+      },
+      "baseline_minus_adaptive_ci95": {
+        "motion": [
+          0.9751868539693925,
+          1.5925469536018737
+        ],
+        "Fstar": [
+          -0.170417430994755,
+          -0.02115133411432054
+        ],
+        "RAFT": [
+          -0.0851550642389968,
+          0.38778389453882106
+        ],
+        "Chronos": [
+          -0.3472108519402192,
+          0.28707315298013414
+        ]
+      }
+    },
+    "amov_low_repetition": {
+      "flights": 14,
+      "programs": 14,
+      "queries": 280,
+      "angle_deg": {
+        "adaptive": 1.1853465890308483,
+        "motion": 2.473295503254302,
+        "Fstar": 1.092439761471464,
+        "RAFT": 1.338672564451887,
+        "Chronos": 1.1515377533835012
+      },
+      "baseline_minus_adaptive_ci95": {
+        "motion": [
+          0.9751868539693925,
+          1.5925469536018737
+        ],
+        "Fstar": [
+          -0.170417430994755,
+          -0.02115133411432054
+        ],
+        "RAFT": [
+          -0.0851550642389968,
+          0.38778389453882106
+        ],
+        "Chronos": [
+          -0.3472108519402192,
+          0.28707315298013414
+        ]
+      }
+    },
+    "neurobem_all": {
+      "flights": 10,
+      "programs": 9,
+      "queries": 98,
+      "angle_deg": {
+        "adaptive": 1.1832768354615566,
+        "motion": 2.8857963053727973,
+        "Fstar": 1.1027549548218167,
+        "RAFT": 0.8242489912589749,
+        "Chronos": 0.5606199166183647
+      },
+      "baseline_minus_adaptive_ci95": {
+        "motion": [
+          1.0256459532740543,
+          2.409324332273424
+        ],
+        "Fstar": [
+          -0.2102909065076365,
+          0.05675387433250671
+        ],
+        "RAFT": [
+          -0.6083875169927396,
+          -0.1594147946679436
+        ],
+        "Chronos": [
+          -0.8650156711387897,
+          -0.3848742164350564
+        ]
+      }
+    },
+    "neurobem_low_repetition": {
+      "flights": 9,
+      "programs": 8,
+      "queries": 89,
+      "angle_deg": {
+        "adaptive": 1.1883845946572016,
+        "motion": 2.8060428558678145,
+        "Fstar": 1.1553533508153486,
+        "RAFT": 0.8209412815403745,
+        "Chronos": 0.5704132060856516
+      },
+      "baseline_minus_adaptive_ci95": {
+        "motion": [
+          0.8886807344721859,
+          2.394306006944666
+        ],
+        "Fstar": [
+          -0.12653665955129026,
+          0.09236177322274595
+        ],
+        "RAFT": [
+          -0.6376406802870135,
+          -0.1426676394833908
+        ],
+        "Chronos": [
+          -0.8940953625058741,
+          -0.35046718920277964
+        ]
+      }
+    }
+  },
+  "contrasts": [
+    {
+      "source": "amov",
+      "view": "mixed",
+      "first": "Q01",
+      "second": "Q03",
+      "assemblies": 2,
+      "first_mbps": 1117.6389766889806,
+      "second_mbps": 916.1150644375361,
+      "gain_mbps": 201.52391225144447,
+      "gain_pct": 21.99766383878573,
+      "risk_difference_pp": -10.422453703703704,
+      "user_p05_difference_mbps": 14.529881428294132,
+      "assembly_deltas_mbps": "226.7036 | 176.3443"
+    },
+    {
+      "source": "amov",
+      "view": "mixed",
+      "first": "P01",
+      "second": "P02",
+      "assemblies": 2,
+      "first_mbps": 1111.8362637004707,
+      "second_mbps": 876.2000524274688,
+      "gain_mbps": 235.6362112730019,
+      "gain_pct": 26.89296931907085,
+      "risk_difference_pp": -3.891203703703704,
+      "user_p05_difference_mbps": 20.962059902539806,
+      "assembly_deltas_mbps": "248.9946 | 222.2778"
+    },
+    {
+      "source": "amov",
+      "view": "mixed",
+      "first": "Q03",
+      "second": "Q04",
+      "assemblies": 2,
+      "first_mbps": 916.1150644375361,
+      "second_mbps": 783.890919279211,
+      "gain_mbps": 132.2241451583252,
+      "gain_pct": 16.867671496935507,
+      "risk_difference_pp": -1.3802083333333321,
+      "user_p05_difference_mbps": 7.0754595286728446,
+      "assembly_deltas_mbps": "131.7238 | 132.7245"
+    },
+    {
+      "source": "amov",
+      "view": "mixed",
+      "first": "Q03",
+      "second": "Q07",
+      "assemblies": 2,
+      "first_mbps": 916.1150644375361,
+      "second_mbps": 742.1796857415552,
+      "gain_mbps": 173.93537869598094,
+      "gain_pct": 23.43575040351474,
+      "risk_difference_pp": -0.8265046296296283,
+      "user_p05_difference_mbps": 7.854904299105151,
+      "assembly_deltas_mbps": "187.6350 | 160.2357"
+    },
+    {
+      "source": "amov",
+      "view": "mixed",
+      "first": "Q08",
+      "second": "Q03",
+      "assemblies": 2,
+      "first_mbps": 1261.3614916477293,
+      "second_mbps": 916.1150644375361,
+      "gain_mbps": 345.24642721019313,
+      "gain_pct": 37.6859240298775,
+      "risk_difference_pp": -1.1547453703703727,
+      "user_p05_difference_mbps": 6.755591817848348,
+      "assembly_deltas_mbps": "374.6979 | 315.7950"
+    },
+    {
+      "source": "amov",
+      "view": "mixed",
+      "first": "C_due",
+      "second": "Q08",
+      "assemblies": 2,
+      "first_mbps": 1505.0933261654973,
+      "second_mbps": 1261.3614916477293,
+      "gain_mbps": 243.731834517768,
+      "gain_pct": 19.322917033036948,
+      "risk_difference_pp": -7.053819444444443,
+      "user_p05_difference_mbps": 29.15267136719151,
+      "assembly_deltas_mbps": "240.5573 | 246.9063"
+    },
+    {
+      "source": "amov",
+      "view": "mixed",
+      "first": "C_due",
+      "second": "Q01",
+      "assemblies": 2,
+      "first_mbps": 1505.0933261654973,
+      "second_mbps": 1117.6389766889806,
+      "gain_mbps": 387.45434947651665,
+      "gain_pct": 34.66721880301231,
+      "risk_difference_pp": 2.2138888888888886,
+      "user_p05_difference_mbps": 21.378381756745725,
+      "assembly_deltas_mbps": "388.5517 | 386.3570"
+    },
+    {
+      "source": "amov",
+      "view": "mixed",
+      "first": "Q01",
+      "second": "Q05",
+      "assemblies": 2,
+      "first_mbps": 1117.6389766889806,
+      "second_mbps": 1077.475378627522,
+      "gain_mbps": 40.163598061458515,
+      "gain_pct": 3.7275652750987707,
+      "risk_difference_pp": -0.16458333333333286,
+      "user_p05_difference_mbps": 1.351483664092072,
+      "assembly_deltas_mbps": "43.7465 | 36.5807"
+    },
+    {
+      "source": "amov",
+      "view": "planned",
+      "first": "Q01",
+      "second": "Q03",
+      "assemblies": 2,
+      "first_mbps": 1194.1725783342138,
+      "second_mbps": 971.4290619312776,
+      "gain_mbps": 222.74351640293617,
+      "gain_pct": 22.929468051954764,
+      "risk_difference_pp": -9.006712962962963,
+      "user_p05_difference_mbps": 20.005925267747557,
+      "assembly_deltas_mbps": "213.3798 | 232.1072"
+    },
+    {
+      "source": "amov",
+      "view": "planned",
+      "first": "P01",
+      "second": "P02",
+      "assemblies": 2,
+      "first_mbps": 1202.0271277509228,
+      "second_mbps": 947.3364571160616,
+      "gain_mbps": 254.69067063486114,
+      "gain_pct": 26.88492232318449,
+      "risk_difference_pp": -2.229976851851852,
+      "user_p05_difference_mbps": 20.21313739539923,
+      "assembly_deltas_mbps": "253.8960 | 255.4854"
+    },
+    {
+      "source": "amov",
+      "view": "planned",
+      "first": "Q03",
+      "second": "Q04",
+      "assemblies": 2,
+      "first_mbps": 971.4290619312776,
+      "second_mbps": 837.2564160399822,
+      "gain_mbps": 134.17264589129536,
+      "gain_pct": 16.02527533033418,
+      "risk_difference_pp": -1.9180555555555578,
+      "user_p05_difference_mbps": 2.5213577963159395,
+      "assembly_deltas_mbps": "146.8866 | 121.4587"
+    },
+    {
+      "source": "amov",
+      "view": "planned",
+      "first": "Q03",
+      "second": "Q07",
+      "assemblies": 2,
+      "first_mbps": 971.4290619312776,
+      "second_mbps": 751.8500936831565,
+      "gain_mbps": 219.5789682481211,
+      "gain_pct": 29.20515274161231,
+      "risk_difference_pp": -2.113078703703703,
+      "user_p05_difference_mbps": 7.30874405575382,
+      "assembly_deltas_mbps": "233.3898 | 205.7681"
+    },
+    {
+      "source": "amov",
+      "view": "planned",
+      "first": "Q08",
+      "second": "Q03",
+      "assemblies": 2,
+      "first_mbps": 1436.9289111776466,
+      "second_mbps": 971.4290619312776,
+      "gain_mbps": 465.49984924636897,
+      "gain_pct": 47.9190779325583,
+      "risk_difference_pp": -3.0557870370370352,
+      "user_p05_difference_mbps": 25.754938966344426,
+      "assembly_deltas_mbps": "472.6463 | 458.3534"
+    },
+    {
+      "source": "amov",
+      "view": "planned",
+      "first": "C_due",
+      "second": "Q08",
+      "assemblies": 2,
+      "first_mbps": 1589.555677594477,
+      "second_mbps": 1436.9289111776466,
+      "gain_mbps": 152.62676641683038,
+      "gain_pct": 10.62173397929226,
+      "risk_difference_pp": -6.518287037037038,
+      "user_p05_difference_mbps": 19.189853221426645,
+      "assembly_deltas_mbps": "141.1931 | 164.0604"
+    },
+    {
+      "source": "amov",
+      "view": "planned",
+      "first": "C_due",
+      "second": "Q01",
+      "assemblies": 2,
+      "first_mbps": 1589.555677594477,
+      "second_mbps": 1194.1725783342138,
+      "gain_mbps": 395.3830992602632,
+      "gain_pct": 33.1093768550434,
+      "risk_difference_pp": -0.5673611111111105,
+      "user_p05_difference_mbps": 24.938866920023514,
+      "assembly_deltas_mbps": "400.4597 | 390.3065"
+    },
+    {
+      "source": "amov",
+      "view": "planned",
+      "first": "Q01",
+      "second": "Q05",
+      "assemblies": 2,
+      "first_mbps": 1194.1725783342138,
+      "second_mbps": 1148.623367997896,
+      "gain_mbps": 45.549210336317856,
+      "gain_pct": 3.9655479424654447,
+      "risk_difference_pp": 0.21423611111111018,
+      "user_p05_difference_mbps": 3.744724622105082,
+      "assembly_deltas_mbps": "53.0590 | 38.0394"
+    },
+    {
+      "source": "neurobem",
+      "view": "mixed",
+      "first": "Q01",
+      "second": "Q03",
+      "assemblies": 1,
+      "first_mbps": 934.0763557238599,
+      "second_mbps": 837.0431937256905,
+      "gain_mbps": 97.03316199816948,
+      "gain_pct": 11.592372141068799,
+      "risk_difference_pp": -2.283333333333333,
+      "user_p05_difference_mbps": 3.73460411978197,
+      "assembly_deltas_mbps": "97.0332"
+    },
+    {
+      "source": "neurobem",
+      "view": "mixed",
+      "first": "P01",
+      "second": "P02",
+      "assemblies": 1,
+      "first_mbps": 949.141008483534,
+      "second_mbps": 792.9313214212193,
+      "gain_mbps": 156.20968706231474,
+      "gain_pct": 19.70027956296777,
+      "risk_difference_pp": -3.008333333333333,
+      "user_p05_difference_mbps": 6.395584095092225,
+      "assembly_deltas_mbps": "156.2097"
+    },
+    {
+      "source": "neurobem",
+      "view": "mixed",
+      "first": "Q03",
+      "second": "Q04",
+      "assemblies": 1,
+      "first_mbps": 837.0431937256905,
+      "second_mbps": 762.9560863617053,
+      "gain_mbps": 74.08710736398518,
+      "gain_pct": 9.710533632057778,
+      "risk_difference_pp": -3.711111111111112,
+      "user_p05_difference_mbps": 4.028451714027149,
+      "assembly_deltas_mbps": "74.0871"
+    },
+    {
+      "source": "neurobem",
+      "view": "mixed",
+      "first": "Q03",
+      "second": "Q07",
+      "assemblies": 1,
+      "first_mbps": 837.0431937256905,
+      "second_mbps": 743.7369994059158,
+      "gain_mbps": 93.3061943197747,
+      "gain_pct": 12.545589959126152,
+      "risk_difference_pp": -2.355555555555558,
+      "user_p05_difference_mbps": 2.5633620033044977,
+      "assembly_deltas_mbps": "93.3062"
+    },
+    {
+      "source": "neurobem",
+      "view": "mixed",
+      "first": "Q08",
+      "second": "Q03",
+      "assemblies": 1,
+      "first_mbps": 1541.301184952528,
+      "second_mbps": 837.0431937256905,
+      "gain_mbps": 704.2579912268376,
+      "gain_pct": 84.13639779951808,
+      "risk_difference_pp": -5.2638888888888875,
+      "user_p05_difference_mbps": 42.507561223944855,
+      "assembly_deltas_mbps": "704.2580"
+    },
+    {
+      "source": "neurobem",
+      "view": "mixed",
+      "first": "C_due",
+      "second": "Q08",
+      "assemblies": 1,
+      "first_mbps": 1572.7113325007567,
+      "second_mbps": 1541.301184952528,
+      "gain_mbps": 31.41014754822868,
+      "gain_pct": 2.0378980990140554,
+      "risk_difference_pp": -0.19027777777777732,
+      "user_p05_difference_mbps": 4.028922483120695,
+      "assembly_deltas_mbps": "31.4101"
+    },
+    {
+      "source": "neurobem",
+      "view": "mixed",
+      "first": "C_due",
+      "second": "Q01",
+      "assemblies": 1,
+      "first_mbps": 1572.7113325007567,
+      "second_mbps": 934.0763557238599,
+      "gain_mbps": 638.6349767768968,
+      "gain_pct": 68.37074644523985,
+      "risk_difference_pp": -3.1708333333333316,
+      "user_p05_difference_mbps": 42.80187958728358,
+      "assembly_deltas_mbps": "638.6350"
+    },
+    {
+      "source": "neurobem",
+      "view": "mixed",
+      "first": "Q01",
+      "second": "Q05",
+      "assemblies": 1,
+      "first_mbps": 934.0763557238599,
+      "second_mbps": 920.8268665332998,
+      "gain_mbps": 13.249489190560098,
+      "gain_pct": 1.438868659473562,
+      "risk_difference_pp": 0.41249999999999787,
+      "user_p05_difference_mbps": 1.2314756291964741,
+      "assembly_deltas_mbps": "13.2495"
+    },
+    {
+      "source": "neurobem",
+      "view": "planned",
+      "first": "Q01",
+      "second": "Q03",
+      "assemblies": 1,
+      "first_mbps": 953.0304149371566,
+      "second_mbps": 847.7982157639082,
+      "gain_mbps": 105.23219917324843,
+      "gain_pct": 12.412411021463287,
+      "risk_difference_pp": -3.9138888888888896,
+      "user_p05_difference_mbps": 8.113632984616835,
+      "assembly_deltas_mbps": "105.2322"
+    },
+    {
+      "source": "neurobem",
+      "view": "planned",
+      "first": "P01",
+      "second": "P02",
+      "assemblies": 1,
+      "first_mbps": 949.7515802532376,
+      "second_mbps": 798.666400948675,
+      "gain_mbps": 151.08517930456264,
+      "gain_pct": 18.917182333587597,
+      "risk_difference_pp": -3.4208333333333325,
+      "user_p05_difference_mbps": 8.826042137838371,
+      "assembly_deltas_mbps": "151.0852"
+    },
+    {
+      "source": "neurobem",
+      "view": "planned",
+      "first": "Q03",
+      "second": "Q04",
+      "assemblies": 1,
+      "first_mbps": 847.7982157639082,
+      "second_mbps": 732.4240622331121,
+      "gain_mbps": 115.3741535307961,
+      "gain_pct": 15.75237072073083,
+      "risk_difference_pp": -4.031944444444443,
+      "user_p05_difference_mbps": 7.401170286734114,
+      "assembly_deltas_mbps": "115.3742"
+    },
+    {
+      "source": "neurobem",
+      "view": "planned",
+      "first": "Q03",
+      "second": "Q07",
+      "assemblies": 1,
+      "first_mbps": 847.7982157639082,
+      "second_mbps": 737.5722761430496,
+      "gain_mbps": 110.22593962085853,
+      "gain_pct": 14.94442554121714,
+      "risk_difference_pp": -1.8458333333333314,
+      "user_p05_difference_mbps": 2.537997922182221,
+      "assembly_deltas_mbps": "110.2259"
+    },
+    {
+      "source": "neurobem",
+      "view": "planned",
+      "first": "Q08",
+      "second": "Q03",
+      "assemblies": 1,
+      "first_mbps": 1521.8228846649215,
+      "second_mbps": 847.7982157639082,
+      "gain_mbps": 674.0246689010133,
+      "gain_pct": 79.5029591202529,
+      "risk_difference_pp": -4.398611111111112,
+      "user_p05_difference_mbps": 42.35042371599318,
+      "assembly_deltas_mbps": "674.0247"
+    },
+    {
+      "source": "neurobem",
+      "view": "planned",
+      "first": "C_due",
+      "second": "Q08",
+      "assemblies": 1,
+      "first_mbps": 1568.3559667726984,
+      "second_mbps": 1521.8228846649215,
+      "gain_mbps": 46.53308210777686,
+      "gain_pct": 3.057719960494787,
+      "risk_difference_pp": -1.156944444444444,
+      "user_p05_difference_mbps": 5.28079593340145,
+      "assembly_deltas_mbps": "46.5331"
+    },
+    {
+      "source": "neurobem",
+      "view": "planned",
+      "first": "C_due",
+      "second": "Q01",
+      "assemblies": 1,
+      "first_mbps": 1568.3559667726984,
+      "second_mbps": 953.0304149371566,
+      "gain_mbps": 615.3255518355418,
+      "gain_pct": 64.56515366050691,
+      "risk_difference_pp": -1.6416666666666666,
+      "user_p05_difference_mbps": 39.517586664777795,
+      "assembly_deltas_mbps": "615.3256"
+    },
+    {
+      "source": "neurobem",
+      "view": "planned",
+      "first": "Q01",
+      "second": "Q05",
+      "assemblies": 1,
+      "first_mbps": 953.0304149371566,
+      "second_mbps": 897.8724698430099,
+      "gain_mbps": 55.157945094146726,
+      "gain_pct": 6.1431825728870955,
+      "risk_difference_pp": -0.1999999999999993,
+      "user_p05_difference_mbps": 2.1788724891589055,
+      "assembly_deltas_mbps": "55.1579"
+    },
+    {
+      "source": "combined",
+      "view": "planned",
+      "first": "Q01",
+      "second": "Q03",
+      "assemblies": 1,
+      "first_mbps": 989.7610911279961,
+      "second_mbps": 921.3794356553695,
+      "gain_mbps": 68.38165547262656,
+      "gain_pct": 7.421660699860015,
+      "risk_difference_pp": -3.520833333333332,
+      "user_p05_difference_mbps": 4.820185177888007,
+      "assembly_deltas_mbps": "68.3817"
+    },
+    {
+      "source": "combined",
+      "view": "planned",
+      "first": "P01",
+      "second": "P02",
+      "assemblies": 1,
+      "first_mbps": 982.5849615069745,
+      "second_mbps": 811.9910118337979,
+      "gain_mbps": 170.59394967317667,
+      "gain_pct": 21.00933965856443,
+      "risk_difference_pp": -3.4444444444444446,
+      "user_p05_difference_mbps": 8.504306168753658,
+      "assembly_deltas_mbps": "170.5939"
+    },
+    {
+      "source": "combined",
+      "view": "planned",
+      "first": "Q03",
+      "second": "Q04",
+      "assemblies": 1,
+      "first_mbps": 921.3794356553695,
+      "second_mbps": 791.2583148427224,
+      "gain_mbps": 130.12112081264718,
+      "gain_pct": 16.44483455930712,
+      "risk_difference_pp": -1.3638888888888907,
+      "user_p05_difference_mbps": 9.48367674907741,
+      "assembly_deltas_mbps": "130.1211"
+    },
+    {
+      "source": "combined",
+      "view": "planned",
+      "first": "Q03",
+      "second": "Q07",
+      "assemblies": 1,
+      "first_mbps": 921.3794356553695,
+      "second_mbps": 745.3244913366807,
+      "gain_mbps": 176.05494431868885,
+      "gain_pct": 23.621247706881093,
+      "risk_difference_pp": -2.095833333333335,
+      "user_p05_difference_mbps": 6.424212281895116,
+      "assembly_deltas_mbps": "176.0549"
+    },
+    {
+      "source": "combined",
+      "view": "planned",
+      "first": "Q08",
+      "second": "Q03",
+      "assemblies": 1,
+      "first_mbps": 1421.0050427496237,
+      "second_mbps": 921.3794356553695,
+      "gain_mbps": 499.6256070942542,
+      "gain_pct": 54.22582573040331,
+      "risk_difference_pp": -2.5555555555555536,
+      "user_p05_difference_mbps": 22.54313717720005,
+      "assembly_deltas_mbps": "499.6256"
+    },
+    {
+      "source": "combined",
+      "view": "planned",
+      "first": "C_due",
+      "second": "Q08",
+      "assemblies": 1,
+      "first_mbps": 1532.4126742891897,
+      "second_mbps": 1421.0050427496237,
+      "gain_mbps": 111.40763153956595,
+      "gain_pct": 7.840058844829561,
+      "risk_difference_pp": 2.0472222222222207,
+      "user_p05_difference_mbps": 17.88372648897986,
+      "assembly_deltas_mbps": "111.4076"
+    },
+    {
+      "source": "combined",
+      "view": "planned",
+      "first": "C_due",
+      "second": "Q01",
+      "assemblies": 1,
+      "first_mbps": 1532.4126742891897,
+      "second_mbps": 989.7610911279961,
+      "gain_mbps": 542.6515831611936,
+      "gain_pct": 54.826522079459856,
+      "risk_difference_pp": 3.0124999999999993,
+      "user_p05_difference_mbps": 35.606678488291905,
+      "assembly_deltas_mbps": "542.6516"
+    },
+    {
+      "source": "combined",
+      "view": "planned",
+      "first": "Q01",
+      "second": "Q05",
+      "assemblies": 1,
+      "first_mbps": 989.7610911279961,
+      "second_mbps": 985.1277302822997,
+      "gain_mbps": 4.633360845696416,
+      "gain_pct": 0.4703309736665998,
+      "risk_difference_pp": 1.0583333333333336,
+      "user_p05_difference_mbps": 0.26497639404040996,
+      "assembly_deltas_mbps": "4.6334"
+    },
+    {
+      "source": "combined",
+      "view": "random",
+      "first": "Q01",
+      "second": "Q03",
+      "assemblies": 1,
+      "first_mbps": 945.2424447021718,
+      "second_mbps": 826.0146167313578,
+      "gain_mbps": 119.22782797081402,
+      "gain_pct": 14.434106316739685,
+      "risk_difference_pp": -3.229166666666666,
+      "user_p05_difference_mbps": 11.87080494645609,
+      "assembly_deltas_mbps": "119.2278"
+    },
+    {
+      "source": "combined",
+      "view": "random",
+      "first": "P01",
+      "second": "P02",
+      "assemblies": 1,
+      "first_mbps": 899.7920653594668,
+      "second_mbps": 774.3881525330094,
+      "gain_mbps": 125.40391282645749,
+      "gain_pct": 16.193934839558636,
+      "risk_difference_pp": -3.6402777777777757,
+      "user_p05_difference_mbps": 9.580843327229147,
+      "assembly_deltas_mbps": "125.4039"
+    },
+    {
+      "source": "combined",
+      "view": "random",
+      "first": "Q03",
+      "second": "Q04",
+      "assemblies": 1,
+      "first_mbps": 826.0146167313578,
+      "second_mbps": 763.2516844987,
+      "gain_mbps": 62.76293223265782,
+      "gain_pct": 8.223097768055398,
+      "risk_difference_pp": -3.240277777777779,
+      "user_p05_difference_mbps": 4.648048401066973,
+      "assembly_deltas_mbps": "62.7629"
+    },
+    {
+      "source": "combined",
+      "view": "random",
+      "first": "Q03",
+      "second": "Q07",
+      "assemblies": 1,
+      "first_mbps": 826.0146167313578,
+      "second_mbps": 758.8393757006983,
+      "gain_mbps": 67.17524103065955,
+      "gain_pct": 8.852366282209745,
+      "risk_difference_pp": -2.240277777777777,
+      "user_p05_difference_mbps": 2.32797050055148,
+      "assembly_deltas_mbps": "67.1752"
+    },
+    {
+      "source": "combined",
+      "view": "random",
+      "first": "Q08",
+      "second": "Q03",
+      "assemblies": 1,
+      "first_mbps": 1294.5384033582084,
+      "second_mbps": 826.0146167313578,
+      "gain_mbps": 468.52378662685055,
+      "gain_pct": 56.72100434261772,
+      "risk_difference_pp": -0.19305555555555642,
+      "user_p05_difference_mbps": 13.150893655381331,
+      "assembly_deltas_mbps": "468.5238"
+    },
+    {
+      "source": "combined",
+      "view": "random",
+      "first": "C_due",
+      "second": "Q08",
+      "assemblies": 1,
+      "first_mbps": 1353.097315363313,
+      "second_mbps": 1294.5384033582084,
+      "gain_mbps": 58.55891200510473,
+      "gain_pct": 4.523536100064313,
+      "risk_difference_pp": 6.693055555555555,
+      "user_p05_difference_mbps": 9.819135407443525,
+      "assembly_deltas_mbps": "58.5589"
+    },
+    {
+      "source": "combined",
+      "view": "random",
+      "first": "C_due",
+      "second": "Q01",
+      "assemblies": 1,
+      "first_mbps": 1353.097315363313,
+      "second_mbps": 945.2424447021718,
+      "gain_mbps": 407.85487066114126,
+      "gain_pct": 43.148175682022895,
+      "risk_difference_pp": 9.729166666666664,
+      "user_p05_difference_mbps": 11.099224116368767,
+      "assembly_deltas_mbps": "407.8549"
+    },
+    {
+      "source": "combined",
+      "view": "random",
+      "first": "Q01",
+      "second": "Q05",
+      "assemblies": 1,
+      "first_mbps": 945.2424447021718,
+      "second_mbps": 924.0193911639138,
+      "gain_mbps": 21.223053538258,
+      "gain_pct": 2.2968190647519857,
+      "risk_difference_pp": 0.4875000000000007,
+      "user_p05_difference_mbps": 8.007932928171002,
+      "assembly_deltas_mbps": "21.2231"
+    }
+  ]
+}

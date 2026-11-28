@@ -1,0 +1,18 @@
+{
+  "kind": "model-forward benchmark only",
+  "formal_simulation_episodes": 0,
+  "artifacts": [
+    {
+      "path": "/data/coding/g1-server-handoff/parallel/chronos_cpu.json",
+      "sha256": "197cc45a079c3c0ad3ab1dc3729a523c266c4401f94d69769867c5e70f25fa44"
+    },
+    {
+      "path": "/data/coding/g1-server-handoff/parallel/chronos_cpu_high.json",
+      "sha256": "8035b8a74646279dbeeccdeb06627a87bdd06a8420a5b929072f12b960af6474"
+    },
+    {
+      "path": "/data/coding/g1-server-handoff/parallel/chronos_cpu_limit.json",
+      "sha256": "59114ee3106b28ec093554b1a39aa2466f109eb29c3609b82a7e0e035e87e9d5"
+    }
+  ]
+}

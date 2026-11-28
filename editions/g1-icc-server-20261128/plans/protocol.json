@@ -1,0 +1,74 @@
+{
+  "protocol_id": "g1_icc_server_v1",
+  "source_commit": "96b6e630e02c5fc709aef32e5a655b33ddf2463c",
+  "source_edition": "editions/g1-paid-cold-start-20261127",
+  "anchor": {
+    "users": 16, "base_stations": 1, "warmup_s": 0, "service_s": 180,
+    "sensing_budget_s": 3.0, "fix_cost_us": 3100, "charge_first_fix": true,
+    "carrier_ghz": 28, "bandwidth_mhz": 400, "total_tx_power_dbm": 20,
+    "array_axis_choices": [8, 16, 32], "pointing_loss_limit_db": 3,
+    "radio_threshold_relative_adjustment_db": -5, "probe_step_s": 0.02,
+    "grid_step_s": 0.5, "holding_time_choices_s": [0.5, 1, 2, 3, 5, 8, 10],
+    "group_order": ["stable_path_stable_tempo", "stable_path_global_speed", "stable_path_segment_speed", "stable_path_segment_speed_stops", "local_deviation_rejoin", "no_reusable_path"],
+    "group_counts": [3, 1, 1, 1, 3, 7]
+  },
+  "upstream_candidates_to_verify_not_overrides": {
+    "route_center_horizontal_m": [220, 400], "route_center_azimuth_deg": [-35, 35], "route_center_height_m": [80, 100],
+    "period_s": [20, 60], "nonrevisit_target_speed_mps": [3, 10],
+    "speed_cap_mps": 12, "accel_cap_mps2": 4, "jerk_cap_mps3": 8,
+    "measurement_sigma_range_m": 1, "measurement_sigma_azimuth_deg": 0.1, "measurement_sigma_elevation_deg": 0.1, "measurement_sigma_radial_speed_mps": 0.2,
+    "nominal_detour_probability_per_lap": 0.4, "nominal_detour_lateral_m": [3, 8], "nominal_detour_duration_s": [4, 8],
+    "stop_s": [1, 5], "shadow_sigma_db": 3, "shadow_correlation_s": 2
+  },
+  "split_id_ranges_inclusive": {
+    "train": [1000, 1063], "train_validation": [1100, 1115], "tube_fit": [1200, 1215],
+    "tube_calibration": [1300, 1315], "development": [1400, 1407],
+    "confirmation": [2000, 2023], "stress_family": [3000, 3011]
+  },
+  "working_points": {
+    "multipliers": [0.45, 0.60, 0.75, 1.00], "extension_if_infeasible_dev_only": [0.30, 1.25],
+    "target_risk_pct": 7.0, "common_multiplier": 0.75, "risk_noninferiority_margin_pp_proposed": 0.5,
+    "paid_time_equivalence_s_proposed_for_native_only": 0.03, "bootstrap_samples": 20000, "bootstrap_seed": 271127
+  },
+  "quota": {
+    "selection": "nearest_integer_from_native_original_G1_development_expected_number_of_fixes",
+    "illustrative_k_only": 854, "equal_cost_sweep_k_proposed": [700, 950], "primary_physical_budget_s": 3.0,
+    "other_physical_budgets_s": [4.5, 9], "dqn_seeds": [17, 29, 41]
+  },
+  "prefix": {
+    "n_paid": [1, 2, 3, 4, 6, 8, 12, 24, 40], "age_s": [0.5, 1, 2, 3, 5, 8, 10],
+    "extra_h_s": [0, 2], "max_total_h_s": 10, "predeclared_primary_ages_s": [2, 3, 5],
+    "predeclared_primary_n": [6, 8, 12, 24, 40]
+  },
+  "stress": {
+    "group_counts_zero_structured": [0, 0, 0, 0, 0, 16], "group_counts_all_structured": [5, 2, 2, 2, 5, 0],
+    "measurement_std_scale_proposed": [0.5, 2.0],
+    "paired_detour_proposed": {"eligible_nominal_stable_uavs": 3, "onset_s_range": [75, 105], "duration_s": 12, "lateral_peak_m": 5},
+    "scale_extension_users": [8, 32]
+  },
+  "matrix_columns": ["id", "clock", "predictor", "refresh", "replicas"],
+  "core_matrix": [
+    ["N01", "native", "Aorig", "due", "single"],
+    ["N02", "native", "F0orig", "due", "single"],
+    ["N03", "native", "Aorig", "period_from_dev", "single"],
+    ["N04", "native", "Aorig", "period_3s", "single"],
+    ["N05", "native", "Chronos", "due", "single"],
+    ["N06", "grid_free", "Aorig", "due", "single"],
+    ["P01", "fixed_success", "Acal", "due_rank", "single"],
+    ["P02", "fixed_success", "Acal", "dqn_fixed", "dqn"],
+    ["P03", "fixed_success", "Acal", "oldest", "single"],
+    ["Q01", "fixed_count", "Acal", "due", "single"],
+    ["Q02", "fixed_count", "M", "due", "single"],
+    ["Q03", "fixed_count", "Acal", "dqn_joint", "dqn"],
+    ["Q04", "fixed_count", "M", "dqn_joint", "dqn"],
+    ["Q05", "fixed_count", "Fstar", "due", "single"],
+    ["Q06", "fixed_count", "Acal", "imm_risk", "single"],
+    ["Q07", "fixed_count", "RAFT", "dqn_joint", "dqn"],
+    ["Q08", "fixed_count", "Chronos", "dqn_joint", "dqn"],
+    ["Q09", "fixed_count", "Aorig", "due", "single"],
+    ["Q10", "fixed_count", "IMM", "due", "single"]
+  ],
+  "primary_closed_contrasts": [["Q03", "Q04"], ["Q01", "Q03"]],
+  "secondary_contrasts": [["Q01", "Q05"], ["N01", "N02"], ["N01", "N03"], ["N01", "N04"], ["N01", "N05"], ["N01", "N06"], ["N06", "Q09"], ["Q09", "Q01"], ["P01", "P02"], ["Q01", "Q06"]],
+  "fixed_scale_sensitivity_rows": ["Q01", "Q02", "Q03", "Q04", "Q05"]
+}

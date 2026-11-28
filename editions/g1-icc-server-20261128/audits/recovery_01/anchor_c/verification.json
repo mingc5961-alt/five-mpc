@@ -1,0 +1,66 @@
+{
+  "status": "FAIL",
+  "wall_s": 255.74298160499893,
+  "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Mar 19 2026, 20:20:58) [GCC 14.3.0]",
+  "python_executable": "/data/chen/server_assessment/venv/bin/python",
+  "source_mode": "portable",
+  "scientific_files": {
+    "grurun": {
+      "name": "grurun.py",
+      "sha256": "60859d27d1746343966517d4d25e4050022921995ebbe2edd93b1d9c041f9f3b"
+    },
+    "grudata": {
+      "name": "grudata.py",
+      "sha256": "06248c0d50a22ec51811f747cd904342a3f08189676629dcba67997d51e3b418"
+    },
+    "grutrain": {
+      "name": "grutrain.py",
+      "sha256": "5da99c132c8df08d1eaa50c721deb34d9ebde96819c58113e69126fb5e14b05e"
+    },
+    "paid_full": {
+      "name": "paid_full.py",
+      "sha256": "123429448905d1931388d9e641ad63dfaf197aecc0df2ffcab6df6274111617b"
+    },
+    "factorial_data": {
+      "name": "factorial_data.py",
+      "sha256": "8fc00fa447a0c21737e3ac1b6279c2437087df894c3efb4f38b8a02babce2019"
+    },
+    "simulate": {
+      "name": "simulate.py",
+      "sha256": "112e3fb1462e03f3ad871384f5bbd628ee4df12cd4b660be98ef0ae2429e5890"
+    },
+    "common": {
+      "name": "common.py",
+      "sha256": "81244fdee49caaa6d6093eae200d00f0effc4b6b01fbc82bc54593fec0cfcb1e"
+    },
+    "neural": {
+      "name": "neural.py",
+      "sha256": "9b62416fa9a6229db366e3dc95f314461fbc16fa9a6a1ecadff6c70c029f99da"
+    },
+    "routeclock.world": {
+      "name": "world.py",
+      "sha256": "c9627ac2d16938e73a1587b0c328cd4c22691071a50f710ea0f2666dd9a2e157"
+    },
+    "runtime.fast_ledger": {
+      "name": "fast_ledger.py",
+      "sha256": "eab679e5d6e2605b2372a9ff67a88f94e53babba7fb0515de41727b793a16362"
+    }
+  },
+  "scale": 0.75,
+  "arm": "C",
+  "scenario": "confirm",
+  "world": 0,
+  "world_sha256": "f9f7820120b954f11ef3b89d9aec5313bcc588f25e907cf5be5fe41a2c421223",
+  "events": 811,
+  "G_mbps": 1270.491852004894,
+  "risk_fraction": 0.08511805555555556,
+  "sensing_s": 2.5140999999988924,
+  "narrow_s": 44.20799999998024,
+  "reference_revision": "96b6e630e02c5fc709aef32e5a655b33ddf2463c",
+  "reference_sha256": "5c7310ade12d4d1cc0f3433fc2ca0092a81ab4719fcfe11235898837a2af5c13",
+  "replay_sha256": "928206e4e83a2f5824629dc39646f91731dbb1092719ab43897ea1a7f225e257",
+  "differences": [
+    "world",
+    "world physical-array SHA-256"
+  ]
+}

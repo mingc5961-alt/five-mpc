@@ -1,0 +1,23 @@
+{
+  "source_revision": "67069ed00ddbebd62b71aa9bb1272415e9b15ff8",
+  "all_metadata_flights": 270,
+  "prior_selection": 59,
+  "input": "GPS local x,y,z in m; finite valid global fix",
+  "segments": "split at invalid fixes, time delta <=0 or >0.25s, or speed >25m/s; minimum 11s; history resets",
+  "schedule": "seed [271127, CRC32(flight ID), segment start row]; first fix 0.0031s then U(3,4.2)s",
+  "primary_n": [
+    6,
+    8,
+    12,
+    24,
+    40
+  ],
+  "primary_ages_s": [
+    2.0,
+    3.0,
+    5.0
+  ],
+  "geometry_code_sha256": "5281187655dcde1fcd641d8b696541bc7f12fd002971168d317646c053abdc07",
+  "purpose": "external coverage only; no model tuning or scoring",
+  "formal_endpoints": 0
+}

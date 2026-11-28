@@ -1,0 +1,9 @@
+{
+  "path": "/data/chen/refine-logs/G1-runtime-recovery.zip",
+  "sha256": "5aaef0b0945204c726b60a0b3a3ffeed28523754fd074592b7fff50a0638ee7f",
+  "bytes": 798824,
+  "entries": 116,
+  "start_documents": [
+    "g1-runtime-recovery/START_SERVER.md"
+  ]
+}

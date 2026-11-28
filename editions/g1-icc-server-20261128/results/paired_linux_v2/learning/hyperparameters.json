@@ -1,0 +1,12 @@
+{
+  "fixed": {
+    "lambda_risk": 3.0,
+    "eta_queue": 0.0,
+    "run": "fixed_s53_l3_q0"
+  },
+  "joint": {
+    "lambda_risk": 3.0,
+    "eta_queue": 0.1,
+    "run": "joint_s53_l3_q0.1"
+  }
+}

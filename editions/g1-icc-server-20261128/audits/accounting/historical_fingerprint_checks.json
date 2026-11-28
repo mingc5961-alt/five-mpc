@@ -1,0 +1,153 @@
+{
+  "reference": "2d6ee19463199066323fb21187748993544e8ad5eff1f6d3eb294225dcdd4752",
+  "attempts": [
+    {
+      "path": "linux226_HASWELL.json",
+      "physical_sha256": "f9f7820120b954f11ef3b89d9aec5313bcc588f25e907cf5be5fe41a2c421223"
+    },
+    {
+      "path": "linux226_HASWELL_AVX2,FMA3,AVX.json",
+      "physical_sha256": "f9f7820120b954f11ef3b89d9aec5313bcc588f25e907cf5be5fe41a2c421223"
+    },
+    {
+      "path": "linux226_HASWELL_AVX512F,AVX2,FMA3,AVX,F16C,SSE42,SSE41,SSSE3.json",
+      "physical_sha256": "f9f7820120b954f11ef3b89d9aec5313bcc588f25e907cf5be5fe41a2c421223"
+    },
+    {
+      "path": "linux226_HASWELL_FMA3.json",
+      "physical_sha256": "f9f7820120b954f11ef3b89d9aec5313bcc588f25e907cf5be5fe41a2c421223"
+    },
+    {
+      "path": "linux226_NEHALEM.json",
+      "physical_sha256": "ce9a56b2a64da03f4b70d74064e6a3e944c47402c463b05b08f3a307c8ff2ba8"
+    },
+    {
+      "path": "linux226_SANDYBRIDGE.json",
+      "physical_sha256": "ce9a56b2a64da03f4b70d74064e6a3e944c47402c463b05b08f3a307c8ff2ba8"
+    },
+    {
+      "path": "linux226_SANDYBRIDGE_AVX2,FMA3,AVX.json",
+      "physical_sha256": "ce9a56b2a64da03f4b70d74064e6a3e944c47402c463b05b08f3a307c8ff2ba8"
+    },
+    {
+      "path": "linux226_SANDYBRIDGE_AVX512F,AVX2,FMA3,AVX,F16C,SSE42,SSE41,SSSE3.json",
+      "physical_sha256": "ce9a56b2a64da03f4b70d74064e6a3e944c47402c463b05b08f3a307c8ff2ba8"
+    },
+    {
+      "path": "linux226_SANDYBRIDGE_FMA3.json",
+      "physical_sha256": "ce9a56b2a64da03f4b70d74064e6a3e944c47402c463b05b08f3a307c8ff2ba8"
+    },
+    {
+      "path": "linux226_ZEN.json",
+      "physical_sha256": "f9f7820120b954f11ef3b89d9aec5313bcc588f25e907cf5be5fe41a2c421223"
+    },
+    {
+      "path": "linux226_default.json",
+      "physical_sha256": "f9f7820120b954f11ef3b89d9aec5313bcc588f25e907cf5be5fe41a2c421223"
+    },
+    {
+      "path": "linux_sde_skx.json",
+      "physical_sha256": "cc7c08d5a52fadb4b3ba582833ab44cc19ef7298714a62c1cda1c5c3e639d86e"
+    },
+    {
+      "path": "w_10.0.10240.17609_HASWELL_fma0.json",
+      "physical_sha256": "5880e5dbd3165e143593071ac7e0f4ff9b09a3c40b0aed9f91029eb29b6845e4"
+    },
+    {
+      "path": "w_10.0.10240.17609_HASWELL_fma1.json",
+      "physical_sha256": "fcc0d20ddf2df6688fc902785b2ffcf1aa88f56d92dc4556ee265f0a3e711462"
+    },
+    {
+      "path": "w_10.0.10240.17609_SANDYBRIDGE_fma0.json",
+      "physical_sha256": "8d29616170a53af521cec2df210f76b053287b7c1eae32be8a79240f07306edc"
+    },
+    {
+      "path": "w_10.0.10240.17609_SANDYBRIDGE_fma1.json",
+      "physical_sha256": "2ac4c4119ea3c1acaccb98c6f1d6af7ea32b6ed913949041d7a4fc5c7f0cf5db"
+    },
+    {
+      "path": "w_10.0.19041.3636_HASWELL_fma0.json",
+      "physical_sha256": "5880e5dbd3165e143593071ac7e0f4ff9b09a3c40b0aed9f91029eb29b6845e4"
+    },
+    {
+      "path": "w_10.0.19041.3636_HASWELL_fma1.json",
+      "physical_sha256": "fcc0d20ddf2df6688fc902785b2ffcf1aa88f56d92dc4556ee265f0a3e711462"
+    },
+    {
+      "path": "w_10.0.19041.3636_SANDYBRIDGE_fma0.json",
+      "physical_sha256": "8d29616170a53af521cec2df210f76b053287b7c1eae32be8a79240f07306edc"
+    },
+    {
+      "path": "w_10.0.19041.3636_SANDYBRIDGE_fma1.json",
+      "physical_sha256": "2ac4c4119ea3c1acaccb98c6f1d6af7ea32b6ed913949041d7a4fc5c7f0cf5db"
+    },
+    {
+      "path": "w_10.0.22000.1_HASWELL_fma0.json",
+      "physical_sha256": "5880e5dbd3165e143593071ac7e0f4ff9b09a3c40b0aed9f91029eb29b6845e4"
+    },
+    {
+      "path": "w_10.0.22000.1_HASWELL_fma1.json",
+      "physical_sha256": "fcc0d20ddf2df6688fc902785b2ffcf1aa88f56d92dc4556ee265f0a3e711462"
+    },
+    {
+      "path": "w_10.0.22000.1_SANDYBRIDGE_fma0.json",
+      "physical_sha256": "8d29616170a53af521cec2df210f76b053287b7c1eae32be8a79240f07306edc"
+    },
+    {
+      "path": "w_10.0.22000.1_SANDYBRIDGE_fma1.json",
+      "physical_sha256": "2ac4c4119ea3c1acaccb98c6f1d6af7ea32b6ed913949041d7a4fc5c7f0cf5db"
+    },
+    {
+      "path": "w_10.0.22621.3593_HASWELL_fma0.json",
+      "physical_sha256": "5880e5dbd3165e143593071ac7e0f4ff9b09a3c40b0aed9f91029eb29b6845e4"
+    },
+    {
+      "path": "w_10.0.22621.3593_HASWELL_fma1.json",
+      "physical_sha256": "fcc0d20ddf2df6688fc902785b2ffcf1aa88f56d92dc4556ee265f0a3e711462"
+    },
+    {
+      "path": "w_10.0.22621.3593_SANDYBRIDGE_fma0.json",
+      "physical_sha256": "8d29616170a53af521cec2df210f76b053287b7c1eae32be8a79240f07306edc"
+    },
+    {
+      "path": "w_10.0.22621.3593_SANDYBRIDGE_fma1.json",
+      "physical_sha256": "2ac4c4119ea3c1acaccb98c6f1d6af7ea32b6ed913949041d7a4fc5c7f0cf5db"
+    },
+    {
+      "path": "w_10.0.26100.9711_HASWELL_fma0.json",
+      "physical_sha256": "5880e5dbd3165e143593071ac7e0f4ff9b09a3c40b0aed9f91029eb29b6845e4"
+    },
+    {
+      "path": "w_10.0.26100.9711_HASWELL_fma1.json",
+      "physical_sha256": "fcc0d20ddf2df6688fc902785b2ffcf1aa88f56d92dc4556ee265f0a3e711462"
+    },
+    {
+      "path": "w_10.0.26100.9711_SANDYBRIDGE_fma0.json",
+      "physical_sha256": "8d29616170a53af521cec2df210f76b053287b7c1eae32be8a79240f07306edc"
+    },
+    {
+      "path": "w_10.0.26100.9711_SANDYBRIDGE_fma1.json",
+      "physical_sha256": "2ac4c4119ea3c1acaccb98c6f1d6af7ea32b6ed913949041d7a4fc5c7f0cf5db"
+    },
+    {
+      "path": "win226_HASWELL.json",
+      "physical_sha256": "fcc0d20ddf2df6688fc902785b2ffcf1aa88f56d92dc4556ee265f0a3e711462"
+    },
+    {
+      "path": "win226_SANDYBRIDGE.json",
+      "physical_sha256": "2ac4c4119ea3c1acaccb98c6f1d6af7ea32b6ed913949041d7a4fc5c7f0cf5db"
+    },
+    {
+      "path": "win226_default.json",
+      "physical_sha256": "fcc0d20ddf2df6688fc902785b2ffcf1aa88f56d92dc4556ee265f0a3e711462"
+    },
+    {
+      "path": "win_exact_isolated.json",
+      "physical_sha256": "fcc0d20ddf2df6688fc902785b2ffcf1aa88f56d92dc4556ee265f0a3e711462"
+    }
+  ],
+  "unique_physical_fingerprints": 7,
+  "matching_attempts": 0,
+  "windows_reference_python_build_tested": "3.12.13 (main, May 10 2026, 19:35:37) [MSC v.1944 64 bit (AMD64)]",
+  "required_input": "reference factorial_run/confirm0.world"
+}
