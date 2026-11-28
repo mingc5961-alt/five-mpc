@@ -1,0 +1,11 @@
+{
+  "side": "route",
+  "train_worlds": 32,
+  "states": 256,
+  "labels": 4096,
+  "validation_worlds": 16,
+  "validation_rank_correlation": 0.2555147058823529,
+  "validation_regret_bits": 162340033.7305439,
+  "sha256": "765d2e174d446121b246768685a9703c85488baa42ee63ab0bc0d380fc692c5a",
+  "train_sample_sha": "7179c06d1ba057ba589839508fbaae0223da5a2fc710382fa45c37d806db91ac"
+}

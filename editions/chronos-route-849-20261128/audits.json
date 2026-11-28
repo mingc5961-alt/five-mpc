@@ -1,0 +1,666 @@
+{
+  "smoke": {
+    "status": "PASS",
+    "phase": "smoke",
+    "initial_integration_heads": true,
+    "world": 1400,
+    "physics": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+    "calendar_sha256": "2f55c7e415f074bcdce383830d90f9d1f2f36e58ba3adf76ca6c7094929bc32c",
+    "E1": {
+      "spec": "4bbc21f9dfe01f52d4171539c9a87d880a008466972680ce30186669650082c2",
+      "world": 1400,
+      "physics": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+      "prefix_receipt": "0865277e320d0f95ca0b6d02e321147805954aa99fbaf2b982e810770bc6bb90",
+      "prefix_index_sha": "7d9fa18e405f3298b7341816a2bea70b43a812ae77bef3f93c43f40d88e5001b",
+      "issued": 805,
+      "full_windows": 760,
+      "rows": 11232,
+      "rows_by_arm": {
+        "C-native": 1872,
+        "GEO": 1872,
+        "C-cal": 1872,
+        "TIME": 1872,
+        "ROUTE": 1872,
+        "SHUFFLE": 1872
+      },
+      "row_digest_by_arm": {
+        "C-native": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+        "GEO": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+        "C-cal": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+        "TIME": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+        "ROUTE": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+        "SHUFFLE": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3"
+      },
+      "mismatches": 0,
+      "original_life_checks": 144,
+      "sha256": "31a58081388eb38cd3da81734f2c2b51335ba8b6c9d9361a42a6e55275c73f39"
+    },
+    "E2": [
+      {
+        "arm": "MAXAGE",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          161.78909999993544,
+          13.752099999994776
+        ],
+        "total_s": 179.99999999997837,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "ee0ca06a5a0077d54c4c111d1a177a7b554118759d2723ead8b44d29cb3f8ba0",
+        "seconds": 251.78780570800882,
+        "cache_hits": 849,
+        "cache_misses": 849,
+        "old_entry_regression": "exact events and full result"
+      },
+      {
+        "arm": "AoI-DQN-fixed",
+        "seed": 17,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          161.79519999993522,
+          13.745999999994988
+        ],
+        "total_s": 179.99999999997834,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "61838f0cacbc55049f3af9f40c60a945306988f879b05726c206e7bbff9c1e73",
+        "seconds": 245.97400131399627,
+        "cache_hits": 0,
+        "cache_misses": 849,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "AoI-DQN-fixed",
+        "seed": 29,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          162.2824999999353,
+          13.258699999994898
+        ],
+        "total_s": 179.99999999997834,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "7056a588cc152e20d7e7022224601279b5d0f1b40321c9f27eafaf0c417e079b",
+        "seconds": 242.50837113402667,
+        "cache_hits": 0,
+        "cache_misses": 849,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "AoI-DQN-fixed",
+        "seed": 41,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          162.53649999993507,
+          13.004699999995138
+        ],
+        "total_s": 179.99999999997834,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "bbcb5bc10caf19d3d9841600433baff4efa2bed40fcfc41fd683e90921091f12",
+        "seconds": 248.35442385802162,
+        "cache_hits": 0,
+        "cache_misses": 849,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "VAR",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          163.2010999999349,
+          12.340099999995322
+        ],
+        "total_s": 179.99999999997837,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "4a30162c563176077ce5bb7b286eb0e5b47262fbaaa7f8b2059a7ddd497caae1",
+        "seconds": 247.8090339319897,
+        "cache_hits": 0,
+        "cache_misses": 849,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "EDF-native",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          167.23339999993362,
+          8.307799999996595
+        ],
+        "total_s": 179.99999999997837,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "1d69de76608f9f90d4518fef5102e14ea7fd625bc105843d37181f82307b2a96",
+        "seconds": 249.16399008900044,
+        "cache_hits": 849,
+        "cache_misses": 849,
+        "old_entry_regression": "exact events and full result"
+      },
+      {
+        "arm": "EDF-time",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          163.10249999993508,
+          12.438699999995105
+        ],
+        "total_s": 179.99999999997831,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "372a476e30cb4cd3e745e69b2ab279a83631f234880181c678693f3ebea6e3cd",
+        "seconds": 241.9278808409872,
+        "cache_hits": 0,
+        "cache_misses": 849,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "EDF-route",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          163.48409999993513,
+          12.057099999995092
+        ],
+        "total_s": 179.99999999997837,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "52309f1ca456ec4f3baaddaa313894b369834aa50eaefcaf9e65237afc36e61e",
+        "seconds": 243.5552772390074,
+        "cache_hits": 0,
+        "cache_misses": 849,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "VALUE-time",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          164.4133999999344,
+          11.127799999995787
+        ],
+        "total_s": 179.99999999997831,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "c410cc2d4e3342a9236fd7280a42352100aef1f8ffc96e1680ac69e989ecbb1e",
+        "seconds": 245.37825369500206,
+        "cache_hits": 6,
+        "cache_misses": 843,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "VALUE-route",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          164.25119999993439,
+          11.289999999995835
+        ],
+        "total_s": 179.99999999997837,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "2831b1143d367e76e98c1668505c8783998a85b5477720a31d4c5b5b57999dc7",
+        "seconds": 242.850868567999,
+        "cache_hits": 0,
+        "cache_misses": 849,
+        "old_entry_regression": null
+      }
+    ],
+    "verified_E2_rows": 8490,
+    "distinct_paid_observations": 6145,
+    "distinct_paid_prefixes": 8107,
+    "unique_purchase_streams": 10,
+    "service_sha": "45de5db34822d4b5989790561146ad283ee1f5d1593c0287e0747a7256cbb1dc",
+    "archive_regression": {
+      "pass_exact": true,
+      "events": 847,
+      "world": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+      "reference": "/data/coding/g1-original-20261127/paired_linux_v1/canary/N01_development_1400_0.45.json",
+      "reference_sha": "e31d8459cf1801abd78e975695fac268651aa59f084e416352ea5e97f4b6dbb5",
+      "receipt_sha": "e31d8459cf1801abd78e975695fac268651aa59f084e416352ea5e97f4b6dbb5"
+    },
+    "negative_checks": [
+      "reject duplicate and nonmonotone paid time",
+      "changed raw observation changes complete prefix",
+      "wrong user changes complete prefix"
+    ],
+    "peak_rss_this_audit_kib": 674704
+  },
+  "life_fit": {
+    "path": "audits/life_fit.json",
+    "sha256": "280541146418bfad5e9dd043590e3881d1ee4f3f785d3bba3c0c4f24e7bf3112"
+  },
+  "early_branch": {
+    "bits": 5368800190.912584,
+    "fault": 1532,
+    "events": [
+      [
+        1,
+        2976000,
+        2979100
+      ],
+      [
+        1,
+        3162000,
+        3165100
+      ],
+      [
+        1,
+        3348000,
+        3351100
+      ],
+      [
+        1,
+        3534000,
+        3537100
+      ],
+      [
+        1,
+        3906000,
+        3909100
+      ],
+      [
+        1,
+        4092000,
+        4095100
+      ],
+      [
+        1,
+        4278000,
+        4281100
+      ],
+      [
+        1,
+        4464000,
+        4467100
+      ],
+      [
+        1,
+        4650000,
+        4653100
+      ],
+      [
+        1,
+        4836000,
+        4839100
+      ],
+      [
+        1,
+        5022000,
+        5025100
+      ],
+      [
+        1,
+        5394000,
+        5397100
+      ],
+      [
+        1,
+        5580000,
+        5583100
+      ],
+      [
+        1,
+        5766000,
+        5769100
+      ],
+      [
+        1,
+        5952000,
+        5955100
+      ],
+      [
+        1,
+        6138000,
+        6141100
+      ],
+      [
+        1,
+        6324000,
+        6327100
+      ],
+      [
+        1,
+        6510000,
+        6513100
+      ],
+      [
+        1,
+        6882000,
+        6885100
+      ],
+      [
+        1,
+        7068000,
+        7071100
+      ],
+      [
+        1,
+        7254000,
+        7257100
+      ]
+    ],
+    "slow_max_bin_delta": 0.0,
+    "total_delta": 0.0,
+    "fail_differences": 0
+  },
+  "final-smoke": {
+    "status": "PASS",
+    "phase": "final-smoke",
+    "initial_integration_heads": false,
+    "world": 1400,
+    "physics": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+    "calendar_sha256": "2f55c7e415f074bcdce383830d90f9d1f2f36e58ba3adf76ca6c7094929bc32c",
+    "E1": {
+      "spec": "a183e1866a25aaf6280cb2ab2058aa614adb55e917549b673562c198a8b0d3c5",
+      "world": 1400,
+      "physics": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+      "prefix_receipt": "0865277e320d0f95ca0b6d02e321147805954aa99fbaf2b982e810770bc6bb90",
+      "prefix_index_sha": "7d9fa18e405f3298b7341816a2bea70b43a812ae77bef3f93c43f40d88e5001b",
+      "issued": 805,
+      "full_windows": 760,
+      "rows": 11232,
+      "rows_by_arm": {
+        "C-native": 1872,
+        "GEO": 1872,
+        "C-cal": 1872,
+        "TIME": 1872,
+        "ROUTE": 1872,
+        "SHUFFLE": 1872
+      },
+      "row_digest_by_arm": {
+        "C-native": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+        "GEO": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+        "C-cal": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+        "TIME": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+        "ROUTE": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+        "SHUFFLE": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3"
+      },
+      "mismatches": 0,
+      "original_life_checks": 144,
+      "sha256": "4bca8d4f2a2f7b5dbaee25bb8288345c14b7b77dbb51dae12f493eff58f15db4"
+    },
+    "E2": [
+      {
+        "arm": "MAXAGE",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          161.78909999993544,
+          13.752099999994776
+        ],
+        "total_s": 179.99999999997837,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "ee0ca06a5a0077d54c4c111d1a177a7b554118759d2723ead8b44d29cb3f8ba0",
+        "seconds": 5.071125893999124,
+        "cache_hits": 1698,
+        "cache_misses": 0,
+        "old_entry_regression": "exact events and full result"
+      },
+      {
+        "arm": "AoI-DQN-fixed",
+        "seed": 17,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          161.79519999993522,
+          13.745999999994988
+        ],
+        "total_s": 179.99999999997834,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "61838f0cacbc55049f3af9f40c60a945306988f879b05726c206e7bbff9c1e73",
+        "seconds": 3.4978614450083114,
+        "cache_hits": 849,
+        "cache_misses": 0,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "AoI-DQN-fixed",
+        "seed": 29,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          162.2824999999353,
+          13.258699999994898
+        ],
+        "total_s": 179.99999999997834,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "7056a588cc152e20d7e7022224601279b5d0f1b40321c9f27eafaf0c417e079b",
+        "seconds": 3.5449814360181335,
+        "cache_hits": 849,
+        "cache_misses": 0,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "AoI-DQN-fixed",
+        "seed": 41,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          162.53649999993507,
+          13.004699999995138
+        ],
+        "total_s": 179.99999999997834,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "bbcb5bc10caf19d3d9841600433baff4efa2bed40fcfc41fd683e90921091f12",
+        "seconds": 3.5275549209909514,
+        "cache_hits": 849,
+        "cache_misses": 0,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "VAR",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          163.2010999999349,
+          12.340099999995322
+        ],
+        "total_s": 179.99999999997837,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "4a30162c563176077ce5bb7b286eb0e5b47262fbaaa7f8b2059a7ddd497caae1",
+        "seconds": 7.341099535988178,
+        "cache_hits": 849,
+        "cache_misses": 0,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "EDF-native",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          167.23339999993362,
+          8.307799999996595
+        ],
+        "total_s": 179.99999999997837,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "1d69de76608f9f90d4518fef5102e14ea7fd625bc105843d37181f82307b2a96",
+        "seconds": 5.092332823987817,
+        "cache_hits": 1698,
+        "cache_misses": 0,
+        "old_entry_regression": "exact events and full result"
+      },
+      {
+        "arm": "EDF-time",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          163.98889999993443,
+          11.552299999995812
+        ],
+        "total_s": 179.99999999997837,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "46c3658eb27c92542af10418656dacec1f4dbc4910b82cf07044b846ba7f4a97",
+        "seconds": 3.093313780002063,
+        "cache_hits": 849,
+        "cache_misses": 0,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "EDF-route",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          163.5310999999343,
+          12.01009999999595
+        ],
+        "total_s": 179.9999999999784,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "f5f21fb0f83dd59ed23e2eecca9f0557cb527f2a8a817e4a08cd28ebf4328fe3",
+        "seconds": 3.0847272999817505,
+        "cache_hits": 849,
+        "cache_misses": 0,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "VALUE-time",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          165.40769999993358,
+          10.133499999996586
+        ],
+        "total_s": 179.99999999997831,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "179200bfcffc7617cfddd89f03c9fc5f5a3ba3f2465e71f6492e2088504d10f2",
+        "seconds": 3.3951063140120823,
+        "cache_hits": 849,
+        "cache_misses": 0,
+        "old_entry_regression": null
+      },
+      {
+        "arm": "VALUE-route",
+        "seed": 0,
+        "starts_ends_checked": 849,
+        "paid_s": 2.631899999998903,
+        "ledger_s": [
+          2.631899999998903,
+          1.8269000000492366,
+          165.37259999993353,
+          10.168599999996665
+        ],
+        "total_s": 179.99999999997834,
+        "prefix_and_observation_errors": 0,
+        "event_sha": "b711891bb05fe9831415ad0b52c8f7ed1b287a4471649966357bf7720ba76226",
+        "seconds": 3.6609646629949566,
+        "cache_hits": 849,
+        "cache_misses": 0,
+        "old_entry_regression": null
+      }
+    ],
+    "verified_E2_rows": 8490,
+    "distinct_paid_observations": 6175,
+    "distinct_paid_prefixes": 8136,
+    "unique_purchase_streams": 10,
+    "service_sha": "45de5db34822d4b5989790561146ad283ee1f5d1593c0287e0747a7256cbb1dc",
+    "archive_regression": {
+      "pass_exact": true,
+      "events": 847,
+      "world": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+      "reference": "/data/coding/g1-original-20261127/paired_linux_v1/canary/N01_development_1400_0.45.json",
+      "reference_sha": "e31d8459cf1801abd78e975695fac268651aa59f084e416352ea5e97f4b6dbb5",
+      "receipt_sha": "e31d8459cf1801abd78e975695fac268651aa59f084e416352ea5e97f4b6dbb5"
+    },
+    "negative_checks": [
+      "reject duplicate and nonmonotone paid time",
+      "changed raw observation changes complete prefix",
+      "wrong user changes complete prefix"
+    ],
+    "peak_rss_this_audit_kib": 1758140
+  },
+  "confirmation": {
+    "6000": "a3dc7d00aa95eda0a39ee788f1d5b978642553272da072d8e7488cec8b22e583",
+    "6001": "ce33e84cb78b95dcd554bdf4e51aa201b25db692ae422fb6d41db61c294ed899",
+    "6002": "64d03c6c1321815521e3b43d96f61333ff4e19cedf12eeac4e25381012567a6d",
+    "6003": "121a1d656296bfea73f9d6887adcef18414c2beebf15de5ab869074f869a1b04",
+    "6004": "6ef2ec0785b4ddc45d2e0710e4d251324da20e3ec5c7c0996a1edc61e2392c76",
+    "6005": "da4544b75594d9d7f50997213597efa2a06408af85f4f53bbb4aab7508d55530",
+    "6006": "67246a77392c8c897bc0404a7d2475334ca25f3de7655b45932bbdfe1b31641f",
+    "6007": "9f0c3fe094771d8d287c0245fcd853e7b2c33c889087080d06030ecb74036ce5",
+    "6008": "c3341a0689e3d7e68470759d64b44039bcc929aacd7ed311f973cc639de81112",
+    "6009": "c60f71ef9e255c7941bca4d7c2665ac74a01326eaddb99b52da8bbd65995b2fb",
+    "6010": "2c72334c9170c73c308e9c842ea03cbc395206645b2a2b01bb28f4398c39b8bf",
+    "6011": "5a4cfcc653d20f8bbdbf29b0f11955e6796a15988d1f7e3bb7a22e864a56b6b9",
+    "6012": "e16d4c10757489ff3934eb08e0e6c251591bf57042ccdde756303c1216c61aef",
+    "6013": "acfe5efaab63f954ecd83814a60acbbd44509915b93ad0feb7573d0fc0aef686",
+    "6014": "4492436ae8692273dff2fd112f775b388e6234f87aedf8b2bcf0d5cdcd9ddaa0",
+    "6015": "92ef7235449e4ceed2c3f72234dcccaf86799bf76c0f95c2b1cbfaadfdca1117",
+    "6016": "f16fa160974763d1eb491c7816454b2171c853c2b4f8c6cb2589ab4f310aa41f",
+    "6017": "f0bc63ac960f91e98e4f68ad6e2a61c916855b0dd096ab5dbe71836b4c0aafc4",
+    "6018": "0643a16fc2bf7e2a4f461c5ca1bf4d0fd8c6c6d78b29363e49838ffe6f5c4927",
+    "6019": "94a5ecc07c9b33fdda689189333249768aa0038c0020b6b82fc6db406028d0a8",
+    "6020": "4630a125a5c1fe3fe0a3552276df269826ed156f175710f248fda169d39422c4",
+    "6021": "89b5aad5bbd72e46a4cece22a3c23268e66293b1a28116e6fe7541f872453ebc",
+    "6022": "2b24b6e0462e8da274bad432f3819656bfe31e68f3acc36ca8f90e5ecdcf902d",
+    "6023": "71bf207ea6f18cc6ebc248bcd7887f16cc82a6c254efdd0fc8855f5bdb550b65",
+    "6024": "395450cce1425eec71e475ba4bff9b7480376b0993b8dc15aacf92de7efed710",
+    "6025": "add3918ca2b58010191e741668222b3f715b63e459f708345709e158630d1881",
+    "6026": "61cea0b8815e6bf33b32ea6e40860a8db721cf4a4573b500fff53dda0f7d5758",
+    "6027": "30d4187b3d55343e02b5c3bcfb016bdeadc7336620bf2bf6826352888beb3c20",
+    "6028": "50928b26222c42480a6e877780244c247cc146dce7c0c2f238133d3c811ef2c2",
+    "6029": "e1e66171c886c2adf08188948aa68b27682f6be224f2bc6ef1832a8825fb2eab",
+    "6030": "12b063dc0a07ed21a5d9e30f301f47a1c0a871cac9547d7386e1d091049a7ced",
+    "6031": "9c9b620aeed912f4b414d9339f42b2dabdf21df5d51090e6d44182196b10ca42",
+    "6032": "36a54a5820b0721b197fd467b7ec60f3c8be87d3834b1885eaddfba57b4ce2f9",
+    "6033": "12b0d7895b2ef634459564e24daf394e03e39d7a70c0faa6573506484b05847d",
+    "6034": "56a6842d70419491996202a76f0b8c29422fe0414fe2273ecf4a5f69c44a1466",
+    "6035": "beadb04556aa3f206c160c276209c4bb8d270cb1d1bcd647093c266815803d9f",
+    "6036": "7ef8fcad040045705dfb9ce535c92b32b919358b29445213c7b5aa5951335549",
+    "6037": "939f19b4f5f93fd612369898c3c2e7bb63c638e853f54e5faac10da6fe3d5ec8",
+    "6038": "7c1f57a0ce88cf3ff5d1682461f4513cf60a15c79eed6cd059990f9cc15ed162",
+    "6039": "e4e7ec5eeeca5c78d149bbbb2d0dc3cf8a6810e9c6ff56d4fc155d2a0b603f12",
+    "6040": "d9b6b7871771e59dc4c355d56fc59e14f7cc4c3edddc213d615d3cf440eae70d",
+    "6041": "673b8e5047aa4f188a5c55c57eff0606c9d6d97fba27dfe8628327508f6b0f85",
+    "6042": "8fc6092fd750972c2ff7893e6e0522d564c47d41523dbc8e4e5b704b6c101a51",
+    "6043": "2cd724d6cd6cc4514ce89ae0c9b5dcf90ed246fad6b7fa715cab41e06a3cc6ba",
+    "6044": "4215b63cfb1920fc51e707ef7dbc7ef20ecef95a0083610dfa80b2408e67c321",
+    "6045": "21aec473f57840b2d904cb3a5b318c0715db38344215912d5cb61d29fddb622e",
+    "6046": "a56dce3be561de03714c402db4802d4dfd7d02407119964494cb5ef6276a926e",
+    "6047": "e941ceb248fea8c9e080db5ea59f470776429254217f5e24aee01a7f1130050d"
+  }
+}

@@ -1,0 +1,33 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/170 [00:00<?, ?it/s]Loading weights: 100%|██████████| 170/170 [00:00<00:00, 3222.87it/s]
+prefetched 225
+prefetched 291
+prefetched 751
+prefetched 738
+prefetched 739
+prefetched 740
+prefetched 807
+prefetched 781
+prefetched 778
+prefetched 825
+prefetched 773
+prefetched 440
+prefetched 825
+prefetched 817
+prefetched 820
+prefetched 797
+prefetched 774
+prefetched 752
+prefetched 508
+prefetched 749
+prefetched 791
+prefetched 773
+prefetched 737
+prefetched 803
+prefetched 750
+prefetched 822
+prefetched 803
+prefetched 759
+prefetched 785
+prefetched 785
+prefetched 817

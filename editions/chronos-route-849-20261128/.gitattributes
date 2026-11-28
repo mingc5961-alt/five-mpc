@@ -1,0 +1,7 @@
+* -text
+*.gz binary
+*.pkl binary
+*.pdf binary
+*.png binary
+*.bundle binary
+*.zip binary

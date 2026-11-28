@@ -1,0 +1,38 @@
+{
+  "E1_formal_worlds": 48,
+  "E1_formal_prefixes": 38693,
+  "E1_worker_seconds_per_1000_prefixes": 534.1913381268209,
+  "E2_confirm_endpoints": 1296,
+  "E2_median_wall_s": 387.7308108579891,
+  "E2_endpoint_wall_quartiles": [
+    10.489379791506508,
+    483.37367201975576
+  ],
+  "E2_cache_hits": 372307,
+  "E2_native_forwards": 727997,
+  "counterfactual_branches": {
+    "train": 4096,
+    "validation": 256,
+    "development_diagnostic": 256
+  },
+  "sampled_resources": {
+    "confirmation": {
+      "samples": 501,
+      "cpu_cores_mean": 44.32296606786427,
+      "peak_observed_pss_GiB": 20.8447322845459,
+      "peak_shared_cgroup_memory_GiB": 44.87678146362305
+    },
+    "development": {
+      "samples": 77,
+      "cpu_cores_mean": 36.590701298701305,
+      "peak_observed_pss_GiB": 16.494080543518066,
+      "peak_shared_cgroup_memory_GiB": 38.07294845581055
+    },
+    "final-smoke": {
+      "samples": 1,
+      "cpu_cores_mean": 0.114,
+      "peak_observed_pss_GiB": 13.841010093688965,
+      "peak_shared_cgroup_memory_GiB": 36.188682556152344
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "status": "released",
+  "start": 1795859021.8089216,
+  "elapsed_s": 385.063307762146,
+  "controller_pid": 54743,
+  "controller_start_tick": "14601489",
+  "targets": [
+    "6047_MAXAGE_s0_m0.75.json",
+    "6047_VAR_s0_m0.75.json",
+    "6047_VALUE-time_s0_m0.75.json",
+    "6047_VALUE-route_s0_m0.75.json"
+  ],
+  "completed": 4,
+  "frozen_commit": "e6fe73b01fe47f78a8dfdc13f591309170ed8031",
+  "change": "Give all existing common-scale worker lanes CPU access. Only the auxiliary admission coordinator waits. Its workers, the main pool and both native weights and scoring stay active."
+}

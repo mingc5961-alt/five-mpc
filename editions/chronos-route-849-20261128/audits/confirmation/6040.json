@@ -1,0 +1,150 @@
+{
+  "status": "PASS",
+  "rankings_sha": "6f6a4841294ae8aa7b37ab6b730875ded437ad16f1666b5d88ace155545ff91b",
+  "world": 6040,
+  "physics": "7fac56e727701dc444bf9835a4d929817ac40105708cb64cd785bd449b007137",
+  "endpoints": 27,
+  "unique_prefixes": 15193,
+  "endpoint_prefixes_checked": 22923,
+  "observations": 8934,
+  "E1_mismatches": 0,
+  "E2_prefix_or_calendar_mismatches": 0,
+  "ledger_verified_by_each_endpoint": true,
+  "receipts": [
+    [
+      "6040_MAXAGE_s0_m0.75",
+      "79bb4837e62b09ba6e1123806916544b57d43f5197cc7d653ed1280c44145354",
+      "6398770daca12cc43128abde975e228b969d9a90aa37c1a412c6c86e4367dd7b"
+    ],
+    [
+      "6040_AoI-DQN-fixed_s17_m0.75",
+      "c970148b63e7a47439bec2dbfbfa26526bbab8450c95536dca45068902d43bd8",
+      "b43d8e8a8a2d1e4faa97c05f8d7a9f676f32d5368adcc3d14a6a2b9acf3afe05"
+    ],
+    [
+      "6040_AoI-DQN-fixed_s29_m0.75",
+      "536632a5629b3bc38c729ae123130f4b2fb5453bbd689ea096e019ee50fa6332",
+      "9adff45dffc3293b7d87f2cad7ddfea1447f89c3bc4f4c649822396d88338cf6"
+    ],
+    [
+      "6040_AoI-DQN-fixed_s41_m0.75",
+      "ec00dc0cfaf9056b86b47e511814d16b9b620c0936060c37a2aa6f80567fdde3",
+      "290307bd79910d155e266ba32a6a99d2132e5484fde52aac6a2b32cfb5886655"
+    ],
+    [
+      "6040_VAR_s0_m0.75",
+      "b19773d3646e79f6734bc9e8822c5ce0676fffdda2694ae1057da2562a6a2a61",
+      "65d2579ec0f04bc2dcfebf961bf9802fcc33eb980e9c3cae6b3f0b82efcd66fa"
+    ],
+    [
+      "6040_EDF-native_s0_m0.75",
+      "d67c2f49f79006e6616190ec4de270af7fe36e493e8bc4173faa79cd43d22a0c",
+      "3cf75ecd5388fbd7926ef22eb9910a770c448db210d3e569883d905898af4c91"
+    ],
+    [
+      "6040_EDF-time_s0_m0.75",
+      "52a935fad31d34c3e6f62d212962cf3b4c9f65f704a60e79145284f93e1d573e",
+      "efee88772247a3b54c919ba2d77812f8cd5a40538b280653ccc2ef90ba6c8aa6"
+    ],
+    [
+      "6040_EDF-route_s0_m0.75",
+      "de7900b1ccd3bcbd7ffd5c0f0cd5540cff3c49cf63510c1683e2ef6a3a181a58",
+      "896f31bdbcb83d32d19918a9d07285a5db535655c260991994c048d90223ba74"
+    ],
+    [
+      "6040_VALUE-time_s0_m0.75",
+      "75ea08264b62149e5c3e0bc4ae68dea192f596129ca82c91cf3d22f3b9379a26",
+      "76edd410f02807ff1a3384dcaccc5205735df6d9fce40917ae3c7c3f1dba2894"
+    ],
+    [
+      "6040_VALUE-route_s0_m0.75",
+      "bd60c33751e5fe545f75a9b1dfe9c4a32522e6fa6b6345dd930ba1e9d08d836b",
+      "2ed0f4f74b3b38c1031caff584f2f8ee8cc908d3dd5ca17780a4b44c7b961951"
+    ],
+    [
+      "6040_AoI-DQN-fixed_s17_m0.45",
+      "27637019129d450c2f3537827d2ad4051856a769004486c1ebe9be1b2f03f621",
+      "f072528e082e27dc78ef213344cef037f03d7d7d62782baac0fefdd0365263d7"
+    ],
+    [
+      "6040_AoI-DQN-fixed_s17_m0.60",
+      "957c779917a9043559dca9ec835aa9883b9a0b7029cd082bd9ec7dce59897e48",
+      "198afa590b1699fe4c5dbcffa8d69f862dd0ced24d8c4c7d1cc9d898e11c1a3b"
+    ],
+    [
+      "6040_AoI-DQN-fixed_s29_m0.45",
+      "81da30e56c50cf00bc55b2b4473c75f43f91f4525b3274f9a1f009d93da814b8",
+      "1f35bdc3fb114f0dd47059661817921f0165efbd018bf4c76f57292f98dbea61"
+    ],
+    [
+      "6040_AoI-DQN-fixed_s29_m0.60",
+      "2b5a47f4990d103f7a004222991202286f4907456137c52d50b3971ff8c6a490",
+      "154aa8dc31b2022d402948097c1e7bb93290804f8dac76c13aa8cf7dece507ff"
+    ],
+    [
+      "6040_AoI-DQN-fixed_s41_m0.45",
+      "c6d9255cefd943d883c94aa9f7211ece9e3cc1cbf5c959b5278f1fdf3502d24f",
+      "7c72fbee26f98ffa82732fba9752010edbf124b6a546562fc72aff812bb762ae"
+    ],
+    [
+      "6040_AoI-DQN-fixed_s41_m0.60",
+      "788d02da13b30fdb654a4c5264ba8365773e3d9081e0737ab24d937988e1fffe",
+      "f63ad86e4075b3a0a8b6be4162f91a5b93618619b1fa237f7dcf86524563303b"
+    ],
+    [
+      "6040_VAR_s0_m0.45",
+      "5c806125ae03736d11f2d1a2a9ad1ac06d06e3929ed0804524804e015829d030",
+      "2425b77476f57c67c3716daf8fef7455ed041f1e19c300d160fb5a736c5cd1a5"
+    ],
+    [
+      "6040_VAR_s0_m1.00",
+      "19dd54fa40112f9994d497b32b770a42e1c8cdb677d6bfb68a156ac1dbd904d7",
+      "024912450ba33f51d47c227b667decd47a027013bdb3dc460a00beeccb6bd379"
+    ],
+    [
+      "6040_EDF-native_s0_m1.00",
+      "0954f6eb0ccafa9fcd0b6721bf9cc65c4449c600bf0efbc2d41e9dbad85bb412",
+      "ae27996c38e5c70d40b556819a295a5e2bc24aae36fcfd4fdd93ca70fec42269"
+    ],
+    [
+      "6040_EDF-time_s0_m0.45",
+      "0507c86a07a38bfd0a030cc5ef5ab0d6041290ca759c6ec3b3a27c4bcd5f0661",
+      "d9b0c1b43f7ca4d430fb3781f91ca6e9f644402964111b726084df43ae7500f1"
+    ],
+    [
+      "6040_EDF-time_s0_m0.60",
+      "6631c65ef56dc6a4c6caca482020388792cd9ea4179a129448f2b5128c295177",
+      "beada3cdbe23bd4d12f680cf3b4156187ab812d33c9f2fcf123334af43f72fbb"
+    ],
+    [
+      "6040_EDF-route_s0_m0.45",
+      "9e59e9a518e7ba7a9b0b064709d8756c65774fa5c0714d96d442f56bc51ec5d7",
+      "8aee1c31158c785e582c82d6b267b625b9b47b31d8adcc7dd6c8e4ad9c4d4188"
+    ],
+    [
+      "6040_EDF-route_s0_m0.60",
+      "fb500e187cce46af8d2038b28ddcaf64812d3b561c8fc94ecc795c49173190e9",
+      "c7f43b8ae0d54ffe636bc1a1746f5eb5a2db3685015ada3209905ecb8210ba83"
+    ],
+    [
+      "6040_VALUE-time_s0_m0.45",
+      "11e01208fbd0468c876b3e6ab38527fe14cf7ce61ea4fe2c4068f1e010a14752",
+      "0c58449ac4de9b038dd64ef9774261af3e6d94fa64810e06498811ff5c0f5ebe"
+    ],
+    [
+      "6040_VALUE-time_s0_m0.60",
+      "3030152896dceb1540e17dca2e9ad2dff11dcdaad9d5666e144dd1ca35de82a0",
+      "7fe5b7d1b75dacb532e218aa74dfcfbd5a83dd31a511a227aaa99d2d681bb54c"
+    ],
+    [
+      "6040_VALUE-route_s0_m0.45",
+      "e2927f19896f6b2e47a9a221a1f33c20f8ee760f595cb5a06e8bcf7173a6b08c",
+      "1d86c1418e416e50ff647dd21291f824ec15dcc7887c57b7f6a61cd4cb772f11"
+    ],
+    [
+      "6040_VALUE-route_s0_m0.60",
+      "42d3c36d911f31e465936789ab6e49a60cfb7e7cdb6c81daca6cd6ba81c6d3a5",
+      "e6d905a3588c65dee5c8ef5cd3aaa1ebc1b1729cd86995f456a74a6455870a9e"
+    ]
+  ]
+}

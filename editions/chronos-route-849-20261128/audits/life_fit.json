@@ -1,0 +1,153 @@
+{
+  "status": "PASS",
+  "fit_worlds": [
+    1200,
+    1201,
+    1202,
+    1203,
+    1204,
+    1205,
+    1206,
+    1207,
+    1208,
+    1209,
+    1210,
+    1211,
+    1212,
+    1213,
+    1214,
+    1215
+  ],
+  "independent_calibration_worlds": [
+    1300,
+    1301,
+    1302,
+    1303,
+    1304,
+    1305,
+    1306,
+    1307,
+    1308,
+    1309,
+    1310,
+    1311,
+    1312,
+    1313,
+    1314,
+    1315
+  ],
+  "overlapping_physical_fingerprints": 0,
+  "all_heads_same_anchors": true,
+  "anchors": [
+    [
+      1300,
+      "f995aded9c17f925cc96b4e6281c064bdd2c1d3e0aa5bcf13cda9dedeb7a8f68",
+      41.9128849165776
+    ],
+    [
+      1301,
+      "3d93717d75fb68898d014d3be8cd445248cab6621e553de36928bf42acb494eb",
+      147.10583218360512
+    ],
+    [
+      1302,
+      "fade125f7cd8608f41db8f8b949457237354d8ebd29df044473142952b8ac9ec",
+      151.59934854672005
+    ],
+    [
+      1303,
+      "1ba81b6e1b8562da1ba75997bb06d59f09aa5a3c730f6fde004690cb2dd49ad8",
+      155.07259790598806
+    ],
+    [
+      1304,
+      "84901bb4e2a4a21d14934f3987b820ac27a6b5ab714d9a7da5e5c11929d129d9",
+      87.24739797286948
+    ],
+    [
+      1305,
+      "543e7f655e14f5ed3e34b293b21d972605024755886b64352e067612f73c47a3",
+      54.16582300185257
+    ],
+    [
+      1306,
+      "ffe3f8d130c27815251c9921924ea5e9ba7707db2d69c4449859f7052834969b",
+      109.69072589345272
+    ],
+    [
+      1307,
+      "5ccf973af62f0dfe64901ffee3a3715ba09500c40c234fba2157210c11db4121",
+      105.67392008307176
+    ],
+    [
+      1308,
+      "2583839acc3158a5b9cf568b1770c6206bdd0b65474082ca661194452063c82a",
+      134.61845408185548
+    ],
+    [
+      1309,
+      "31d6e1bcc4cc771c8022736c2abe9f8ebf7904db9cb8e48abd306d8a685c6ada",
+      22.62047218960361
+    ],
+    [
+      1310,
+      "01bcb4edb8d4f9e3a1cf5648147639a245b1a632cd1b5ba30fafe23e499a2db3",
+      135.9728420335648
+    ],
+    [
+      1311,
+      "4270b7daf7d20534b3c92a1fdface2fdc955a03dd235a75ae73e3860b91bccf4",
+      152.83651590857207
+    ],
+    [
+      1312,
+      "6e4d91be5b293e85ffa23e3bd441da78e10a0cbe2124fa310314f16101a1b76f",
+      61.701324241714204
+    ],
+    [
+      1313,
+      "8178b888e7bdeee4771274c27aee42ff8eb6e9991048aa7fb92ab7139cddc1eb",
+      21.011505354165156
+    ],
+    [
+      1314,
+      "b51e13d56b580b19b81b9b26d253052755ff7d9a06ecf8b445b487fdf7234f81",
+      73.92313059337577
+    ],
+    [
+      1315,
+      "aeadae505fb0baae2ad18cf5c32cd973434664c41b1b14114c89022c5913adb9",
+      112.18342214903983
+    ]
+  ],
+  "models": {
+    "C-cal": {
+      "training_prefixes": 12172,
+      "rank": 16,
+      "score_max_abs_difference": 0,
+      "factor_max_abs_difference": 0,
+      "model_sha": "37b2a5275912a4b6c1675172b3d349144a9a28956bf6cbcaa8d8d4d192f88039"
+    },
+    "TIME": {
+      "training_prefixes": 12172,
+      "rank": 16,
+      "score_max_abs_difference": 0,
+      "factor_max_abs_difference": 0,
+      "model_sha": "5b0d916f68d3c613fafc313c5ef579eb7dfd15ab281967549b48cf230e10e12c"
+    },
+    "ROUTE": {
+      "training_prefixes": 12172,
+      "rank": 16,
+      "score_max_abs_difference": 0,
+      "factor_max_abs_difference": 0,
+      "model_sha": "0639d7981b7233d973c4d7eb6e27480cb52fe30c3f0a4595b8459abce32c31ba"
+    },
+    "SHUFFLE": {
+      "training_prefixes": 12172,
+      "rank": 16,
+      "score_max_abs_difference": 0,
+      "factor_max_abs_difference": 0,
+      "model_sha": "be782fcf4d56984efc97a292698feea2993461966671b8d37ea6e03db950a788"
+    }
+  }
+}

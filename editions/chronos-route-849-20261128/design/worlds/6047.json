@@ -1,0 +1,33 @@
+{
+  "world": 6047,
+  "namespace": "chronos_route_849_v1/confirmation",
+  "physical_sha256": "8e52792c6cb55ee655663aa22ffcd950d27f2ac991c623cfbff58ceff1fceb46",
+  "components": {
+    "positions": "34ee274c361edf655b62f19880dab8ac936756d6511d7f956d80aea435f1f171",
+    "noise": "2b35491ae2a599cedc315de3f1638b904d7c75987cd0202770d5130bd66388d0",
+    "shadows": "194a125846a60eca77e7ed36d62c25b5d378445fe6d93d505297092558c2773d"
+  },
+  "file_sha256": "5589f3672175149cc811e15b01e7025d499ef51707befd3e34038a1b3ff7c25e",
+  "group_seed": [
+    20261127,
+    6047
+  ],
+  "groups": [
+    "no_reusable_path",
+    "local_deviation_rejoin",
+    "no_reusable_path",
+    "stable_path_stable_tempo",
+    "local_deviation_rejoin",
+    "stable_path_segment_speed_stops",
+    "stable_path_stable_tempo",
+    "no_reusable_path",
+    "stable_path_stable_tempo",
+    "no_reusable_path",
+    "no_reusable_path",
+    "no_reusable_path",
+    "stable_path_segment_speed",
+    "stable_path_global_speed",
+    "local_deviation_rejoin",
+    "no_reusable_path"
+  ]
+}

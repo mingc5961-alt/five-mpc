@@ -1,0 +1,24 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/170 [00:00<?, ?it/s]Loading weights: 100%|██████████| 170/170 [00:00<00:00, 8634.64it/s]
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/170 [00:00<?, ?it/s]Loading weights: 100%|██████████| 170/170 [00:00<00:00, 8281.34it/s]
+early_endpoint 1/20
+early_endpoint 2/20
+early_endpoint 3/20
+early_endpoint 4/20
+early_endpoint 5/20
+early_endpoint 6/20
+early_endpoint 7/20
+early_endpoint 8/20
+early_endpoint 9/20
+early_endpoint 10/20
+early_endpoint 11/20
+early_endpoint 12/20
+early_endpoint 13/20
+early_endpoint 14/20
+early_endpoint 15/20
+early_endpoint 16/20
+early_endpoint 17/20
+early_endpoint 18/20
+early_endpoint 19/20
+early_endpoint 20/20

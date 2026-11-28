@@ -1,0 +1,43 @@
+{
+  "protocol": "chronos_route_849_v1",
+  "status": "proposal_before_server_development",
+  "source_commit": "17e8144df322ef6f54cd52d399fb6a3460881535",
+  "scene": {
+    "users": 16, "service_us": 180000000, "warmup_s": 0,
+    "budget_us": 3000000, "fix_us": 3100, "quota": 849,
+    "opportunities": 967, "selectable_recipients_after_init": 833,
+    "calendar_sha256": "2f55c7e415f074bcdce383830d90f9d1f2f36e58ba3adf76ca6c7094929bc32c",
+    "group_counts_in_repository_order": [3, 1, 1, 1, 3, 7]
+  },
+  "backbone": {"name": "Chronos-2", "checkpoint_seed": 7, "frozen": true},
+  "splits_inclusive": {
+    "train": [1000, 1063], "train_validation": [1100, 1115],
+    "tube_fit": [1200, 1215], "tube_calibration": [1300, 1315],
+    "development": [1400, 1407], "previous_confirmation_regression_only": [2000, 2047]
+  },
+  "new_confirmation": {
+    "namespace_proposed": "chronos_route_849_v1/confirmation",
+    "first_unused_id_proposed": 6000, "planned_world_count_before_development": 48,
+    "freeze_final_ids_and_n_before_opening": true
+  },
+  "E1": {
+    "arms": ["C-native", "GEO", "C-cal", "TIME", "ROUTE", "SHUFFLE"],
+    "primary_stratum": "same_direction_revisit", "paid_counts": [6, 8, 12, 24, 40],
+    "ages_s": [2, 3, 5], "extra_h_s": 0, "array": [32, 32],
+    "truth_step_s": 0.02, "max_life_s": 10, "array_loss_db": 3,
+    "hold_options_s": [0, 0.5, 1, 2, 3, 5, 8, 10],
+    "primary_contrast": ["ROUTE", "TIME"], "spatial_negative_control": ["ROUTE", "SHUFFLE"],
+    "overadmission_noninferiority_s_proposed": 0.02
+  },
+  "E2": {
+    "arms": ["MAXAGE", "AoI-DQN-fixed", "VAR", "EDF-native", "EDF-time", "EDF-route", "VALUE-time", "VALUE-route"],
+    "post_purchase_service_for_all_arms": "native Chronos center, native width and factors, original radio controller",
+    "fixed_dqn_seeds": [17, 29, 41],
+    "value_label_pilot": {"train_worlds": 32, "decision_states_per_world": 8, "candidates_per_state": 16, "horizon_opportunity_intervals": 24, "continuation": "EDF-native"},
+    "primary_contrast": ["VALUE-route", "VALUE-time"],
+    "simplicity_contrast": ["VALUE-route", "EDF-route"],
+    "risk_noninferiority_pp": 0.5, "absolute_risk_target_pct": 7
+  },
+  "common_scale": 0.75, "development_scales": [0.45, 0.60, 0.75, 1.0],
+  "analysis": {"unit": "physical_world", "bootstrap_replicates": 20000, "bootstrap_seed": 271127, "confidence_level": 0.95}
+}

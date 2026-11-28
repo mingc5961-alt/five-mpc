@@ -1,0 +1,87 @@
+{
+  "source_commit": "17e8144df322ef6f54cd52d399fb6a3460881535",
+  "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Mar 19 2026, 20:20:58) [GCC 14.3.0]",
+  "executable": "/data/chen/server_assessment/venv/bin/python",
+  "platform": "Linux-6.8.0-151-generic-x86_64-with-glibc2.39",
+  "packages": {
+    "torch": "2.10.0+cu128",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.1.1",
+    "lightgbm": "4.7.0",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.10.8",
+    "chronos-forecasting": "2.3.2",
+    "transformers": "5.22.2",
+    "safetensors": "0.8.0",
+    "filelock": "3.25.2"
+  },
+  "native": {
+    "Chronos/best.pt": {
+      "path": "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/training/Chronos-2/7/best.pt",
+      "resolved": "/data/chen/routeclock_runs/confirm_0db/training/Chronos-2/7/best.pt",
+      "sha256": "5fc8b09a9200b92e3a084602ce64a48ab50c77909b53d406982d6c2f2a5cd424"
+    },
+    "Chronos/tube.pkl": {
+      "path": "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/tubes/Chronos-2/7/bundle.pkl",
+      "resolved": "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/tubes/Chronos-2/7/bundle.pkl",
+      "sha256": "ffa97954847a780a5f2b08b683351ee988a37c057f703d55f075a744b5ca323a"
+    },
+    "original_backbone": {
+      "path": "/data/coding/g1-original-20261127/recovery_01/chronos_assets/chronos_snapshot/model.safetensors",
+      "resolved": "/data/chen/routeclock_archives/paired600/checkpoints/29ec3766d36d6f73f0696f85560a422f50e8498c/model.safetensors",
+      "sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42"
+    }
+  },
+  "models_eval": true,
+  "predictor_precision": "float32; returned position and width dtypes recorded on every E1 world, exact scalar prediction path",
+  "torch_intraop_threads": 1,
+  "world_config_sha256": "9be6925135a9a62020c615ba6b934cdb947a94d9b626bf8c3c1561a03cca26e2",
+  "calendar_sha256": "2f55c7e415f074bcdce383830d90f9d1f2f36e58ba3adf76ca6c7094929bc32c",
+  "pre_fit_rules_sha256": "4179b7008a5073c3a01906b7299cd27c5707fa1b069af8c69219af164ef741d2",
+  "quota_cpu": "4800000 100000",
+  "limit_bytes": 103079215104,
+  "devices": "CPU on two NUMA sockets",
+  "batch_regression": {
+    "world": 2000,
+    "samples": 16,
+    "single_seconds": 27.124603075993946,
+    "tests": {
+      "2": {
+        "seconds": 25.244455070002005,
+        "center_equal": 0,
+        "width_equal": 0,
+        "center_max_abs": 1.33514404296875e-05
+      },
+      "4": {
+        "seconds": 21.989579604996834,
+        "center_equal": 0,
+        "width_equal": 0,
+        "center_max_abs": 9.5367431640625e-06
+      },
+      "8": {
+        "seconds": 19.569877984991763,
+        "center_equal": 0,
+        "width_equal": 0,
+        "center_max_abs": 7.62939453125e-06
+      },
+      "16": {
+        "seconds": 21.894204481010092,
+        "center_equal": 0,
+        "width_equal": 0,
+        "center_max_abs": 7.62939453125e-06
+      }
+    },
+    "used_for_science": false
+  },
+  "E1_fit": {
+    "C-cal": "37b2a5275912a4b6c1675172b3d349144a9a28956bf6cbcaa8d8d4d192f88039",
+    "TIME": "5b0d916f68d3c613fafc313c5ef579eb7dfd15ab281967549b48cf230e10e12c",
+    "ROUTE": "0639d7981b7233d973c4d7eb6e27480cb52fe30c3f0a4595b8459abce32c31ba",
+    "SHUFFLE": "be782fcf4d56984efc97a292698feea2993461966671b8d37ea6e03db950a788"
+  },
+  "E2_fit": {
+    "time": "a17b3f294a488b46eadfdfc3ab87aa0cc79b48626bf9a795b30beee4363c20fd",
+    "route": "765d2e174d446121b246768685a9703c85488baa42ee63ab0bc0d380fc692c5a"
+  }
+}

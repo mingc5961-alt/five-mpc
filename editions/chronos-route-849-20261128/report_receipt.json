@@ -1,0 +1,19 @@
+{
+  "worlds": 48,
+  "endpoints": 1296,
+  "E1_pass": true,
+  "E2_pass": false,
+  "absolute_risk_pass": true,
+  "simple_increment": true,
+  "scheduling_pass": true,
+  "claim": "只主张固定 Chronos 中心下的保持期判断改善。同费净吞吐收益尚未获得预冻结双判据支持。",
+  "artifacts": {
+    "REPORT.md": "5efcb2f914ccbbed22a48f57d6b0177ddea4ce7ad6a65d7b3b89272032e2683c",
+    "world_scores.csv": "c2420d51715539ecd64c318fc4b7a8aab913fb0d755abf207b2aaaef2a67a876",
+    "contrasts.csv": "3e9882cbfb0aea432ba920d3ef351d9cab41c06cde1e90103a9329f12d607210",
+    "figures/Fig1_fixed_center_lifetime.pdf": "eca72474e65b0d0a4adccf33c7291228ce5dd126eaf95c39f13c0ba0e02144bf",
+    "figures/Fig1_fixed_center_lifetime.png": "7c39cedfeec11011db99edcee42d7b237c3cbe93e42941ab46d037383f79e2e6",
+    "figures/Fig2_recipient_goodput.pdf": "0239095ce60b6546e09d9ec43bb255bf97f8c5b57302ce0c43f332d674ecf97e",
+    "figures/Fig2_recipient_goodput.png": "90b9d1098cb3f4d89a4a98e6b5b1d4317ef4738daa9dee83fb61d1d164bf7481"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "frozen_worlds": 48,
+  "E2_endpoints": 1296,
+  "smoke_median_endpoint_wall_s": 245.67612750449916,
+  "development_endpoint_quartiles_s": [
+    300.7982585665013,
+    402.8176181244926,
+    500.6983810744932
+  ],
+  "physical_cpu_quota": 48,
+  "primary_parallel_slots": 47,
+  "E2_smoke_based_wall_hours": 1.881774593651483,
+  "formula": "median 1400 native smoke endpoint time * frozen E2 endpoints / 47 native slots; excludes E1 and final rendering; cache sharing and CPU saturation change actual time"
+}

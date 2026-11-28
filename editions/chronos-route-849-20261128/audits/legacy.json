@@ -1,0 +1,8 @@
+{
+  "pass_exact": true,
+  "events": 847,
+  "world": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+  "reference": "/data/coding/g1-original-20261127/paired_linux_v1/canary/N01_development_1400_0.45.json",
+  "reference_sha": "e31d8459cf1801abd78e975695fac268651aa59f084e416352ea5e97f4b6dbb5",
+  "receipt_sha": "e31d8459cf1801abd78e975695fac268651aa59f084e416352ea5e97f4b6dbb5"
+}

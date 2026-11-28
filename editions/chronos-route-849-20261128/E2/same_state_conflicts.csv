@@ -1,0 +1,17 @@
+world,appointment,route_uid,time_uid,conflict,route_support,age_diff,delta_bits
+1400,314,7,7,False,True,0.0,0.0
+1400,569,8,8,False,True,0.0,0.0
+1401,259,10,10,False,True,0.0,0.0
+1401,450,3,3,False,True,0.0,0.0
+1402,135,3,10,True,False,2.0459999999999994,285964155.27569866
+1402,586,9,9,False,True,0.0,0.0
+1403,199,13,11,True,False,1.4879999999999995,-58240659.46123791
+1403,785,13,13,False,True,0.0,0.0
+1404,141,10,10,False,False,0.0,0.0
+1404,784,8,8,False,True,0.0,0.0
+1405,473,3,3,False,True,0.0,0.0
+1405,65,7,7,False,False,0.0,0.0
+1406,24,5,5,False,False,0.0,0.0
+1406,690,2,2,False,True,0.0,0.0
+1407,316,6,6,False,True,0.0,0.0
+1407,742,10,10,False,True,0.0,0.0

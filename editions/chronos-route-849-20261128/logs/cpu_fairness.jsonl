@@ -1,0 +1,10 @@
+{"timestamp": 1795859420.9933758, "action": "grant_cpu", "coordinator": "surplus", "pid": 54744, "targets": ["6010_EDF-route_s0_m0.45.json", "6011_EDF-route_s0_m0.60.json", "6010_EDF-native_s0_m1.00.json", "6010_EDF-time_s0_m0.45.json", "6010_VALUE-time_s0_m0.45.json", "6011_VALUE-time_s0_m0.60.json", "6010_EDF-time_s0_m0.60.json", "6011_VALUE-time_s0_m0.45.json", "6010_EDF-route_s0_m0.60.json", "6011_EDF-route_s0_m0.45.json", "6011_EDF-native_s0_m1.00.json"]}
+{"timestamp": 1795859561.0502615, "action": "release_cpu", "coordinator": "surplus", "pid": 54744, "duration_s": 140.05665493011475}
+{"timestamp": 1795860146.7807968, "action": "grant_cpu", "coordinator": "surplus", "pid": 54744, "targets": ["6010_VALUE-time_s0_m0.45.json", "6010_EDF-time_s0_m0.60.json", "6010_EDF-route_s0_m0.60.json"]}
+{"timestamp": 1795860286.8562148, "action": "release_cpu", "coordinator": "surplus", "pid": 54744, "duration_s": 140.07507586479187}
+{"timestamp": 1795860406.9614606, "action": "grant_cpu", "coordinator": "overflow", "pid": 54743, "targets": ["6003_EDF-time_s0_m0.60.json"]}
+{"timestamp": 1795860546.9858372, "action": "release_cpu", "coordinator": "overflow", "pid": 54743, "duration_s": 140.02424383163452}
+{"timestamp": 1795860877.3289425, "action": "grant_cpu", "coordinator": "surplus", "pid": 54744, "targets": ["6010_EDF-time_s0_m0.60.json"]}
+{"timestamp": 1795861017.3649397, "action": "release_cpu", "coordinator": "surplus", "pid": 54744, "duration_s": 140.0359296798706}
+{"timestamp": 1795861197.582085, "action": "grant_cpu", "coordinator": "overflow", "pid": 54743, "targets": ["6003_VALUE-route_s0_m0.60.json"]}
+{"timestamp": 1795861337.6169617, "action": "release_cpu", "coordinator": "overflow", "pid": 54743, "duration_s": 140.03474736213684}

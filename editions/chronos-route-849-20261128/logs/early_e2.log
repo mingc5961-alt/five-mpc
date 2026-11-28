@@ -1,0 +1,44 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/170 [00:00<?, ?it/s]Loading weights: 100%|██████████| 170/170 [00:00<00:00, 7703.45it/s]
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/170 [00:00<?, ?it/s]Loading weights: 100%|██████████| 170/170 [00:00<00:00, 8830.99it/s]
+early_endpoint 1/40
+early_endpoint 2/40
+early_endpoint 3/40
+early_endpoint 4/40
+early_endpoint 5/40
+early_endpoint 6/40
+early_endpoint 7/40
+early_endpoint 8/40
+early_endpoint 9/40
+early_endpoint 10/40
+early_endpoint 11/40
+early_endpoint 12/40
+early_endpoint 13/40
+early_endpoint 14/40
+early_endpoint 15/40
+early_endpoint 16/40
+early_endpoint 17/40
+early_endpoint 18/40
+early_endpoint 19/40
+early_endpoint 20/40
+early_endpoint 21/40
+early_endpoint 22/40
+early_endpoint 23/40
+early_endpoint 24/40
+early_endpoint 25/40
+early_endpoint 26/40
+early_endpoint 27/40
+early_endpoint 28/40
+early_endpoint 29/40
+early_endpoint 30/40
+early_endpoint 31/40
+early_endpoint 32/40
+early_endpoint 33/40
+early_endpoint 34/40
+early_endpoint 35/40
+early_endpoint 36/40
+early_endpoint 37/40
+early_endpoint 38/40
+early_endpoint 39/40
+early_endpoint 40/40

@@ -1,0 +1,6 @@
+{
+  "input_worlds": 32,
+  "original_pid": 27470,
+  "verified_before_transfer": true,
+  "reason": "NUMA-local native process pools for counterfactual and end-to-end runs"
+}

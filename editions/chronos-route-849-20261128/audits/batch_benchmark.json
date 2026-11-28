@@ -1,0 +1,32 @@
+{
+  "world": 2000,
+  "samples": 16,
+  "single_seconds": 27.124603075993946,
+  "tests": {
+    "2": {
+      "seconds": 25.244455070002005,
+      "center_equal": 0,
+      "width_equal": 0,
+      "center_max_abs": 1.33514404296875e-05
+    },
+    "4": {
+      "seconds": 21.989579604996834,
+      "center_equal": 0,
+      "width_equal": 0,
+      "center_max_abs": 9.5367431640625e-06
+    },
+    "8": {
+      "seconds": 19.569877984991763,
+      "center_equal": 0,
+      "width_equal": 0,
+      "center_max_abs": 7.62939453125e-06
+    },
+    "16": {
+      "seconds": 21.894204481010092,
+      "center_equal": 0,
+      "width_equal": 0,
+      "center_max_abs": 7.62939453125e-06
+    }
+  },
+  "used_for_science": false
+}

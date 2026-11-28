@@ -1,0 +1,248 @@
+{
+  "status": "PASS",
+  "phase": "smoke",
+  "initial_integration_heads": true,
+  "world": 1400,
+  "physics": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+  "calendar_sha256": "2f55c7e415f074bcdce383830d90f9d1f2f36e58ba3adf76ca6c7094929bc32c",
+  "E1": {
+    "spec": "4bbc21f9dfe01f52d4171539c9a87d880a008466972680ce30186669650082c2",
+    "world": 1400,
+    "physics": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+    "prefix_receipt": "0865277e320d0f95ca0b6d02e321147805954aa99fbaf2b982e810770bc6bb90",
+    "prefix_index_sha": "7d9fa18e405f3298b7341816a2bea70b43a812ae77bef3f93c43f40d88e5001b",
+    "issued": 805,
+    "full_windows": 760,
+    "rows": 11232,
+    "rows_by_arm": {
+      "C-native": 1872,
+      "GEO": 1872,
+      "C-cal": 1872,
+      "TIME": 1872,
+      "ROUTE": 1872,
+      "SHUFFLE": 1872
+    },
+    "row_digest_by_arm": {
+      "C-native": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+      "GEO": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+      "C-cal": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+      "TIME": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+      "ROUTE": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3",
+      "SHUFFLE": "4d2f4cfd727ed3c8a5fae3bb483a2476bd70acb8f546fb74d19d454e7807a2d3"
+    },
+    "mismatches": 0,
+    "original_life_checks": 144,
+    "sha256": "31a58081388eb38cd3da81734f2c2b51335ba8b6c9d9361a42a6e55275c73f39"
+  },
+  "E2": [
+    {
+      "arm": "MAXAGE",
+      "seed": 0,
+      "starts_ends_checked": 849,
+      "paid_s": 2.631899999998903,
+      "ledger_s": [
+        2.631899999998903,
+        1.8269000000492366,
+        161.78909999993544,
+        13.752099999994776
+      ],
+      "total_s": 179.99999999997837,
+      "prefix_and_observation_errors": 0,
+      "event_sha": "ee0ca06a5a0077d54c4c111d1a177a7b554118759d2723ead8b44d29cb3f8ba0",
+      "seconds": 251.78780570800882,
+      "cache_hits": 849,
+      "cache_misses": 849,
+      "old_entry_regression": "exact events and full result"
+    },
+    {
+      "arm": "AoI-DQN-fixed",
+      "seed": 17,
+      "starts_ends_checked": 849,
+      "paid_s": 2.631899999998903,
+      "ledger_s": [
+        2.631899999998903,
+        1.8269000000492366,
+        161.79519999993522,
+        13.745999999994988
+      ],
+      "total_s": 179.99999999997834,
+      "prefix_and_observation_errors": 0,
+      "event_sha": "61838f0cacbc55049f3af9f40c60a945306988f879b05726c206e7bbff9c1e73",
+      "seconds": 245.97400131399627,
+      "cache_hits": 0,
+      "cache_misses": 849,
+      "old_entry_regression": null
+    },
+    {
+      "arm": "AoI-DQN-fixed",
+      "seed": 29,
+      "starts_ends_checked": 849,
+      "paid_s": 2.631899999998903,
+      "ledger_s": [
+        2.631899999998903,
+        1.8269000000492366,
+        162.2824999999353,
+        13.258699999994898
+      ],
+      "total_s": 179.99999999997834,
+      "prefix_and_observation_errors": 0,
+      "event_sha": "7056a588cc152e20d7e7022224601279b5d0f1b40321c9f27eafaf0c417e079b",
+      "seconds": 242.50837113402667,
+      "cache_hits": 0,
+      "cache_misses": 849,
+      "old_entry_regression": null
+    },
+    {
+      "arm": "AoI-DQN-fixed",
+      "seed": 41,
+      "starts_ends_checked": 849,
+      "paid_s": 2.631899999998903,
+      "ledger_s": [
+        2.631899999998903,
+        1.8269000000492366,
+        162.53649999993507,
+        13.004699999995138
+      ],
+      "total_s": 179.99999999997834,
+      "prefix_and_observation_errors": 0,
+      "event_sha": "bbcb5bc10caf19d3d9841600433baff4efa2bed40fcfc41fd683e90921091f12",
+      "seconds": 248.35442385802162,
+      "cache_hits": 0,
+      "cache_misses": 849,
+      "old_entry_regression": null
+    },
+    {
+      "arm": "VAR",
+      "seed": 0,
+      "starts_ends_checked": 849,
+      "paid_s": 2.631899999998903,
+      "ledger_s": [
+        2.631899999998903,
+        1.8269000000492366,
+        163.2010999999349,
+        12.340099999995322
+      ],
+      "total_s": 179.99999999997837,
+      "prefix_and_observation_errors": 0,
+      "event_sha": "4a30162c563176077ce5bb7b286eb0e5b47262fbaaa7f8b2059a7ddd497caae1",
+      "seconds": 247.8090339319897,
+      "cache_hits": 0,
+      "cache_misses": 849,
+      "old_entry_regression": null
+    },
+    {
+      "arm": "EDF-native",
+      "seed": 0,
+      "starts_ends_checked": 849,
+      "paid_s": 2.631899999998903,
+      "ledger_s": [
+        2.631899999998903,
+        1.8269000000492366,
+        167.23339999993362,
+        8.307799999996595
+      ],
+      "total_s": 179.99999999997837,
+      "prefix_and_observation_errors": 0,
+      "event_sha": "1d69de76608f9f90d4518fef5102e14ea7fd625bc105843d37181f82307b2a96",
+      "seconds": 249.16399008900044,
+      "cache_hits": 849,
+      "cache_misses": 849,
+      "old_entry_regression": "exact events and full result"
+    },
+    {
+      "arm": "EDF-time",
+      "seed": 0,
+      "starts_ends_checked": 849,
+      "paid_s": 2.631899999998903,
+      "ledger_s": [
+        2.631899999998903,
+        1.8269000000492366,
+        163.10249999993508,
+        12.438699999995105
+      ],
+      "total_s": 179.99999999997831,
+      "prefix_and_observation_errors": 0,
+      "event_sha": "372a476e30cb4cd3e745e69b2ab279a83631f234880181c678693f3ebea6e3cd",
+      "seconds": 241.9278808409872,
+      "cache_hits": 0,
+      "cache_misses": 849,
+      "old_entry_regression": null
+    },
+    {
+      "arm": "EDF-route",
+      "seed": 0,
+      "starts_ends_checked": 849,
+      "paid_s": 2.631899999998903,
+      "ledger_s": [
+        2.631899999998903,
+        1.8269000000492366,
+        163.48409999993513,
+        12.057099999995092
+      ],
+      "total_s": 179.99999999997837,
+      "prefix_and_observation_errors": 0,
+      "event_sha": "52309f1ca456ec4f3baaddaa313894b369834aa50eaefcaf9e65237afc36e61e",
+      "seconds": 243.5552772390074,
+      "cache_hits": 0,
+      "cache_misses": 849,
+      "old_entry_regression": null
+    },
+    {
+      "arm": "VALUE-time",
+      "seed": 0,
+      "starts_ends_checked": 849,
+      "paid_s": 2.631899999998903,
+      "ledger_s": [
+        2.631899999998903,
+        1.8269000000492366,
+        164.4133999999344,
+        11.127799999995787
+      ],
+      "total_s": 179.99999999997831,
+      "prefix_and_observation_errors": 0,
+      "event_sha": "c410cc2d4e3342a9236fd7280a42352100aef1f8ffc96e1680ac69e989ecbb1e",
+      "seconds": 245.37825369500206,
+      "cache_hits": 6,
+      "cache_misses": 843,
+      "old_entry_regression": null
+    },
+    {
+      "arm": "VALUE-route",
+      "seed": 0,
+      "starts_ends_checked": 849,
+      "paid_s": 2.631899999998903,
+      "ledger_s": [
+        2.631899999998903,
+        1.8269000000492366,
+        164.25119999993439,
+        11.289999999995835
+      ],
+      "total_s": 179.99999999997837,
+      "prefix_and_observation_errors": 0,
+      "event_sha": "2831b1143d367e76e98c1668505c8783998a85b5477720a31d4c5b5b57999dc7",
+      "seconds": 242.850868567999,
+      "cache_hits": 0,
+      "cache_misses": 849,
+      "old_entry_regression": null
+    }
+  ],
+  "verified_E2_rows": 8490,
+  "distinct_paid_observations": 6145,
+  "distinct_paid_prefixes": 8107,
+  "unique_purchase_streams": 10,
+  "service_sha": "45de5db34822d4b5989790561146ad283ee1f5d1593c0287e0747a7256cbb1dc",
+  "archive_regression": {
+    "pass_exact": true,
+    "events": 847,
+    "world": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+    "reference": "/data/coding/g1-original-20261127/paired_linux_v1/canary/N01_development_1400_0.45.json",
+    "reference_sha": "e31d8459cf1801abd78e975695fac268651aa59f084e416352ea5e97f4b6dbb5",
+    "receipt_sha": "e31d8459cf1801abd78e975695fac268651aa59f084e416352ea5e97f4b6dbb5"
+  },
+  "negative_checks": [
+    "reject duplicate and nonmonotone paid time",
+    "changed raw observation changes complete prefix",
+    "wrong user changes complete prefix"
+  ],
+  "peak_rss_this_audit_kib": 674704
+}

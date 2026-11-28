@@ -1,0 +1,11 @@
+{
+  "created_before_fitted_heads_and_development_scoring": true,
+  "primary_scale": 0.75,
+  "retrieval": {"query_fixes":3,"neighbors":3,"max_position_m":50,"min_heading_cosine":0.5,"max_relative_shape_rms_m":30,"eligible_maturity":"strictly before earliest query fix","shuffle":"deterministic nonzero circular shift of outcome records within eligible same-uid pool"},
+  "effective_permutation_minimum":{"worlds":8,"distinct_primary_prefixes":32},
+  "value_branch_design":{"training_world_ids":[1000,1031],"states_per_world":8,"validation_world_ids":[1100,1115],"validation_states_per_world":1,"development_world_ids":[1400,1407],"development_states_per_world":2,"sampling_seed_expression":"201127 + world ID","draw":"one appointment uniformly in each chronological equal-sized eligible stratum","action_behavior":"35% uniform legal recipient, otherwise native EDF, initialization forced","continuation":"native EDF","candidates":16,"intervals":24},
+  "N_planning":{"world_count_grid":[48,64,80,96],"power_approximation":0.8,"two_sided_confidence":0.95,"target_missed_seconds":0.10,"target_goodput_relative_to_VALUE_time":0.01,"overadmission_margin_s":0.02,"relative_risk_margin_pp":0.5,"adjust_life_N_for_revisit_world_occupancy":true,"decision":"First budget grid value at or above all four normal-approximation requirements. If none suffices, cap at 96 and disclose residual precision shortfall. Use 96 if development revisit variance cannot be estimated.","confirmation_data_read":false},
+  "inference":"native frozen scalar float32 CPU Chronos; regression-only multi-prefix batch not admitted because scalar outputs differed",
+  "same_state_diagnostic":"all held-out stratified development label states, report VALUE-route minus VALUE-time only on conflicts, group by selected route user's route support",
+  "bootstraps":20000,"bootstrap_seed":271127
+}

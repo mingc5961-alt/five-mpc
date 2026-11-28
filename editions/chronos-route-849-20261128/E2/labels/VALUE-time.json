@@ -1,0 +1,11 @@
+{
+  "side": "time",
+  "train_worlds": 32,
+  "states": 256,
+  "labels": 4096,
+  "validation_worlds": 16,
+  "validation_rank_correlation": 0.26089037704388784,
+  "validation_regret_bits": 126931133.31321174,
+  "sha256": "a17b3f294a488b46eadfdfc3ab87aa0cc79b48626bf9a795b30beee4363c20fd",
+  "train_sample_sha": "7179c06d1ba057ba589839508fbaae0223da5a2fc710382fa45c37d806db91ac"
+}

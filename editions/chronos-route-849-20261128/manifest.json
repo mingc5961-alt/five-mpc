@@ -1,0 +1,856 @@
+{
+  "source_repository": "/data/coding/.publish-g1-icc-20261128",
+  "commit": "17e8144df322ef6f54cd52d399fb6a3460881535",
+  "files": {
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/neural/gru_8_residual/best.pt": "35a1c7ced18e174a9717944de3bd86278175bd9366fd9b707ae6730ba600e368",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/neural/gru_8_residual/fusion.json": "936fde43193fe33c153aba3fd8cc3cfbbcef13b7d980f859b3fcaa270f69839e",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/frozen_gate.json": "6fe8355c7b9a5e1ab2b9732f911bc82271a6ba5da0fb1ce332e75714db1d34fb",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/closed/tubes/G1.pkl": "9c91bb080307891fa67e7a9873b1375850245b653ea1fbf26206118d6bdab596",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/training/Chronos-2/7/best.pt": "5fc8b09a9200b92e3a084602ce64a48ab50c77909b53d406982d6c2f2a5cd424",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/tubes/Chronos-2/7/bundle.pkl": "ffa97954847a780a5f2b08b683351ee988a37c057f703d55f075a744b5ca323a",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/chronos_snapshot/model.safetensors": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42",
+    "/data/coding/chronos_route_849_v1/package/EXPERIMENT_PLAN.md": "805e4b754728ea2a212b40fb52e9eefcbbfd91182172d148b4f28edb28273910",
+    "/data/coding/chronos_route_849_v1/package/EXPERIMENT_TRACKER.md": "537d02a4961f6bce4db17471895b6096ce261674ef8cfcd387073067421d9e82",
+    "/data/coding/chronos_route_849_v1/package/calendar_849.json": "2f55c7e415f074bcdce383830d90f9d1f2f36e58ba3adf76ca6c7094929bc32c",
+    "/data/coding/chronos_route_849_v1/package/protocol.json": "cb761350512625d42395c243aadb07a44746d151cc19f42b984bd5454eec9190",
+    "/data/chen/refine-logs/Chronos-849-server-plan.zip": "c210582b5fbff26ccabe65a6b5fe460453c515f69d4a50ac42e4e077f56196e7",
+    "/data/coding/g1-original-20261127/paired_linux_v2/learning/formal/fixed_s17_l3_q0/model_20000.pt": "d509ac6fe21a023940a79d68c9c7ef4225d6b9f13d60964d18dd53cb152b30cc",
+    "/data/coding/g1-original-20261127/paired_linux_v2/learning/formal/fixed_s29_l3_q0/model_20000.pt": "3dc31ee22cb3455c9ee4875105cbbfd2ce61f4b5c9487ae883223269afe6a738",
+    "/data/coding/g1-original-20261127/paired_linux_v2/learning/formal/fixed_s41_l3_q0/model_20000.pt": "9a8a56d5c1e367de533b9916023cf94beafc5789fb9077a127a6cc4fbe55358b",
+    "/data/coding/chronos_route_849_v1/E1/calibration/C-cal.pkl": "37b2a5275912a4b6c1675172b3d349144a9a28956bf6cbcaa8d8d4d192f88039",
+    "/data/coding/chronos_route_849_v1/E1/calibration/ROUTE.pkl": "0639d7981b7233d973c4d7eb6e27480cb52fe30c3f0a4595b8459abce32c31ba",
+    "/data/coding/chronos_route_849_v1/E1/calibration/SHUFFLE.pkl": "be782fcf4d56984efc97a292698feea2993461966671b8d37ea6e03db950a788",
+    "/data/coding/chronos_route_849_v1/E1/calibration/TIME.pkl": "5b0d916f68d3c613fafc313c5ef579eb7dfd15ab281967549b48cf230e10e12c",
+    "/data/coding/chronos_route_849_v1/E2/labels/VALUE-route.txt": "765d2e174d446121b246768685a9703c85488baa42ee63ab0bc0d380fc692c5a",
+    "/data/coding/chronos_route_849_v1/E2/labels/VALUE-time.txt": "a17b3f294a488b46eadfdfc3ab87aa0cc79b48626bf9a795b30beee4363c20fd"
+  },
+  "paths": {
+    "G1/best.pt": "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/neural/gru_8_residual/best.pt",
+    "G1/fusion.json": "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/neural/gru_8_residual/fusion.json",
+    "G1/frozen_gate.json": "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/frozen_gate.json",
+    "G1/tube.pkl": "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/closed/tubes/G1.pkl",
+    "Chronos/best.pt": "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/training/Chronos-2/7/best.pt",
+    "Chronos/tube.pkl": "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/tubes/Chronos-2/7/bundle.pkl"
+  },
+  "modules": {
+    "/data/coding/chronos_route_849_v1/code/base849.py": "2cdcd56a1e45829dd57a19798954d6966e701bd55455f7c15a1f91f85c6627f9",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/tools/experiment_env.py": "5e4f51d60c2db7b167712146032feae365227cb375fbe24c9f4176690f61fd2e",
+    "/data/coding/g1-original-20261127/audit_receipt.py": "a5b833298683d94c73bb10f438c49e03c6e90faf4b73241e442338f5e6ba0fdb",
+    "/data/coding/g1-original-20261127/independent/history.py": "beed33e3ae082530c23683c0fa4eaab57845cf2fe04f43cd7415f025ff7c4bb5",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/gru4505/confirm_0db/work/code/routeclock_refine/routeclock/__init__.py": "21f43ffc625114286fa013f8bb57d700565d57a29b043ae3728449f5a7344a4a",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/gru4505/confirm_0db/work/code/routeclock_refine/routeclock/geometry.py": "3fd084075d82e178ea99a8bae05b3f12a7c15925a7b3b44c338f12d2f0ae91ae",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/gru4505/confirm_0db/work/code/routeclock_refine/routeclock/world.py": "c9627ac2d16938e73a1587b0c328cd4c22691071a50f710ea0f2666dd9a2e157",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/gru4505/confirm_0db/work/code/routeclock_refine/routeclock/config.py": "eb9888017f6765f0988df611d83a019522d1e0700d7341595154166d51c05c5d",
+    "/data/coding/g1-original-20261127/independent/physical_inputs.py": "76024d72cbc50979fa4c9e7bcb280b1e7e477d15e71fc7fd119ee314d103af2f",
+    "/data/coding/g1-server-handoff/tools/check_g1_receipts.py": "5a2a66b1c6412e74acae85800c5849f71f91a2922f1220351877ecbf39c0a31d",
+    "/data/coding/g1-original-20261127/freeze_n01.py": "a9af3220dd164ba384cdbb3ffd42fd8fc377a909f1698deec92e3c7b87695e87",
+    "/data/coding/g1-original-20261127/independent/paired_grid.py": "af4053889ec170fe99b0942f51872dc7d7d43010bc4d386753db960f57522da4",
+    "/data/coding/g1-original-20261127/independent/slots.py": "f3bfcafd3afd9cadde0193b8e08f2472613a6d812663434788ac7cdf296568d3",
+    "/data/coding/g1-original-20261127/independent/paired_models.py": "fd9c3f36014d12690c3fc71e9e0b3c88013b7b2e5cf26a3e45f108dadd6b8b35",
+    "/data/coding/g1-original-20261127/independent/policy_env.py": "fdceeacac6b57041ff2470810ad9a6bb3af5c5061061686e57fb3ccb5695aefe",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/adaptive.py": "58226cc468702de475a910084ab80c194f31bab3e88fe57ee1e2bbf261f299b2",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/GRU误差管/center.py": "012f6eeb4d120f98d2f90aca87c82b3901123f4dc00da658dac4477b0735d7fd",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/pilot.py": "c3d50698ec40ecd938cec1379b2ad0582078556c3765eb7271536421b479b3d3",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/GRU误差管/network_task.py": "e2eebc9d16e031b9902a01f83deebab32b8dd7c7bf2868cf7ca0b69ce7718c64",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/work/code/routeclock_refine/refine/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/gru4505/confirm_0db/work/code/routeclock_refine/routeclock/radio.py": "3594cf6ba955b9724a5338988ada661b1cd0bf9d947f0d8952c77eb14d58e9cf",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/gru4505/confirm_0db/work/code/routeclock_refine/routeclock/scheduler.py": "fbaeabbb05239813a3a2d59bbfc32062364123c5216a09fc1e8eb73e3fd56aec",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/gru4505/confirm_0db/work/code/routeclock_refine/routeclock/foundation.py": "a02a305d9e13ba751af0be9f43ef8860d814d308c81e3ffcb49cdc06909b824c",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/gru4505/confirm_0db/work/code/routeclock_refine/routeclock/validity.py": "03955782e40a435b161141fd471f225e8e3cdda544f73086a4ca7e145af1cf62",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/gru4505/confirm_0db/work/code/routeclock_refine/routeclock/filters.py": "0c9830bde265dc48e83ee5d988e1269b06ba84e29a691f99493e29d99f82f41b",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/gru4505/confirm_0db/work/code/routeclock_refine/routeclock/memory.py": "ba255811feec82d2631efd542e1bc05c93697b8f41863484ea3bbdb0c693a4b8",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/gru4505/confirm_0db/work/code/routeclock_refine/routeclock/evidence.py": "e7b0fdcb50e53055689975664c6ba41a3fc910f58475285b26f2e9d4ea530fb7",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/gru4505/confirm_0db/work/code/routeclock_refine/routeclock/predictors.py": "4f46df446ee7a2149da48fad7566d5c19390984b20200ccb5a184e17f6738b1f",
+    "/data/coding/g1-original-20261127/package/g1-runtime-recovery/gru4505/confirm_0db/work/code/routeclock_refine/routeclock/dataset.py": "13f90cb84469fd5fbc409d7f37d6075f1e6af49205238aae89947a5a6cf08a34",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/work/code/routeclock_refine/refine/data.py": "00bb08dc160c96e8e33c7a1b88d1a8b82eab67259ecf23305ee4ec91bf4d3930",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/work/code/routeclock_refine/refine/models.py": "2f378226a9ccc725646927fb5824641c55582fec81bdf6ad6b4c96dd56f6871c",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/work/code/routeclock_refine/refine/world_cache.py": "dbea5457ad80bb3d5d5ecc3d432474e102898118bac72a053c8c9c649bdbdafd",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/work/code/routeclock_refine/refine/samples.py": "2b3ebc6d5e048e35875f9f57d1fde2f3a672608fc8b4d691c24d3334ced606b1",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/work/code/routeclock_refine/refine/tubes.py": "9b9afc5f11ee11ef666fbbfd09c7a145935e4b765af98d9d0dc81ba0a7c6a532",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/work/code/routeclock_refine/refine/network.py": "f7397e07a02195074fd8a0fb96320c2aa26419770fa69432d8b47f36fc96b683",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/closed/common.py": "81244fdee49caaa6d6093eae200d00f0effc4b6b01fbc82bc54593fec0cfcb1e",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/closed/experts.py": "b082a401dad69bf433f745f0a57a3d5d0ef93984e7721e3f8f5330e4da139592",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/GRU误差管/samples.py": "0c1e1efef2c281259e117bae320bed1013df89f66eb430fed7978f6640b72109",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/GRU误差管/tube.py": "e800ceaa7ba1fb1af8137303753a936f18b41279cf8514cbe76ac7df38990240",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/closed/prepare.py": "8eab837aff70b39047db41b5d8f6be64fcc6451fd7246c39777cb595ef57cc75",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/closed/simulate.py": "112e3fb1462e03f3ad871384f5bbd628ee4df12cd4b660be98ef0ae2429e5890",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/confirm_0db/work/code/routeclock_refine/runtime/fast_ledger.py": "eab679e5d6e2605b2372a9ff67a88f94e53babba7fb0515de41727b793a16362",
+    "/data/coding/g1-original-20261127/recovery_01/runtime/paid_full.py": "123429448905d1931388d9e641ad63dfaf197aecc0df2ffcab6df6274111617b",
+    "/data/coding/g1-original-20261127/recovery_01/runtime/grudata.py": "06248c0d50a22ec51811f747cd904342a3f08189676629dcba67997d51e3b418",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/event_gate.py": "860e1e19e32f36ce8f96878ee29a8c69273087fa8b28f76a75ec000a2030a152",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/records.py": "2ceb4437d220c6c16bde747816a171a7c5de2b8a515fc05bc83d3a52a81bb03d",
+    "/data/coding/g1-original-20261127/recovery_01/chronos_assets/experiment/gate/fusion/neural.py": "9b62416fa9a6229db366e3dc95f314461fbc16fa9a6a1ecadff6c70c029f99da",
+    "/data/coding/g1-original-20261127/recovery_01/runtime/grutrain.py": "5da99c132c8df08d1eaa50c721deb34d9ebde96819c58113e69126fb5e14b05e",
+    "/data/coding/g1-original-20261127/recovery_01/runtime/grurun.py": "60859d27d1746343966517d4d25e4050022921995ebbe2edd93b1d9c041f9f3b",
+    "/data/coding/g1-server-handoff/science/server_paths.py": "dcbd29697d84aeaf0a7686a72937fa63b27a5865020e724a03acb3680af66443",
+    "/data/coding/g1-server-handoff/science/worlds.py": "21f63a21145a0723e63032429d8b80095f1b626fadc0b3db42af4bfd8283e4c6",
+    "/data/coding/g1-server-handoff/tools/aoi_reference.py": "8b326f16a2d721971fecf5b119d94cbe3641f4fc411bda5b67c9046090f9ad39",
+    "/data/coding/g1-server-handoff/science/closed.py": "d4d6f215643a33e5413b18f3f705838b102312cbed293e803d7dfcff8d414e75",
+    "/data/coding/g1-original-20261127/independent/predictors.py": "f64bd58742de54bce8b00dafc1a1b7e437fc514f7331e0dcea452ec9fd2a9c62",
+    "/data/coding/g1-original-20261127/independent/deterministic_matrix.py": "5a6583bf7242be9a51d9fc825b91fcd6df53678204a292cf844e1d473dde55f2",
+    "/data/coding/g1-original-20261127/independent/learned_matrix.py": "150f1fa8a7b0ae59ccb5992912c840113f2ae8b8c9cdfbb9dcdda21a96f08953",
+    "/data/coding/g1-server-handoff/science/aoi_policy.py": "5c8aae972b5d4a5c4669729b76877d4fec070469025c14b7ee54b8ea4dadc6bd"
+  },
+  "grid": [
+    0.0,
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    2.5,
+    3.0,
+    3.5,
+    4.0,
+    4.5,
+    5.0,
+    5.5,
+    6.0,
+    6.5,
+    7.0,
+    7.5,
+    8.0,
+    8.5,
+    9.0,
+    9.5,
+    10.0
+  ],
+  "factors": [
+    1.486859627745932,
+    1.5970927519960234,
+    1.756717688640633,
+    1.8727927151857982,
+    1.991241982678192,
+    2.106912206553828,
+    2.227932774319906
+  ],
+  "world1400": {
+    "split": "development",
+    "world": 1400,
+    "namespace": "g1_icc_server_v1/main/development",
+    "group_seed": [
+      20261127,
+      1400
+    ],
+    "groups": [
+      "no_reusable_path",
+      "stable_path_stable_tempo",
+      "no_reusable_path",
+      "no_reusable_path",
+      "stable_path_segment_speed_stops",
+      "no_reusable_path",
+      "local_deviation_rejoin",
+      "no_reusable_path",
+      "stable_path_stable_tempo",
+      "stable_path_global_speed",
+      "no_reusable_path",
+      "stable_path_stable_tempo",
+      "no_reusable_path",
+      "stable_path_segment_speed",
+      "local_deviation_rejoin",
+      "local_deviation_rejoin"
+    ],
+    "physical_sha256": "4caa75befa71a15e66124fd723706c44343b9bb40fe745006595f15bafdce4c1",
+    "components": {
+      "positions": "46ad20e2ec43ed7352bbe464c943b08c1a83fec4c2d1d77cb084fd1acf9b32ce",
+      "noise": "813cc5b855005222cfab3fbe82fe4525a8467e2f8bd47c6f4287ba7239611184",
+      "shadows": "13eb0cd7ec410f0a800cad75c02db51da33850594d5c85b97c5b2524365d8e30"
+    },
+    "file_sha256": "1b58d4ec44e258e06a585e367ea45007d151dc5e0cd095a9c65f14d691c953e0",
+    "generator_sha256": "c9627ac2d16938e73a1587b0c328cd4c22691071a50f710ea0f2666dd9a2e157",
+    "numpy": "2.5.4"
+  },
+  "config": {
+    "version": "RC-20261112-v3-spatial-progress",
+    "status": "design_only_not_runtime_config",
+    "primary_claims": [
+      "spatial_progress_memory_adds_information_under_time_warp",
+      "horizon_conditioned_memory_validity_improves_width_interval_communication_tradeoff"
+    ],
+    "simulation": {
+      "primary_N": 16,
+      "scaling_N": [
+        4,
+        8,
+        16,
+        32
+      ],
+      "warmup_s": 0,
+      "service_s": 180,
+      "truth_step_s": 0.02,
+      "forecast_step_s": 0.5,
+      "forecast_horizon_s": 10,
+      "observation_cost_s": 0.0031,
+      "sensing_budget": 0.016666666666666666,
+      "budget_sweep_at_N16": [
+        0.02,
+        0.05,
+        0.1
+      ],
+      "intervals_s": [
+        0.5,
+        1,
+        2,
+        3,
+        5,
+        8,
+        10
+      ],
+      "tdma_quantum_s": 0.01,
+      "beam_switch_s": 0.0001,
+      "simulated_model_latency_s": 0,
+      "measurement_std": {
+        "range_m": 1,
+        "azimuth_deg": 0.1,
+        "elevation_deg": 0.1,
+        "radial_velocity_m_s": 0.2
+      },
+      "warmup_per_uav_interval": "max(1,N*c/rho)",
+      "budget_bucket_capacity": "one_observation_cost",
+      "forecast_refresh": "only_new_real_observation_for_that_UAV",
+      "forecast_exhaustion": "no_valid_forecast_action_zero_delivered_bits_until_observation",
+      "model_failure": "explicit_run_error_no_substitution",
+      "zero_duration": "immediate observation request; no c/0; unserved assigned data time counted as link loss",
+      "history_access": "all causal observations from mission start for all methods"
+    },
+    "radio": {
+      "carrier_hz": 28000000000,
+      "bandwidth_hz": 400000000,
+      "total_tx_dbm": 20,
+      "noise_figure_db": 7,
+      "rx_gain_dbi": 0,
+      "array": [
+        32,
+        32
+      ],
+      "subarray_axes": [
+        8,
+        16,
+        32
+      ],
+      "codebook_pairs": 9,
+      "range_m": [
+        150,
+        500
+      ],
+      "altitude_m": [
+        60,
+        120
+      ],
+      "shadow_std_db": 3,
+      "shadow_correlation_s": 2,
+      "spectral_efficiencies": [
+        0.2344,
+        0.6016,
+        1.1758,
+        1.9141,
+        2.7305,
+        3.9023,
+        5.1152
+      ],
+      "threshold_db": "10*log10(2^SE-1)+5",
+      "bler": "1/(1+9*exp((snr_db-threshold_db)/1.5))",
+      "goodput": "integral of B*0.85*SE*(1-BLER) over allocated data time / wall service time",
+      "geometric_loss_threshold_db": 3
+    },
+    "models": {
+      "route": {
+        "representation": "directed_ordered_observed_fragments_and_arc_length",
+        "resample_spacing_m": 1,
+        "rebuild_after_new_accepted_points": 5,
+        "matching_max_hypotheses": 3,
+        "matching_position_gate_mahalanobis": 3,
+        "heading_reliability_speed_m_s": 0.5,
+        "matching_terms": [
+          "position_innovation_with_map_and_measurement_covariance",
+          "speed_weighted_heading",
+          "progress_continuity"
+        ],
+        "update_rule": "score pre-update innovation first; update matched segment; extend only a continuous terminal; mid-route deviation stored as separate fragment",
+        "closure_rule": "position and directed tangent agreement, continuous progression, compatible preceding observed subsequence; not position proximity alone",
+        "unmatched_prediction": "terminal tangent extrapolation with zero observed-support flag; never append predicted points to memory",
+        "future_progress": "three-mode IMM on [arc_length_m,speed_m_s]",
+        "progress_modes": [
+          "cruise",
+          "decelerate",
+          "hold"
+        ],
+        "progress_ou_tau_s": [
+          4,
+          2,
+          1
+        ],
+        "progress_ou_diffusion_m_s_per_sqrt_s": [
+          0.5,
+          0.7,
+          0.1
+        ],
+        "progress_mean_speed_factors": [
+          1,
+          0.4,
+          0
+        ],
+        "cruise_speed_estimator": "median positive observed speed above 0.5 m/s over past 20s",
+        "transition_application": "continuous-time P(delta)=matrix_exp(Q*delta), for both grid forecasting and irregular observations",
+        "uncertainty_propagation": "positive-weight sigma points within each progress/matching hypothesis; include path shape error",
+        "mode_transition_generator_per_s": [
+          [
+            -0.08,
+            0.06,
+            0.02
+          ],
+          [
+            0.2,
+            -0.3,
+            0.1
+          ],
+          [
+            0.12,
+            0.08,
+            -0.2
+          ]
+        ]
+      },
+      "chronos": {
+        "checkpoint": "amazon/chronos-2",
+        "parameters_million": 120,
+        "frozen": true,
+        "context_s": 360,
+        "context_steps": 720,
+        "horizon_steps": 20,
+        "quantiles": [
+          0.1,
+          0.5,
+          0.9
+        ],
+        "cross_learning": false,
+        "route_covariates": {
+          "historical": "causally issued route snapshots at each historical time; not hindsight-refitted path",
+          "future": "current-origin spatial-progress xyz mean, xyz std and support over forecast grid; supplied estimates, not true future",
+          "past_only": [
+            "measurement_mask",
+            "measurement_age"
+          ],
+          "no_route_baseline": "omit every route key entirely",
+          "P0_checks": [
+            "past and future covariates jointly accepted",
+            "past snapshots are causal",
+            "C truly omits route fields",
+            "batch does not cross-learn tasks"
+          ]
+        }
+      },
+      "scale": {
+        "model": "TabPFN-2.5",
+        "n_estimators": 4,
+        "feature_budget": 64,
+        "shared_axis_conditioned_regressor": true,
+        "query_horizons_s": [
+          0,
+          0.5,
+          1,
+          2,
+          3,
+          5,
+          8,
+          10
+        ],
+        "queries_per_update": 16,
+        "train_context_rows": 7200,
+        "target": "log(0.001deg+running_max_abs_angle_error)",
+        "context_frozen": true,
+        "fit_mode": "fit_with_cache",
+        "axis_encoding": {
+          "horizon": "numeric h / 10",
+          "axis": "two one-hot columns [1,0] or [0,1]",
+          "concatenation": "shared diagnostics then horizon then axis flags"
+        },
+        "feature_sources": [
+          "shared local dynamics",
+          "path match and support",
+          "progress uncertainty and modes",
+          "realized issued-forecast errors",
+          "harmonic diagnostics",
+          "expert disagreement",
+          "query geometry"
+        ],
+        "target_center": "the actual final center used for steering",
+        "training_gate_outputs": "task-group out-of-fold",
+        "monotonicity": "positive scale then cumulative max; upper-step interpolation to intermediate horizons"
+      },
+      "ablation_heads": {
+        "lightgbm": {
+          "num_leaves": [
+            15,
+            31
+          ],
+          "min_child_samples": [
+            20,
+            50
+          ],
+          "max_boost_rounds": 500,
+          "early_stopping": 30
+        },
+        "random_forest": {
+          "n_estimators": 256,
+          "min_samples_leaf": [
+            8,
+            16,
+            32
+          ],
+          "offline_only": true,
+          "priority": "deferred"
+        }
+      },
+      "calibration": {
+        "method": "whole_interval_max_normalized_error_quantile",
+        "alpha": 0.1,
+        "optional_alpha_curve": [
+          0.05,
+          0.1,
+          0.2
+        ],
+        "online_updates": false,
+        "score": "maximum over two axes and query horizons of whole-interval realized angular error / predicted scale",
+        "label_truth_resolution_s": 0.02,
+        "anchor_independence": "one calibration anchor per independent task",
+        "claim": "marginal held-out-task coverage under exchangeability; adaptive closed-loop coverage evaluated separately"
+      },
+      "direct_duration_control": {
+        "model": "TabPFN-2.5",
+        "train_rows": 7200,
+        "action_queries_per_training_anchor": 2,
+        "features": "full diagnostics plus subarray dimensions and forecast pointing geometry",
+        "label": "first actual 2D 3dB gain-loss time truncated at 10s",
+        "calibration": "one-sided lower horizon bound; max score across nine candidate actions"
+      },
+      "harmonic": {
+        "role": "retained parallel diagnostic and offline center comparator",
+        "harmonics": 3,
+        "period_grid_s": {
+          "start": 18,
+          "stop": 60,
+          "step": 1,
+          "count": 43
+        },
+        "drift_std_m_per_sqrt_s": [
+          0.01,
+          0.03,
+          0.1
+        ],
+        "grid_comparison": "P0 compare 1s and 2s step; no automatic runtime substitution"
+      },
+      "fusion": {
+        "architecture": "single logistic horizon-conditioned gate, <=16 standardized causal features",
+        "experts_RC": [
+          "spatial_progress",
+          "adaptive_IMM"
+        ],
+        "experts_CR_G": [
+          "Chronos_spatial_route",
+          "adaptive_IMM"
+        ],
+        "features": [
+          "h_over_10",
+          "preupdate_position_innovation",
+          "heading_innovation",
+          "match_entropy",
+          "predicted_progress_std_normalized",
+          "future_observed_support",
+          "realized_path_error_short",
+          "realized_path_error_long",
+          "realized_IMM_error_short",
+          "realized_IMM_error_long",
+          "realized_error_count_short",
+          "realized_error_count_long",
+          "expert_angular_disagreement_at_h",
+          "progress_hold_probability",
+          "progress_decelerate_probability",
+          "route_angular_sensitivity_at_h"
+        ],
+        "target": "squared azimuth/elevation error of final weighted position center",
+        "training_tasks": 1200,
+        "training_rows": 3600,
+        "horizon_samples_per_anchor": 1,
+        "l2_candidates": [
+          0.0001,
+          0.001,
+          0.01
+        ],
+        "max_optimizer_steps": 1000,
+        "task_group_oof_folds": 3,
+        "all_train_refit_after_oof": true,
+        "mixture_second_moment": "diagnostic only, not covariance guarantee for correlated fused estimators",
+        "no_new_observation_rule": "evaluate original issued gate/forecast package by elapsed horizon; no pseudo-observation reset",
+        "error_lag_groups_s": {
+          "short": [
+            0.5,
+            2
+          ],
+          "long": [
+            2,
+            10
+          ]
+        }
+      }
+    },
+    "data": {
+      "single_uav_tasks": {
+        "train": 1200,
+        "validation": 400,
+        "calibration": 400,
+        "test": 400
+      },
+      "duration_s": 360,
+      "training_anchors": 3,
+      "anchor_intervals_s": [
+        [
+          190,
+          230
+        ],
+        [
+          250,
+          290
+        ],
+        [
+          310,
+          340
+        ]
+      ],
+      "sampled_horizons_per_anchor": 1,
+      "axes_per_label": 2,
+      "calibration_anchors": 1,
+      "motion_mixture": {
+        "stable_path_stable_tempo": 0.25,
+        "stable_path_global_speed": 0.16666666666666666,
+        "stable_path_segment_speed": 0.16666666666666666,
+        "stable_path_segment_speed_stops": 0.16666666666666666,
+        "local_deviation_rejoin": 0.125,
+        "no_reusable_path": 0.125
+      },
+      "training_observation_protocols_s": [
+        0.5,
+        1,
+        2,
+        5,
+        10,
+        "irregular_uniform_0.5_to_10"
+      ],
+      "max_speed_m_s": 12,
+      "max_acceleration_m_s2": 4,
+      "max_jerk_m_s3": 8,
+      "split_unit": "route_template_instance",
+      "changes": "speed/stops/deviation mechanism active throughout warmup and service; no common change timestamp",
+      "route_parameters": {
+        "ellipse_semiaxes_m": [
+          10,
+          30
+        ],
+        "scan_long_half_m": [
+          15,
+          35
+        ],
+        "scan_transverse_half_m": [
+          5,
+          15
+        ],
+        "figure8_half_m": [
+          10,
+          25
+        ],
+        "initial_horizontal_range_m": [
+          220,
+          400
+        ],
+        "initial_azimuth_deg": [
+          -35,
+          35
+        ],
+        "initial_altitude_m": [
+          80,
+          100
+        ],
+        "vertical_amplitude_m": [
+          0,
+          5
+        ],
+        "common_wind_accel_std_m_s2": 0.1,
+        "common_wind_corr_s": 2,
+        "random_accel_std_m_s2": 0.6,
+        "random_accel_corr_s": 1,
+        "nonperiodic_speed_m_s": [
+          3,
+          10
+        ],
+        "nonperiodic_target_region_radius_m": 35,
+        "nonperiodic_target_refresh_s": [
+          2,
+          8
+        ],
+        "nominal_traversal_s": [
+          20,
+          60
+        ],
+        "global_speed_multiplier": [
+          0.7,
+          1.3
+        ],
+        "global_speed_redraw": "each traversal, including warmup",
+        "segment_count": [
+          3,
+          5
+        ],
+        "segment_speed_multiplier": [
+          0.5,
+          1.5
+        ],
+        "segment_redraw": "each traversal; smooth commanded-speed transitions under common physical limits",
+        "stop_count_per_traversal_poisson": 1,
+        "stop_duration_s": [
+          1,
+          5
+        ],
+        "stop_location": "uniform observed-independent latent path arc length in generator",
+        "detour_probability_per_traversal": 0.4,
+        "detour_amplitude_m": [
+          3,
+          8
+        ],
+        "detour_duration_s": [
+          4,
+          8
+        ],
+        "detour_shape": "normal offset A*64*u^3*(1-u)^3, u in [0,1], fixed side per event, dynamically tracked",
+        "detour_rejoin": "forward point on intended directed segment; never nearest crossing branch",
+        "detour_group_base": "segment-speed variability without extra stops",
+        "generator_reference_access": "generator only; never supplied to any predictor",
+        "behavior_groups": "disjoint; strong-speed group has stops but no detours; detours confined to rejoin group"
+      },
+      "class_counts": {
+        "train": [
+          300,
+          200,
+          200,
+          200,
+          150,
+          150
+        ],
+        "validation": [
+          100,
+          67,
+          67,
+          66,
+          50,
+          50
+        ],
+        "calibration": [
+          100,
+          66,
+          67,
+          67,
+          50,
+          50
+        ],
+        "test": [
+          100,
+          67,
+          66,
+          67,
+          50,
+          50
+        ]
+      },
+      "main_population": {
+        "N": 16,
+        "counts": [
+          4,
+          3,
+          3,
+          2,
+          2,
+          2
+        ],
+        "variable_group_rotation": "rotate 3/3/2 across three groups by mission",
+        "continuously_route_following_fraction": 0.75,
+        "structurally_reusable_fraction": 0.875
+      },
+      "namespace_partition": [
+        "offline/train",
+        "offline/validation",
+        "offline/calibration",
+        "offline/test",
+        "network/validation",
+        "network/test",
+        "ood_polygon",
+        "real_aerpaw"
+      ],
+      "no_instance_overlap": "route instance identifiers disjoint across all partitions; method and model seed excluded from physical-world random keys",
+      "warmup_sensitivity_s": [
+        120,
+        180
+      ],
+      "actual_completed_laps": "diagnostic evaluation only; never a model feature"
+    },
+    "baseline_ids": {
+      "F": "IMM pointing; validation-selected fixed width and feasible fixed sensing interval",
+      "I": "adaptive IMM center plus full shared diagnostics and common scale/scheduler",
+      "C": "frozen Chronos-2 without explicit route fields; common scale/scheduler",
+      "CR": "CR-G: frozen Chronos with same spatial-route covariates, same-capacity IMM gate, full diagnostics and common scale/scheduler",
+      "RC": "spatial-progress center plus same-capacity IMM gate, full diagnostics and common scale/scheduler"
+    },
+    "blocks": {
+      "P0": "interfaces, map matching/progress, accounting, inference profiling, early real-trajectory matching",
+      "A": "seven center variants; fixed-center validity; calibrated direct-duration comparison",
+      "B": "N16 five methods, 30 paired test missions",
+      "C": "N/budget/actions/scheduler and reusable-share sweeps, no Cartesian product",
+      "D": "two closed-loop ablations, core seeds, exposed failure and OOD diagnostics"
+    },
+    "network_test_runs": {
+      "B": 150,
+      "C_N": 180,
+      "C_budget": 120,
+      "C_actions": 40,
+      "C_scheduler": 40,
+      "D_ablation": 40,
+      "D_seed": 80,
+      "total": 810,
+      "single_uav_action_diagnostic_extra": 80,
+      "C_reuse": 160,
+      "validation_missions": 20
+    },
+    "seeds": {
+      "model_offline": [
+        7,
+        11,
+        19
+      ],
+      "main_closed_loop": 7,
+      "paired_RC_CR_extra": [
+        11,
+        19
+      ],
+      "data_root": 20261112,
+      "network_test_id_start": 20000,
+      "bootstrap": 271828,
+      "bootstrap_replicates": 2000
+    },
+    "resources": {
+      "observed_local_gpu": "NVIDIA GeForce MX450 2048 MiB",
+      "planned_gpu_vram_GB": 24,
+      "planned_host_ram_GB": 32,
+      "cloud_allocation_authorized": false,
+      "full_run_runtime": "measure first; not estimated as observed performance",
+      "P0": "measure end-to-end per-update CPU/GPU time, batch throughput and peak VRAM with exact 720-step/7200-row settings",
+      "model_row_limit_note": "advertised maximum rows is not a peak-VRAM prediction"
+    },
+    "deferred": [
+      "N64_or_128",
+      "second_foundation_forecaster",
+      "WWM_JEPA",
+      "diffusion_flow_matching",
+      "RL_control",
+      "online_PID",
+      "full_radar_frontend",
+      "MILP_scheduler",
+      "real_time_deployment_optimization",
+      "cost_10ms_sensitivity",
+      "array_64x64_sensitivity",
+      "alpha_curve_beyond_primary",
+      "Whittle_index_theory",
+      "communication_quality_CRC",
+      "RF_scale_head",
+      "new_three_class_classifier",
+      "four_way_neural_expert_gate"
+    ],
+    "execution_order": [
+      "P0_geometry_API_accounting_profile",
+      "early_AERPAW_matching_check",
+      "A_same_observations_centers_validity",
+      "B_N16_main",
+      "C_N_budget_reuse_actions_scheduler",
+      "D_seeds_ablation_failures"
+    ],
+    "supersedes_design": "refine-logs/routeclock_v2_20261111",
+    "offline_centers": [
+      "I",
+      "C",
+      "CR_raw",
+      "H_harmonic",
+      "P_spatial_progress",
+      "CR_G",
+      "RC_P_G"
+    ],
+    "reuse_sweep": {
+      "N": 16,
+      "fractions": [
+        0,
+        0.25,
+        0.5,
+        0.875,
+        1
+      ],
+      "main_reused_fraction": 0.875,
+      "new_fraction_points": 4,
+      "methods": [
+        "CR",
+        "RC"
+      ],
+      "missions_per_point": 20,
+      "reusable_group_conditional_weights": [
+        0.2857142857142857,
+        0.19047619047619047,
+        0.19047619047619047,
+        0.19047619047619047,
+        0.14285714285714285
+      ],
+      "additional_75_percent_point": "not in core matrix"
+    },
+    "real_data": {
+      "dataset": "https://doi.org/10.5061/dryad.2ngf1vj4r",
+      "priority": "after P0 before full B",
+      "scope": "two repeated-line and two repeated-zigzag flights; chronological path transfer/matching and progress",
+      "not_evidence_for": "28GHz beam-codebook throughput or multi-UAV guarantees"
+    }
+  },
+  "config_sha": "9be6925135a9a62020c615ba6b934cdb947a94d9b626bf8c3c1561a03cca26e2",
+  "calendar_sha256": "2f55c7e415f074bcdce383830d90f9d1f2f36e58ba3adf76ca6c7094929bc32c",
+  "device": "cpu",
+  "python": "/data/chen/server_assessment/venv/bin/python",
+  "torch": "2.10.0+cu128",
+  "platform": "Linux-6.8.0-151-generic-x86_64-with-glibc2.39",
+  "logical_cpus": 192,
+  "code_sha256": "0cb755880d0ba37659e58c46b43deb367b2f211f1aa6490442c5e371e5ba8a27",
+  "new_code": {
+    "assist849.py": "7a98311a0a36b7ac08e77118e64f58c712a1f771b2cc02a5c1b7e2cb88c1f7bb",
+    "audit849.py": "6cec32c9705cd1cf5339f15c6bdeffe6945d1f5fac8275192ab85b101eede147",
+    "base849.py": "2cdcd56a1e45829dd57a19798954d6966e701bd55455f7c15a1f91f85c6627f9",
+    "batch_probe.py": "95a2548cac69662f0cbeac88a01f41bc8a2ef261e699ae1d04ba9840876d6b22",
+    "branch_check.py": "f34b31a529c814da8955fb8c9ca6a103044dae43030f57c85aae7cba795f62f5",
+    "chronos_849.py": "a0aef3cdcf8466542b371f4e1dae4a6911cbd411a6157e4c149b60a4a219c0a1",
+    "chronos_life_panel.py": "6476b8a4fa381bc431ddf1081f103a6c653c8c227a59332321d5683e3ff04990",
+    "chronos_recipients.py": "9c3d4f1a810d3dde1ecc40bea70ff5821edf842009df460775a9ee69851d0677",
+    "chronos_route_heads.py": "d37cf3ffec9b133e8bd9758d1c31d0fa6b1227f29e3f575a54b49b9b56560f3f",
+    "design849.py": "cbba682f776d84f7924c6423de6b818cc97c6b208fe48a5db5c05b862c112b37",
+    "development_audit849.py": "80e861fd9e7170e3c5981cc28d493ad2fbe2d93b6e296a17c81ddfb3e8fd0305",
+    "early_e2849.py": "169b97e3f54b5cf37f244a9c8e60b2b8b020207b4ba40b4b858cf50b948194f8",
+    "early_life849.py": "b0df604d8b0d01304c52baaa388eef874d2990a6e229d651be3a386e262f0179",
+    "fill849.py": "b7a1f36c0a62ef6802a3807361cf04e46e8c546f9a972e53288e71cbec629b89",
+    "fit_audit849.py": "097dfb09989ebb57f29c85b20705256f637806898ee619c8d96e6a72c6e62e36",
+    "frozen_run.py": "4547e81addb47bf601b7ae8a85f89836ebe1f2b8f4d079079d372fc8f9106668",
+    "gate849.py": "33ce1fcb80e0f58f3cddb5b2628e65f48520444b8e411eb9544a102a4c134bbe",
+    "labels849.py": "ce42409e1e2971ffdad5228fef9bb7dc6e37be15671ea3a977fac88e414d6d9e",
+    "live849.py": "5d9304109ea4421a8d2edf234fc4e12114bbe3ad3dfbebe626e28266fe31d35d",
+    "locality849.py": "511f3ee4af25eb2a2f48bfaaf70e28582e9c04d3e2140947f02c307e1cf1a4f0",
+    "numapool849.py": "71dad2a07d6333f9341b31926babfec9733119d83324af5c0f7c30273a27aa55",
+    "overflow849.py": "3e63b7abe1e7ec0ec831e183cd99239513ca368e9550805ad0e59df7ad5b2471",
+    "parallel849.py": "9da2a77d14cbd4617abbfc0663bcdf52c8c30e0cefed153fbe28302d8ec4ca99",
+    "pipeline_prefetch.py": "5fe82caafef8b6820209dd07b1c4944f1aaa8816f00849c4823c1243f86658c6",
+    "prefix849.py": "36afaf54bca03e130f639f84edf064ef3f7bc16bd07d9b1f8ac3a839f85ffc23",
+    "report849.py": "1340e314fe4e07f767ddc867a6ea821c4dd48dc70b9d2da6996593ec75beb857",
+    "resume849.py": "f8a131f61662a0b285453c8bf5a78ca04bd00ac5f1ac059e0dbd1f9001f354b0",
+    "seal849.py": "d8a79598139ae6c63d12c77e7462354410d017e59b297d2cc899b850582571a9",
+    "sharedcache849.py": "f9889249a0c7778da62359a6f0c9a859554358950d9c57ce1fe9af8dda37bca2",
+    "telemetry849.py": "3c0cc0bcd11362edd2af7fc385ff39708651856cb1a3ef5323ed8fd25ee3a9c4",
+    "transfer849.py": "2c1af4daed605dbd80f35f1494a0ad1e1a7e70c1e61a451ceabee7c7dfa0f1e6",
+    "watch849.py": "0e6fc0ec220902e0984a8f0354592cf03182e5b98affd281dd2d96c36890a472"
+  }
+}

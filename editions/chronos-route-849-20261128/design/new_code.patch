@@ -1,0 +1,2092 @@
+diff --git a/data/coding/chronos_route_849_v1/code/assist849.py b/data/coding/chronos_route_849_v1/code/assist849.py
+new file mode 100644
+index 0000000..c7dbc16
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/assist849.py
+@@ -0,0 +1,48 @@
++"""Use idle cores on pending, deduplicated counterfactual branches."""
++from labels849 import *
++from parallel849 import capacity
++from concurrent.futures import ProcessPoolExecutor,wait,FIRST_COMPLETED
++import multiprocessing
++@lru_cache(maxsize=2)
++def physical(split,k):
++    w,wm=world(split,k);return w,Cache(w,wm,split)
++@lru_cache(maxsize=1)
++def restored(path):
++    root=Path(path);meta=get(root/'snapshot.json');w,cache=physical(meta['split'],meta['world']);p=root/'snapshot.pkl'
++    assert sha_file(p)==meta['snapshot_sha']
++    c=Engine(w,cache,.75,False,'EDF-native');c.__dict__.update(pickle.loads(p.read_bytes()));c.ledger.rr=meta['rr']
++    assert sha(compact([m.key for m in c.mem]))==meta['prefix']
++    return c,meta,root
++def helpone(job):
++    path,u=job;c,meta,root=restored(path)
++    r=one_candidate(c,meta,root,u,blocking=False)
++    return r is not None
++def host():
++    while not any((OUT/'E2/labels').glob('*/*/*/snapshot.json')):
++        if (OUT/'E2/labels/VALUE-time.txt').is_file():return
++        time.sleep(5)
++    w,_=world('development',1400);Model(w,'Chronos')
++    with ProcessPoolExecutor(capacity(),mp_context=multiprocessing.get_context('fork')) as p:
++        active={}
++        while True:
++            if (OUT/'E2/labels/VALUE-time.txt').is_file():break
++            cores=capacity();owners=0
++            for f in (OUT/'workers').glob('*'):
++                try:
++                    if Path('/proc',f.name).exists():owners+=1
++                except OSError:pass
++            room=max(0,cores-max(1,owners)-len(active))
++            if room:
++                in_use=set(active.values());todo=[]
++                for meta in sorted((OUT/'E2/labels').glob('*/*/*/snapshot.json'),key=lambda p:p.stat().st_mtime,reverse=True):
++                    root=meta.parent
++                    if (root/'state.json').exists():continue
++                    for u in reversed(range(16)):
++                        j=(str(root),u)
++                        if j not in in_use and not (root/f'{u}.json').exists():todo.append(j)
++                for j in todo[:room]:active[p.submit(helpone,j)]=j
++            if active:
++                done,_=wait(active,timeout=3,return_when=FIRST_COMPLETED)
++                for f in done:f.result();active.pop(f)
++            else:time.sleep(3)
++if __name__=='__main__':host()
+diff --git a/data/coding/chronos_route_849_v1/code/audit849.py b/data/coding/chronos_route_849_v1/code/audit849.py
+new file mode 100644
+index 0000000..a4e5148
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/audit849.py
+@@ -0,0 +1,83 @@
++from chronos_recipients import *
++from prefix849 import collect
++from grudata import schedule
++import resource
++def validate(phase):
++    w,wm=world('development',1400);ch=verified_cal()
++    p=OUT/'E1/scores'/phase/'1400.json';life=get(p)
++    assert life['mismatches']==0 and len(set(life['row_digest_by_arm'].values()))==1 and sha_file(p.with_suffix('.csv.gz'))==life['sha256']
++    models={};observed={};prefixes={};checks=0;rr=[]
++    for rule,seed in MATRIX:
++        path=OUT/f'E2/receipts/{phase}/1400_{rule}_s{seed}_m0.75.json';r=get(path);file=OUT/f'E2/decision_logs/{phase}/{path.stem}.json.gz'
++        assert sha_file(file)==r['log_sha'] and r['event_sha']==sha(compact(r['events']))
++        log=json.loads(gzip.decompress(file.read_bytes()));seen=[EMPTY]*16
++        assert len(r['events'])==len(log['issued'])==len(log['decisions'])==849 and r['physics']==wm['physical_sha256']
++        for i,((u,a,b),(uid,pre,csha,osha),d) in enumerate(zip(r['events'],log['issued'],log['decisions'],strict=True)):
++            assert uid==u==d['uid'] and i==d['i'] and [a,b]==cal[i] and (i>=16 or u==i)
++            assert d['pre_history_sha']==seen
++            o=w.observe(u,a/1e6+COST)
++            assert sha(obsfull(o))==osha and digest(seen[u],o)==pre and round(o.t*1e6)==b
++            assert (u,b) not in observed or observed[u,b]==osha
++            assert (u,pre) not in prefixes or prefixes[u,pre]==csha
++            observed[u,b]=osha;prefixes[u,pre]=csha;seen[u]=pre;checks+=1
++        result=r['result'];l=result['ledger_s'];assert abs(sum(l)-180)<1e-6 and abs(l[0]-2.6319)<1e-7 and result['probes_per_user']==9000 and abs(sum(result['bits'])/180e6-result['G_mbps'])<1e-6
++        rr.append(dict(arm=rule,seed=seed,starts_ends_checked=849,paid_s=l[0],ledger_s=l,total_s=sum(l),prefix_and_observation_errors=0,event_sha=r['event_sha'],seconds=r['elapsed_s'],cache_hits=r['cache_hits'],cache_misses=r['cache_misses'],old_entry_regression='exact events and full result' if rule in ('MAXAGE','EDF-native') else None))
++        models[r['service_model_sha']]=1
++    assert len(models)==1
++    raw=pickle.loads((OUT/'E1/prefix_index/development/1400/prefixes.pkl').read_bytes());keys=json.loads(gzip.decompress((OUT/'E1/prefix_index/development/1400/keys.json.gz').read_bytes()))
++    h=[EMPTY]*16;ev=list(schedule(w,41000+1400))
++    for (u,o,n,_,cks,c,width),entry,(uid,t) in zip(raw,keys,ev,strict=True):
++        assert (u,o.t)==(uid,t) and obsfull(w.observe(u,t))==obsfull(o);h[u]=digest(h[u],o);assert entry==[u,n,o.t,h[u],arrhash(c),str(c.dtype)]
++    o=w.observe(0,cal[0][1]/1e6);mem=Memory();mem.on_paid_fix(o)
++    try:mem.on_paid_fix(o)
++    except ValueError:pass
++    else:raise AssertionError('duplicate or backdated receipt accepted')
++    forged=copy.copy(o);forged.radial_velocity+=1
++    assert digest(EMPTY,forged)!=digest(EMPTY,o) and digest(EMPTY,w.observe(1,o.t))!=digest(EMPTY,o)
++    rec=dict(status='PASS',phase=phase,initial_integration_heads=(phase=='smoke'),world=1400,physics=wm['physical_sha256'],calendar_sha256=ch,E1=life,E2=rr,verified_E2_rows=checks,distinct_paid_observations=len(observed),distinct_paid_prefixes=len(prefixes),unique_purchase_streams=len(set(r['event_sha'] for r in rr)),service_sha=list(models)[0],archive_regression=get(OUT/'audits/legacy.json'),negative_checks=['reject duplicate and nonmonotone paid time','changed raw observation changes complete prefix','wrong user changes complete prefix'],peak_rss_this_audit_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)
++    put(OUT/f'audits/{phase}.json',rec);index=get(OUT/'audits.json') if (OUT/'audits.json').exists() else {};index[phase]=rec;put(OUT/'audits.json',index)
++    return rec
++
++def audit_confirm_world(k):
++    return audit_grid_world(('confirmation',k))
++def audit_grid_world(job):
++    split,k=job
++    from seal849 import seal
++    seal((split,k))
++    from policy_env import plan_events
++    w,wm=world(split,k)
++    if split=='confirmation':
++        d=get(OUT/'design/frozen.json');required=[j for j in d['base_endpoints']+d['extra_endpoints'] if j[0]==k]
++    elif split=='development':
++        required=[[k,a,seed,m] for a,seed in MATRIX for m in (.45,.60,.75,1.)]
++    else:raise ValueError(split)
++    out=OUT/f'audits/{split}/{k}.json';names=[];seen={};centers={};issued=0;dqn={};rankings=[]
++    e1=get(OUT/f'E1/scores/{split}/{k}.json')
++    assert e1['mismatches']==0 and e1['physics']==wm['physical_sha256']
++    for _,a,s,m in required:
++        name=f'{k}_{a}_s{s}_m{m:.2f}';base=OUT/f'E2/receipts/{split}/{name}.json';p=OUT/f'E2/decision_logs/{split}/{name}.json.gz'
++        r=get(base)
++        assert r['physics']==wm['physical_sha256'] and sha_file(p)==r['log_sha'] and r['event_sha']==sha(compact(r['events']))
++        rec=json.loads(gzip.decompress(p.read_bytes()));h=[EMPTY]*16;events=r['events']
++        assert rec['service_model_sha']==r['service_model_sha']==service_id() and len(events)==849 and [v[1:] for v in events]==cal
++        if a=='AoI-DQN-fixed':
++            if s not in dqn:dqn[s]=plan_events(w,grid,'fixed',policy('fixed',s)[0])[0]
++            assert [list(v) for v in dqn[s]]==events
++        for i,((u,a0,b),(uid,prefix,csha,osha),dec) in enumerate(zip(events,rec['issued'],rec['decisions'],strict=True)):
++            assert (u==uid==dec['uid'] and dec['i']==i and (i>=16 or i==u) and dec['pre_history_sha']==h)
++            observations=seen.get((u,b))
++            if observations is None:
++                o=w.observe(u,a0/1e6+COST);observations=obsfull(o);seen[u,b]=observations
++            assert sha(observations)==osha
++            h[u]=sha(bytes.fromhex(h[u])+observations);assert h[u]==prefix
++            prior=centers.setdefault((u,prefix),csha);assert prior==csha
++            if a=='VALUE-route' and m==.75 and i>=16:
++                for alternate,chosen in dec['same_state'].items():
++                    gap=abs(dec['age'][u]-dec['age'][chosen])
++                    rankings.append([k,i,u,alternate,chosen,gap,gap<=.186+1e-10,dec['support'][u][1],dec['support'][chosen][1]])
++        issued+=len(events);names.append([name,sha_file(base),r['log_sha']])
++    same=(OUT/f'E2/same_state_rankings/{k}.json.gz' if split=='confirmation' else OUT/f'E2/same_state_rankings/development/{k}.json.gz')
++    assert len(rankings)==833*3
++    atom(same,gzip.compress(compact(rankings),mtime=0))
++    put(out,dict(status='PASS',rankings_sha=sha_file(same),world=k,physics=wm['physical_sha256'],endpoints=len(names),unique_prefixes=len(centers),endpoint_prefixes_checked=issued,observations=len(seen),E1_mismatches=0,E2_prefix_or_calendar_mismatches=0,ledger_verified_by_each_endpoint=True,receipts=names))
++    return k
+diff --git a/data/coding/chronos_route_849_v1/code/base849.py b/data/coding/chronos_route_849_v1/code/base849.py
+new file mode 100644
+index 0000000..fae4588
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/base849.py
+@@ -0,0 +1,72 @@
++import hashlib, json, os, sys, tempfile, subprocess
++from pathlib import Path
++for var in ['OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS']:
++    os.environ[var]='1'
++sys.dont_write_bytecode=True
++OUT=Path(__file__).resolve().parents[1]
++OLD=Path('/data/coding/g1-original-20261127')
++SRC=Path('/data/coding/.publish-g1-icc-20261128')
++ED=SRC/'editions/g1-icc-server-20261128'
++sys.path.insert(0,str(OLD/'independent'))
++from policy_env import initialize
++initialize()
++import closed, paid_full as pf, numpy as np
++from paired_grid import load_checked
++from history import PACKAGE,RUNTIME,ASSETS
++from physical_inputs import sha_file,fingerprint,load_config,GROUPS,World
++from aoi_reference import QuotaGrid
++from predictors import Model
++P=json.loads((OUT/'protocol.json').read_bytes())
++grid=QuotaGrid(service_us=180000000,budget_us=3000000,fix_us=3100,users=16,quota=849)
++cal=[[grid.start_us(i),grid.start_us(i)+3100] for i in grid.fixed_indices()]
++def sha(x):return hashlib.sha256(x).hexdigest()
++def arrhash(a):return sha(np.ascontiguousarray(a).tobytes())
++def compact(x):return json.dumps(x,separators=(',',':'),allow_nan=False).encode('ascii')
++def atom(path,data):
++    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
++    fd,tmp=tempfile.mkstemp(prefix='.'+path.name+'.',dir=path.parent)
++    with os.fdopen(fd,'wb') as f:f.write(data)
++    os.replace(tmp,path)
++def put(path,data):atom(path,json.dumps(data,indent=2,ensure_ascii=False,allow_nan=False).encode())
++def get(path):return json.loads(Path(path).read_bytes())
++def codehash():return sha(compact({p.name:sha_file(p) for p in sorted((OUT/'code').glob('*.py'))}))
++def world(split,k):
++    if split!='confirmation':return load_checked(split,k)
++    from design849 import newworld
++    return newworld(k)
++def verified_cal():
++    data=compact(cal)
++    assert len(cal)==849 and data==(OUT/'package/calendar_849.json').read_bytes() and sha(data)==P['scene']['calendar_sha256']
++    atom(OUT/'E2/calendar_849.json',data)
++    return sha(data)
++def progress(msg):atom(OUT/'实时进度.txt',('Chronos-849 正式实验实时进度\n'+__import__('datetime').datetime.now().astimezone().isoformat(timespec='seconds')+'\n'+msg+'\n结果目录 '+str(OUT)+'\n').encode())
++def preflight():
++    from history import check_models
++    from learned_matrix import selected_receipt,policy
++    assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=SRC,text=True).strip()==P['source_commit']
++    ch=verified_cal()
++    paths=check_models(PACKAGE/'reference',ASSETS,with_chronos=True)
++    files={str(v):sha_file(Path(v)) for v in paths.values() if Path(v).is_file()}
++    for p in [ASSETS/'chronos_snapshot/model.safetensors',*sorted((OUT/'package').iterdir()),Path('/data/chen/refine-logs/Chronos-849-server-plan.zip')]:
++        if p.is_file():files[str(p)]=sha_file(p)
++    for seed in [17,29,41]:
++        checkpoint=Path(get(selected_receipt('fixed',seed))['model']);files[str(checkpoint)]=policy('fixed',seed)[1]
++    w,wm=world('development',1400)
++    net=Model(w,'Chronos')
++    import grurun,grudata,torch,platform
++    modules={str(Path(m.__file__).resolve()):sha_file(Path(m.__file__)) for m in list(sys.modules.values()) if getattr(m,'__file__',None) and str(m.__file__).endswith('.py') and str(m.__file__).startswith('/data/coding/')}
++    put(OUT/'manifest.json',dict(source_repository=str(SRC),commit=P['source_commit'],files=files,paths=paths,modules=modules,grid=pf.GRID.tolist(),factors=np.asarray(net.factors).tolist(),world1400=wm,config=w.cfg,config_sha=sha(compact(w.cfg)),calendar_sha256=ch,device='cpu',python=sys.executable,torch=torch.__version__,platform=platform.platform(),logical_cpus=len(os.sched_getaffinity(0)),code_sha256=codehash()))
++    progress('已校验版本、权重、开发世界 1400 和 849 笔预约表。正在重放旧开发锚点及准备单世界新路径。')
++def anchor():
++    import runpy
++    from unittest.mock import patch
++    import paired_grid
++    output=OUT/'audits/anchor';output.mkdir(exist_ok=True)
++    script=PACKAGE/'tools/run_n01.py'
++    argv=[str(script),'--repo',str(PACKAGE/'reference'),'--runtime',str(RUNTIME),'--cpu-root',str(ASSETS),'--out',str(output),'--world','1400','--multiplier','0.45']
++    # Independent native runner re-generates the world from its own seed.
++    with patch.object(sys,'argv',argv):runpy.run_path(str(script),run_name='__main__')
++    actual=get(output/'N01_development_1400_0.45.json');ref=get(paired_grid.OLD_CANARY)
++    for key in ('result','world','events','k','m','arm'):assert actual[key]==ref[key],key
++    put(OUT/'audits/legacy.json',dict(pass_exact=True,events=len(actual['events']),world=actual['world'],reference=str(paired_grid.OLD_CANARY),reference_sha=sha_file(paired_grid.OLD_CANARY),receipt_sha=sha_file(output/'N01_development_1400_0.45.json')))
++if __name__=='__main__':{'preflight':preflight,'anchor':anchor}[sys.argv[1]]()
+diff --git a/data/coding/chronos_route_849_v1/code/batch_probe.py b/data/coding/chronos_route_849_v1/code/batch_probe.py
+new file mode 100644
+index 0000000..3cd611b
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/batch_probe.py
+@@ -0,0 +1,18 @@
++"""Numerical and throughput diagnostic only, outside the experiment cohorts."""
++from base849 import *
++import time
++from grudata import schedule
++def main():
++    w,wm=load_checked('confirmation',2000)
++    m=Model(w,'Chronos');hs=[[] for _ in range(16)]
++    for u,t in schedule(w,43000):
++        hs[u].append(w.observe(u,t))
++        if t>55:break
++    net=m.base.net;t=time.monotonic();solo=[net.batch([h])[0] for h in hs];single=time.monotonic()-t
++    tests={}
++    for b in [2,4,8,16]:
++        t=time.monotonic();bs=[]
++        for i in range(0,len(hs),b):bs.extend(net.batch(hs[i:i+b]))
++        tests[b]={'seconds':time.monotonic()-t,'center_equal':sum(np.array_equal(x[0],y[0]) for x,y in zip(solo,bs)),'width_equal':sum(np.array_equal(x[1],y[1]) for x,y in zip(solo,bs)),'center_max_abs':max(float(np.max(abs(x[0]-y[0]))) for x,y in zip(solo,bs))}
++    put(OUT/'audits/batch_benchmark.json',dict(world=2000,samples=len(hs),single_seconds=single,tests=tests,used_for_science=False))
++if __name__=='__main__':main()
+diff --git a/data/coding/chronos_route_849_v1/code/branch_check.py b/data/coding/chronos_route_849_v1/code/branch_check.py
+new file mode 100644
+index 0000000..d9229b0
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/branch_check.py
+@@ -0,0 +1,9 @@
++"""Small pre-training check of full-prefix replay against the snapshot scorer."""
++from labels849 import *
++def test():
++    w,wm=world('development',1400);cache=Cache(w,wm,'development');s=Engine(w,cache,.75,True,'EDF-native')
++    for i in range(16):
++        s.preservice(i);s.buy(i,i,heads=False)
++    s.preservice(16);r=cf(s,16,1,True)
++    put(OUT/'audits/early_branch.json',r);print(r['total_delta'],r['slow_max_bin_delta'])
++if __name__=='__main__':test()
+diff --git a/data/coding/chronos_route_849_v1/code/chronos_849.py b/data/coding/chronos_route_849_v1/code/chronos_849.py
+new file mode 100644
+index 0000000..f1bc1fe
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/chronos_849.py
+@@ -0,0 +1,42 @@
++"""CLI contract from EXPERIMENT_PLAN.md, with explicit verified dependency gates."""
++import argparse
++from design849 import *
++from audit849 import validate
++from gate849 import poolmap
++from chronos_life_panel import inputs,fit
++from labels849 import labelworld,trainvalue
++def args():
++    p=argparse.ArgumentParser();p.add_argument('command',choices=['preflight','smoke','fit-life','fit-value','develop','freeze','confirm','report']);p.add_argument('--out',type=Path,required=True);p.add_argument('--world',type=int,default=1400);p.add_argument('--experiment',choices=['E1','E2']);return p.parse_args()
++def main():
++    a=args();assert a.out.resolve()==OUT
++    if a.command=='preflight':
++        if (OUT/'design/frozen.json').exists():check(get(OUT/'design/frozen.json'))
++        else:preflight();anchor()
++        verified_cal();return
++    if a.command=='smoke':
++        assert a.world==1400 and (OUT/'audits/legacy.json').is_file()
++        phase='final-smoke' if (OUT/'design/frozen.json').exists() else 'smoke'
++        poolmap(execute_endpoint,[(phase,'development',1400,r,s,.75) for r,s in MATRIX],10);panel((phase,'development',1400));validate(phase);return
++    assert get(OUT/'audits/smoke.json')['status']=='PASS'
++    w,_=world('development',1400);Model(w,'Chronos')
++    if a.command=='fit-life':
++        assert not (OUT/'design/frozen.json').exists()
++        jobs=[('tube_fit',k) for k in range(1200,1216)]+[('tube_calibration',k) for k in range(1300,1316)]
++        poolmap(shard,[(split,k,g) for split,k in jobs for g in (0,1)],capacity());poolmap(inputs,jobs,32);poolmap(fit,LEARN,4)
++    elif a.command=='fit-value':
++        assert not (OUT/'design/frozen.json').exists()
++        jobs=[('train',k,8) for k in range(1000,1032)]+[('train_validation',k,1) for k in range(1100,1116)]+[('development',k,2) for k in range(1400,1408)]
++        poolmap(labelworld,jobs,capacity());poolmap(trainvalue,['time','route'],2)
++    elif a.command=='develop':
++        poolmap(execute_endpoint,[('development','development',k,r,s,m) for m in SCALES for r,s in MATRIX for k in range(1400,1408)],capacity())
++        poolmap(panel,[('development','development',k) for k in range(1400,1408)],8)
++    elif a.command=='freeze':freeze()
++    else:
++        d=get(OUT/'design/frozen.json');check(d);assert get(OUT/'audits/final-smoke.json')['status']=='PASS'
++        if a.command=='report':
++            from report849 import report
++            report()
++        elif a.experiment=='E1':poolmap(panel,[('confirmation','confirmation',r['world']) for r in d['worlds']],capacity())
++        elif a.experiment=='E2':poolmap(execute_endpoint,[('confirmation','confirmation',k,r,s,m) for k,r,s,m in d['base_endpoints']+d['extra_endpoints']],capacity())
++        else:raise ValueError('confirm requires --experiment')
++if __name__=='__main__':main()
+diff --git a/data/coding/chronos_route_849_v1/code/chronos_life_panel.py b/data/coding/chronos_route_849_v1/code/chronos_life_panel.py
+new file mode 100644
+index 0000000..b018594
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/chronos_life_panel.py
+@@ -0,0 +1,117 @@
++from chronos_route_heads import *
++from prefix849 import collect
++from paired_models import trajectory
++from panel_types import Geometry,angle_deg
++from routeclock.radio import array_gain
++from geometry_panel import life
++from live849 import start as mark,finish
++from tube import EPS,scores
++import gzip,io,csv
++COUNTS={1,2,3,4,6,8,12,24,40};AGES=(.5,1.,2.,3.,5.,8.,10.)
++def packets(split,k):
++    r=collect(split,k)
++    path=OUT/f'E1/prefix_index/{split}/{k}/prefixes.pkl'
++    hist=[Memory() for _ in range(16)]
++    for u,o,n,_,ck,c,width in pickle.loads(path.read_bytes()):
++        mem=hist[u];mem.on_paid_fix(o);q=mem.query();mem.issue(c)
++        assert n==len(mem.h) and arrhash(c)==ck
++        yield u,o,n,mem,q,c,width,ck
++def target(w,u,t,c):
++    d=np.arange(501)*.02;y=trajectory(w,u,t+d);pred=interp(c,d)
++    loss=10*np.log10(1024/array_gain(pf.angle(pred),pf.angle(y),(32,32)))
++    bad=np.flatnonzero(loss>3.)
++    return float(d[max(0,bad[0]-1)] if len(bad) else 10.),not len(bad),np.abs(pf.difference(pf.angle(pred),pf.angle(y)))
++def inputs(job):
++    split,k=job;key=f'lifeinputs_{k}';mark(key)
++    dest=OUT/f'E1/calibration/inputs/{k}.pkl';receipt=dest.with_suffix('.json')
++    pr=collect(split,k)
++    if receipt.exists():
++        r=get(receipt);assert r['input_sha']==pr['sha256'] and r['sha256']==sha_file(dest);finish(key,receipt);return
++    w,wm=world(split,k);items=[]
++    if split=='tube_calibration':
++        from grudata import schedule
++        valid=[i for i,(_,t) in enumerate(schedule(w,41000+k)) if t+10<=180]
++        selected=int(np.random.default_rng(271127+k).choice(valid))
++    for i,(u,o,n,mem,q,c,width,ck) in enumerate(packets(split,k)):
++        if o.t+10>180:break
++        if split=='tube_calibration' and i!=selected:continue
++        err=target(w,u,o.t,c)[2] if split=='tube_calibration' else np.abs(pf.difference(pf.angle(c),pf.angle(trajectory(w,u,o.t+pf.GRID))))
++        items.append((o,n,o.t-mem.h[-2].t if n>1 else 0.,q,width,err,mem.key))
++    atom(dest,pickle.dumps(items,protocol=5));put(receipt,dict(world=k,physics=wm['physical_sha256'],split=split,input_sha=pr['sha256'],sha256=sha_file(dest),samples=len(items)));finish(key,receipt)
++def fit(arm):
++    from lightgbm import LGBMRegressor
++    key='lifehead_'+arm;mark(key)
++    dest=OUT/f'E1/calibration/{arm}.pkl';receipt=dest.with_suffix('.json');xs=[];ys=[]
++    for k in range(1200,1216):
++        for o,n,gap,q,width,y,_ in pickle.loads((OUT/f'E1/calibration/inputs/{k}.pkl').read_bytes()):
++            xs.append(features(arm,width,o,n,gap,q).astype('f4'));ys.append(np.log(np.maximum(EPS,y)).ravel())
++    tree=LGBMRegressor(objective='quantile',alpha=.90,n_estimators=110,num_leaves=12,min_child_samples=85,learning_rate=.055,random_state=7,verbosity=-1,n_jobs=1)
++    tree.fit(np.concatenate(xs),np.concatenate(ys));booster=tree.booster_;ratios=[];anchors=[]
++    for k in range(1300,1316):
++        [(o,n,gap,q,width,y,prefix)]=pickle.loads((OUT/f'E1/calibration/inputs/{k}.pkl').read_bytes())
++        predicted=raw(booster,features(arm,width,o,n,gap,q)[None])
++        ratios.append(scores(y[None],predicted)[0]);anchors.append([k,prefix,o.t])
++    factors=np.maximum.accumulate(np.max(ratios,axis=0));assert np.isfinite(factors).all() and min(factors)>0
++    atom(dest,pickle.dumps(dict(tree=booster,final=factors,rank=16,anchors=anchors),protocol=5))
++    put(receipt,dict(arm=arm,training_prefixes=len(xs),worlds=list(range(1200,1216)),anchors=anchors,rank=16,ratios=np.asarray(ratios).tolist(),factors=factors.tolist(),sha256=sha_file(dest)));finish(key,receipt)
++def panel(job):
++    phase,split,k=job;key=dict(smoke='s1',development='dev1',confirmation='c1',**{'final-smoke':'f1'})[phase]+'_'+str(k);mark(key)
++    pr=collect(split,k);w,wm=world(split,k)
++    folder=OUT/'E1/scores'/phase;dest=folder/(str(k)+'.csv.gz');receipt=folder/(str(k)+'.json')
++    scales=(.75,) if phase in ('smoke','final-smoke') else (.45,.6,.75,1.)
++    from chronos_recipients import run_id
++    spec=sha(compact([pr['sha256'],phase,run_id(phase),sha_file(Path(__file__))]))
++    if receipt.exists():
++        r=get(receipt);assert r['spec']==spec and sha_file(dest)==r['sha256'];finish(key,receipt);return r
++    geom=[Geometry(w.times,w.positions[u],w.velocities[u]) for u in range(16)]
++    from grudata import schedule
++    times=[[t for u,t in schedule(w,41000+k) if u==v] for v in range(16)]
++    radio=pf.Radio(w.cfg);buf=io.StringIO();writer=csv.writer(buf);names=['world','uid','n','t','age','h','label','group','natural','prefix','center','error_deg','true_life','censored','time_support','route_support','permutable','scale','arm','effective','hold','U','O']
++    writer.writerow(names);nrows=0;aligned=0;full=0;native_checks=0
++    sig={a:hashlib.sha256() for a in ARMS};index=[]
++    for u,o,n,mem,q,c,width,ck in packets(split,k):
++        index.append([u,n,o.t,mem.key,ck,str(c.dtype)])
++        if o.t+10>180:continue
++        full+=1
++        # All full origins are signed into the audit; published age/horizon panel uses the registered counts.
++        if n not in COUNTS:continue
++        actual,censored,_=target(w,u,o.t,c)
++        profiles={}
++        for arm in LEARN:
++            eff=inherited(arm,q)
++            if eff not in profiles:profiles[eff]=issued(arm,mem,width,q,phase=='smoke')[:2]
++        for m in scales:
++            holds={'C-native':admitted(radio,c,width,get_native(),m)}
++            holds['GEO']=geo(c,mem.h,holds['C-native'])
++            for arm in LEARN:
++                eff=inherited(arm,q)
++                holds[arm]=holds[eff] if eff in holds else admitted(radio,c,*profiles[eff],m)
++                assert eff==arm or holds[arm]==holds[eff]
++            if m==.75 and phase in ('smoke','final-smoke'):
++                ref=life(w,u,o.t,c,width,get_native(),radio)
++                assert np.allclose(ref,(actual,holds['C-native'],int(censored)),rtol=0,atol=2e-14)
++                native_checks+=1
++            for age in AGES:
++                for h in (0,2):
++                    if age+h>10:continue
++                    t=o.t+age+h;label=geom[u].label(o.t,t,w.detour_windows[u])
++                    if w.groups[u]=='no_reusable_path' and label=='first_pass':label='no_reusable_path'
++                    natural=int(n==len(times[u]) or times[u][n]>o.t+age)
++                    err=float(angle_deg(c[int(2*(age+h))],trajectory(w,u,t)))
++                    common=[k,u,n,o.t,age,h,label,w.groups[u],natural,mem.key,ck,err,actual,int(censored),*q[3:],m]
++                    for arm in ARMS:
++                        a=max(holds[arm]-age,0.);l=max(actual-age,0.)
++                        row=[*common,arm,inherited(arm,q),holds[arm],max(l-a,0.),max(a-l,0.)]
++                        writer.writerow(row);sig[arm].update(compact(row[:18]));nrows+=1
++                    aligned+=1
++    atom(dest,gzip.compress(buf.getvalue().encode(),compresslevel=3,mtime=0))
++    # Re-read persisted rows and compare independently by arm and inclusion order.
++    hashes={a:hashlib.sha256() for a in ARMS};counts={a:0 for a in ARMS}
++    with gzip.open(dest,'rt') as f:
++        for row in csv.DictReader(f):
++            a=row['arm'];hashes[a].update(compact([row[v] for v in names[:18]]));counts[a]+=1
++    assert len({s.hexdigest() for s in hashes.values()})==len({s.hexdigest() for s in sig.values()})==1 and set(counts.values())=={aligned}
++    idx=OUT/f'E1/prefix_index/{split}/{k}/keys.json.gz';atom(idx,gzip.compress(compact(index),mtime=0))
++    r=dict(spec=spec,world=k,physics=wm['physical_sha256'],prefix_receipt=pr['sha256'],prefix_index_sha=sha_file(idx),issued=len(index),full_windows=full,rows=nrows,rows_by_arm=counts,row_digest_by_arm={a:h.hexdigest() for a,h in hashes.items()},mismatches=0,original_life_checks=native_checks,sha256=sha_file(dest))
++    put(receipt,r);finish(key,receipt);return r
++if __name__=='__main__':print(panel(('smoke','development',1400)))
+diff --git a/data/coding/chronos_route_849_v1/code/chronos_recipients.py b/data/coding/chronos_route_849_v1/code/chronos_recipients.py
+new file mode 100644
+index 0000000..baa700a
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/chronos_recipients.py
+@@ -0,0 +1,178 @@
++"""Fixed-calendar causal recipient selection with unchanged native post-purchase service."""
++from chronos_route_heads import *
++from prefix849 import modelid
++from types import SimpleNamespace
++from functools import cached_property
++import copy,gzip,sqlite3,time
++from routeclock.geometry import angular_jacobian
++from routeclock.filters import PositionIMM
++from learned_matrix import policy
++from aoi_policy import PaidState
++import torch
++COST=.0031;RHO=3/180
++MATRIX=[('MAXAGE',0),*(('AoI-DQN-fixed',s) for s in (17,29,41)),('VAR',0),('EDF-native',0),('EDF-time',0),('EDF-route',0),('VALUE-time',0),('VALUE-route',0)]
++TICKS=list(grid.fixed_indices())
++def tie(scores,origins,native=False):
++    best=np.flatnonzero(scores==np.max(scores))
++    return int(best[0] if native else min(best,key=lambda u:(origins[u],u))),len(best)
++def variance(track,age):
++    if track.t is None:return 0.
++    pos,cov=track.forecast([round(float(age),6)]);p=cov[0];j=angular_jacobian(pos[0])
++    # Public sensor model at the predicted location, with no hypothetical observation sampled.
++    from routeclock.world import position_covariance
++    from routeclock.geometry import angles
++    m=track.std
++    noise=position_covariance(np.r_[np.linalg.norm(pos[0]),angles(pos[0]),0.],m)
++    return float(np.trace(j@p@np.linalg.solve(p+noise,p)@j.T))
++@lru_cache
++def value_head(which):
++    from lightgbm import Booster
++    return Booster(model_file=str(OUT/f'E2/labels/VALUE-{which}.txt'))
++class Cache:
++    def __init__(self,w,wm,split):
++        self.model=Model(w,'Chronos');self.hits=self.misses=0
++        self.spec=sha(compact([split,w.namespace,wm['physical_sha256'],modelid(),str(pf.GRID),'native-single-float32',sha_file(Path(__file__).with_name('chronos_route_heads.py'))]))
++        folder=OUT/'cache'/split;folder.mkdir(parents=True,exist_ok=True)
++        self.db=sqlite3.connect(folder/(self.spec+'.sqlite'),timeout=120,isolation_level=None)
++        self.db.execute('pragma busy_timeout=120000')
++        self.db.execute('create table if not exists forecast(k text primary key, sig text not null, payload blob not null)')
++    def __call__(self,u,mem):
++        key=sha(compact([self.spec,u,len(mem.h),mem.h[-1].t,mem.key]))
++        row=self.db.execute('select sig,payload from forecast where k=?',(key,)).fetchone()
++        if row:
++            checksum,data=row
++            assert sha(data)==checksum
++            self.hits+=1;return pickle.loads(data)
++        self.misses+=1
++        result=self.model.base.update(u,mem.h)
++        data=pickle.dumps(result,protocol=5);sig=sha(data)
++        self.db.execute('insert or ignore into forecast values (?,?,?)',(key,sig,data))
++        assert self.db.execute('select sig from forecast where k=?',(key,)).fetchone()[0]==sig
++        return result
++class Engine:
++    def __init__(self,w,cache,m,smoke,rule,seed=0):
++        self.w=w;self.cache=cache;self.m=m;self.smoke=smoke;self.rule=rule
++        self.radio=pf.Radio(w.cfg);self.radio.threshold-=5
++        self.ledger=pf.DeferredLedger(w.cfg,w,self.radio,0.,180.);self.bucket=pf.TokenBucket(COST,RHO)
++        self.slots=[SimpleNamespace(origin=0.,action=None,center=None,front=[]) for _ in range(16)]
++        self.mem=[Memory() for _ in self.slots];self.risk=np.zeros((16,2));self.sup=np.zeros((16,3),int)
++        self.filters=[PositionIMM() for _ in self.slots];s=w.cfg['simulation']['measurement_std']
++        for f in self.filters:f.std=np.array([s['range_m'],np.deg2rad(s['azimuth_deg']),np.deg2rad(s['elevation_deg']),s['radial_velocity_m_s']])
++        self.now=0.;self.events=[];self.audit=[];self.issued=[];self.i=0
++        self.dqn=PaidState(grid,'fixed') if rule=='AoI-DQN-fixed' else None
++        self.net=policy('fixed',seed)[0] if self.dqn else None
++    def deadline(self):
++        return np.asarray([s.origin+(s.action.interval-COST if s.action else 0.) for s in self.slots])
++    def view(self,start):
++        origins=np.asarray([s.origin for s in self.slots]);ages=start-origins;dead=self.deadline()
++        return origins,ages,dead
++    def values(self,start,which,view):
++        origin,age,dead=view;kind=int(which=='route')
++        rem=origin+self.risk[:,kind]-start
++        dur=np.array([s.action.interval if s.action else 0. for s in self.slots])
++        pair=np.array([np.prod(s.action.pair) if s.action else 0. for s in self.slots])
++        n=np.array([len(mem.h) for mem in self.mem]);sup=self.sup[:,kind]
++        c=np.column_stack([age,dead-start,rem,self.risk[:,kind],dur,pair,n,sup])
++        return np.column_stack([c,np.tile([self.i/849,age.mean(),age.max(),rem.mean(),(rem<0).mean()],(16,1))])
++    def score(self,rule,start,view):
++        origin,age,dead=view
++        if rule=='MAXAGE':return age
++        if rule=='EDF-native':return -dead
++        if rule=='VAR':return np.array([variance(f,a) for f,a in zip(self.filters,age)])
++        if rule.startswith('EDF-'):return -(origin+self.risk[:,int(rule.endswith('route'))])
++        if rule.startswith('VALUE-'):
++            which=rule.split('-')[1];x=self.values(start,which,view)
++            return x[:,0]-.4*x[:,2]+.01*x[:,7] if self.smoke else value_head(which).predict(x,num_threads=1)
++        if rule=='AoI-DQN-fixed':
++            while self.dqn.tick<TICKS[self.i]:
++                _,_,legal=self.dqn.view();self.dqn.step(16,None,legal)
++            users,public,legal=self.dqn.view()
++            with torch.inference_mode():return self.net(torch.from_numpy(users)[None],torch.from_numpy(public)[None])[0,:16].numpy()
++        raise ValueError(rule)
++    def preservice(self,i):
++        start=cal[i][0]/1e6
++        self.ledger.advance(self.now,start,self.slots,False);self.now=start
++    def buy(self,i,u,heads=True):
++        start,end_us=cal[i];start=start/1e6;end=start+COST
++        assert self.now==start and round(end*1e6)==end_us and start+1e-10>=self.bucket.ready(start)
++        self.bucket.consume(start);self.ledger.advance(start,end,self.slots,True)
++        obs=self.w.observe(u,end);mem=self.mem[u];mem.on_paid_fix(obs);c,width=self.cache(u,mem)
++        if self.rule=='VAR':self.filters[u].observe(obs)
++        if heads:
++            q=mem.query();self.sup[u]=q[3:]
++            effective={}
++            for j,arm in enumerate(('TIME','ROUTE')):
++                eff=inherited(arm,q)
++                if eff not in effective:
++                    sw,sf,_=issued(arm,mem,width,q,self.smoke);effective[eff]=admitted(self.radio,c,sw,sf,self.m)
++                self.risk[u,j]=effective[eff]
++        mem.issue(c)
++        s=self.slots[u];s.origin=end;s.center=c;s.front=pf.efficient_frontier(self.radio,c,width,self.m*self.cache.model.factors)
++        fronts=[[] if v is not s and (v.action is None or v.origin+v.action.interval<=end)
++                else [a for a in v.front if v.origin+a.interval>end] for v in self.slots]
++        for v,a in zip(self.slots,pf.choose_actions(fronts,COST,RHO),strict=True):v.action=a
++        if self.dqn:
++            _,_,legal=self.dqn.view();self.dqn.step(u,lambda *_:obs,legal)
++        self.now=end;self.events.append([u,round(start*1e6),round(end*1e6)])
++        self.issued.append((u,mem.key,arrhash(c),sha(obsfull(obs))))
++        self.i=i+1
++    def decision(self,i,detail=True):
++        self.preservice(i);t=self.now;view=self.view(t);dqn=self.rule=='AoI-DQN-fixed'
++        scores=self.score(self.rule,t,view)
++        uid,ties=tie(scores,view[0],self.rule in ('EDF-native','AoI-DQN-fixed','MAXAGE'))
++        if i<16:uid=i
++        if detail:
++            same={}
++            if self.rule=='VALUE-route' and i>=16:
++                for rule in ('VALUE-time','EDF-native','MAXAGE'):
++                    ss=self.score(rule,t,view);same[rule]=tie(ss,view[0],rule!='VALUE-time')[0]
++            self.audit.append(dict(i=i,tick=TICKS[i],uid=uid,pre_history_sha=[m.key for m in self.mem],scores=scores.tolist(),age=view[1].tolist(),deadline=view[2].tolist(),reference_deadlines=(view[0][:,None]+self.risk).tolist(),support=self.sup.tolist(),tie=ties,fallback=(self.sup[:,0]==0).tolist(),same_state=same))
++        self.buy(i,uid)
++    def result(self):
++        self.ledger.advance(self.now,180.,self.slots,False)
++        r=self.ledger.result(COST,RHO)
++        assert [v[1:] for v in self.events]==cal and [e[0] for e in self.events[:16]]==list(range(16))
++        assert len(r['ledger_s'])==4 and abs(sum(r['ledger_s'])-180)<1e-6 and abs(r['ledger_s'][0]-2.6319)<1e-7
++        assert r['probes_per_user']==9000 and abs(sum(r['bits'])/180e6-r['G_mbps'])<1e-6
++        return r
++def endpoint(job,cache_factory=Cache):
++    phase,split,k,rule,seed,m=job
++    stem=f'{k}_{rule}_s{seed}_m{m:.2f}';folder=OUT/'E2/receipts'/phase;dest=folder/(stem+'.json')
++    lp=OUT/'E2/decision_logs'/phase/(stem+'.json.gz')
++    w,wm=world(split,k);spec=sha(compact([phase,wm['physical_sha256'],service_id(),run_id(phase),rule,seed,m]))
++    if dest.exists():
++        r=get(dest);assert r['spec']==spec and r['log_sha']==sha_file(lp) and [e[1:] for e in r['events']]==cal
++        return stem
++    cache=cache_factory(w,wm,split);eng=Engine(w,cache,m,phase=='smoke',rule,seed)
++    start=time.monotonic()
++    activity=OUT/'active_closed'/phase/(stem+'.json')
++    for i in range(849):
++        eng.decision(i)
++        if i%64==63 or i==848:
++            put(activity,dict(pid=os.getpid(),world=k,arm=rule,completed_fixes=i+1,nominal=849,elapsed_s=time.monotonic()-start))
++    r=eng.result()
++    if phase in ('smoke','final-smoke') and rule in ('MAXAGE','EDF-native'):
++        hist=[Memory() for _ in eng.mem]
++        def pred(u,o):
++            hist[u].on_paid_fix(o);return cache(u,hist[u])
++        es,old,_=closed.simulate_controls(w,'oldest' if rule=='MAXAGE' else 'fixed_due',pred,cache.model.factors,pf,3.,m,849)
++        assert [[u,round(end*1e6)] for u,end in es]==[[u,e] for u,_,e in eng.events] and old==r
++    payload=dict(service_model_sha=service_id(),calendar_sha=P['scene']['calendar_sha256'],decisions=eng.audit,issued=eng.issued)
++    atom(lp,gzip.compress(compact(payload),compresslevel=2,mtime=0))
++    put(dest,dict(spec=spec,phase=phase,world=k,physics=wm['physical_sha256'],arm=rule,seed=seed,scale=m,result=r,events=eng.events,event_sha=sha(compact(eng.events)),log_sha=sha_file(lp),service_model_sha=service_id(),elapsed_s=time.monotonic()-start,cache_hits=cache.hits,cache_misses=cache.misses))
++    activity.unlink(missing_ok=True)
++    return stem
++@lru_cache
++def service_id():
++    import inspect
++    return sha(compact([modelid(),*[sha(inspect.getsource(v).encode()) for v in (Engine.buy,pf.efficient_frontier,pf.choose_actions,pf.DeferredLedger,pf.TokenBucket)]]))
++def run_id(phase):
++    if phase=='smoke':return 'initial-wiring-v1'
++    if phase in ('final-smoke','confirmation'):return sha_file(OUT/'design/frozen.json')
++    return sha(compact([sha_file(OUT/f'E1/calibration/{a}.pkl') for a in LEARN]+[sha_file(OUT/f'E2/labels/VALUE-{j}.txt') for j in ('time','route')]))
++if __name__=='__main__':
++    import multiprocessing as mp
++    from concurrent.futures import ProcessPoolExecutor
++    w,wm=world('development',1400);cache=Cache(w,wm,'development');cache.db.close()
++    with ProcessPoolExecutor(10,mp_context=mp.get_context('fork')) as pool:
++        for name in pool.map(endpoint,[('smoke','development',1400,r,s,.75) for r,s in MATRIX]):print(name,flush=True)
+diff --git a/data/coding/chronos_route_849_v1/code/chronos_route_heads.py b/data/coding/chronos_route_849_v1/code/chronos_route_heads.py
+new file mode 100644
+index 0000000..86e2c58
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/chronos_route_heads.py
+@@ -0,0 +1,93 @@
++"""Only paid observations may enter this per-aircraft memory."""
++from base849 import *
++from prefix849 import EMPTY,obsbytes
++from functools import lru_cache
++import pickle
++from tube import raw
++HT=np.asarray(pf.network.QUERY_H[1:])
++ARMS=('C-native','GEO','C-cal','TIME','ROUTE','SHUFFLE')
++LEARN=ARMS[2:]
++def obsfull(o):
++    return obsbytes(o)+np.asarray([o.radial_velocity,o.radial_std,*o.raw],dtype='<f8').tobytes()
++def digest(prev,o):return sha(bytes.fromhex(prev)+obsfull(o))
++def interp(c,d):return np.stack([np.interp(d,pf.GRID,v) for v in c.T],axis=-1)
++def direction(v):return v/max(np.linalg.norm(v),1e-9)
++def segment(h):
++    pp=np.stack([o.position for o in h]);dt=np.diff([o.t for o in h])
++    vel=np.diff(pp,axis=0)/dt[:,None]
++    return (pp[-1],vel,direction(pp[-1]-pp[0]),pp-pp[-1])
++class Memory:
++    def __init__(self):
++        self.h=[];self.pending=[];self.records=[];self.key=EMPTY
++    def on_paid_fix(self,o):
++        if self.h and o.t<=self.h[-1].t:raise ValueError('nonmonotone paid fix')
++        for t,c,seg in self.pending:
++            d=o.t-t
++            if d<=10. and seg is not None:
++                err=pf.difference(pf.angle(interp(c,d)),pf.angle(o.position))
++                self.records.append((t,o.t,seg,d,err,np.trace(o.covariance)))
++        self.pending=[v for v in self.pending if o.t-v[0]<10.]
++        self.h.append(o);self.key=digest(self.key,o)
++    def issue(self,c):
++        seg=segment(self.h[-3:]) if len(self.h)>=3 else None
++        self.pending.append((self.h[-1].t,c,seg))
++    def query(self):
++        z=np.zeros(10);empty=(z,z,z,0,0,0)
++        if len(self.h)<3:return empty
++        first=self.h[-3].t;pool=[r for r in self.records if r[0]<first and r[1]<first]
++        if not pool:return empty
++        p,v,heading,shape=segment(self.h[-3:])
++        seg=[r[2] for r in pool]
++        td=np.sqrt(np.mean((np.asarray([s[1] for s in seg])-v)**2,axis=(1,2)))
++        dist=np.linalg.norm(np.asarray([s[0] for s in seg])-p,axis=1)
++        cosine=np.clip(np.asarray([s[2] for s in seg])@heading,-1,1)
++        shap=np.sqrt(np.mean((np.asarray([s[3] for s in seg])-shape)**2,axis=(1,2)))
++        sd=td/5+dist/25+(1-cosine)*2+shap/15
++        eligible=np.flatnonzero((dist<=50)&(cosine>=.5)&(shap<=30))
++        def summary(keys,ids,metric,spatial):
++            residual=np.asarray([pool[i][4] for i in ids]);ab=np.abs(residual)
++            return np.r_[np.mean(ab,0),np.max(ab,0),np.mean([pool[i][3] for i in ids]),
++                         np.mean([pool[i][5] for i in ids]),metric[keys].mean(),
++                         (1-cosine[keys]).mean() if spatial else 0.,len(keys),len(pool)]
++        ti=np.argsort(td,kind='stable')[:3];tf=summary(ti,ti,td,False)
++        if not len(eligible):return tf,z,z,len(ti),0,0
++        ri=eligible[np.argsort(sd[eligible],kind='stable')[:3]]
++        shift=(int(self.key[:12],16)%(len(pool)-1)+1) if len(pool)>1 else 0
++        return tf,summary(ri,ri,sd,True),summary(ri,(ri+shift)%len(pool),sd,True),len(ti),len(ri),int(shift!=0)
++def features(arm,width,o,n,gap,q):
++    reps=42;axis=np.tile([0.,1.],21);h=np.repeat(pf.GRID,2)
++    cols=[np.log(np.maximum(width.ravel(),1e-10)),h,axis]
++    shared=np.r_[o.position,np.linalg.norm(o.position),np.log1p(n),gap,o.covariance[np.triu_indices(3)]]
++    time,route,shuffle,*_=q
++    add=np.r_[shared,time if arm!='C-cal' else np.zeros(10),route if arm=='ROUTE' else shuffle if arm=='SHUFFLE' else np.zeros(10)]
++    return np.column_stack([*cols,np.broadcast_to(add,(reps,len(add)))])
++def admitted(radio,c,w,f,m):
++    env=np.maximum(w,np.vstack((w[:1],w[:-1])))
++    loss=radio.worst_losses(np.tile(pf.angle(c),(len(HT),1)),(m*f[:,None,None]*env).reshape(-1,2),(32,32)).reshape(len(HT),-1)
++    ok=np.logical_and.accumulate(np.where(pf.GRID[None,:]<=HT[:,None],loss,0.).max(1)<=3)
++    return float(max([0.,*HT[ok]]))
++def geo(c,h,fallback):
++    if len(h)<2:return fallback
++    from routeclock.radio import array_gain
++    a,b=h[-2:];vel=(b.position-a.position)/(b.t-a.t);d=np.arange(501)*.02
++    loss=10*np.log10(1024/array_gain(pf.angle(interp(c,d)),pf.angle(b.position+d[:,None]*vel),(32,32)))
++    ix=np.flatnonzero(loss>3);end=max(0,(ix[0]-1)*.02) if len(ix) else 10.
++    return float(max([0.,*HT[HT<=end+1e-10]]))
++@lru_cache
++def bundle(arm):
++    with (OUT/f'E1/calibration/{arm}.pkl').open('rb') as f:return pickle.load(f)
++def inherited(arm,q):
++    if arm in ('TIME','ROUTE','SHUFFLE') and not q[3]:return 'C-cal'
++    if arm in ('ROUTE','SHUFFLE') and not q[4]:return 'TIME'
++    return arm
++def issued(arm,mem,width,q,smoke):
++    effective=inherited(arm,q);h=mem.h;o=h[-1]
++    if smoke:
++        # Deterministic initial integration fixture; never used for trained endpoints.
++        factor=1.+.04*(effective=='TIME')+.08*(effective in ('ROUTE','SHUFFLE'))
++        return width*factor,np.asarray(get_native()),effective
++    model=bundle(effective)
++    x=features(effective,width,o,len(h),o.t-h[-2].t if len(h)>1 else 0.,q)
++    return raw(model['tree'],x[None])[0],model['final'],effective
++@lru_cache
++def get_native():return np.asarray(get(OUT/'manifest.json')['factors'])
+diff --git a/data/coding/chronos_route_849_v1/code/design849.py b/data/coding/chronos_route_849_v1/code/design849.py
+new file mode 100644
+index 0000000..a12b3f4
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/design849.py
+@@ -0,0 +1,198 @@
++from chronos_recipients import *
++from chronos_life_panel import panel
++from live849 import start as mark,finish
++from parallel849 import capacity,shard
++from physical_inputs import BANK
++import pandas as pd
++SCALES=(.45,.60,.75,1.)
++@lru_cache(maxsize=1)
++def frozen_physics():
++    return {r['world']:(r['physical_sha256'],r['file_sha256'],r['namespace']) for r in get(OUT/'design/frozen.json')['worlds']}
++def verify_world_freeze(meta):
++    if (OUT/'design/frozen.json').is_file():
++        assert frozen_physics()[meta['world']]==(meta['physical_sha256'],meta['file_sha256'],meta['namespace'])
++def newworld(k):
++    ns='chronos_route_849_v1/confirmation';d=OUT/'design/worlds';p=d/f'{k}.world';meta=p.with_suffix('.json')
++    if meta.exists():
++        r=get(meta);verify_world_freeze(r);assert sha_file(p)==r['file_sha256']
++        w=pickle.loads(p.read_bytes());assert fingerprint(w)==(r['physical_sha256'],r['components']) and w.mission==k and w.namespace==ns
++        return w,r
++    assert 6000<=k<6096
++    cfg=load_config();cfg['simulation'].update(warmup_s=0,service_s=180,sensing_budget=3/180)
++    rng=np.random.default_rng(np.random.SeedSequence([20261127,k]));grp=[GROUPS[i] for i in rng.permutation(np.repeat(np.arange(6),[3,1,1,1,3,7]))]
++    w=World(cfg,ns,k,groups=grp);digest,components=fingerprint(w);atom(p,pickle.dumps(w,protocol=5))
++    r=dict(world=k,namespace=ns,physical_sha256=digest,components=components,file_sha256=sha_file(p),group_seed=[20261127,k],groups=grp);verify_world_freeze(r);put(meta,r);return w,r
++def fingerprint_only(k):return newworld(k)[1]
++def execute_endpoint(job):
++    phase,split,k,r,s,m=job
++    group={'development':'dev2','final-smoke':'f2','confirmation':'c2' if m==.75 else 'extra','smoke':'s2'}[phase]
++    key=f'{group}_{k}_{r}_{s}_{m}'
++    from filelock import FileLock
++    locks=OUT/'jobs/locks';locks.mkdir(exist_ok=True)
++    with FileLock(str(locks/(key+'.lock'))):
++        from sharedcache849 import SharedPrefixCache
++        expected=OUT/f'E2/receipts/{phase}/{k}_{r}_s{s}_m{m:.2f}.json'
++        if not expected.exists():mark(key)
++        stem=endpoint(job,cache_factory=SharedPrefixCache);finish(key,OUT/f'E2/receipts/{phase}/{stem}.json');return stem
++def primary(data):
++    return data[(data.label=='same_direction_revisit')&data.n.isin([6,8,12,24,40])&data.age.isin([2.,3.,5.])&(data.h==0)]
++def life_summary(phase):
++    ws=[]
++    for p in sorted((OUT/'E1/scores'/phase).glob('*.csv.gz')):
++        d=primary(pd.read_csv(p))
++        if not d.empty:ws.append(d.groupby(['world','scale','arm','n','age'])[['U','O']].mean().groupby(['world','scale','arm']).mean().reset_index())
++    return pd.concat(ws,ignore_index=True) if ws else pd.DataFrame(columns=['world','scale','arm','U','O'])
++def receipts(phase):
++    result=[]
++    for path in sorted((OUT/'E2/receipts'/phase).glob('*.json')):
++        r=get(path);z=r['result'];ev=r['events'];bits=np.asarray(z['bits']);u=np.array([v[0] for v in ev]);t=np.array([v[2] for v in ev])/1e6
++        assert [v[1:] for v in ev]==cal and list(u[:16])==list(range(16)) and abs(sum(z['ledger_s'])-180)<1e-6 and abs(z['ledger_s'][0]-2.6319)<1e-7
++        gaps=[float(np.diff(np.r_[0,t[u==uid],180]).max()) for uid in range(16)]
++        result.append(dict(world=r['world'],arm=r['arm'],seed=r['seed'],scale=r['scale'],physics=r['physics'],G=z['G_mbps'],R=z['R']*100,unavailable=100*z['unavailable_fraction'],mispointed=100*(z['R']-z['unavailable_fraction']),P5=float(np.percentile(bits/180e6,5)),Jain=float(bits.sum()**2/(16*(bits@bits))),narrow_s=z['narrow_good_data_s'],purchases=len(ev),paid_s=z['ledger_s'][0],switch_s=z['ledger_s'][1],data_s=z['ledger_s'][2],unavailable_s=z['ledger_s'][3],max_gap_s=max(gaps),per_uid_counts=np.bincount(u,minlength=16).tolist(),per_uid_max_gaps=gaps,per_uid_bits=bits.tolist()))
++    return pd.DataFrame(result)
++def weights(points,target,reward,risk):
++    # Match the target in expectation at world level, maximizing utility at that risk.
++    src=sorted((float(i),float(row[reward]),float(row[risk])) for i,row in points.iterrows());cand=[]
++    for m,g,r in src:
++        if abs(r-target)<1e-10:cand.append((g,1,{m:1.}))
++    for i,(m,g,r) in enumerate(src):
++        for n,h,s in src[i+1:]:
++            if min(r,s)<target<max(r,s):
++                p=float((target-s)/(r-s));cand.append((p*g+(1-p)*h,0,{m:p,n:1-p}))
++    if not cand:return None
++    return max(cand,key=lambda c:(c[0],c[1]))[2]
++def match(points,target,reward,risk):
++    g=points.groupby('arm');lower=float(g[risk].min().max());upper=float(g[risk].max().min())
++    target=min(max(target,lower),upper) if lower<=upper else None
++    return dict(overlap=[lower,upper] if lower<=upper else None,target=target,ranges={a:[float(v[risk].min()),float(v[risk].max())] for a,v in g},weights=({a:weights(v.set_index('scale'),target,reward,risk) for a,v in g} if target is not None else {}))
++def model_files():
++    return sorted([*(OUT/'E1/calibration').glob('*.pkl'),*(OUT/'E2/labels').glob('VALUE-*.txt')])
++def freeze():
++    key='freeze_design';mark(key);dst=OUT/'design/frozen.json'
++    if dst.is_file():
++        d=get(dst);check(d);finish(key,dst);return d
++    from gate849 import poolmap
++    life=life_summary('development')
++    e2=receipts('development')
++    assert len(e2)==320 and len(list((OUT/'E1/scores/development').glob('*.csv.gz')))==8
++    lifepts=life.groupby(['arm','scale']).mean(numeric_only=True).reset_index()
++    if len(lifepts):
++        a=lifepts[(lifepts.scale==.75)&lifepts.arm.isin(['C-cal','TIME'])]
++        cap=float(a[a.arm=='TIME'].O.iloc[0]);strong1=a[a.O<=cap].sort_values(['U','O','arm']).arm.iloc[0]
++        lifepts['minus_U']=-lifepts.U;match1=match(lifepts[lifepts.arm.isin(LEARN)],cap,'minus_U','O')
++    else:cap=None;strong1='TIME';match1=dict(overlap=None,weights={})
++    pts=e2.groupby(['arm','world','scale'])[['G','R']].mean().groupby(['arm','scale']).mean().reset_index()
++    no=['MAXAGE','AoI-DQN-fixed','VAR','EDF-native','EDF-time','VALUE-time']
++    def strong(arms):
++        cs=pts[(pts.scale==.75)&pts.arm.isin(arms)];ok=cs[cs.R<=7]
++        return str((ok.sort_values(['G','R','arm'],ascending=[False,True,True]) if len(ok) else cs.sort_values(['R','G','arm'],ascending=[True,False,True])).arm.iloc[0])
++    match2=match(pts,7,'G','R')
++    # Separately freeze each arm's best attainable point subject to R<=7, or its minimum risk.
++    own={}
++    for a,v in pts.groupby('arm'):
++        clean={float(row.scale):[{'result':{'G_mbps':float(row.G),'R':float(row.R)/100}}] for row in v.itertuples()}
++        own[a]=closed.freeze(clean)
++    devdiff=e2[e2.scale==.75].groupby(['world','arm'])[['G','R']].mean().unstack().sort_index()
++    dispersion={m:float((devdiff[m]['VALUE-route']-devdiff[m]['VALUE-time']).std()) for m in ('G','R')}
++    elig=int(life.world.nunique());sd1=None
++    if elig>=2:
++        a=life[life.scale==.75].pivot(index='world',columns='arm',values='U');sd1=float((a.TIME-a.ROUTE).std())
++    rule=get(OUT/'design/pre_fit_rules.json')['N_planning'];z=1.959963984540054+.8416212335729143
++    target_g=rule['target_goodput_relative_to_VALUE_time']*float(devdiff['G']['VALUE-time'].mean())
++    needs={'goodput':int(np.ceil((z*dispersion['G']/target_g)**2)),'risk':int(np.ceil((z*dispersion['R']/.5)**2))}
++    if elig>=2:
++        p=life[life.scale==.75].pivot(index='world',columns='arm',values='O')
++        sd_o=float((p.ROUTE-p.TIME).std());occ=elig/8.
++        needs.update(life_U=int(np.ceil((z*sd1/.10)**2/occ)),life_O=int(np.ceil((z*sd_o/.02)**2/occ)))
++    else:needs.update(life_U=None,life_O=None)
++    sufficient=[n for n in rule['world_count_grid'] if all(v is not None and v<=n for v in needs.values())]
++    n=sufficient[0] if sufficient else max(rule['world_count_grid'])
++    planning=dict(requirements=needs,selected=n,capacity_sufficient=bool(sufficient),target_goodput_mbps=target_g,primary_eligible_fraction=elig/8.,rules_sha=sha_file(OUT/'design/pre_fit_rules.json'))
++    worlds=list(range(6000,6000+n))
++    bank=get(BANK/'index.json')['worlds']
++    existing={x['physical_sha256'] for x in bank};assert not set(worlds)&{x['world'] for x in bank}
++    from concurrent.futures import ProcessPoolExecutor
++    import multiprocessing
++    with ProcessPoolExecutor(20,mp_context=multiprocessing.get_context('fork')) as pool:metas=list(pool.map(fingerprint_only,worlds))
++    assert len({r['physical_sha256'] for r in metas})==len(worlds) and not existing&{r['physical_sha256'] for r in metas}
++    extra=[]
++    for k in worlds:
++        for a,s in MATRIX:
++            scales=set(float(x) for x in own[a]['weights'])
++            if a in match2['weights']:scales.update(float(x) for x in match2['weights'][a])
++            extra.extend([[k,a,s,m] for m in sorted(scales-{.75})])
++    from seal849 import seal
++    calanchors=[get(OUT/f'E1/calibration/{a}.json')['anchors'] for a in LEARN]
++    assert all(anchors==calanchors[0] for anchors in calanchors)
++    assert len(calanchors[0])==16 and set(a[0] for a in calanchors[0])==set(range(1300,1316))
++    assert get(OUT/'E2/labels/VALUE-time.json')['train_sample_sha']==get(OUT/'E2/labels/VALUE-route.json')['train_sample_sha']
++    with ProcessPoolExecutor(12,mp_context=multiprocessing.get_context('fork')) as pool:
++        list(pool.map(seal,[('tube_fit',k) for k in range(1200,1216)]+[('tube_calibration',k) for k in range(1300,1316)]+[('development',k) for k in range(1400,1408)]))
++    manifest=get(OUT/'manifest.json');manifest['new_code']={p.name:sha_file(p) for p in sorted((OUT/'code').glob('*.py'))};manifest['code_sha256']=codehash()
++    for p in model_files():manifest['files'][str(p)]=sha_file(p)
++    put(OUT/'manifest.json',manifest)
++    # All source files are additions to the pinned research implementation.
++    chunks=[subprocess.run(['git','diff','--no-index','/dev/null',str(p)],capture_output=True).stdout for p in sorted((OUT/'code').glob('*.py'))]
++    atom(OUT/'design/new_code.patch',b''.join(chunks))
++    # Commit only source/configuration in this independent directory.
++    run=lambda args: subprocess.check_output(['git',*args],cwd=OUT,text=True).strip()
++    run(['init','-q']);run(['add','--','code/*.py','protocol.json','design/pre_fit_rules.json'])
++    changes=subprocess.run(['git','diff','--cached','--quiet'],cwd=OUT)
++    if changes.returncode==1:
++        run(['-c','user.name=Chronos Experiment','-c','user.email=experiment@localhost','commit','-qm','Freeze Chronos-849 implementation and protocol'])
++    elif changes.returncode!=0:raise RuntimeError('unable to verify staged sources')
++    actual_commit=run(['rev-parse','HEAD'])
++    d=dict(new_code_commit=actual_commit,protocol=P,code_hash=codehash(),manifest_sha=sha_file(OUT/'manifest.json'),models={str(p):sha_file(p) for p in model_files()},n=n,power_planning=planning,worlds=metas,splits={s:[r['physical_sha256'] for r in bank if r['split']==s] for s in ('train','train_validation','tube_fit','tube_calibration','development')},development_sha={str(p):sha_file(p) for p in sorted([*(OUT/'E2/receipts/development').glob('*.json'),*(OUT/'E1/scores/development').glob('*.json')])},strong_E1=str(strong1),strong_E2=strong(no),strong_AoI=strong(no[:2]),strong_nonroute_scheduling=strong(['EDF-native','EDF-time','VALUE-time']),life_over_cap=cap,E1_matched=match1,E2_matched=match2,E2_individual_target=own,base_endpoints=[[k,a,s,.75] for k in worlds for a,s in MATRIX],extra_endpoints=extra,common_scale=.75,bootstrap_seed=271127,bootstrap_replicates=20000,E1_primary='same_direction_revisit; n in 6,8,12,24,40; age in 2,3,5; h=0; equal eligible cells per world',effective_shuffle_min_worlds=8,effective_shuffle_min_prefixes=32,E1_delta_U_lower_gt=0,E1_delta_O_upper_lt=.02,E2_delta_G_lower_gt=0,E2_delta_R_upper_lt_pp=.5,absolute_R_upper_le_pct=7,dev_dispersion=dispersion,dev_E1_sd_U=sd1,dev_revisit_worlds=elig,N_rationale='Use the pre-fit bounded world-count grid and development paired dispersions, including revisit occupancy. No post-confirmation enlargement.',figure2_CF='two presampled stratified development states per world; all sixteen branches labeled under common EDF continuation; same-state VALUE-route minus VALUE-time conditional on unequal choices; split by route support',training_diagnostic_only='initial wiring smoke heads',inputs_disjoint=True)
++    put(dst,d);finish(key,dst);return d
++def check(d):
++    assert codehash()==d['code_hash'] and all(sha_file(Path(p))==s for p,s in d['models'].items()) and sha_file(OUT/'manifest.json')==d['manifest_sha']
++def development_freeze_confirm():
++    from gate849 import poolmap
++    from audit849 import validate
++    (OUT/'logs/status.txt').write_text('开发集全臂与四倍率，并行选择工作点。\n')
++    jobs=[('development','development',k,r,s,m) for m in SCALES for r,s in MATRIX for k in range(1400,1408)]
++    mixed=[('panel',('development','development',k)) for k in range(1400,1408)]+[('endpoint',j) for j in jobs]
++    poolmap(confirm_job,mixed,capacity())
++    d=freeze();check(d)
++    subprocess.run([sys.executable,'-Bu',str(OUT/'code/frozen_run.py')],cwd=OUT,check=True)
++def frozen_execution():
++    from gate849 import poolmap
++    from audit849 import validate
++    d=get(OUT/'design/frozen.json');check(d)
++    history=[get(p) for p in BANK.glob('*/*.json') if p.stem.isdigit()]
++    old_ids={r['world'] for r in history};new_ids={r['world'] for r in d['worlds']}
++    old_sha={r['physical_sha256'] for r in history};new_sha={r['physical_sha256'] for r in d['worlds']}
++    assert not old_ids&new_ids and not old_sha&new_sha and len(new_sha)==d['n']
++    put(OUT/'design/split_audit.json',dict(all_historical_inputs=len(history),historical_confirmation=sum(r['split']=='confirmation' for r in history),new_worlds=d['n'],id_overlap=0,physics_overlap=0,new_namespace=d['worlds'][0]['namespace']))
++    from audit849 import audit_grid_world
++    for k in range(1400,1408):
++        auditfile=OUT/f'audits/development/{k}.json'
++        if not auditfile.is_file():audit_grid_world(('development',k))
++        audit=get(auditfile);assert audit['status']=='PASS' and audit['endpoints']==40 and audit['E2_prefix_or_calendar_mismatches']==0
++    pilot=get(OUT/'audits/smoke.json')
++    med=float(np.median([r['seconds'] for r in pilot['E2']]))
++    count=len(d['base_endpoints'])+len(d['extra_endpoints'])
++    examples=[get(p)['elapsed_s'] for p in (OUT/'E2/receipts/development').glob('*.json')]
++    put(OUT/'design/compute_budget.json',dict(frozen_worlds=d['n'],E2_endpoints=count,smoke_median_endpoint_wall_s=med,development_endpoint_quartiles_s=np.quantile(examples,[.25,.5,.75]).tolist(),physical_cpu_quota=48,primary_parallel_slots=47,E2_smoke_based_wall_hours=med*count/47/3600,formula='median 1400 native smoke endpoint time * frozen E2 endpoints / 47 native slots; excludes E1 and final rendering; cache sharing and CPU saturation change actual time'))
++    poolmap(execute_endpoint,[('final-smoke','development',1400,r,s,.75) for r,s in MATRIX],10)
++    panel(('final-smoke','development',1400));validate('final-smoke');check(d)
++    (OUT/'logs/status.txt').write_text('最终模型单世界核验通过。新留出世界的 E1、E2 已放行。\n')
++    from report849 import report
++    ids=[w['world'] for w in d['worlds']]
++    declared=set(tuple(j) for j in d['base_endpoints']+d['extra_endpoints'])
++    tasks=[]
++    for block in range(0,len(ids),8):
++        worlds=ids[block:block+8]
++        tasks.extend(('panel',('confirmation','confirmation',k)) for k in worlds)
++        tasks.extend(('endpoint',('confirmation','confirmation',k,r,s,.75)) for r,s in MATRIX for k in worlds)
++    for k,r,s,m in sorted(d['extra_endpoints'],key=lambda j:(j[3],j[1],j[2],j[0])):
++        tasks.append(('endpoint',('confirmation','confirmation',k,r,s,m)))
++    assert {tuple(j[2:]) for task,j in tasks if task=='endpoint'}==declared
++    poolmap(confirm_job,tasks,capacity());check(d);report()
++def confirm_job(task):
++    with_step,job=task
++    if with_step!='panel':return execute_endpoint(job)
++    from filelock import FileLock
++    locks=OUT/'jobs/locks';locks.mkdir(exist_ok=True)
++    with FileLock(str(locks/('_'.join(str(v) for v in job)+'.lock'))):
++        return panel(job)
+diff --git a/data/coding/chronos_route_849_v1/code/development_audit849.py b/data/coding/chronos_route_849_v1/code/development_audit849.py
+new file mode 100644
+index 0000000..97be950
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/development_audit849.py
+@@ -0,0 +1,10 @@
++"""Audit complete development worlds as soon as every prespecified scale has finished."""
++from audit849 import *
++def main():
++    remaining=set(range(1400,1408))
++    while remaining:
++        ready=[k for k in sorted(remaining) if len(list((OUT/'E2/receipts/development').glob(f'{k}_*.json')))==40]
++        if not ready:time.sleep(8);continue
++        for k in ready:
++            audit_grid_world(('development',k));remaining.remove(k);print('audited',k,flush=True)
++if __name__=='__main__':main()
+diff --git a/data/coding/chronos_route_849_v1/code/early_e2849.py b/data/coding/chronos_route_849_v1/code/early_e2849.py
+new file mode 100644
+index 0000000..8b40178
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/early_e2849.py
+@@ -0,0 +1,18 @@
++from design849 import *
++from parallel849 import busy
++def early_endpoint(job):
++    tag=busy('开发闭环提前运行')
++    try:return execute_endpoint(job)
++    finally:tag.unlink(missing_ok=True)
++def main():
++    from gate849 import poolmap
++    for a in ('time','route'):
++        p=OUT/f'E2/labels/VALUE-{a}.json'
++        while not p.is_file():time.sleep(2)
++        assert get(p)['sha256']==sha_file(p.with_suffix('.txt'))
++    supplement=len(sys.argv)>1 and sys.argv[1]=='supplement'
++    ids=(1405,1404) if supplement else (1407,1406)
++    scales=(.75,) if supplement else (.75,.6)
++    jobs=[('development','development',k,r,s,m) for k in ids for r,s in MATRIX for m in scales]
++    poolmap(early_endpoint,jobs,14 if supplement else 30)
++if __name__=='__main__':main()
+diff --git a/data/coding/chronos_route_849_v1/code/early_life849.py b/data/coding/chronos_route_849_v1/code/early_life849.py
+new file mode 100644
+index 0000000..5ce457b
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/early_life849.py
+@@ -0,0 +1,12 @@
++"""Use completed training/validation labels while development counterfactual diagnostics finish."""
++from labels849 import trainvalue
++from design849 import *
++from gate849 import poolmap
++def main():
++    assert len(list((OUT/'E2/labels/train').glob('*/*/state.json')))==256 and len(list((OUT/'E2/labels/train_validation').glob('*/*/state.json')))==16
++    for side in ('time','route'):
++        p=OUT/f'E2/labels/VALUE-{side}.json'
++        if p.exists():assert sha_file(p.with_suffix('.txt'))==get(p)['sha256']
++        else:trainvalue(side)
++    poolmap(confirm_job,[('panel',('development','development',k)) for k in range(1400,1408)],8)
++if __name__=='__main__':main()
+diff --git a/data/coding/chronos_route_849_v1/code/fill849.py b/data/coding/chronos_route_849_v1/code/fill849.py
+new file mode 100644
+index 0000000..4deef9f
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/fill849.py
+@@ -0,0 +1,27 @@
++"""Fill otherwise idle CPU slots while the last E1 input worlds finish."""
++from pipeline_prefetch import work
++from parallel849 import *
++from concurrent.futures import wait,FIRST_COMPLETED
++def drivers():
++    active=set()
++    for f in (OUT/'jobs').glob('*.json'):
++        d=get(f);pid=d.get('pid')
++        if pid and Path(f'/proc/{pid}').exists():active.add(pid)
++    for f in (OUT/'workers').glob('*'):
++        if f.name.isdigit() and Path('/proc',f.name).exists():active.add(int(f.name))
++    return len(active)
++def main():
++    w,_=world('development',1400);Model(w,'Chronos')
++    jobs=[('train',k) for k in range(1007,1032)]+[('train_validation',k) for k in range(1100,1116)]
++    with ProcessPoolExecutor(30,mp_context=mp.get_context('fork')) as pool:
++        active=set()
++        while jobs or active:
++            if (OUT/'E1/calibration/TIME.pkl').is_file():jobs.clear()
++            # Include diagnostics and monitoring in the reserved capacity.
++            room=min(30-len(active),max(0,capacity()-3-drivers()))
++            for _ in range(min(room,len(jobs))):active.add(pool.submit(work,jobs.pop(0)))
++            if active:
++                done,active=wait(active,timeout=6,return_when=FIRST_COMPLETED)
++                for f in done:print('prefetched',f.result(),flush=True)
++            else:time.sleep(5)
++if __name__=='__main__':main()
+diff --git a/data/coding/chronos_route_849_v1/code/fit_audit849.py b/data/coding/chronos_route_849_v1/code/fit_audit849.py
+new file mode 100644
+index 0000000..232535a
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/fit_audit849.py
+@@ -0,0 +1,24 @@
++"""Recompute the 16 per-horizon calibration ranks directly from the stored independent anchors."""
++from chronos_life_panel import *
++def audit():
++    fitids=list(range(1200,1216));calids=list(range(1300,1316));by={}
++    fitphysics={get(OUT/f'E1/calibration/inputs/{k}.json')['physics'] for k in fitids}
++    calphysics={get(OUT/f'E1/calibration/inputs/{k}.json')['physics'] for k in calids}
++    assert len(fitphysics)==16 and len(calphysics)==16 and not fitphysics&calphysics
++    anchor_keys=[]
++    for a in LEARN:
++        fp=OUT/f'E1/calibration/{a}.pkl';m=bundle(a);meta=get(fp.with_suffix('.json'));assert sha_file(fp)==meta['sha256']
++        vals=[];keys=[]
++        for k in calids:
++            [(o,n,gap,q,width,y,prefix)]=pickle.loads((OUT/f'E1/calibration/inputs/{k}.pkl').read_bytes())
++            x=features(a,width,o,n,gap,q);pres=raw(m['tree'],x[None])
++            vals.append(scores(y[None],pres)[0]);keys.append([k,prefix,o.t])
++        rank=int(np.ceil(.9*(len(keys)+1)))
++        actual=np.maximum.accumulate(np.sort(vals,axis=0)[rank-1])
++        assert rank==16 and keys==meta['anchors'] and np.array_equal(actual,m['final']) and np.array_equal(np.asarray(vals),meta['ratios'])
++        anchor_keys.append(keys);by[a]=dict(training_prefixes=meta['training_prefixes'],rank=rank,score_max_abs_difference=0,factor_max_abs_difference=0,model_sha=meta['sha256'])
++    assert all(v==anchor_keys[0] for v in anchor_keys)
++    result=dict(status='PASS',fit_worlds=fitids,independent_calibration_worlds=calids,overlapping_physical_fingerprints=0,all_heads_same_anchors=True,anchors=anchor_keys[0],models=by)
++    put(OUT/'audits/life_fit.json',result)
++    audit_index=get(OUT/'audits.json');audit_index['life_fit']=dict(path='audits/life_fit.json',sha256=sha_file(OUT/'audits/life_fit.json'));audit_index['early_branch']=get(OUT/'audits/early_branch.json');put(OUT/'audits.json',audit_index)
++if __name__=='__main__':audit()
+diff --git a/data/coding/chronos_route_849_v1/code/frozen_run.py b/data/coding/chronos_route_849_v1/code/frozen_run.py
+new file mode 100644
+index 0000000..c432436
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/frozen_run.py
+@@ -0,0 +1,2 @@
++from design849 import frozen_execution
++if __name__=='__main__':frozen_execution()
+diff --git a/data/coding/chronos_route_849_v1/code/gate849.py b/data/coding/chronos_route_849_v1/code/gate849.py
+new file mode 100644
+index 0000000..7a05359
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/gate849.py
+@@ -0,0 +1,29 @@
++from audit849 import *
++from chronos_life_panel import inputs,fit
++from concurrent.futures import ProcessPoolExecutor,as_completed
++import multiprocessing as mp
++def poolmap(fn,jobs,n):
++    if n>=12 and fn.__name__ not in ('inputs','audit_confirm_world'):
++        from numapool849 import parallel
++        return parallel(fn,jobs,n)
++    with ProcessPoolExecutor(n,mp_context=mp.get_context('fork')) as p:
++        futures=[p.submit(fn,j) for j in jobs]
++        for f in as_completed(futures):print(fn.__name__,f.result(),flush=True)
++def main():
++    while not ((OUT/'E1/scores/smoke/1400.json').exists() and len(list((OUT/'E2/receipts/smoke').glob('*.json')))==10):time.sleep(4)
++    validate('smoke')
++    (OUT/'logs/status.txt').write_text('世界 1400 初核通过。正在拟合并独立校准风险头。\n')
++    w,_=world('development',1400);Model(w,'Chronos')
++    jobs=[('tube_fit',k) for k in range(1200,1216)]+[('tube_calibration',k) for k in range(1300,1316)]
++    from parallel849 import shard,capacity
++    poolmap(shard,[(split,k,group) for split,k in jobs for group in (0,1)],capacity())
++    poolmap(inputs,jobs,min(32,capacity()))
++    poolmap(fit,LEARN,4)
++    from labels849 import labelworld,trainvalue
++    jobs=[('train',k,8) for k in range(1000,1032)]+[('train_validation',k,1) for k in range(1100,1116)]+[('development',k,2) for k in range(1400,1408)]
++    (OUT/'logs/status.txt').write_text('正在同一付费状态上生成候选用户的短窗反事实标签。\n')
++    poolmap(labelworld,jobs,capacity())
++    poolmap(trainvalue,['time','route'],2)
++    from design849 import development_freeze_confirm
++    development_freeze_confirm()
++if __name__=='__main__':main()
+diff --git a/data/coding/chronos_route_849_v1/code/labels849.py b/data/coding/chronos_route_849_v1/code/labels849.py
+new file mode 100644
+index 0000000..916f37d
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/labels849.py
+@@ -0,0 +1,107 @@
++from chronos_recipients import *
++from live849 import start as mark,finish
++from policy_env import trace
++from scipy.stats import spearmanr
++from filelock import FileLock, Timeout
++HORIZON=24
++def clone(state,t0,stop):
++    c=copy.copy(state);c.bucket=copy.copy(state.bucket);c.slots=[copy.copy(s) for s in state.slots]
++    c.mem=[]
++    for mem in state.mem:
++        v=copy.copy(mem);v.pending=mem.pending.copy();v.records=mem.records.copy();v.h=mem.h.copy();c.mem.append(v)
++    c.risk=state.risk.copy();c.sup=state.sup.copy();c.events=[];c.issued=[];c.audit=[]
++    c.ledger=pf.DeferredLedger(c.w.cfg,c.w,c.radio,t0,stop-t0)
++    full=state.ledger.probes;c.ledger.probes=full[(full>=t0)&(full<stop)]
++    c.ledger.rr=state.ledger.rr
++    return c
++def cf(state,i,uid,check=False):
++    start=cal[i][0]/1e6;tick=TICKS[i];last=tick+HORIZON
++    end_idx=int(np.searchsorted(TICKS,last));stop=cal[end_idx][0]/1e6 if end_idx<len(cal) else 180.
++    assert state.now==start and stop>=grid.start_us(last)/1e6-1e-12
++    c=clone(state,start,stop)
++    for j in range(i,end_idx):
++        if j!=i:c.preservice(j)
++        u=uid if j==i else int(np.argmin(c.deadline()))
++        c.buy(j,u,heads=False)
++    c.ledger.advance(c.now,stop,c.slots,False);c.ledger.result(COST,RHO)
++    bits,fail=trace(c.ledger,grid);total=float(bits[tick:last].sum());fault=int(fail[tick:last].sum())
++    receipt=dict(bits=total,fault=fault,events=c.events)
++    if check:
++        stream=state.events+c.events;hist=[Memory() for _ in state.mem];cap=[]
++        def predict(u,o):
++            hist[u].on_paid_fix(o);return state.cache(u,hist[u])
++        def capture(*args):
++            ledger=pf.DeferredLedger(*args);cap.append(ledger);return ledger
++        # Preserve the full enclosing radio interval at the window end. An extra
++        # archived-calendar event is used solely to reproduce that next boundary.
++        if end_idx<len(cal):stream=stream+[[int(np.argmin(c.deadline())),*cal[end_idx]]]
++        events,r,_=closed.simulate_controls(state.w,'stream',predict,state.cache.model.factors,pf,3.,state.m,849,event_stream=stream,ledger_factory=capture)
++        slowbits,slowfail=trace(cap[0],grid)
++        delta=abs(total-slowbits[tick:last].sum())
++        assert [[u,round(t*1e6)] for u,t in events[i:i+len(c.events)]]==[[u,e] for u,_,e in c.events]
++        assert delta<=1 and np.array_equal(fail[tick:last],slowfail[tick:last]) and np.max(np.abs(bits[tick:last]-slowbits[tick:last]))<=1
++        receipt.update(slow_max_bin_delta=float(np.max(np.abs(bits[tick:last]-slowbits[tick:last]))),total_delta=float(delta),fail_differences=0)
++    return receipt
++def one_candidate(state,meta,root,u,blocking):
++    k=meta['world'];i=meta['i'];key=f"{meta['group']}_{k}_{i}_{u}";path=root/f'{u}.json'
++    try:
++        with FileLock(str(path)+'.lock',timeout=-1 if blocking else 0):
++            if path.is_file():
++                r=get(path);assert (r['spec'],r['prefix'],r['candidate'])==(meta['spec'],meta['prefix'],u) and r['self_sha']==sha(compact(r['rollout']))
++            else:
++                mark(key)
++                rollout=cf(state,i,u,check=meta['slow_check'] and u in (0,7))
++                r=dict(spec=meta['spec'],prefix=meta['prefix'],physics=meta['physics'],world=k,ix=i,candidate=u,self_sha=sha(compact(rollout)),rollout=rollout)
++                put(path,r)
++            finish(key,path)
++            return r
++    except Timeout:
++        if blocking:raise
++        return None
++def labelworld(job):
++    from parallel849 import busy
++    tag=busy('反事实主计算 '+str(job))
++    try:return _labelworld(job)
++    finally:tag.unlink(missing_ok=True)
++def _labelworld(job):
++    split,k,number=job;group={'train':'labels','train_validation':'val','development':'devcf'}[split]
++    w,wm=world(split,k);cache=Cache(w,wm,split);state=Engine(w,cache,.75,False,'EDF-native')
++    rng=np.random.default_rng(201127+k);eligible=np.flatnonzero((np.arange(len(TICKS))>=16)&(np.array(TICKS)+24<grid.opportunities))
++    # Stratified over service time without choosing states by outcomes.
++    chosen={int(rng.choice(v)) for v in np.array_split(eligible,number)}
++    outs=[];spec=sha(compact([wm['physical_sha256'],modelid(),service_id(),sha_file(Path(__file__)),*[sha_file(OUT/f'E1/calibration/{a}.pkl') for a in LEARN]]))
++    for i in range(max(chosen)+1):
++        state.preservice(i);view=state.view(state.now)
++        if i in chosen:
++            root=OUT/f'E2/labels/{split}/{k}/{i}';x={side:state.values(state.now,side,view).tolist() for side in ('time','route')}
++            pre=sha(compact([m.key for m in state.mem]));cs=[]
++            snap=root/'snapshot.pkl';snapmeta=root/'snapshot.json'
++            if not snapmeta.is_file():
++                copy_state={name:getattr(state,name) for name in ('bucket','slots','mem','risk','sup','now','events','i')}
++                atom(snap,pickle.dumps(copy_state,protocol=5))
++                put(snapmeta,dict(spec=spec,prefix=pre,world=k,split=split,i=i,physics=wm['physical_sha256'],rr=state.ledger.rr,snapshot_sha=sha_file(snap),slow_check=k in (1000,1001,1400) and i==min(chosen),group=group))
++            meta=get(snapmeta)
++            assert meta['spec']==spec and meta['prefix']==pre
++            for u in range(16):
++                r=one_candidate(state,meta,root,u,blocking=True)
++                cs.append(r['rollout']['bits'])
++            item=dict(spec=spec,prefix=pre,world=k,appointment=i,features=x,bits=cs,labels=(np.asarray(cs)-np.mean(cs)).tolist(),edf=int(np.argmin(state.deadline())),support=state.sup.tolist(),ages=view[1].tolist())
++            put(root/'state.json',item);outs.append(item)
++        uid=i if i<16 else (int(rng.integers(16)) if rng.random()<.35 else int(np.argmin(state.deadline())))
++        state.buy(i,uid)
++    return len(outs)
++def trainvalue(side):
++    from lightgbm import LGBMRegressor
++    key='value_'+side;mark(key)
++    train=[get(p) for p in sorted((OUT/'E2/labels/train').glob('*/*/state.json'))]
++    val=[get(p) for p in sorted((OUT/'E2/labels/train_validation').glob('*/*/state.json'))]
++    assert len(train)==256 and len(val)==16 and len(set(r['prefix'] for r in train+val))==272
++    x=np.concatenate([s['features'][side] for s in train]);y=np.concatenate([s['labels'] for s in train])/1e6
++    net=LGBMRegressor(objective='regression',random_state=7,n_estimators=110,num_leaves=12,min_child_samples=30,learning_rate=.055,verbosity=-1,n_jobs=1).fit(x,y)
++    dst=OUT/f'E2/labels/VALUE-{side}.txt';atom(dst,net.booster_.model_to_string().encode())
++    ranks=[];regret=[]
++    for r in val:
++        p=net.predict(r['features'][side]);b=np.asarray(r['bits']);s=spearmanr(p,b).statistic
++        if np.isfinite(s):ranks.append(s)
++        regret.append(max(b)-b[np.argmax(p)])
++    rec=dst.with_suffix('.json');put(rec,dict(side=side,train_worlds=32,states=256,labels=4096,validation_worlds=16,validation_rank_correlation=float(np.mean(ranks)) if ranks else None,validation_regret_bits=float(np.mean(regret)),sha256=sha_file(dst),train_sample_sha=sha(compact([[r['prefix'],r['labels']] for r in train]))));finish(key,rec)
+diff --git a/data/coding/chronos_route_849_v1/code/live849.py b/data/coding/chronos_route_849_v1/code/live849.py
+new file mode 100644
+index 0000000..7a2940f
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/live849.py
+@@ -0,0 +1,122 @@
++"""Live task ledger. Task identities and completion proofs are independent of process count."""
++import datetime,json,os,sys,time
++from pathlib import Path
++O=Path(__file__).resolve().parents[1];D=O/'jobs';D.mkdir(exist_ok=True)
++def write(p,x):
++    tmp=p.with_suffix('.'+str(os.getpid())+'.tmp');tmp.write_text(x);os.replace(tmp,p)
++def save(key,**fields):write(D/(key+'.json'),json.dumps(fields))
++def start(key):save(key,pid=os.getpid(),start=Path('/proc/self/stat').read_text().split()[21])
++def finish(key,receipt):save(key,receipt=str(receipt))
++def proc(pid):
++    try:return Path(f'/proc/{pid}/stat').read_text().split()[21]
++    except OSError:return None
++def openworkers():
++    # Initial smoke was submitted before the live ledger. An open forecast database
++    # in an endpoint worker proves that a world has been entered.
++    n=0
++    for p in Path('/proc').glob('[0-9]*'):
++        try:
++            cmd=(p/'cmdline').read_bytes()
++            if b'code/chronos_recipients.py\x00' not in cmd:continue
++            if any('cache/development/' in os.readlink(fd) and os.readlink(fd).endswith('.sqlite') for fd in (p/'fd').iterdir()):n+=1
++        except (FileNotFoundError,PermissionError,ProcessLookupError):pass
++    return n
++def rows():
++    groups=[
++      ('pre','归档、资产和旧开发锚点',2),('s1','初核 E1 世界面板',1),('s2','初核 E2 闭环',10),
++      ('lifeinputs','风险头拟合及校准输入世界',32),('lifehead','独立拟合并校准的风险头',4),
++      ('labels','训练反事实短分支',4096),('val','验证反事实短分支',256),('devcf','开发诊断反事实短分支',256),('value','价值头',2),
++      ('dev1','开发 E1 四倍率面板（按世界）',8),('dev2','开发 E2 闭环（含四倍率）',320),('freeze','设计冻结',1),
++      ('f1','终核 E1 世界面板',1),('f2','终核 E2 闭环',10),
++      ('c1','留出 E1 面板（六臂共用一面板）',48),('c2','留出 E2 闭环（共同倍率）',480),('report','配对汇总、图表和报告',1)]
++    if (O/'design/frozen.json').exists():
++        frozen=json.loads((O/'design/frozen.json').read_text())
++        groups=[(g,label,frozen['n'] if g=='c1' else len(frozen['base_endpoints']) if g=='c2' else total) for g,label,total in groups]
++        groups.append(('extra','冻结的额外倍率闭环',len(frozen['extra_endpoints'])))
++    records={}
++    for f in D.glob('*.json'):
++        try:
++            d=json.loads(f.read_text());group=f.stem.split('_')[0]
++            comp=bool(d.get('receipt') and Path(d['receipt']).is_file())
++            if comp or ('pid'in d and proc(d['pid'])==d['start']):
++                pair=records.setdefault(group,[0,0]);pair[0 if comp else 1]+=1
++        except (OSError,ValueError):pass
++    records['pre']=[int((O/'manifest.json').exists() and (O/'logs/archive_verify.log').is_file() and 'OK:' in (O/'logs/archive_verify.log').read_text())+int((O/'audits/legacy.json').exists()),0]
++    if 's1' not in records:
++        ongoing=any(b'code/prefix849.py\x00development\x001400' in readcmd(p) for p in Path('/proc').glob('[0-9]*'))
++        records['s1']=[0,int(ongoing)]
++    smoke=list((O/'E2/receipts/smoke').glob('*.json'))
++    records['s2']=[len(smoke),min(10-len(smoke),max(openworkers(),records.get('s2',[0,0])[1]))]
++    return [(label,total,*records.get(g,[0,0])) for g,label,total in groups]
++def readcmd(p):
++    try:return (p/'cmdline').read_bytes()
++    except OSError:return b''
++_cpu_sample=None
++def refresh():
++    global _cpu_sample
++    data=rows();tot=sum(r[1] for r in data);don=sum(r[2] for r in data);run=sum(r[3] for r in data)
++    ex=[r for r in data if any(x in r[0] for x in ('E1','E2','短分支','额外倍率'))]
++    et,ed,er=[sum(r[i] for r in ex) for i in (1,2,3)]
++    numerator,period=Path('/sys/fs/cgroup/cpu.max').read_text().split()
++    maxcores=int(numerator)//int(period)
++    stat=dict(line.split() for line in Path('/sys/fs/cgroup/cpu.stat').read_text().splitlines())
++    sample=(time.monotonic(),int(stat['usage_usec'])*1.e-6)
++    per=f"配额 {maxcores} 核"
++    if _cpu_sample:
++        cores=(sample[1]-_cpu_sample[1])/(sample[0]-_cpu_sample[0])
++        per+=f'，最近 5 秒实际使用 {cores:.1f} 核（{100*cores/maxcores:.0f}%）'
++    _cpu_sample=sample
++    txt=['Chronos-849 实验实时进度',datetime.datetime.now().astimezone().isoformat(timespec='seconds')+'   每 5 秒刷新','',
++        f'全部实验工作单元 {tot:,}    已完成 {don:,}    正在运行 {run:,}    排队 {tot-don-run:,}',
++        f'其中评分实验 {et:,}    已完成 {ed:,}    正在运行 {er:,}    排队 {et-ed-er:,}',
++        '评分实验包含 180 秒闭环、4.464 秒短分支及 E1 世界面板。工作单元另含拟合输入、模型训练、核验与交付。',
++        f'服务器 CPU {per}。单个工作单元内可以有额外并行分片。',
++        '运行中按已领取的实验计，包含等待相同付费前缀的任务，因此可多于 48。排队包含等待前置核验和冻结的任务。完成以通过校验的回执为准。',
++        ('确认规模及额外倍率已经冻结，见下方各阶段。' if (O/'design/frozen.json').exists() else '正式确认暂列 48 个物理世界、480 个共同倍率闭环。冻结时按开发方差与重访覆盖复核样本量，额外倍率同时计入。'),
++        '短分支是一次 4.464 秒反事实仿真。全程闭环是一次 180 秒仿真。两者分别列示。','',
++        '   计划    完成    运行    排队   实验 / 阶段']
++    for label,total,done,active in data:txt.append(f'{total:7,d} {done:7,d} {active:7,d} {total-done-active:7,d}   {label}')
++    pref=O/'E1/prefix_index/development/1400'
++    if (pref/'receipt.json').exists():detail=json.loads((pref/'receipt.json').read_text())['prefixes']
++    else:detail=len(list(pref.glob('*.part')))
++    workers=[]
++    for path in (O/'workers').glob('*'):
++        if path.name.isdigit() and proc(int(path.name)):
++            try:workers.append(path.read_text())
++            except OSError:pass
++    primary_workers=sum('反事实主计算' in x for x in workers)
++    early_closed=sum('开发闭环提前运行' in x for x in workers)
++    derived=len(workers)-primary_workers-early_closed
++    txt+=['',f'并行明细：额外前缀计算分片 {derived} 个，反事实世界主进程 {primary_workers} 个，提前放行开发闭环 {early_closed} 个。闭环与候选分支已计入上表。',f'开发世界 1400 已落盘的 E1 前缀 {detail} 个。',f'结果根目录 {O}']
++    fixes=[]
++    for f in (O/'active_closed').glob('*/*.json'):
++        try:
++            d=json.loads(f.read_text())
++            if proc(d['pid']) and not (O/'E2/receipts'/f.parent.name/f.name).exists():fixes.append(d['completed_fixes'])
++        except (OSError,ValueError):pass
++    if fixes:txt+=['',f'有逐笔心跳的 {len(fixes)} 个运行中闭环，最近一次落盘合计 {sum(fixes):,}/{849*len(fixes):,} 笔。每 64 笔更新。']
++    if (O/'logs/status.txt').exists():txt+=['',(O/'logs/status.txt').read_text().strip()]
++    state=lambda test:'已通过' if test else '待完成'
++    pick={name:(target,complete,active) for name,target,complete,active in data}
++    def stages(*names):
++        cells=[pick[n] for n in names if n in pick];n=sum(r[0] for r in cells);done=sum(r[1] for r in cells);running=sum(r[2] for r in cells)
++        return f'{done}/{n}，运行中 {running}'
++    r=[('R00','归档、环境与权重',state((O/'manifest.json').exists()),'manifest.json'),
++       ('R01','原预约表、旧锚点与新旧选人入口',state((O/'audits/smoke.json').exists()),'audits/smoke.json'),
++       ('R02','E1 初始六臂逐行对齐',stages('初核 E1 世界面板'),'E1/scores/smoke/1400.json'),
++       ('R03','E1 风险头与独立校准',state((O/'audits/life_fit.json').exists()),'audits/life_fit.json'),
++       ('R04','E2 八臂及固定 DQN 三个种子',stages('初核 E2 闭环'),'audits/smoke.json'),
++       ('R05','反事实训练、验证、开发诊断与两价值头',stages('训练反事实短分支','验证反事实短分支','开发诊断反事实短分支','价值头'),'E2/labels/'),
++       ('R06','开发网格、冻结及最终单世界核验',stages('开发 E1 四倍率面板（按世界）','开发 E2 闭环（含四倍率）','设计冻结','终核 E1 世界面板','终核 E2 闭环'),'design/'),
++       ('R07','留出 E1',stages('留出 E1 面板（六臂共用一面板）'),'E1/scores/confirmation/'),
++       ('R08','留出 E2',stages('留出 E2 闭环（共同倍率）','冻结的额外倍率闭环'),'E2/receipts/confirmation/'),
++       ('R09','配对汇总、图、表及报告',stages('配对汇总、图表和报告'),'REPORT.md')]
++    md=['# Chronos-849 服务器实验跟踪','','更新时间 '+datetime.datetime.now().astimezone().isoformat(timespec='seconds'),'','|编号|工作单元|状态|证据位置|','|---|---|---|---|']
++    for tag,label,stat,path in r:md.append(f'|{tag}|{label}|{stat}|'+(f'[{path}]({path})' if (O/path).exists() else path)+'|')
++    write(O/'EXPERIMENT_TRACKER.md','\n'.join(md)+'\n')
++    write(O/'实时进度.txt','\n'.join(txt)+'\n')
++if __name__=='__main__':
++    while True:
++        refresh()
++        if (O/'REPORT.md').exists() and (D/'report_final.json').is_file():break
++        time.sleep(5)
+diff --git a/data/coding/chronos_route_849_v1/code/locality849.py b/data/coding/chronos_route_849_v1/code/locality849.py
+new file mode 100644
+index 0000000..2d33fa6
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/locality849.py
+@@ -0,0 +1,30 @@
++"""Two NUMA-local byte-identical checkpoint mappings, using native scalar inference."""
++from base849 import *
++import shutil,time,torch
++from filelock import FileLock
++def source():return Path(get(OUT/'manifest.json')['paths']['Chronos/best.pt'])
++def replica(node):
++    d=OUT/'cache/native_numa';d.mkdir(parents=True,exist_ok=True);p=d/f'node{node}.pt'
++    with FileLock(str(p)+'.lock'):
++        if not p.exists():
++            tmp=p.with_suffix('.part');shutil.copyfile(source(),tmp);os.replace(tmp,p)
++        assert sha_file(p)==get(OUT/'manifest.json')['files'][str(source())]
++    return p
++def install(node):
++    native=pf.chrono();state=torch.load(replica(node),weights_only=True,map_location='cpu',mmap=True)
++    ret=native.model.load_state_dict(state,strict=True,assign=True)
++    assert not ret.missing_keys and not ret.unexpected_keys
++    native.model.eval()
++def test(node):
++    from grudata import schedule
++    cores=[0,48];os.sched_setaffinity(0,{cores[node]})
++    w,_=load_checked('confirmation',2000);m=Model(w,'Chronos');hs=[[] for _ in range(16)]
++    for u,t in schedule(w,43000):
++        hs[u].append(w.observe(u,t))
++        if t>55:break
++    t=time.monotonic();base=[m.base.update(u,h) for u,h in enumerate(hs)];before=time.monotonic()-t
++    install(node);t=time.monotonic();ys=[m.base.update(u,h) for u,h in enumerate(hs)];after=time.monotonic()-t
++    exact=sum(np.array_equal(a,c) and np.array_equal(b,d) for (a,b),(c,d) in zip(base,ys))
++    r=dict(node=node,same_center_and_raw_width=exact,histories=16,original_s=before,mapped_s=after,checkpoint=sha_file(replica(node)))
++    put(OUT/f'audits/numa_{node}.json',r);assert exact==16
++if __name__=='__main__':test(int(sys.argv[1]))
+diff --git a/data/coding/chronos_route_849_v1/code/numapool849.py b/data/coding/chronos_route_849_v1/code/numapool849.py
+new file mode 100644
+index 0000000..fc6f018
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/numapool849.py
+@@ -0,0 +1,98 @@
++"""Two native process families, each sharing an unmodified CPU-local Chronos instance."""
++import multiprocessing as mp,os,queue,time,traceback
++from pathlib import Path
++def cpus(node):
++    paths=Path('/sys/devices/system/cpu');aff=os.sched_getaffinity(0);picked=[]
++    for f in sorted(paths.glob('cpu[0-9]*/topology/core_id'),key=lambda x:int(x.parents[1].name[3:])):
++        parent=f.parents[1];cpu=int(parent.name[3:])
++        if cpu not in aff or not (parent/f'node{node}').exists():continue
++        core=(int((f.parent/'physical_package_id').read_text()),int(f.read_text()))
++        if all(other!=core for _,other in picked):picked.append((cpu,core))
++    return [c for c,_ in picked]
++def worker(fn,inq,outq,cpu,rank,local_cpus):
++    if fn.__name__ in ('labelworld','confirm_job'):
++        # The preceding stage can still be finishing cache-only forward passes.
++        # Admit native label jobs onto those cores as each prefetch worker exits.
++        marker=Path(__file__).resolve().parents[1]/'workers'
++        while True:
++            active=0
++            for p in marker.glob('*'):
++                try:
++                    if Path('/proc',p.name).exists():
++                        msg=p.read_text()
++                        if (fn.__name__=='labelworld' and '提前计算' in msg) or (fn.__name__=='confirm_job' and '开发闭环提前运行' in msg):active+=1
++                except OSError:pass
++            if rank<max(1,47-active):break
++            time.sleep(2)
++    import fcntl
++    root=Path(__file__).resolve().parents[1];locks=root/'cache/cpu_allocation';locks.mkdir(exist_ok=True)
++    pool=[cpu]+[c for c in local_cpus if c!=cpu]
++    held=None
++    while held is None:
++        occupied=set()
++        for marker in (root/'workers').glob('*'):
++            try:
++                affinity=os.sched_getaffinity(int(marker.name))
++                if len(affinity)==1:occupied.update(affinity)
++            except (ValueError,ProcessLookupError):pass
++        for candidate in pool:
++            if candidate in occupied:continue
++            fd=(locks/str(candidate)).open('a')
++            try:fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB)
++            except BlockingIOError:fd.close();continue
++            held=fd;os.sched_setaffinity(0,{candidate});break
++        if held is None:time.sleep(1)
++    while True:
++        job=inq.get()
++        if job is None:return
++        i,arg=job
++        try:outq.put((i,True,fn(arg)))
++        except BaseException:outq.put((i,False,traceback.format_exc()));return
++def leader(fn,inq,outq,cores):
++    node=int(Path(f'/sys/devices/system/cpu/cpu{cores[0]}/node1').exists());local_cpus=cpus(node)
++    os.sched_setaffinity(0,set(local_cpus))
++    from base849 import pf
++    pf.chrono()
++    fork=mp.get_context('fork')
++    ps=[fork.Process(target=worker,args=(fn,inq,outq,c,2*j+node,local_cpus)) for j,c in enumerate(cores)]
++    try:
++        for p in ps:p.start()
++        for p in ps:p.join()
++        if any(p.exitcode for p in ps):raise RuntimeError('NUMA worker exited abnormally')
++    finally:
++        for p in ps:
++            if p.is_alive():p.terminate()
++def parallel(fn,jobs,n):
++    jobs=list(jobs)
++    if not jobs:return []
++    n=min(len(jobs),n);groups=[cpus(0),cpus(1)]
++    if not all(groups):raise ValueError('both NUMA nodes must be available on this host')
++    counts=[(n+1)//2,n//2];ctx=mp.get_context('spawn');inq=ctx.Queue();outq=ctx.Queue();leaders=[]
++    for cores,count in zip(groups,counts):
++        if count:
++            p=ctx.Process(target=leader,args=(fn,inq,outq,cores[:count]));p.start();leaders.append(p)
++    for i,x in enumerate(jobs):inq.put((i,x))
++    for _ in range(n):inq.put(None)
++    result=[None]*len(jobs);done=0
++    try:
++        while done<len(jobs):
++            try:i,ok,value=outq.get(timeout=10)
++            except queue.Empty:
++                if any(p.exitcode not in (None,0) for p in leaders) or not any(p.is_alive() for p in leaders):raise RuntimeError('incomplete native process pool')
++                continue
++            if not ok:raise RuntimeError(value)
++            result[i]=value;done+=1
++            print(f'{fn.__name__} {done}/{len(jobs)}',flush=True)
++        for p in leaders:p.join()
++        return result
++    finally:
++        for p in leaders:
++            if p.is_alive():
++                # Terminate only this pool's subprocess tree on failure.
++                kids=Path(f'/proc/{p.pid}/task/{p.pid}/children')
++                if kids.exists():
++                    for child in kids.read_text().split():
++                        try:os.kill(int(child),15)
++                        except ProcessLookupError:pass
++                p.terminate();p.join()
++        inq.cancel_join_thread();outq.cancel_join_thread();inq.close();outq.close()
+diff --git a/data/coding/chronos_route_849_v1/code/overflow849.py b/data/coding/chronos_route_849_v1/code/overflow849.py
+new file mode 100644
+index 0000000..880dc7c
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/overflow849.py
+@@ -0,0 +1,81 @@
++"""Backfill blocked forecast lanes with distinct scheduled endpoints using measured CPU headroom."""
++import os,time,fcntl
++from concurrent.futures import ProcessPoolExecutor
++import multiprocessing as mp
++from design849 import *
++from filelock import FileLock,Timeout
++LANES=10
++def cpu():
++    v=dict(l.split() for l in Path('/sys/fs/cgroup/cpu.stat').read_text().splitlines())
++    return time.monotonic(),int(v['usage_usec'])*1e-6,int(v['nr_throttled']),int(v['nr_periods'])
++def jobkey(j):
++    phase,_,k,r,s,m=j;g='dev2' if phase=='development' else 'c2' if m==.75 else 'extra';return f'{g}_{k}_{r}_{s}_{m}'
++def live(key):
++    p=OUT/'jobs'/(key+'.json')
++    if not p.is_file():return False
++    d=get(p)
++    if d.get('receipt'):return Path(d['receipt']).exists()
++    pid=d.get('pid')
++    try:return bool(pid and Path(f'/proc/{pid}/stat').read_text().split()[21]==d['start'])
++    except OSError:return False
++def work(arg):
++    lane,j=arg;slotdir=OUT/'cache/cpu_allocation';slotdir.mkdir(exist_ok=True)
++    # Use high-numbered physical cores on either socket. The same locks are
++    # honored by the main pools; no environment or native model changes are needed.
++    choices=[c for pair in zip(range(47,23,-1),range(95,71,-1)) for c in pair]
++    held=None
++    for c in choices[lane:]+choices[:lane]:
++        fd=(slotdir/str(c)).open('a')
++        try:fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB)
++        except BlockingIOError:fd.close();continue
++        held=fd;os.sched_setaffinity(0,{c});break
++    if held is None:return False
++    try:
++        key=jobkey(j);lockdir=OUT/'jobs/locks';lockdir.mkdir(exist_ok=True)
++        try:
++            with FileLock(str(lockdir/(key+'.lock')),timeout=0):
++                if live(key):return False
++                os.environ['CHRONOS849_OVERFLOW_LANE']=str(lane)
++                from sharedcache849 import SharedPrefixCache
++                mark(key);stem=endpoint(j,cache_factory=SharedPrefixCache);finish(key,OUT/f'E2/receipts/{j[0]}/{stem}.json');return True
++        except Timeout:return False
++    finally:held.close()
++def main():
++    secondary='--supplement' in sys.argv
++    limit=16 if secondary else LANES
++    prefix='surplus' if secondary else 'overflow'
++    permit_name=prefix+'_enabled.txt'
++    os.environ['CHRONOS849_OVERFLOW_PERMIT']=permit_name
++    w,_=world('development',1400);Model(w,'Chronos')
++    dev=[('development','development',k,r,s,m) for m in (1.,.45,.60,.75) for r,s in reversed(MATRIX) for k in (1403,1402,1407,1405,1406,1404,1401,1400)]
++    allowed=0;before=cpu();pending={};frozen=None;confirm=[];enabled=OUT/'logs'/permit_name;enabled.write_text('0')
++    with ProcessPoolExecutor(limit,mp_context=mp.get_context('fork')) as pool:
++        while not (OUT/'report_receipt.json').exists():
++            time.sleep(5)
++            after=cpu();usage=(after[1]-before[1])/(after[0]-before[0]);throttle=(after[2]-before[2])/max(1,after[3]-before[3]);before=after
++            for lane,(future,j) in list(pending.items()):
++                if future.done():future.result();pending.pop(lane)
++            base_status=OUT/'logs/overflow_status.json'
++            eligible=not secondary or pending or (base_status.exists() and get(base_status)['assigned']>=9)
++            if usage<45.4 and eligible:allowed=min(limit,allowed+max(1,int(47.-usage)))
++            elif usage>47.5 and throttle>.20:allowed=max(0,allowed-1)
++            atom(enabled,str(allowed).encode())
++            if (OUT/'audits/final-smoke.json').exists():
++                if frozen is None:
++                    frozen=get(OUT/'design/frozen.json');check(frozen)
++                    # Work the common scale on higher IDs ahead of the main wave.
++                    pairs=sorted(frozen['base_endpoints'],key=lambda j:(-j[0],j[1],j[2]))+frozen['extra_endpoints']
++                    confirm=[('confirmation','confirmation',k,r,s,m) for k,r,s,m in pairs]
++                jobs=confirm
++            elif (OUT/'design/frozen.json').exists():jobs=[]
++            elif (OUT/'E2/labels/VALUE-route.json').exists():jobs=dev
++            else:jobs=[]
++            if secondary:jobs=jobs[len(jobs)//2:]+jobs[:len(jobs)//2]
++            underway={j for _,j in pending.values()}
++            for lane in range(allowed):
++                if lane in pending:continue
++                for j in jobs:
++                    if j in underway or live(jobkey(j)):continue
++                    pending[lane]=(pool.submit(work,(lane,j)),j);underway.add(j);break
++            put(OUT/'logs'/(prefix+'_status.json'),dict(cpu=round(usage,2),throttle_ratio=round(throttle,2),available=allowed,assigned=len(pending),jobs=[j for _,j in pending.values()]))
++if __name__=='__main__':main()
+diff --git a/data/coding/chronos_route_849_v1/code/parallel849.py b/data/coding/chronos_route_849_v1/code/parallel849.py
+new file mode 100644
+index 0000000..1c1fbd6
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/parallel849.py
+@@ -0,0 +1,50 @@
++"""Independent CPU work on exact paid prefixes. Worker count respects cgroup and memory caps."""
++from chronos_recipients import *
++from prefix849 import extend
++from concurrent.futures import ProcessPoolExecutor,as_completed
++import multiprocessing as mp
++from policy_env import plan_events
++from grudata import schedule
++def capacity():
++    quota,period=Path('/sys/fs/cgroup/cpu.max').read_text().split()
++    cpu=min(len(os.sched_getaffinity(0)),int(quota)//int(period) if quota!='max' else os.cpu_count())
++    mem=int(Path('/sys/fs/cgroup/memory.max').read_text());used=int(Path('/sys/fs/cgroup/memory.current').read_text())
++    # Shared model pages inherited on fork. Reserve 6 GiB and one core for the server.
++    return max(1,min(cpu-1,int((mem-used-6*2**30)/(1.05*2**30))))
++def busy(key):
++    d=OUT/'workers';d.mkdir(exist_ok=True);p=d/str(os.getpid());atom(p,key.encode());return p
++def warm(uid_stream):
++    (u,seq),k=uid_stream;mark=busy('开发 1400 固定选人臂的 Chronos 预测缓存')
++    try:
++        w,wm=world('development',k);cache=Cache(w,wm,'development');mem=Memory()
++        for a in seq:
++            o=w.observe(u,a/1e6+COST);mem.on_paid_fix(o);cache(u,mem)
++        cache.db.close()
++        return (u,len(seq),cache.hits,cache.misses)
++    finally:mark.unlink(missing_ok=True)
++def warm_known():
++    w,wm=world('development',1400);net=Model(w,'Chronos');streams=[]
++    streams.append([[i%16,*event] for i,event in enumerate(cal)])
++    for seed in (17,29,41):
++        es,_=plan_events(w,grid,'fixed',policy('fixed',seed)[0]);streams.append(es)
++    jobs=[((u,[a for uid,a,b in es if uid==u]),1400) for es in streams for u in range(16)]
++    with ProcessPoolExecutor(min(36,capacity()),mp_context=mp.get_context('fork')) as pool:
++        for v in pool.map(warm,sorted(jobs,key=lambda r:-len(r[0][1]))):print(v,flush=True)
++def shard(job):
++    split,k,parity=job
++    from prefix849 import __file__ as source
++    tag=busy(f'{split}/{k} E1 唯一付费前缀分片 {parity}')
++    try:
++        w,wm=world(split,k);model=Model(w,'Chronos');dest=OUT/f'E1/prefix_index/{split}/{k}';dest.mkdir(parents=True,exist_ok=True)
++        if (dest/'receipt.json').exists():return
++        spec=sha(compact([split,w.namespace,wm['physical_sha256'],modelid(),sha_file(Path(source))]))
++        keys=[EMPTY]*16
++        for i,(u,t) in enumerate(schedule(w,41000+k)):
++            if u%2!=parity:continue
++            o=w.observe(u,t);keys[u]=extend(keys[u],o);key=(spec,u,len(model.h[u])+1,o.t,keys[u]);p=dest/f'{i}.part'
++            if p.exists():
++                stored,c,width=pickle.loads(p.read_bytes());assert key==stored
++                model.h[u].append(o);continue
++            c,width=model.predict(u,o);atom(p,pickle.dumps((key,c,width),protocol=5))
++    finally:tag.unlink(missing_ok=True)
++if __name__=='__main__':warm_known()
+diff --git a/data/coding/chronos_route_849_v1/code/pipeline_prefetch.py b/data/coding/chronos_route_849_v1/code/pipeline_prefetch.py
+new file mode 100644
+index 0000000..8fcad48
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/pipeline_prefetch.py
+@@ -0,0 +1,26 @@
++from parallel849 import *
++from prefix849 import collect
++def work(spec):
++    split,k=spec;tag=busy(f'{split}/{k} 提前计算后续需要的付费前缀')
++    try:
++        if split=='development':
++            return collect(split,k)['prefixes']
++        # The mixed behavior uses only EDF-native and its registered RNG, hence
++        # the purchased history is completely independent of either fitted risk head.
++        w,wm=world(split,k);cache=Cache(w,wm,split);eng=Engine(w,cache,.75,False,'EDF-native')
++        number=8 if split=='train' else 1
++        rng=np.random.default_rng(201127+k);eligible=np.flatnonzero((np.arange(len(TICKS))>=16)&(np.array(TICKS)+24<grid.opportunities))
++        chosen={int(rng.choice(v)) for v in np.array_split(eligible,number)}
++        for i in range(max(chosen)+1):
++            eng.preservice(i)
++            uid=i if i<16 else (int(rng.integers(16)) if rng.random()<.35 else int(np.argmin(eng.deadline())))
++            eng.buy(i,uid,heads=False)
++        return len(eng.events)
++    finally:tag.unlink(missing_ok=True)
++if __name__=='__main__':
++    assert get(OUT/'audits/smoke.json')['status']=='PASS'
++    w,_=world('development',1400);Model(w,'Chronos')
++    # Once fitting finishes, the label workers take over the CPUs.
++    jobs=[('development',k) for k in range(1401,1408)]+[('train',k) for k in range(1000,1007)]
++    with ProcessPoolExecutor(14,mp_context=mp.get_context('fork')) as p:
++        for f in as_completed([p.submit(work,j) for j in jobs]):print(f.result(),flush=True)
+diff --git a/data/coding/chronos_route_849_v1/code/prefix849.py b/data/coding/chronos_route_849_v1/code/prefix849.py
+new file mode 100644
+index 0000000..357b6e1
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/prefix849.py
+@@ -0,0 +1,39 @@
++"""A single frozen native inference per unique issued E1 prefix, with atomic checkpoints."""
++from base849 import *
++import pickle,time
++from grudata import schedule
++from functools import lru_cache
++def obsbytes(o):
++    return b''.join(np.asarray(v,dtype='<f8').tobytes() for v in ([o.t],o.position,o.covariance))
++def extend(previous,o):return sha(bytes.fromhex(previous)+obsbytes(o))
++EMPTY=sha(b'')
++@lru_cache
++def modelid():
++    m=get(OUT/'manifest.json')
++    return sha(compact([m['files'][m['paths'][p]] for p in ('Chronos/best.pt','Chronos/tube.pkl')]+[m['grid'],m['platform'],m['torch']]))
++def collect(split,k):
++    w,wm=world(split,k); model=Model(w,'Chronos');dest=OUT/'E1/prefix_index'/split/str(k);dest.mkdir(parents=True,exist_ok=True)
++    entries=list(schedule(w,41000+k));hist=[EMPTY]*16;rows=[];seen=set()
++    spec=sha(compact([split,w.namespace,wm['physical_sha256'],modelid(),sha_file(Path(__file__))]))
++    rec=dest/'receipt.json';data=dest/'prefixes.pkl'
++    if rec.exists():
++        r=get(rec);assert r['spec']==spec and sha_file(data)==r['sha256'];return r
++    start=time.monotonic()
++    for i,(uid,t) in enumerate(entries):
++        u=int(uid);o=w.observe(u,t);hist[u]=extend(hist[u],o);n=len(model.h[u])+1
++        key=(spec,u,n,o.t,hist[u])
++        if key in seen:raise ValueError('duplicate issuance')
++        seen.add(key);file=dest/f'{i}.part'
++        if file.exists():
++            prev,c,width=pickle.loads(file.read_bytes())
++            assert key==prev;model.h[u].append(o)
++        else:
++            c,width=model.predict(u,o);atom(file,pickle.dumps((key,c,width),protocol=5))
++        assert c.shape==(21,3) and width.shape==(21,2) and np.isfinite(c).all() and np.isfinite(width).all()
++        rows.append((u,o,n,hist[u],arrhash(c),c,width))
++    atom(data,pickle.dumps(rows,protocol=5))
++    r=dict(spec=spec,sha256=sha_file(data),split=split,world=k,physics=wm['physical_sha256'],namespace=w.namespace,prefixes=len(rows),dtype=str(rows[0][-2].dtype),weights=modelid(),grid=pf.GRID.tolist(),wall_seconds=time.monotonic()-start)
++    put(rec,r)
++    for f in dest.glob('*.part'):f.unlink()
++    return r
++if __name__=='__main__':print(collect(sys.argv[1],int(sys.argv[2])),flush=True)
+diff --git a/data/coding/chronos_route_849_v1/code/report849.py b/data/coding/chronos_route_849_v1/code/report849.py
+new file mode 100644
+index 0000000..b66b7be
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/report849.py
+@@ -0,0 +1,204 @@
++from design849 import *
++from scipy.stats import spearmanr
++import matplotlib
++matplotlib.use('Agg')
++import matplotlib.pyplot as plt
++def ci(values):
++    z=np.asarray(values,dtype=float)
++    if not len(z):return [None,None,None,0]
++    assert np.isfinite(z).all()
++    if len(z)==1:return [float(z[0]),None,None,1]
++    idx=np.random.default_rng(271127).integers(0,len(z),(20000,len(z)))
++    lo,hi=np.quantile(z[idx].mean(1),[.025,.975])
++    return [float(z.mean()),float(lo),float(hi),len(z)]
++def csvout(df,path):
++    atom(OUT/path,df.to_csv(index=False).encode())
++def fmt(row,digits=3):
++    x,lo,hi,n=row
++    if x is None:return '无合格世界'
++    if lo is None:return f'{x:.{digits}f}（1 世界，区间不可估）'
++    return f'{x:.{digits}f} [{lo:.{digits}f}, {hi:.{digits}f}]'
++def figsave(fig,name):
++    for suffix in ('.png','.pdf'):fig.savefig(OUT/'figures'/(name+suffix),dpi=160,bbox_inches='tight')
++    plt.close(fig)
++def report():
++    from live849 import start as mark,finish
++    mark('report_final')
++    v=subprocess.run([sys.executable,'-B','tools/verify.py'],cwd=ED,capture_output=True,check=True)
++    atom(OUT/'logs/archive_verify_post.log',v.stdout+v.stderr)
++    d=get(OUT/'design/frozen.json');check(d);assert get(OUT/'audits/final-smoke.json')['status']=='PASS'
++    exp=set(tuple(v) for v in d['base_endpoints']+d['extra_endpoints']);ids=set(w['world'] for w in d['worlds'])
++    from audit849 import audit_confirm_world
++    from gate849 import poolmap
++    poolmap(audit_confirm_world,sorted(ids),min(32,capacity()))
++    audit_index=get(OUT/'audits.json');audit_index['confirmation']={str(k):sha_file(OUT/f'audits/confirmation/{k}.json') for k in sorted(ids)};put(OUT/'audits.json',audit_index)
++    df=receipts('confirmation');assert set(zip(df.world,df.arm,df.seed,df.scale))==exp and len(df)==len(exp)
++    assert set(df.world)==ids
++    phys={m['world']:m['physical_sha256'] for m in d['worlds']}
++    assert (df.physics==df.world.map(phys)).all()
++    e1=life_summary('confirmation')
++    scores=[];coverage=[];counts=[];byage=[];effective_worlds=set();effective_prefixes=set();all_prefixes=0
++    for k in sorted(ids):
++        p=OUT/f'E1/scores/confirmation/{k}.csv.gz';r=get(p.with_name(f'{k}.json'))
++        assert r['sha256']==sha_file(p) and r['physics']==phys[k] and r['mismatches']==0
++        all_prefixes+=r['issued'];d1=pd.read_csv(p);unique=d1[(d1.arm=='ROUTE')&(d1.scale==.75)]
++        pp=primary(unique);valid=pp[(pp.permutable>0)&(pp.route_support>0)]
++        if len(valid):effective_worlds.add(k);effective_prefixes.update((k,p) for p in valid.prefix)
++        counts.append(dict(world=k,issued=r['issued'],primary_prefixes=pp.prefix.nunique(),primary_flights=pp.uid.nunique(),primary_queries=len(pp),permutable_prefixes=valid.prefix.nunique(),missing_reason='' if len(pp) else 'no eligible same-direction revisit cell'))
++        q=d1[(d1.scale==.75)&(d1.h==0)]
++        subsets={'all':q,'primary':primary(q),'first_pass':q[q.label=='first_pass'],'low_reuse':q[q.group=='no_reusable_path'],'detour_rejoin':q[q.label.isin(['detour','rejoin'])],'route_support':q[q.route_support>0],'no_route_support':q[q.route_support==0],'natural':q[q.natural==1]}
++        for label,data in subsets.items():
++            ix=data[data.arm=='ROUTE']
++            coverage.append(dict(world=k,group=label,queries=len(ix),users=ix.uid.nunique(),prefixes=ix.prefix.nunique(),censored=float(ix.censored.mean()) if len(ix) else None,no_time=float((ix.time_support==0).mean()) if len(ix) else None,time_only=float(((ix.time_support>0)&(ix.route_support==0)).mean()) if len(ix) else None,permutable=float(ix.permutable.mean()) if len(ix) else None))
++            for arm,v in data.groupby('arm'):
++                cells=v.groupby(['n','age'])[['U','O']].mean()
++                scores.append(dict(experiment='E1',world=k,physics=phys[k],stratum=label,arm=arm,scale=.75,eligible_cells=len(cells),**cells.mean().to_dict()))
++        for (arm,age),v in primary(q).groupby(['arm','age']):
++            byage.append(dict(world=k,arm=arm,age=age,U=v.groupby('n').U.mean().mean()))
++    s2=df.groupby(['world','arm','scale']).mean(numeric_only=True).reset_index()
++    nw=s2[s2.scale==.75].copy();nw['experiment']='E2';nw['stratum']='all';nw['physics']=nw.world.map(phys)
++    csvout(pd.concat([pd.DataFrame(scores),nw],ignore_index=True),'world_scores.csv');csvout(df,'E2/endpoints.csv')
++    csvout(e1,'E1/primary_grid.csv');csvout(pd.DataFrame(counts),'E1/primary_coverage.csv');csvout(pd.DataFrame(coverage),'E1/strata.csv')
++    cover=pd.DataFrame(coverage);slices=[]
++    for group,v in cover.groupby('group'):
++        ok=v[v.queries>0]
++        slices.append(dict(stratum=group,worlds=len(ok),prefixes=int(v.prefixes.sum()),queries=int(v.queries.sum()),aircraft_worlds=int(v.users.sum()),no_time=float(ok.no_time.mean()) if len(ok) else None,time_only=float(ok.time_only.mean()) if len(ok) else None,permutable=float(ok.permutable.mean()) if len(ok) else None,censored=float(ok.censored.mean()) if len(ok) else None))
++    csvout(pd.DataFrame(slices),'E1/strata_summary.csv')
++    cs=[];answers={}
++    def contrast(family,label,col,vector):
++        val=ci(vector);cs.append(dict(family=family,comparison=label,metric=col,mean=val[0],lo95=val[1],hi95=val[2],worlds=val[3]));answers[family,label,col]=val;return val
++    def paired(tab,arm,other,metric):
++        if tab.empty:return []
++        z=tab.pivot(index='world',columns='arm',values=metric)
++        return (z[arm]-z[other]).dropna().values if arm in z and other in z else []
++    yes1={};yes2={}
++    main=e1[e1.scale==.75];main2=nw
++    for a in sorted(set(['TIME','SHUFFLE',d['strong_E1']])):
++        u=contrast('E1',a,'missed_s_saved',paired(main,a,'ROUTE','U'))
++        o=contrast('E1',a,'extra_overadmission_s',paired(main,'ROUTE',a,'O'))
++        yes1[a]=bool(u[1] is not None and u[1]>0 and o[2]<.02)
++    permok=len(effective_worlds)>=d['effective_shuffle_min_worlds'] and len(effective_prefixes)>=d['effective_shuffle_min_prefixes']
++    e1pass=all(yes1.values()) and permok
++    def comp2(label,a,b,tab=main2,family='E2'):
++        g=contrast(family,label,'delta_G_Mbps',paired(tab,a,b,'G'));r=contrast(family,label,'delta_R_pp',paired(tab,a,b,'R'))
++        return bool(g[1] is not None and g[1]>0 and r[2]<.5)
++    for a in sorted(set(nw.arm)-{'VALUE-route'}):yes2[a]=comp2(a,'VALUE-route',a)
++    alt=comp2('nonroute_vs_AoI',d['strong_nonroute_scheduling'],d['strong_AoI'])
++    absolute={a:contrast('E2-absolute',a,'R_pct',v.R) for a,v in nw.groupby('arm')}
++    tables=[]
++    for a,v in nw.groupby('arm'):
++        rr=absolute[a];row=dict(arm=a,worlds=len(v),absolute_R_7pct=rr[2]<=7)
++        for tag in ['G','R','unavailable','mispointed','P5','Jain','narrow_s','max_gap_s','purchases','paid_s','switch_s','data_s','unavailable_s']:
++            q=ci(v[tag]);row[tag]=q[0];row[tag+'_lo']=q[1];row[tag+'_hi']=q[2]
++        tables.append(row)
++    table=pd.DataFrame(tables);csvout(table,'表1_同一849笔预约下的净吞吐与风险.csv')
++    def weighted_scalar(v,ws,metric):
++        vs=v.set_index('scale');return sum(float(weight)*vs.loc[float(m),metric] for m,weight in ws.items())
++    matched=[]
++    for setting,ww in [('risk_matched',d['E2_matched']['weights']),('individual_target',{a:v['weights'] for a,v in d['E2_individual_target'].items()})]:
++        for (k,a),v in s2.groupby(['world','arm']):
++            if a not in ww:continue
++            matched.append(dict(setting=setting,world=k,arm=a,G=weighted_scalar(v,ww[a],'G'),R=weighted_scalar(v,ww[a],'R')))
++    mdf=pd.DataFrame(matched);csvout(mdf,'E2/development_frozen_workpoints.csv')
++    for setting,tab in mdf.groupby('setting'):
++        for a in sorted(set(['VALUE-time',d['strong_E2'],'EDF-route'])):comp2(a,'VALUE-route',a,tab,setting)
++    lm=[]
++    for (k,a),v in e1.groupby(['world','arm']):
++        if a in d['E1_matched']['weights']:
++            ws=d['E1_matched']['weights'][a];lm.append(dict(world=k,arm=a,U=weighted_scalar(v,ws,'U'),O=weighted_scalar(v,ws,'O')))
++    lm=pd.DataFrame(lm);csvout(lm,'E1/development_frozen_workpoints.csv')
++    csvout(pd.DataFrame(cs),'contrasts.csv')
++    ageframe=pd.DataFrame(byage,columns=['world','arm','age','U']);fig,ax=plt.subplots(1,2,figsize=(10,4));colors={'TIME':'#3865aa','ROUTE':'#13806c','SHUFFLE':'#b5632d'}
++    age_differences=[]
++    for age in (2,3,5):
++        block=ageframe[ageframe.age==age]
++        for other in ('TIME','SHUFFLE'):
++            effect=ci(paired(block,other,'ROUTE','U'))
++            age_differences.append(dict(age_s=age,comparison=f'{other}-ROUTE',delta_U_s=effect[0],low95=effect[1],high95=effect[2],worlds=effect[3]))
++    csvout(pd.DataFrame(age_differences),'E1/age_contrasts.csv')
++    for a,color in colors.items():
++        means=[];errs=[]
++        for age in (2,3,5):
++            v=ageframe[(ageframe.arm==a)&(ageframe.age==age)];q=ci(v.U)
++            means.append(np.nan if q[0] is None else q[0]);errs.append([0,0] if q[1] is None else [max(0,q[0]-q[1]),max(0,q[2]-q[0])])
++        ax[0].errorbar([2,3,5],means,yerr=np.asarray(errs).T,marker='o',color=color,label=a,capsize=3)
++        v=e1[e1.arm==a].groupby('scale')[['O','U']].mean()
++        if len(v):
++            ax[1].plot(v.O,v.U,'o-',color=color,label=a);ax[1].scatter(v.loc[.75,'O'],v.loc[.75,'U'],s=100,facecolors='none',edgecolors=color)
++    ax[0].set(xlabel='Age since paid fix (s)',ylabel='Missed usable lifetime U (s)',xticks=[2,3,5]);ax[1].set(xlabel='Overadmission O (s)',ylabel='Missed usable lifetime U (s)')
++    if d['E1_matched']['overlap']:ax[1].axvspan(*d['E1_matched']['overlap'],alpha=.09,color='black')
++    ax[0].legend();fig.suptitle(f'Fixed Chronos center | {len(ids)} worlds | {all_prefixes:,} issued prefixes');fig.tight_layout();figsave(fig,'Fig1_fixed_center_lifetime')
++    same=[]
++    for k in sorted(ids):
++        rows=json.loads(gzip.decompress((OUT/f'E2/same_state_rankings/{k}.json.gz').read_bytes()))
++        h=pd.DataFrame(rows,columns=['world','appointment','route_uid','alternate','alt_uid','age_gap','within_one_opportunity','route_support','alt_support'])
++        for rival,v in h.groupby('alternate'):
++            diff=v[v.route_uid!=v.alt_uid];close=diff[diff.within_one_opportunity]
++            same.append(dict(world=k,comparison=rival,scored=len(v),conflicts=len(diff),near_AoI_conflicts=len(close),supported_conflicts=int((diff.route_support>0).sum())))
++    same=pd.DataFrame(same);csvout(same,'E2/same_state_rankings_by_world.csv')
++    diag=[];rank=[]
++    for path in sorted((OUT/'E2/labels/development').glob('*/*/state.json')):
++        rec=get(path);b=np.asarray(rec['bits']);chosen={}
++        for side in ('time','route'):
++            x=np.asarray(rec['features'][side]);s=value_head(side).predict(x,num_threads=1);u=tie(s,-np.asarray(rec['ages']))[0];chosen[side]=u
++            corr=spearmanr(s,b).statistic
++            rank.append(dict(world=rec['world'],appointment=rec['appointment'],side=side,spearman=float(corr) if np.isfinite(corr) else None,regret_bits=float(max(b)-b[u]),improvement_over_EDF_bits=float(b[u]-b[rec['edf']])))
++        u,v=chosen['route'],chosen['time']
++        diag.append(dict(world=rec['world'],appointment=rec['appointment'],route_uid=u,time_uid=v,conflict=u!=v,route_support=rec['support'][u][1]>0,age_diff=abs(rec['ages'][u]-rec['ages'][v]),delta_bits=b[u]-b[v]))
++    diag=pd.DataFrame(diag);csvout(diag,'E2/same_state_conflicts.csv');csvout(pd.DataFrame(rank),'E2/development_value_diagnostics.csv')
++    fig,ax=plt.subplots(1,2,figsize=(11,4.6))
++    for i,(a,v) in enumerate(nw.groupby('arm')):
++        point=[v.R.mean(),v.G.mean()];col=plt.cm.tab10(i)
++        ax[0].scatter(*point,color=col,label=a)
++        matchrows=mdf[(mdf.setting=='risk_matched')&(mdf.arm==a)]
++        if len(matchrows):ax[0].plot([point[0],matchrows.R.mean()],[point[1],matchrows.G.mean()],'x--',lw=.7,color=col)
++    ax[0].axvline(7,color='.5',ls=':');ax[0].set(xlabel='Risk (%)',ylabel='Net goodput (Mbps)');ax[0].legend(fontsize=7,ncol=2)
++    groups=diag[diag.conflict].groupby('route_support');y=[]
++    for j,(supp,v) in enumerate(groups):
++        z=ci(v.groupby('world').delta_bits.mean()/1e6);y.append('Supported' if supp else 'Fallback')
++        ax[1].bar(j,z[0],color='#13806c');ax[1].text(j,z[0],f'{len(v)} decisions',ha='center',va='bottom',fontsize=8)
++        if z[1] is not None:ax[1].errorbar(j,z[0],yerr=np.array([[max(0,z[0]-z[1])],[max(0,z[2]-z[0])]]),fmt='none',color='black',capsize=3)
++    if not y:ax[1].text(.5,.5,'No conflicting sampled decisions',transform=ax[1].transAxes,ha='center')
++    ax[1].set(xticks=range(len(y)),xticklabels=y,ylabel='Paired rescued bits (Mbit)',title='4.464 s counterfactual | development');ax[1].axhline(0,color='.6',lw=.8)
++    fig.tight_layout();figsave(fig,'Fig2_recipient_goodput')
++    e2pass=yes2['VALUE-time'] and yes2[d['strong_E2']]
++    if e1pass and e2pass:claim='路线记忆改善波束保持期判断，并在相同定位成本、风险非劣条件下带来净吞吐收益。'
++    elif e1pass:claim='只主张固定 Chronos 中心下的保持期判断改善。同费净吞吐收益尚未获得预冻结双判据支持。'
++    elif alt:claim='主线收敛为强预测器下的多用户付费刷新调度。路线记忆改善保持期的机制证据不足。'
++    elif yes2['VALUE-time']:claim='可报告选人层相对同构 VALUE-time 的同费经验收益。保持期机制归因未获支持。'
++    else:claim='本轮证据不足以主张路线保持期改善或同风险吞吐改善，论文应报告风险与吞吐的权衡、支持覆盖与失效条件。'
++    rr=absolute['VALUE-route'];lines=['# Chronos-849 配对确认实验报告','',claim,'',f'确认集共 {len(ids)} 个新物理世界。E1 共有 {all_prefixes:,} 个唯一签发前缀，主层含 {sum(x["primary_prefixes"] for x in counts)} 个前缀、{main.world.nunique()} 个有效世界。E2 完成 {len(df)} 个全程端点，其中共同倍率端点 {len(d["base_endpoints"])} 个。共同工作点为 0.75。每个世界内先平均 DQN 的三个冻结种子。区间采用完整物理世界配对自助法，20,000 次，种子 271127。','','## 图 1　固定中心下的波束保持期','','![图1](figures/Fig1_fixed_center_lifetime.png)','']
++    for a in sorted(yes1):
++        u=answers['E1',a,'missed_s_saved'];o=answers['E1',a,'extra_overadmission_s'];lines.append(f'- ROUTE 对 {a} 的错失秒数改善为 {fmt(u)} s，过度准入增量为 {fmt(o)} s。0.02 秒非劣双判据{"通过" if yes1[a] else "未通过"}。零容忍敏感性{"通过" if o[2] is not None and o[2]<0 else "未通过"}。')
++    lines+=['',f'有效空间置换覆盖 {len(effective_worlds)} 个世界、{len(effective_prefixes)} 个主层前缀。开发冻结的非空间风险头为 {d["strong_E1"]}。缺失世界及原因见 E1/primary_coverage.csv。','','## 表 1　同一 849 笔预约下的净吞吐与风险','','|臂|G Mbps|R %|不可用 %|失向 %|用户 P5 Mbps|实付笔数|占时 s|绝对 7%|','|---|---:|---:|---:|---:|---:|---:|---:|---|']
++    for r in table.itertuples():lines.append(f'|{r.arm}|{r.G:.3f}|{r.R:.3f}|{r.unavailable:.3f}|{r.mispointed:.3f}|{r.P5:.3f}|{r.purchases:.0f}|{r.paid_s:.4f}|{"通过" if r.absolute_R_7pct else "未通过"}|')
++    lines+=['',f'开发集冻结的最强非空间对手为 {d["strong_E2"]}。以下 ΔG 为 VALUE-route 减对手，ΔR 单位为百分点。','']
++    for a in dict.fromkeys(['VALUE-time',d['strong_E2'],'EDF-route']):
++        g=answers['E2',a,'delta_G_Mbps'];r=answers['E2',a,'delta_R_pp'];lines.append(f'- 对 {a}，ΔG 为 {fmt(g)} Mbps，ΔR 为 {fmt(r)} 个百分点。风险非劣{"通过" if r[2]<.5 else "未通过"}。吞吐与风险双判据{"通过" if yes2[a] else "未通过"}。')
++    lines+=['',f'VALUE-route 的绝对风险为 {fmt(rr)}%，其上界与 7% 比较，{"通过" if rr[2]<=7 else "未通过"}。开发倍率网格的 E2 共同可达风险区间为 {d["E2_matched"]["overlap"]}。各臂边际可达区间和风险匹配权重见 design/frozen.json，确认集加权点见 E2/development_frozen_workpoints.csv。',f'无路线调度 {d["strong_nonroute_scheduling"]} 对冻结 AoI 强对照 {d["strong_AoI"]} 的 ΔG 为 {fmt(answers["E2","nonroute_vs_AoI","delta_G_Mbps"])} Mbps，ΔR 为 {fmt(answers["E2","nonroute_vs_AoI","delta_R_pp"])} 个百分点。','','## 图 2　选人分歧带来的通信收益','','![图2](figures/Fig2_recipient_goodput.png)','',f'右图为离线开发诊断。分层抽定的 {len(diag)} 个共同付费状态中，两价值臂选人不同时才计入，共 {int(diag.conflict.sum())} 个分歧预约。各候选随后均走 EDF-native，比较 4.464 秒全机群实际交付比特。置信区间按开发世界聚类。','','首次单世界核验使用临时接口测试头。最终单世界核验、开发工作点及确认集使用拟合并独立校准的模型。原始场景为 16 机物理仿真、180 秒、零预热。定位成本、波束控制、风险与净速率均取自本轮逐场账本。']
++    lines+=['','## E1 分层覆盖与回退','','比例先在有合格查询的世界内计算，再按世界等权平均。','',
++            '|分层|有效世界|前缀|查询|无时间支持回退|仅时间支持回退|10 s 右删失|','|---|---:|---:|---:|---:|---:|---:|']
++    for row in slices:
++        rate=lambda name:('—' if row[name] is None else f'{100*row[name]:.1f}%')
++        lines.append(f'|{row["stratum"]}|{row["worlds"]}|{row["prefixes"]}|{row["queries"]}|{rate("no_time")}|{rate("time_only")}|{rate("censored")}|')
++    lines+=['','风险匹配若涉及两个倍率，使用开发冻结的权重，对同一物理世界两个完整闭环回执的净吞吐和风险计算加权期望。共同倍率的主结论和绝对 7% 结论均保留各自的确认集区间。']
++    if yes1.get('TIME') and yes1.get(d['strong_E1']) and not e1pass:
++        lines+=['','带检索特征的头相对于冻结的非空间比较臂改善了保持期判断。空间置换对照或有效置换覆盖未达预设条件，因而路线地理对应关系的独立贡献仍待验证。']
++    v=same[same.comparison=='VALUE-time']
++    lines+=['',f'共同倍率的 VALUE-route 线上状态中，VALUE-time 在 {int(v.conflicts.sum())}/{int(v.scored.sum())} 个可选预约会改选用户，其中 {int(v.near_AoI_conflicts.sum())} 笔的两个候选信息年龄相差至多 0.186 秒。该统计只比较同一个付费状态的排名，短窗因果净比特另由图 2 的反事实诊断计算。每场两类风险均以 16×9,000 个探针为分母。']
++    rawinfo=[get(OUT/f'E1/prefix_index/confirmation/{k}/receipt.json') for k in ids]
++    closedinfo=[get(p) for p in (OUT/'E2/receipts/confirmation').glob('*.json')]
++    telemetry=OUT/'logs/cpu_memory.csv'
++    compute=dict(E1_formal_worlds=len(rawinfo),E1_formal_prefixes=sum(r['prefixes'] for r in rawinfo),E1_worker_seconds_per_1000_prefixes=1000*sum(r['wall_seconds'] for r in rawinfo)/sum(r['prefixes'] for r in rawinfo),E2_confirm_endpoints=len(closedinfo),E2_median_wall_s=float(np.median([r['elapsed_s'] for r in closedinfo])),E2_endpoint_wall_quartiles=np.quantile([r['elapsed_s'] for r in closedinfo],[.25,.75]).tolist(),E2_cache_hits=sum(r['cache_hits'] for r in closedinfo),E2_native_forwards=sum(r['cache_misses'] for r in closedinfo),counterfactual_branches=dict(train=4096,validation=256,development_diagnostic=256))
++    if telemetry.is_file():
++        monitor=pd.read_csv(telemetry)
++        compute['sampled_resources']={phase:dict(samples=len(tab),cpu_cores_mean=float(tab.study_cpu_cores.mean()),peak_observed_pss_GiB=float(tab.study_pss_bytes.max()/2**30),peak_shared_cgroup_memory_GiB=float(tab.cgroup_memory_bytes.max()/2**30)) for phase,tab in monitor.groupby('phase')}
++    put(OUT/'resources.json',compute)
++    lines+=['',f'正式 E1 每 1,000 个签发前缀消耗 {compute["E1_worker_seconds_per_1000_prefixes"]:.1f} 个世界任务墙钟秒，E2 正式端点墙钟中位数 {compute["E2_median_wall_s"]:.1f} 秒。采样 CPU 和进程比例内存峰值见 resources.json。训练、验证和开发诊断短分支分列，均未计作正式端点。']
++    planning=d['power_planning']
++    lines+=['',f'样本量在读取确认结果前按开发配对方差与重访覆盖确定。计算需求为 {planning["requirements"]} 个物理世界，选择 {planning["selected"]} 个。预约算力上限对全部预设效应的规划精度{"充足" if planning["capacity_sufficient"] else "未完全覆盖"}。可检出性估算采用开发方差，正式结论以确认配对区间为准。']
++    runtime=get(OUT/'design/runtime.json');manifest=get(OUT/'manifest.json')
++    lines+=['','## 复核入口','','|项目|实际提交或 SHA-256|','|---|---|',f'|five-mpc 基线提交|{manifest["commit"]}|',f'|本轮冻结提交|{d["new_code_commit"]}|',f'|本轮源代码集合|{d["code_hash"]}|',f'|Chronos 原底座|{runtime["native"]["original_backbone"]["sha256"]}|',f'|Chronos 种子 7 微调权重|{runtime["native"]["Chronos/best.pt"]["sha256"]}|',f'|Chronos 原生误差管|{runtime["native"]["Chronos/tube.pkl"]["sha256"]}|',f'|展开的物理场景配置|{manifest["config_sha"]}|',f'|849 笔预约表|{manifest["calendar_sha256"]}|','','模型与全部加载源码路径见 manifest.json。世界清单、比较对象、统计阈值及每个新增模型哈希见 design/frozen.json。两次 1400 核验与逐留出世界审计索引见 audits.json。']
++    atom(OUT/'REPORT.md',('\n'.join(lines)+'\n').encode())
++    put(OUT/'report_receipt.json',dict(worlds=len(ids),endpoints=len(exp),E1_pass=e1pass,E2_pass=e2pass,absolute_risk_pass=bool(rr[2]<=7),simple_increment=yes2['EDF-route'],scheduling_pass=alt,claim=claim,artifacts={str(p.relative_to(OUT)):sha_file(p) for p in [OUT/'REPORT.md',OUT/'world_scores.csv',OUT/'contrasts.csv',*sorted((OUT/'figures').glob('*'))]}));finish('report_final',OUT/'report_receipt.json')
++    (OUT/'logs/status.txt').write_text('全部冻结实验、审计与报告已生成。结论见 REPORT.md。\n')
+diff --git a/data/coding/chronos_route_849_v1/code/resume849.py b/data/coding/chronos_route_849_v1/code/resume849.py
+new file mode 100644
+index 0000000..5fdc21c
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/resume849.py
+@@ -0,0 +1,36 @@
++"""Verified restart by stage, including after an interrupted supervisor process."""
++from design849 import *
++from gate849 import poolmap
++from audit849 import validate
++from chronos_life_panel import inputs,fit
++from labels849 import labelworld,trainvalue
++def resume():
++    from filelock import FileLock
++    with FileLock(str(OUT/'logs/resume.lock'),timeout=0):
++        if (OUT/'report_receipt.json').exists():
++            r=get(OUT/'report_receipt.json');assert all(sha_file(OUT/p)==s for p,s in r['artifacts'].items());return
++        dfile=OUT/'design/frozen.json'
++        if dfile.exists():
++            d=get(dfile);check(d)
++        else:
++            if not (OUT/'audits/smoke.json').is_file():
++                poolmap(execute_endpoint,[('smoke','development',1400,r,s,.75) for r,s in MATRIX],10)
++                panel(('smoke','development',1400));validate('smoke')
++            w,_=world('development',1400);Model(w,'Chronos')
++            fj=[('tube_fit',k) for k in range(1200,1216)]+[('tube_calibration',k) for k in range(1300,1316)]
++            poolmap(inputs,fj,32)
++            missing=[]
++            for a in LEARN:
++                p=OUT/f'E1/calibration/{a}.pkl';r=p.with_suffix('.json')
++                if r.exists():assert sha_file(p)==get(r)['sha256']
++                else:missing.append(a)
++            if missing:poolmap(fit,missing,len(missing))
++            ls=[('train',k,8) for k in range(1000,1032)]+[('train_validation',k,1) for k in range(1100,1116)]+[('development',k,2) for k in range(1400,1408)]
++            (OUT/'logs/status.txt').write_text('独立风险头已校准。正在训练与验证世界并行生成同状态反事实标签。\n')
++            poolmap(labelworld,ls,capacity())
++            for side in ('time','route'):
++                p=OUT/f'E2/labels/VALUE-{side}.txt';r=p.with_suffix('.json')
++                if r.exists():assert sha_file(p)==get(r)['sha256']
++                else:trainvalue(side)
++        development_freeze_confirm()
++if __name__=='__main__':resume()
+diff --git a/data/coding/chronos_route_849_v1/code/seal849.py b/data/coding/chronos_route_849_v1/code/seal849.py
+new file mode 100644
+index 0000000..666d4e0
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/seal849.py
+@@ -0,0 +1,31 @@
++"""Seal every E1 issuance against its full paid observation and native inference identity."""
++from chronos_route_heads import *
++from prefix849 import modelid,extend
++from grudata import schedule
++import gzip,io
++def seal(job):
++    split,k=job;w,wm=world(split,k);dest=OUT/f'E1/prefix_index/{split}/{k}'
++    src=dest/'prefixes.pkl';r=get(dest/'receipt.json');out=dest/'canonical-full-prefixes.json.gz';rec=dest/'canonical-receipt.json'
++    retrieval=dest/'retrieval_features.npz'
++    assert r['physics']==wm['physical_sha256'] and sha_file(src)==r['sha256']
++    if rec.exists():
++        z=get(rec);assert z['source_sha']==r['sha256'] and z['sha']==sha_file(out) and z['retrieval_sha']==sha_file(retrieval);return k
++    archive=pickle.loads(src.read_bytes());old=[EMPTY]*16;full=[EMPTY]*16;count=[0]*16;keys=[];ids=set();memories=[Memory() for _ in range(16)];summaries=[];supports=[];causal=[]
++    for row,(u,t) in zip(archive,schedule(w,41000+k),strict=True):
++        uid,o,n,old_sha,csha,c,width=row;physical=w.observe(u,t)
++        assert uid==u and obsfull(physical)==obsfull(o) and csha==arrhash(c)
++        old[u]=extend(old[u],o);assert old[u]==old_sha
++        full[u]=digest(full[u],o);count[u]+=1;assert n==count[u]
++        key=[split,w.namespace,wm['physical_sha256'],u,n,t,full[u],modelid(),pf.GRID.tolist(),str(c.dtype),str(width.dtype)]
++        ksha=sha(compact(key));assert ksha not in ids;ids.add(ksha)
++        keys.append([ksha,key,csha,arrhash(width)])
++        mem=memories[u];mem.on_paid_fix(o);q=mem.query();query_start=mem.h[-3].t if len(mem.h)>=3 else -1.
++        eligible=[r for r in mem.records if r[0]<query_start and r[1]<query_start]
++        assert q[3]==min(3,len(eligible)) and q[4]<=q[3] and (not q[5] or len(eligible)>=2)
++        summaries.append(np.stack(q[:3]));supports.append(q[3:]);causal.append([query_start,len(eligible),max((v[0] for v in eligible),default=-1.),max((v[1] for v in eligible),default=-1.)])
++        mem.issue(c)
++    buffer=io.BytesIO();np.savez_compressed(buffer,features=np.stack(summaries),support=np.asarray(supports),eligibility=np.asarray(causal),full_key_sha=np.asarray([v[0] for v in keys]))
++    atom(retrieval,buffer.getvalue())
++    atom(out,gzip.compress(compact(keys),compresslevel=4,mtime=0))
++    put(rec,dict(world=k,physics=wm['physical_sha256'],source_sha=r['sha256'],sha=sha_file(out),retrieval_sha=sha_file(retrieval),retrieval_axes=['TIME','ROUTE','SHUFFLE'],retrieval_fields=['mean_abs_az','mean_abs_el','max_abs_az','max_abs_el','mean_feedback_age','mean_measurement_cov_trace','mean_match_distance','mean_one_minus_heading_cosine','neighbors','eligible_records'],complete_field_prefixes=len(keys),duplicate_keys=0,source_fields_checked=['t','position','covariance','radial_velocity','radial_std','raw'],schema=['split','namespace','physics','uid','paid_count','time','complete_prefix','model','grid','center_dtype','width_dtype']))
++    return k
+diff --git a/data/coding/chronos_route_849_v1/code/sharedcache849.py b/data/coding/chronos_route_849_v1/code/sharedcache849.py
+new file mode 100644
+index 0000000..be66ed2
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/sharedcache849.py
+@@ -0,0 +1,21 @@
++"""Serialize only colliding E2 forecast computations; complete paid prefixes remain the data keys."""
++import fcntl,os,time
++from chronos_recipients import Cache,OUT
++class SharedPrefixCache(Cache):
++    def __init__(self,w,wm,split):
++        super().__init__(w,wm,split)
++        self.lockdir=OUT/'cache/prefix_locks'/split/self.spec
++        self.lockdir.mkdir(parents=True,exist_ok=True)
++    def __call__(self,uid,mem):
++        # A collision only waits. The underlying database still verifies its complete
++        # world, model, UID, timestamp and paid-prefix key and the payload digest.
++        lane=os.environ.get('CHRONOS849_OVERFLOW_LANE')
++        if lane is not None:
++            permit=OUT/'logs'/os.environ.get('CHRONOS849_OVERFLOW_PERMIT','overflow_enabled.txt')
++            while int(lane)>=int(permit.read_text()):
++                if time.time()-permit.stat().st_mtime>30:break
++                time.sleep(.5)
++        shard=int(mem.key[:8],16)%256
++        with (self.lockdir/str(shard)).open('a') as gate:
++            fcntl.flock(gate,fcntl.LOCK_EX)
++            return super().__call__(uid,mem)
+diff --git a/data/coding/chronos_route_849_v1/code/telemetry849.py b/data/coding/chronos_route_849_v1/code/telemetry849.py
+new file mode 100644
+index 0000000..e4477d0
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/telemetry849.py
+@@ -0,0 +1,26 @@
++"""Measure CPU and proportional memory of this independent experiment process tree."""
++import csv,datetime,os,time
++from pathlib import Path
++OUT=Path(__file__).resolve().parents[1];HZ=os.sysconf('SC_CLK_TCK')
++def sample():
++    cpus={};pss=0;rss=0
++    for entry in Path('/proc').glob('[0-9]*'):
++        try:
++            if Path(os.readlink(entry/'cwd'))!=OUT or (entry/'comm').read_text().strip() not in ('python','python3'):continue
++            s=(entry/'stat').read_text().split();key=(entry.name,s[21]);cpus[key]=(int(s[13])+int(s[14]))/HZ
++            mem={l.split(':')[0]:int(l.split()[1]) for l in (entry/'smaps_rollup').read_text().splitlines()[1:] if ':' in l}
++            pss+=mem['Pss']*1024;rss+=mem['Rss']*1024
++        except (OSError,ValueError,KeyError):pass
++    stat=dict(v.split() for v in Path('/sys/fs/cgroup/cpu.stat').read_text().splitlines())
++    return time.monotonic(),cpus,pss,rss,int(stat['usage_usec'])*1e-6
++def main():
++    dest=OUT/'logs/cpu_memory.csv';prev=sample()
++    with dest.open('a') as handle:
++        z=csv.writer(handle)
++        if handle.tell()==0:z.writerow(['utc','phase','processes_observed','study_cpu_cores','cgroup_cpu_cores','study_pss_bytes','sum_rss_bytes_with_shared_pages','cgroup_memory_bytes'])
++        while not (OUT/'report_receipt.json').exists():
++            time.sleep(15);now=sample();dt=now[0]-prev[0]
++            cpu=sum(v-prev[1].get(k,v) for k,v in now[1].items())/dt
++            phase='confirmation' if (OUT/'audits/final-smoke.json').exists() else 'final-smoke' if (OUT/'design/frozen.json').exists() else 'development'
++            z.writerow([datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds'),phase,len(now[1]),round(cpu,3),round((now[4]-prev[4])/dt,3),now[2],now[3],int(Path('/sys/fs/cgroup/memory.current').read_text())]);handle.flush();prev=now
++if __name__=='__main__':main()
+diff --git a/data/coding/chronos_route_849_v1/code/transfer849.py b/data/coding/chronos_route_849_v1/code/transfer849.py
+new file mode 100644
+index 0000000..a6d6761
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/transfer849.py
+@@ -0,0 +1,26 @@
++"""Transfer supervision only after every active E1 input has a verified durable receipt."""
++from base849 import *
++import signal,time
++def main():
++    parent=int(sys.argv[1]);p=Path(f'/proc/{parent}');identity=(p/'stat').read_text().split()[21]
++    assert b'code/gate849.py' in (p/'cmdline').read_bytes()
++    children=[int(x) for x in (p/f'task/{parent}/children').read_text().split()]
++    assert len(children)==32
++    os.kill(parent,signal.SIGSTOP);counts=[]
++    try:
++        while True:
++            files=list((OUT/'E1/calibration/inputs').glob('*.json'));counts.append(len(files))
++            if len(files)==32:break
++            if len(counts)>90 and len(set(counts[-90:]))==1:raise RuntimeError('no input receipt within 15 minutes')
++            time.sleep(10)
++        for f in files:assert get(f)['sha256']==sha_file(f.with_suffix('.pkl'))
++        put(OUT/'logs/supervisor_transfer.json',dict(input_worlds=32,original_pid=parent,verified_before_transfer=True,reason='NUMA-local native process pools for counterfactual and end-to-end runs'))
++        assert (p/'stat').read_text().split()[21]==identity
++        # All 32 input jobs have produced their final checksum; no active scientific work is terminated.
++        for child in children:
++            try:os.kill(child,signal.SIGTERM)
++            except ProcessLookupError:pass
++        os.kill(parent,signal.SIGTERM);os.kill(parent,signal.SIGCONT)
++    except BaseException:
++        os.kill(parent,signal.SIGCONT);raise
++if __name__=='__main__':main()
+diff --git a/data/coding/chronos_route_849_v1/code/watch849.py b/data/coding/chronos_route_849_v1/code/watch849.py
+new file mode 100644
+index 0000000..84e8729
+--- /dev/null
++++ b/data/coding/chronos_route_849_v1/code/watch849.py
+@@ -0,0 +1,23 @@
++"""Publish failed stage logs and resume atomically validated work after interruption."""
++import datetime,os,sys,time,subprocess
++from pathlib import Path
++root=Path(__file__).resolve().parents[1]
++def alive(pid,start):
++    try:
++        v=Path(f'/proc/{pid}/stat').read_text().split();return v[2]!='Z' and v[21]==start
++    except FileNotFoundError:return False
++def main():
++    pid=int(sys.argv[1]);start=Path(f'/proc/{pid}/stat').read_text().split()[21]
++    while alive(pid,start):time.sleep(8)
++    if (root/'report_receipt.json').is_file():return
++    run=0
++    while not (root/'report_receipt.json').is_file():
++        run+=1
++        dest=root/f'logs/recovery_{datetime.datetime.now():%Y%m%d_%H%M%S}_{run}.log'
++        (root/'logs/status.txt').write_text(f'执行器退出；正在从有哈希回执的工作单元续跑。恢复日志 {dest.name}\n')
++        with dest.open('wb') as log:
++            proc=subprocess.run([sys.executable,'-Bu',str(root/'code/resume849.py')],cwd=root,stdout=log,stderr=subprocess.STDOUT)
++        if proc.returncode==0:return
++        print('恢复退出',proc.returncode,dest,flush=True)
++        time.sleep(min(60,5*run))
++if __name__=='__main__':main()
